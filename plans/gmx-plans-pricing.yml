@@ -1,0 +1,83 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: GMX
+providerId: gmx
+created: '2026-06-14'
+modified: '2026-06-14'
+tags:
+  - DeFi
+  - Perpetual Exchange
+  - DEX
+  - Trading
+  - Leverage
+  - Liquidity Pools
+  - GLP
+  - GM Tokens
+  - GLV
+  - Arbitrum
+  - Avalanche
+  - Web3
+description: >-
+  Machine-readable plans scaffold for the GMX API surface. The GMX Oracle API
+  and GraphQL/Subsquid endpoints are publicly accessible without authentication
+  or payment. The primary GMX API (gmxapi.io) serves app-level integrations;
+  no formal paid tiers have been published as of June 2026. Replace scaffold
+  limits with any provider-published values when available.
+plans:
+  - id: gmx-free
+    name: Free / Open Access
+    type: open
+    description: >-
+      The GMX Oracle API (gmxinfra.io), GraphQL Subsquid endpoints, and
+      Integration API are publicly accessible without an API key or subscription.
+      The primary GMX API (gmxapi.io) is used by the GMX app and open
+      integrations with no documented paid tiers. Scaffold rate limits below
+      reflect reasonable defaults; reconcile against any published quotas.
+    entries:
+      - label: Oracle API Requests
+        description: Public read access to oracle prices, markets, liquidity, and APY
+        name: oracle_api_requests
+        type: quota
+        metric: requests
+        limit: unlimited
+        timeFrame: month
+        geo: global
+        domains:
+          - https://arbitrum-api.gmxinfra.io
+          - https://avalanche-api.gmxinfra.io
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: GMX API Requests
+        description: App-level HTTP requests for account data, orders, analytics
+        name: gmx_api_requests
+        type: quota
+        metric: requests
+        limit: unlimited
+        timeFrame: month
+        geo: global
+        domains:
+          - https://arbitrum.gmxapi.io/v1
+          - https://avalanche.gmxapi.io/v1
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: GraphQL Requests
+        description: Subsquid GraphQL queries for historical on-chain data
+        name: graphql_requests
+        type: quota
+        metric: requests
+        limit: unlimited
+        timeFrame: month
+        geo: global
+        domains:
+          - https://gmx.squids.live/gmx-synthetics-arbitrum:prod/api/graphql
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+references:
+  - name: GMX API Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+  - name: GMX APIs.yml
+    url: https://raw.githubusercontent.com/api-evangelist/gmx/refs/heads/main/apis.yml

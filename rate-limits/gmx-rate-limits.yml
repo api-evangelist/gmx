@@ -1,0 +1,94 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: GMX
+providerId: gmx
+created: '2026-06-14'
+modified: '2026-06-14'
+tags:
+  - DeFi
+  - Perpetual Exchange
+  - DEX
+  - Trading
+  - Liquidity Pools
+  - GM Tokens
+  - Arbitrum
+  - Avalanche
+  - Web3
+  - Rate Limiting
+  - Quotas
+  - Throttling
+description: >-
+  Scaffolded rate limit definitions for the GMX API surface. GMX does not
+  publish explicit rate limit headers or throttling policies in its public
+  documentation as of June 2026. The Oracle API (gmxinfra.io) provides
+  fallback hosts for high availability. Scaffold values below are conservative
+  defaults; replace with provider-published values if and when available.
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+  reset: X-RateLimit-Reset
+  retryAfter: Retry-After
+  policy: RateLimit-Policy
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: public
+    name: Oracle API Default
+    scope: ip
+    metric: requests_per_minute
+    limit: 60
+    burst: 100
+    timeFrame: minute
+    applies:
+      - https://arbitrum-api.gmxinfra.io
+      - https://avalanche-api.gmxinfra.io
+    description: >-
+      Scaffold default for the public Oracle API. No key required. Use
+      documented fallback hosts (arbitrum-api-fallback.gmxinfra.io,
+      arbitrum-api-fallback.gmxinfra2.io) if the primary host is unavailable.
+  - tier: public
+    name: GMX API Default
+    scope: ip
+    metric: requests_per_minute
+    limit: 60
+    burst: 100
+    timeFrame: minute
+    applies:
+      - https://arbitrum.gmxapi.io/v1
+      - https://avalanche.gmxapi.io/v1
+    description: >-
+      Scaffold default for the primary GMX API. Two independent peer regions
+      per chain (gmxapi.io and gmxapi.ai) provide redundancy.
+  - tier: public
+    name: GraphQL / Subsquid Default
+    scope: ip
+    metric: requests_per_minute
+    limit: 30
+    burst: 60
+    timeFrame: minute
+    applies:
+      - https://gmx.squids.live/gmx-synthetics-arbitrum:prod/api/graphql
+    description: >-
+      Scaffold default for Subsquid-powered GraphQL queries. Subsquid imposes
+      its own fair-use limits; check Subsquid documentation for current quotas.
+recoveryStrategies:
+  - name: Exponential Backoff
+    description: >-
+      Wait for the Retry-After header value (or back off exponentially up to
+      60 s) before retrying throttled requests.
+  - name: Fallback Hosts
+    description: >-
+      For Oracle API, switch to the documented fallback hosts
+      (arbitrum-api-fallback.gmxinfra.io / gmxinfra2.io) on 429 or 503
+      before applying backoff.
+  - name: Dual Region
+    description: >-
+      For the GMX API, alternate between the .io and .ai peer-region base
+      URLs to distribute load and improve resilience.
+notes:
+  - GMX has not published explicit rate limit headers or throttling policies
+    as of June 2026; scaffold values are conservative defaults.
+  - Replace scaffold values with provider-published limits when available.
