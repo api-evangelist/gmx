@@ -1,0 +1,2473 @@
+# GMX GraphQL Schema
+#
+# Source: Live introspection of https://gmx.squids.live/gmx-synthetics-arbitrum:prod/api/graphql
+#         (Subsquid-powered GMX Synthetics v2 indexer, Arbitrum)
+#         plus legacy v1 entities from https://github.com/gmx-io/gmx-subgraph (master branch)
+#
+# Introspected: June 2026
+# Schema covers: positions, orders, trades, fees, funding rates, borrowing rates,
+#   markets, prices, referrals, staking, claimable amounts, multichain funding,
+#   GLV vaults, APR snapshots, volume tracking, and protocol statistics.
+#
+# Monetary values: BigInt with 30-decimal precision (1e30 = 1 USD) unless noted.
+# All addresses: lowercase hex strings.
+
+scalar BigInt
+scalar BigDecimal
+scalar Bytes
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+
+enum PriceType {
+  CHAINLINK
+  FAST
+  ARCHIVE
+}
+
+enum PositionChangeType {
+  INCREASE
+  DECREASE
+  LIQUIDATION
+  AUTO_DELEVERAGING
+}
+
+enum OrderStatus {
+  Created
+  Executed
+  Cancelled
+  Frozen
+}
+
+enum ClaimActionType {
+  ClaimFunding
+  ClaimPriceImpact
+  ClaimCollateral
+  SettleFundingFeeCreated
+  SettleFundingFeeExecuted
+  SettleFundingFeeCancelled
+}
+
+enum EntityType {
+  Market
+  Glv
+}
+
+enum OnChainSettingType {
+  UINT
+  INT
+  ADDRESS
+  BOOL
+  BYTES32
+  BYTES
+}
+
+enum PositionFeesEntityType {
+  PositionFees
+  BorrowingFees
+  FundingFees
+}
+
+enum MultichainFundingOperation {
+  SEND
+  RECEIVE
+  SAME_CHAIN
+}
+
+enum Period {
+  hourly
+  daily
+  weekly
+  total
+}
+
+enum PricePeriod {
+  any
+  last
+  daily
+  hourly
+}
+
+enum LiquidationType {
+  full
+  partial
+}
+
+# ---------------------------------------------------------------------------
+# Pagination / Connection types
+# ---------------------------------------------------------------------------
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+# ---------------------------------------------------------------------------
+# Protocol-level statistics
+# ---------------------------------------------------------------------------
+
+"""Aggregate platform statistics: deposited users, traded users, total volume."""
+type PlatformStats {
+  id: String!
+  depositedUsers: Int
+  tradedUsers: Int
+  volume: BigInt
+}
+
+type PlatformStatsEdge {
+  node: PlatformStats!
+  cursor: String!
+}
+
+type PlatformStatsConnection {
+  edges: [PlatformStatsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Market
+# ---------------------------------------------------------------------------
+
+"""
+Market identity record. Each GMX Synthetics market is a three-token tuple:
+index token (the asset being traded), long collateral token, and short collateral token.
+"""
+type Market {
+  id: String!
+  indexToken: String!
+  longToken: String!
+  shortToken: String!
+}
+
+type MarketEdge {
+  node: Market!
+  cursor: String!
+}
+
+type MarketsConnection {
+  edges: [MarketEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
+Full market configuration snapshot including pool amounts, open interest,
+impact factors, borrowing/funding parameters, and pool value.
+"""
+type MarketInfo {
+  id: String!
+  isDisabled: Boolean
+  marketTokenAddress: String
+  longTokenAddress: String
+  shortTokenAddress: String
+  indexTokenAddress: String
+
+  # Pool amounts
+  marketTokenSupply: BigInt
+  longPoolAmount: BigInt
+  shortPoolAmount: BigInt
+  maxLongPoolAmount: BigInt
+  maxShortPoolAmount: BigInt
+  maxLongPoolUsdForDeposit: BigInt
+  maxShortPoolUsdForDeposit: BigInt
+
+  # Pool value
+  poolValueMax: BigInt
+  poolValueMin: BigInt
+  poolValue: BigInt
+
+  # Reserve factors
+  reserveFactorLong: BigInt
+  reserveFactorShort: BigInt
+  openInterestReserveFactorLong: BigInt
+  openInterestReserveFactorShort: BigInt
+
+  # Open interest caps
+  maxOpenInterestLong: BigInt
+  maxOpenInterestShort: BigInt
+
+  # Borrowing parameters
+  optimalUsageFactorLong: BigInt
+  optimalUsageFactorShort: BigInt
+  baseBorrowingFactorLong: BigInt
+  baseBorrowingFactorShort: BigInt
+  borrowingFactorLong: BigInt
+  borrowingFactorShort: BigInt
+  borrowingExponentFactorLong: BigInt
+  borrowingExponentFactorShort: BigInt
+  aboveOptimalUsageBorrowingFactorLong: BigInt
+  aboveOptimalUsageBorrowingFactorShort: BigInt
+
+  # Funding parameters
+  fundingFactor: BigInt
+  fundingExponentFactor: BigInt
+  fundingIncreaseFactorPerSecond: BigInt
+  fundingDecreaseFactorPerSecond: BigInt
+  thresholdForStableFunding: BigInt
+  thresholdForDecreaseFunding: BigInt
+  minFundingFactorPerSecond: BigInt
+  maxFundingFactorPerSecond: BigInt
+
+  # Live rates
+  borrowingFactorPerSecondForLongs: BigInt
+  borrowingFactorPerSecondForShorts: BigInt
+  fundingFactorPerSecond: BigInt
+  longsPayShorts: Boolean
+  savedFundingFactorPerSecond: BigInt
+  fundingUpdatedAt: Int
+
+  # Fees
+  totalBorrowingFees: BigInt
+
+  # Position impact pool
+  positionImpactPoolAmount: BigInt
+  minPositionImpactPoolAmount: BigInt
+  positionImpactPoolDistributionRate: BigInt
+
+  # Collateral factors
+  minCollateralFactor: BigInt
+  minCollateralFactorForLiquidation: BigInt
+  minCollateralFactorForOpenInterestLong: BigInt
+  minCollateralFactorForOpenInterestShort: BigInt
+
+  # Swap impact pools
+  swapImpactPoolAmountLong: BigInt
+  swapImpactPoolAmountShort: BigInt
+
+  # Max PnL factors
+  maxPnlFactorForTradersLong: BigInt
+  maxPnlFactorForTradersShort: BigInt
+
+  # Open interest by side and token
+  longOpenInterestUsd: BigInt
+  shortOpenInterestUsd: BigInt
+  longOpenInterestInTokens: BigInt
+  shortOpenInterestInTokens: BigInt
+  longOpenInterestUsingLongToken: BigInt
+  longOpenInterestUsingShortToken: BigInt
+  shortOpenInterestUsingLongToken: BigInt
+  shortOpenInterestUsingShortToken: BigInt
+  longOpenInterestInTokensUsingLongToken: BigInt
+  longOpenInterestInTokensUsingShortToken: BigInt
+  shortOpenInterestInTokensUsingLongToken: BigInt
+  shortOpenInterestInTokensUsingShortToken: BigInt
+
+  # Position fee factors
+  positionFeeFactorForPositiveImpact: BigInt
+  positionFeeFactorForNegativeImpact: BigInt
+
+  # Position impact factors
+  positionImpactFactorPositive: BigInt
+  positionImpactFactorNegative: BigInt
+  maxPositionImpactFactorPositive: BigInt
+  maxPositionImpactFactorNegative: BigInt
+  maxPositionImpactFactorForLiquidations: BigInt
+  positionImpactExponentFactorPositive: BigInt
+  positionImpactExponentFactorNegative: BigInt
+
+  # Lendable impact
+  maxLendableImpactFactor: BigInt
+  maxLendableImpactFactorForWithdrawals: BigInt
+  maxLendableImpactUsd: BigInt
+  lentPositionImpactPoolAmount: BigInt
+
+  # Swap fees
+  atomicSwapFeeFactor: BigInt
+  swapFeeFactorForPositiveImpact: BigInt
+  swapFeeFactorForNegativeImpact: BigInt
+  swapImpactFactorPositive: BigInt
+  swapImpactFactorNegative: BigInt
+  swapImpactExponentFactor: BigInt
+
+  # Virtual IDs (for price impact calculation across correlated markets)
+  virtualPoolAmountForLongToken: BigInt
+  virtualPoolAmountForShortToken: BigInt
+  virtualInventoryForPositions: BigInt
+  virtualMarketId: String
+  virtualIndexTokenId: String
+  virtualLongTokenId: String
+}
+
+type MarketInfoEdge {
+  node: MarketInfo!
+  cursor: String!
+}
+
+type MarketInfosConnection {
+  edges: [MarketInfoEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Prices
+# ---------------------------------------------------------------------------
+
+"""Oracle price record for a token at a given timestamp."""
+type Price {
+  id: String!
+  token: String!
+  minPrice: BigInt
+  maxPrice: BigInt
+  timestamp: Int
+  type: PriceType
+  isSnapshot: Boolean
+  snapshotTimestamp: Int
+}
+
+type PriceEdge {
+  node: Price!
+  cursor: String!
+}
+
+type PricesConnection {
+  edges: [PriceEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Positions
+# ---------------------------------------------------------------------------
+
+"""
+Per-account position snapshot. Tracks current state including size, collateral,
+realized and unrealized PnL, leverage, and accumulated fees.
+"""
+type Position {
+  id: String!
+  positionKey: String
+  account: String
+  market: String
+  collateralToken: String
+  isLong: Boolean
+  collateralAmount: BigInt
+  sizeInTokens: BigInt
+  sizeInUsd: BigInt
+  realizedPnl: BigInt
+  maxSize: BigInt
+  entryPrice: BigInt
+  accountStatId: String
+  accountStat: AccountStat
+  realizedFees: BigInt
+  realizedPriceImpact: BigInt
+  unrealizedFees: BigInt
+  unrealizedPriceImpact: BigInt
+  unrealizedPnl: BigInt
+  leverage: BigInt
+  qualifyingPnl: BigInt
+  openedAt: Int
+  isSnapshot: Boolean
+  snapshotTimestamp: Int
+  maxCapital: BigInt
+}
+
+type PositionEdge {
+  node: Position!
+  cursor: String!
+}
+
+type PositionsConnection {
+  edges: [PositionEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""
+Event-level record of every position change (open, increase, decrease, close,
+liquidation, ADL). Contains full fee breakdown and price impact details.
+"""
+type PositionChange {
+  id: String!
+  type: PositionChangeType
+  orderKey: String
+  positionKey: String
+  account: String
+  market: String
+  collateralToken: String
+  isLong: Boolean
+  sizeInUsd: BigInt
+  sizeInTokens: BigInt
+  sizeDeltaUsd: BigInt
+  sizeDeltaInTokens: BigInt
+  collateralAmount: BigInt
+  collateralTokenPriceMin: BigInt
+  collateralDeltaAmount: BigInt
+  executionPrice: BigInt
+  proportionalPendingImpactUsd: BigInt
+  priceImpactDiffUsd: BigInt
+  totalImpactUsd: BigInt
+  priceImpactUsd: BigInt
+  priceImpactAmount: BigInt
+  basePnlUsd: BigInt
+  maxSize: BigInt
+  isWin: Boolean
+  swapImpactUsd: BigInt
+  swapFeeUsd: BigInt
+  feesAmount: BigInt
+  block: Int
+  timestamp: Int
+}
+
+type PositionChangeEdge {
+  node: PositionChange!
+  cursor: String!
+}
+
+type PositionChangesConnection {
+  edges: [PositionChangeEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Account statistics
+# ---------------------------------------------------------------------------
+
+"""Aggregate trading statistics for a single account over a given period."""
+type AccountStat {
+  id: String!
+  account: String
+  period: String
+  dayTimestamp: Int
+  wins: Int
+  losses: Int
+  realizedPnl: BigInt
+  volume: BigInt
+  netCapital: BigInt
+  maxCapital: BigInt
+  cumsumSize: BigInt
+  cumsumCollateral: BigInt
+  sumMaxSize: BigInt
+  closedCount: Int
+  positions: [Position!]
+  realizedFees: BigInt
+  realizedSwapFees: BigInt
+  realizedPriceImpact: BigInt
+  realizedSwapImpact: BigInt
+  deposits: BigInt
+  netCapitalDelta: BigInt
+  maxNetCapitalRunningDelta: BigInt
+}
+
+type AccountStatEdge {
+  node: AccountStat!
+  cursor: String!
+}
+
+type AccountStatsConnection {
+  edges: [AccountStatEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Orders
+# ---------------------------------------------------------------------------
+
+"""
+Individual order record with status lifecycle.
+Covers limit orders, stop-loss, take-profit, market orders, and liquidations.
+"""
+type Order {
+  id: String!
+  account: String
+  market: String
+  status: OrderStatus
+  orderKey: String
+  orderType: String
+  isLong: Boolean
+  sizeDeltaUsd: BigInt
+  initialCollateralDeltaAmount: BigInt
+  triggerPrice: BigInt
+  acceptablePrice: BigInt
+  executionFee: BigInt
+  callbackGasLimit: BigInt
+  minOutputAmount: BigInt
+  updatedAtBlock: Int
+  createdAt: Int
+  executedAt: Int
+  cancelledAt: Int
+  cancelledReason: String
+  frozenReason: String
+}
+
+type OrderEdge {
+  node: Order!
+  cursor: String!
+}
+
+type OrdersConnection {
+  edges: [OrderEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Trade actions
+# ---------------------------------------------------------------------------
+
+"""
+Unified trade action event log. Records all trade-related on-chain events
+including order creation, execution, cancellation, position changes, and swaps.
+"""
+type TradeAction {
+  id: String!
+  eventName: String
+  account: String
+  market: String
+  collateralToken: String
+  isLong: Boolean
+  orderKey: String
+  positionKey: String
+  orderType: String
+  sizeDeltaUsd: BigInt
+  initialCollateralDeltaAmount: BigInt
+  collateralTokenPriceMin: BigInt
+  collateralTokenPriceMax: BigInt
+  indexTokenPriceMin: BigInt
+  indexTokenPriceMax: BigInt
+  executionPrice: BigInt
+  priceImpactUsd: BigInt
+  priceImpactAmount: BigInt
+  realizedPnlAfterTax: BigInt
+  basePnlUsd: BigInt
+  sizeDeltaInTokens: BigInt
+  triggerPrice: BigInt
+  acceptablePrice: BigInt
+  executionFee: BigInt
+  transaction: String
+  timestamp: Int
+  block: Int
+}
+
+type TradeActionEdge {
+  node: TradeAction!
+  cursor: String!
+}
+
+type TradeActionsConnection {
+  edges: [TradeActionEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Swap info
+# ---------------------------------------------------------------------------
+
+"""Record of a swap execution including tokens, amounts, and fee details."""
+type SwapInfo {
+  id: String!
+  account: String
+  marketAddress: String
+  tokenIn: String
+  tokenOut: String
+  tokenInPrice: BigInt
+  tokenOutPrice: BigInt
+  amountIn: BigInt
+  amountInAfterFees: BigInt
+  amountOut: BigInt
+  priceImpactUsd: BigInt
+  priceImpactAmount: BigInt
+  swapFeeAmount: BigInt
+  transaction: String
+  timestamp: Int
+}
+
+type SwapInfoEdge {
+  node: SwapInfo!
+  cursor: String!
+}
+
+type SwapInfosConnection {
+  edges: [SwapInfoEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Fees
+# ---------------------------------------------------------------------------
+
+"""
+Pool-level fee collection snapshot. Tracks position fees and borrowing fees
+collected per pool per period, both in absolute USD and per-pool-value terms.
+"""
+type CollectedFeesInfo {
+  id: String!
+  period: String
+  address: String
+  timestampGroup: Int
+  entityType: EntityType
+  feeUsdForPool: BigInt
+  cumulativeFeeUsdForPool: BigInt
+  borrowingFeeUsdForPool: BigInt
+  cumulativeBorrowingFeeUsdForPool: BigInt
+  borrowingFeeUsdPerPoolValue: BigInt
+  cumulativeBorrowingFeeUsdPerPoolValue: BigInt
+  feeUsdPerPoolValue: BigInt
+  cumulativeFeeUsdPerPoolValue: BigInt
+}
+
+type CollectedFeesInfoEdge {
+  node: CollectedFeesInfo!
+  cursor: String!
+}
+
+type CollectedFeesInfosConnection {
+  edges: [CollectedFeesInfoEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Individual swap fee event record."""
+type SwapFeesInfo {
+  id: String!
+  marketAddress: String
+  tokenAddress: String
+  swapFeeType: String
+  tokenPrice: BigInt
+  feeReceiverAmount: BigInt
+  feeUsdForPool: BigInt
+  transactionHash: String
+}
+
+type SwapFeesInfoEdge {
+  node: SwapFeesInfo!
+  cursor: String!
+}
+
+type SwapFeesInfosConnection {
+  edges: [SwapFeesInfoEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Swap fee aggregate with period grouping."""
+type SwapFeesInfoWithPeriod {
+  id: String!
+  marketAddress: String
+  tokenAddress: String
+  period: String
+  timestampGroup: Int
+  totalFeeUsdForPool: BigInt
+  totalFeeReceiverUsd: BigInt
+}
+
+type SwapFeesInfoWithPeriodEdge {
+  node: SwapFeesInfoWithPeriod!
+  cursor: String!
+}
+
+type SwapFeesInfoWithPeriodsConnection {
+  edges: [SwapFeesInfoWithPeriodEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Individual position fee event record including all fee components."""
+type PositionFeesEntity {
+  id: String!
+  type: PositionFeesEntityType
+  marketAddress: String
+  collateralTokenAddress: String
+  trader: String
+  affiliate: String
+  traderDiscountAmount: BigInt
+  affiliateRewardAmount: BigInt
+  feeReceiverAmount: BigInt
+  feeUsdForPool: BigInt
+  positionFeeAmount: BigInt
+  totalRebateAmount: BigInt
+  totalRebateFactor: BigInt
+  borrowingFeeAmount: BigInt
+  borrowingFeeUsdForPool: BigInt
+  fundingFeeAmount: BigInt
+  claimableLongTokenAmount: BigInt
+  claimableShortTokenAmount: BigInt
+  latestFundingFeeAmountPerSize: BigInt
+  latestLongTokenClaimableFundingAmountPerSize: BigInt
+  latestShortTokenClaimableFundingAmountPerSize: BigInt
+  transaction: String
+  timestamp: Int
+}
+
+type PositionFeesEntityEdge {
+  node: PositionFeesEntity!
+  cursor: String!
+}
+
+type PositionFeesEntitiesConnection {
+  edges: [PositionFeesEntityEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Position fee aggregate with period grouping."""
+type PositionFeesInfoWithPeriod {
+  id: String!
+  marketAddress: String
+  collateralTokenAddress: String
+  period: String
+  timestampGroup: Int
+  totalBorrowingFeeUsdForPool: BigInt
+  totalPositionFeeUsdForPool: BigInt
+  totalFeeUsdForPool: BigInt
+}
+
+type PositionFeesInfoWithPeriodEdge {
+  node: PositionFeesInfoWithPeriod!
+  cursor: String!
+}
+
+type PositionFeesInfoWithPeriodsConnection {
+  edges: [PositionFeesInfoWithPeriodEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Funding and Borrowing Rates
+# ---------------------------------------------------------------------------
+
+"""Point-in-time funding rate snapshot per market."""
+type FundingRateSnapshot {
+  id: String!
+  marketAddress: String
+  timestamp: Int
+  fundingFactorPerSecond: BigInt
+  longsPayShorts: Boolean
+}
+
+type FundingRateSnapshotEdge {
+  node: FundingRateSnapshot!
+  cursor: String!
+}
+
+type FundingRateSnapshotsConnection {
+  edges: [FundingRateSnapshotEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Point-in-time borrowing rate snapshot per market and side."""
+type BorrowingRateSnapshot {
+  id: String!
+  marketAddress: String
+  timestamp: Int
+  borrowingFactorPerSecondForLongs: BigInt
+  borrowingFactorPerSecondForShorts: BigInt
+}
+
+type BorrowingRateSnapshotEdge {
+  node: BorrowingRateSnapshot!
+  cursor: String!
+}
+
+type BorrowingRateSnapshotsConnection {
+  edges: [BorrowingRateSnapshotEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# APR / PnL APR Snapshots
+# ---------------------------------------------------------------------------
+
+"""APR snapshot for a GM or GLV token pool."""
+type AprSnapshot {
+  id: String!
+  address: String
+  apr: BigInt
+  incentiveApr: BigInt
+  timestamp: Int
+  period: String
+  entityType: EntityType
+}
+
+type AprSnapshotEdge {
+  node: AprSnapshot!
+  cursor: String!
+}
+
+type AprSnapshotsConnection {
+  edges: [AprSnapshotEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""PnL-based APR snapshot for a market or GLV."""
+type PnlAprSnapshot {
+  id: String!
+  address: String
+  pnlApr: BigInt
+  timestamp: Int
+  period: String
+  entityType: EntityType
+}
+
+type PnlAprSnapshotEdge {
+  node: PnlAprSnapshot!
+  cursor: String!
+}
+
+type PnlAprSnapshotsConnection {
+  edges: [PnlAprSnapshotEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# GLV Vaults
+# ---------------------------------------------------------------------------
+
+"""GLV (GMX Liquidity Vault) entity — a multi-market liquidity vault."""
+type Glv {
+  id: String!
+  glvTokenAddress: String
+  longTokenAddress: String
+  shortTokenAddress: String
+}
+
+type GlvEdge {
+  node: Glv!
+  cursor: String!
+}
+
+type GlvsConnection {
+  edges: [GlvEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Pool values
+# ---------------------------------------------------------------------------
+
+"""Historical pool value snapshot for a market or GLV."""
+type CumulativePoolValue {
+  id: String!
+  address: String
+  period: String
+  timestampGroup: Int
+  poolValue: BigInt
+  entityType: EntityType
+}
+
+type CumulativePoolValueEdge {
+  node: CumulativePoolValue!
+  cursor: String!
+}
+
+type CumulativePoolValuesConnection {
+  edges: [CumulativePoolValueEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Volume tracking
+# ---------------------------------------------------------------------------
+
+"""Volume info aggregate by period."""
+type VolumeInfo {
+  id: String!
+  period: String
+  timestampGroup: Int
+  volumeUsd: BigInt
+}
+
+type VolumeInfoEdge {
+  node: VolumeInfo!
+  cursor: String!
+}
+
+type VolumeInfosConnection {
+  edges: [VolumeInfoEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Swap volume aggregate per market and token by period."""
+type SwapVolumeInfo {
+  id: String!
+  period: String
+  timestampGroup: Int
+  marketAddress: String
+  tokenAddress: String
+  volumeUsd: BigInt
+}
+
+type SwapVolumeInfoEdge {
+  node: SwapVolumeInfo!
+  cursor: String!
+}
+
+type SwapVolumeInfosConnection {
+  edges: [SwapVolumeInfoEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Position volume aggregate per market by period."""
+type PositionVolumeInfo {
+  id: String!
+  period: String
+  timestampGroup: Int
+  marketAddress: String
+  volumeUsd: BigInt
+}
+
+type PositionVolumeInfoEdge {
+  node: PositionVolumeInfo!
+  cursor: String!
+}
+
+type PositionVolumeInfosConnection {
+  edges: [PositionVolumeInfoEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# On-chain settings
+# ---------------------------------------------------------------------------
+
+"""Protocol configuration parameter stored on-chain."""
+type OnChainSetting {
+  id: String!
+  type: OnChainSettingType
+  key: String
+  value: String
+}
+
+type OnChainSettingEdge {
+  node: OnChainSetting!
+  cursor: String!
+}
+
+type OnChainSettingsConnection {
+  edges: [OnChainSettingEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Referrals
+# ---------------------------------------------------------------------------
+
+"""Referral code to owner mapping."""
+type ReferralCodeOwner {
+  id: String!
+  code: String
+  owner: String
+  tierId: BigInt
+  discountShare: BigInt
+}
+
+type ReferralCodeOwnerEdge {
+  node: ReferralCodeOwner!
+  cursor: String!
+}
+
+type ReferralCodeOwnersConnection {
+  edges: [ReferralCodeOwnerEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Trader to referral code association."""
+type TraderReferral {
+  id: String!
+  trader: String
+  referralCode: String
+  affiliateAddress: String
+}
+
+type TraderReferralEdge {
+  node: TraderReferral!
+  cursor: String!
+}
+
+type TraderReferralsConnection {
+  edges: [TraderReferralEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Hourly affiliate referral trading statistics."""
+type AffiliateReferralTradeStatsByHour {
+  id: String!
+  affiliate: String
+  referralCode: String
+  timestamp: Int
+  volume: BigInt
+  trades: Int
+  affiliateReward: BigInt
+  discountAmount: BigInt
+}
+
+type AffiliateReferralTradeStatsByHourEdge {
+  node: AffiliateReferralTradeStatsByHour!
+  cursor: String!
+}
+
+type AffiliateReferralTradeStatsByHoursConnection {
+  edges: [AffiliateReferralTradeStatsByHourEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Hourly trader referral trading statistics."""
+type TraderReferralTradeStatsByHour {
+  id: String!
+  trader: String
+  referralCode: String
+  timestamp: Int
+  volume: BigInt
+  trades: Int
+  discountAmount: BigInt
+}
+
+type TraderReferralTradeStatsByHourEdge {
+  node: TraderReferralTradeStatsByHour!
+  cursor: String!
+}
+
+type TraderReferralTradeStatsByHoursConnection {
+  edges: [TraderReferralTradeStatsByHourEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Hourly affiliate trader statistics (unique traders, volume)."""
+type AffiliateTraderStatsByHour {
+  id: String!
+  affiliate: String
+  timestamp: Int
+  uniqueTraders: Int
+  volume: BigInt
+  trades: Int
+}
+
+type AffiliateTraderStatsByHourEdge {
+  node: AffiliateTraderStatsByHour!
+  cursor: String!
+}
+
+type AffiliateTraderStatsByHoursConnection {
+  edges: [AffiliateTraderStatsByHourEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Claimable amounts
+# ---------------------------------------------------------------------------
+
+"""Group of claimable collateral entries for a price impact clawback."""
+type ClaimableCollateralGroup {
+  id: String!
+  marketAddress: String
+  tokenAddress: String
+  timeKey: String
+  claimables: [ClaimableCollateral!]
+}
+
+type ClaimableCollateralGroupEdge {
+  node: ClaimableCollateralGroup!
+  cursor: String!
+}
+
+type ClaimableCollateralGroupsConnection {
+  edges: [ClaimableCollateralGroupEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Individual claimable collateral entry per account."""
+type ClaimableCollateral {
+  id: String!
+  marketAddress: String
+  tokenAddress: String
+  account: String
+  timeKey: String
+  value: BigInt
+  claimed: Boolean
+  factor: BigInt
+  factorByTime: BigInt
+}
+
+type ClaimableCollateralEdge {
+  node: ClaimableCollateral!
+  cursor: String!
+}
+
+type ClaimableCollateralsConnection {
+  edges: [ClaimableCollateralEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Unclaimed funding fee amount per account and market."""
+type ClaimableFundingFeeInfo {
+  id: String!
+  marketAddress: String
+  tokenAddress: String
+  account: String
+  amount: BigInt
+}
+
+type ClaimableFundingFeeInfoEdge {
+  node: ClaimableFundingFeeInfo!
+  cursor: String!
+}
+
+type ClaimableFundingFeeInfosConnection {
+  edges: [ClaimableFundingFeeInfoEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Reference record tracking claim state."""
+type ClaimRef {
+  id: String!
+  account: String
+  marketAddress: String
+  tokenAddress: String
+  timeKey: String
+}
+
+type ClaimRefEdge {
+  node: ClaimRef!
+  cursor: String!
+}
+
+type ClaimRefsConnection {
+  edges: [ClaimRefEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""On-chain claim action event (funding fees, price impact, collateral)."""
+type ClaimAction {
+  id: String!
+  type: ClaimActionType
+  account: String
+  marketAddresses: [String!]
+  tokenAddresses: [String!]
+  amounts: [BigInt!]
+  isLongOrders: [Boolean!]
+  transaction: String
+  timestamp: Int
+}
+
+type ClaimActionEdge {
+  node: ClaimAction!
+  cursor: String!
+}
+
+type ClaimActionsConnection {
+  edges: [ClaimActionEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Token-level claimable amount per account."""
+type ClaimableAmount {
+  id: String!
+  account: String
+  tokenAddress: String
+  amount: BigInt
+}
+
+type ClaimableAmountEdge {
+  node: ClaimableAmount!
+  cursor: String!
+}
+
+type ClaimableAmountsConnection {
+  edges: [ClaimableAmountEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Token distribution record (airdrops, incentives, rebates)."""
+type Distribution {
+  id: String!
+  account: String
+  amounts: [BigInt!]
+  amountsInUsd: [BigInt!]
+  tokenAddresses: [String!]
+  typeId: BigInt
+  transaction: String
+  timestamp: Int
+}
+
+type DistributionEdge {
+  node: Distribution!
+  cursor: String!
+}
+
+type DistributionsConnection {
+  edges: [DistributionEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# PnL tracking
+# ---------------------------------------------------------------------------
+
+"""Cumulative PnL record per account or market."""
+type CumulativePnl {
+  id: String!
+  account: String
+  market: String
+  pnl: BigInt
+  realizedPnl: BigInt
+  unrealizedPnl: BigInt
+  timestamp: Int
+}
+
+type CumulativePnlEdge {
+  node: CumulativePnl!
+  cursor: String!
+}
+
+type CumulativePnlsConnection {
+  edges: [CumulativePnlEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Staking
+# ---------------------------------------------------------------------------
+
+"""Per-account staking power snapshot."""
+type StakingPower {
+  id: String!
+  account: String
+  gmxStakingPower: BigInt
+  esGmxStakingPower: BigInt
+  multiplierPoints: BigInt
+  timestamp: Int
+}
+
+type StakingPowerEdge {
+  node: StakingPower!
+  cursor: String!
+}
+
+type StakingPowersConnection {
+  edges: [StakingPowerEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Network-wide staking power aggregate."""
+type NetworkStakingPower {
+  id: String!
+  totalGmxStakingPower: BigInt
+  totalEsGmxStakingPower: BigInt
+  totalMultiplierPoints: BigInt
+  timestamp: Int
+}
+
+type NetworkStakingPowerEdge {
+  node: NetworkStakingPower!
+  cursor: String!
+}
+
+type NetworkStakingPowersConnection {
+  edges: [NetworkStakingPowerEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Multichain funding (cross-chain operations)
+# ---------------------------------------------------------------------------
+
+"""Cross-chain funding send event."""
+type MultichainFundingSendEvent {
+  id: String!
+  account: String
+  sourceChainId: BigInt
+  destChainId: BigInt
+  token: String
+  amount: BigInt
+  operation: MultichainFundingOperation
+  transaction: String
+  timestamp: Int
+}
+
+type MultichainFundingSendEventEdge {
+  node: MultichainFundingSendEvent!
+  cursor: String!
+}
+
+type MultichainFundingSendEventsConnection {
+  edges: [MultichainFundingSendEventEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Cross-chain funding receive event."""
+type MultichainFundingReceiveEvent {
+  id: String!
+  account: String
+  sourceChainId: BigInt
+  destChainId: BigInt
+  token: String
+  amount: BigInt
+  operation: MultichainFundingOperation
+  transaction: String
+  timestamp: Int
+}
+
+type MultichainFundingReceiveEventEdge {
+  node: MultichainFundingReceiveEvent!
+  cursor: String!
+}
+
+type MultichainFundingReceiveEventsConnection {
+  edges: [MultichainFundingReceiveEventEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"""Same-chain multichain funding event."""
+type MultichainSamechainFundingEvent {
+  id: String!
+  account: String
+  chainId: BigInt
+  token: String
+  amount: BigInt
+  operation: MultichainFundingOperation
+  transaction: String
+  timestamp: Int
+}
+
+type MultichainSamechainFundingEventEdge {
+  node: MultichainSamechainFundingEvent!
+  cursor: String!
+}
+
+type MultichainSamechainFundingEventsConnection {
+  edges: [MultichainSamechainFundingEventEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Processor status
+# ---------------------------------------------------------------------------
+
+"""Indexer processing state."""
+type ProcessorStatus {
+  id: String!
+  processor: String
+  lastProcessedBlock: Int
+  lastProcessedTimestamp: Int
+}
+
+type ProcessorStatusEdge {
+  node: ProcessorStatus!
+  cursor: String!
+}
+
+type ProcessorStatusesConnection {
+  edges: [ProcessorStatusEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+# ---------------------------------------------------------------------------
+# Squid status
+# ---------------------------------------------------------------------------
+
+"""Subsquid indexer head block status."""
+type SquidStatus {
+  height: Int
+}
+
+# ---------------------------------------------------------------------------
+# Computed / aggregate response types
+# ---------------------------------------------------------------------------
+
+type MarketApr {
+  marketAddress: String
+  apr: BigInt
+  incentiveApr: BigInt
+}
+
+type GlvApr {
+  glvAddress: String
+  apr: BigInt
+  incentiveApr: BigInt
+}
+
+type PeriodAccountStatObject {
+  account: String
+  period: String
+  wins: Int
+  losses: Int
+  realizedPnl: BigInt
+  volume: BigInt
+  closedCount: Int
+}
+
+type AccountVolumeStatObject {
+  account: String
+  volumeUsd: BigInt
+}
+
+type AccountPnlHistoryPointObject {
+  timestamp: Int
+  pnl: BigInt
+  realizedPnl: BigInt
+  unrealizedPnl: BigInt
+}
+
+type AccountPnlSummaryBucketObject {
+  timestamp: Int
+  pnlPercentage: BigInt
+}
+
+type PositionMarketVolumeInfo {
+  marketAddress: String
+  volumeUsd: BigInt
+}
+
+type PositionTotalCollateralAmount {
+  tokenAddress: String
+  amount: BigInt
+}
+
+type MarketPnlApr {
+  marketAddress: String
+  pnlApr: BigInt
+}
+
+type GlvPnlApr {
+  glvAddress: String
+  pnlApr: BigInt
+}
+
+type MultichainFundingInfo {
+  account: String
+  chainId: BigInt
+  token: String
+  pendingAmount: BigInt
+}
+
+type AnnualizedPerformanceObject {
+  account: String
+  annualizedPnl: BigInt
+  annualizedReturn: BigInt
+}
+
+type PerformanceSnapshotObject {
+  timestamp: Int
+  cumulativePnl: BigInt
+  cumulativeReturn: BigInt
+}
+
+type PerformanceSnapshots {
+  snapshots: [PerformanceSnapshotObject!]
+}
+
+type MarketNetRates {
+  marketAddress: String
+  netRateLong: BigInt
+  netRateShort: BigInt
+}
+
+type MarketNetRatesResponse {
+  markets: [MarketNetRates!]
+}
+
+type AffiliateStatsPoint {
+  timestamp: Int
+  volume: BigInt
+  trades: Int
+  affiliateReward: BigInt
+  uniqueTraders: Int
+}
+
+type AffiliateStatsSummary {
+  totalVolume: BigInt
+  totalTrades: Int
+  totalAffiliateReward: BigInt
+  totalUniqueTraders: Int
+}
+
+type AffiliateStatsResponse {
+  points: [AffiliateStatsPoint!]
+  summary: AffiliateStatsSummary
+}
+
+type TraderReferralStatsPoint {
+  timestamp: Int
+  volume: BigInt
+  trades: Int
+  discountAmount: BigInt
+}
+
+type TraderReferralStatsSummary {
+  totalVolume: BigInt
+  totalTrades: Int
+  totalDiscountAmount: BigInt
+}
+
+type TraderReferralStatsResponse {
+  points: [TraderReferralStatsPoint!]
+  summary: TraderReferralStatsSummary
+}
+
+# ---------------------------------------------------------------------------
+# Legacy GMX v1 entities (The Graph subgraph: gmx-io/gmx-stats)
+# ---------------------------------------------------------------------------
+
+"""Legacy: per-token pool statistics by period (GMX v1 vault)."""
+type TokenStat {
+  id: ID!
+  token: String!
+  poolAmount: BigInt!
+  poolAmountUsd: BigInt!
+  usdgAmount: BigInt!
+  reservedAmount: BigInt!
+  reservedAmountUsd: BigInt!
+  timestamp: Int!
+  period: Period!
+}
+
+"""Legacy: active position tracking (GMX v1)."""
+type ActivePosition {
+  id: ID!
+  averagePrice: BigInt!
+  entryFundingRate: BigInt!
+  collateral: BigInt!
+  size: BigInt!
+}
+
+"""Legacy: liquidated position record (GMX v1)."""
+type LiquidatedPosition {
+  id: ID!
+  key: String!
+  account: String!
+  timestamp: Int!
+  indexToken: String!
+  size: BigInt!
+  isLong: Boolean!
+  collateralToken: String!
+  collateral: BigInt!
+  markPrice: BigInt!
+  averagePrice: BigInt!
+  loss: BigInt!
+  type: LiquidationType!
+  borrowFee: BigInt!
+}
+
+"""Legacy: Chainlink oracle price (GMX v1)."""
+type ChainlinkPrice {
+  id: ID!
+  token: String!
+  value: BigInt!
+  timestamp: Int!
+  blockNumber: Int!
+  period: PricePeriod!
+}
+
+"""Legacy: Uniswap TWAP price (GMX v1)."""
+type UniswapPrice {
+  id: ID!
+  token: String!
+  value: BigInt!
+  timestamp: Int!
+  blockNumber: Int!
+  period: PricePeriod!
+}
+
+"""Legacy: GMX Fast Price (GMX v1)."""
+type FastPrice {
+  id: ID!
+  token: String!
+  value: BigInt!
+  timestamp: Int!
+  blockNumber: Int!
+  period: PricePeriod!
+}
+
+"""Legacy: funding rate history by token and period (GMX v1)."""
+type FundingRate {
+  id: ID!
+  startFundingRate: Int!
+  startTimestamp: Int!
+  endFundingRate: Int!
+  endTimestamp: Int!
+  token: String!
+  timestamp: Int
+  period: Period!
+}
+
+"""Legacy: aggregate trading statistics by period (GMX v1)."""
+type TradingStat {
+  id: ID!
+  profit: BigInt!
+  loss: BigInt!
+  profitCumulative: BigInt!
+  lossCumulative: BigInt!
+  longOpenInterest: BigInt!
+  shortOpenInterest: BigInt!
+  liquidatedCollateral: BigInt!
+  liquidatedCollateralCumulative: BigInt!
+  timestamp: Int!
+  period: Period!
+}
+
+"""Legacy: order lifecycle record (GMX v1)."""
+type LegacyOrder {
+  id: ID!
+  type: String!
+  account: String!
+  status: OrderStatus!
+  index: BigInt!
+  size: BigInt!
+  createdTimestamp: Int!
+  cancelledTimestamp: Int
+  executedTimestamp: Int
+}
+
+"""Legacy: order count aggregates by type and period (GMX v1)."""
+type OrderStat {
+  id: ID!
+  openSwap: Int!
+  openIncrease: Int!
+  openDecrease: Int!
+  cancelledSwap: Int!
+  cancelledIncrease: Int!
+  cancelledDecrease: Int!
+  executedSwap: Int!
+  executedIncrease: Int!
+  executedDecrease: Int!
+  period: Period!
+}
+
+"""Legacy: individual swap record (GMX v1)."""
+type LegacySwap {
+  id: ID!
+  account: String!
+  tokenIn: String!
+  tokenOut: String!
+  amountIn: BigInt!
+  amountOut: BigInt!
+  amountOutAfterFees: BigInt!
+  feeBasisPoints: BigInt!
+  tokenInPrice: BigInt!
+  timestamp: Int!
+}
+
+"""Legacy: volume statistics by action type and period (GMX v1)."""
+type VolumeStat {
+  id: ID!
+  margin: BigInt!
+  swap: BigInt!
+  liquidation: BigInt!
+  mint: BigInt!
+  burn: BigInt!
+  period: Period!
+}
+
+"""Legacy: volume by source address and timestamp (GMX v1)."""
+type HourlyVolumeBySource {
+  id: ID!
+  source: String!
+  timestamp: Int!
+  margin: BigInt!
+  swap: BigInt!
+  liquidation: BigInt!
+  mint: BigInt!
+  burn: BigInt!
+}
+
+"""Legacy: volume by token pair and timestamp (GMX v1)."""
+type HourlyVolumeByToken {
+  id: ID!
+  tokenA: Bytes!
+  tokenB: Bytes!
+  timestamp: Int!
+  margin: BigInt!
+  swap: BigInt!
+  liquidation: BigInt!
+  mint: BigInt!
+  burn: BigInt!
+}
+
+"""Legacy: GLP token supply and AUM statistics with rewards (GMX v1)."""
+type GlpStat {
+  id: ID!
+  glpSupply: BigInt!
+  aumInUsdg: BigInt!
+  distributedEth: BigInt!
+  distributedEthCumulative: BigInt!
+  distributedUsd: BigInt!
+  distributedUsdCumulative: BigInt!
+  distributedEsgmx: BigInt!
+  distributedEsgmxCumulative: BigInt!
+  distributedEsgmxUsd: BigInt!
+  distributedEsgmxUsdCumulative: BigInt!
+  period: Period!
+  timestamp: Int
+}
+
+"""Legacy: unique user and action count statistics by period (GMX v1)."""
+type UserStat {
+  id: ID!
+  uniqueCount: Int!
+  uniqueSwapCount: Int!
+  uniqueMarginCount: Int!
+  uniqueMintBurnCount: Int!
+  uniqueCountCumulative: Int!
+  uniqueSwapCountCumulative: Int!
+  uniqueMarginCountCumulative: Int!
+  uniqueMintBurnCountCumulative: Int!
+  actionCount: Int!
+  actionSwapCount: Int!
+  actionMarginCount: Int!
+  actionMintBurnCount: Int!
+  period: Period!
+  timestamp: Int
+}
+
+# ---------------------------------------------------------------------------
+# Root Query type
+# ---------------------------------------------------------------------------
+
+type Query {
+  # Platform statistics
+  platformStats(where: PlatformStatsWhereInput, orderBy: PlatformStatsOrderByInput): [PlatformStats!]!
+  platformStatsById(id: String!): PlatformStats
+  platformStatsConnection(where: PlatformStatsWhereInput, orderBy: PlatformStatsOrderByInput, first: Int, after: String): PlatformStatsConnection!
+
+  # Account statistics
+  accountStats(where: AccountStatWhereInput, orderBy: AccountStatOrderByInput, limit: Int, offset: Int): [AccountStat!]!
+  accountStatById(id: String!): AccountStat
+  accountStatsConnection(where: AccountStatWhereInput, orderBy: AccountStatOrderByInput, first: Int, after: String): AccountStatsConnection!
+
+  # Positions
+  positions(where: PositionWhereInput, orderBy: PositionOrderByInput, limit: Int, offset: Int): [Position!]!
+  positionById(id: String!): Position
+  positionsConnection(where: PositionWhereInput, orderBy: PositionOrderByInput, first: Int, after: String): PositionsConnection!
+
+  # Prices
+  prices(where: PriceWhereInput, orderBy: PriceOrderByInput, limit: Int, offset: Int): [Price!]!
+  priceById(id: String!): Price
+  pricesConnection(where: PriceWhereInput, orderBy: PriceOrderByInput, first: Int, after: String): PricesConnection!
+
+  # Markets
+  markets(where: MarketWhereInput, orderBy: MarketOrderByInput, limit: Int, offset: Int): [Market!]!
+  marketById(id: String!): Market
+  marketsConnection(where: MarketWhereInput, orderBy: MarketOrderByInput, first: Int, after: String): MarketsConnection!
+
+  # Market info (full configuration)
+  marketInfos(where: MarketInfoWhereInput, orderBy: MarketInfoOrderByInput, limit: Int, offset: Int): [MarketInfo!]!
+  marketInfoById(id: String!): MarketInfo
+  marketInfosConnection(where: MarketInfoWhereInput, orderBy: MarketInfoOrderByInput, first: Int, after: String): MarketInfosConnection!
+
+  # Position changes
+  positionChanges(where: PositionChangeWhereInput, orderBy: PositionChangeOrderByInput, limit: Int, offset: Int): [PositionChange!]!
+  positionChangeById(id: String!): PositionChange
+  positionChangesConnection(where: PositionChangeWhereInput, orderBy: PositionChangeOrderByInput, first: Int, after: String): PositionChangesConnection!
+
+  # Trade actions
+  tradeActions(where: TradeActionWhereInput, orderBy: TradeActionOrderByInput, limit: Int, offset: Int): [TradeAction!]!
+  tradeActionById(id: String!): TradeAction
+  tradeActionsConnection(where: TradeActionWhereInput, orderBy: TradeActionOrderByInput, first: Int, after: String): TradeActionsConnection!
+
+  # Orders
+  orders(where: OrderWhereInput, orderBy: OrderOrderByInput, limit: Int, offset: Int): [Order!]!
+  orderById(id: String!): Order
+  ordersConnection(where: OrderWhereInput, orderBy: OrderOrderByInput, first: Int, after: String): OrdersConnection!
+
+  # Swaps
+  swapInfos(where: SwapInfoWhereInput, orderBy: SwapInfoOrderByInput, limit: Int, offset: Int): [SwapInfo!]!
+  swapInfoById(id: String!): SwapInfo
+  swapInfosConnection(where: SwapInfoWhereInput, orderBy: SwapInfoOrderByInput, first: Int, after: String): SwapInfosConnection!
+
+  # Fees
+  collectedFeesInfos(where: CollectedFeesInfoWhereInput, orderBy: CollectedFeesInfoOrderByInput, limit: Int, offset: Int): [CollectedFeesInfo!]!
+  collectedFeesInfoById(id: String!): CollectedFeesInfo
+  collectedFeesInfosConnection(where: CollectedFeesInfoWhereInput, orderBy: CollectedFeesInfoOrderByInput, first: Int, after: String): CollectedFeesInfosConnection!
+
+  swapFeesInfos(where: SwapFeesInfoWhereInput, orderBy: SwapFeesInfoOrderByInput, limit: Int, offset: Int): [SwapFeesInfo!]!
+  swapFeesInfoById(id: String!): SwapFeesInfo
+  swapFeesInfosConnection(where: SwapFeesInfoWhereInput, orderBy: SwapFeesInfoOrderByInput, first: Int, after: String): SwapFeesInfosConnection!
+
+  swapFeesInfoWithPeriods(where: SwapFeesInfoWithPeriodWhereInput, orderBy: SwapFeesInfoWithPeriodOrderByInput, limit: Int, offset: Int): [SwapFeesInfoWithPeriod!]!
+  swapFeesInfoWithPeriodById(id: String!): SwapFeesInfoWithPeriod
+  swapFeesInfoWithPeriodsConnection(where: SwapFeesInfoWithPeriodWhereInput, orderBy: SwapFeesInfoWithPeriodOrderByInput, first: Int, after: String): SwapFeesInfoWithPeriodsConnection!
+
+  positionFeesEntities(where: PositionFeesEntityWhereInput, orderBy: PositionFeesEntityOrderByInput, limit: Int, offset: Int): [PositionFeesEntity!]!
+  positionFeesEntityById(id: String!): PositionFeesEntity
+  positionFeesEntitiesConnection(where: PositionFeesEntityWhereInput, orderBy: PositionFeesEntityOrderByInput, first: Int, after: String): PositionFeesEntitiesConnection!
+
+  positionFeesInfoWithPeriods(where: PositionFeesInfoWithPeriodWhereInput, orderBy: PositionFeesInfoWithPeriodOrderByInput, limit: Int, offset: Int): [PositionFeesInfoWithPeriod!]!
+  positionFeesInfoWithPeriodById(id: String!): PositionFeesInfoWithPeriod
+  positionFeesInfoWithPeriodsConnection(where: PositionFeesInfoWithPeriodWhereInput, orderBy: PositionFeesInfoWithPeriodOrderByInput, first: Int, after: String): PositionFeesInfoWithPeriodsConnection!
+
+  # Rates
+  fundingRateSnapshots(where: FundingRateSnapshotWhereInput, orderBy: FundingRateSnapshotOrderByInput, limit: Int, offset: Int): [FundingRateSnapshot!]!
+  fundingRateSnapshotById(id: String!): FundingRateSnapshot
+  fundingRateSnapshotsConnection(where: FundingRateSnapshotWhereInput, orderBy: FundingRateSnapshotOrderByInput, first: Int, after: String): FundingRateSnapshotsConnection!
+
+  borrowingRateSnapshots(where: BorrowingRateSnapshotWhereInput, orderBy: BorrowingRateSnapshotOrderByInput, limit: Int, offset: Int): [BorrowingRateSnapshot!]!
+  borrowingRateSnapshotById(id: String!): BorrowingRateSnapshot
+  borrowingRateSnapshotsConnection(where: BorrowingRateSnapshotWhereInput, orderBy: BorrowingRateSnapshotOrderByInput, first: Int, after: String): BorrowingRateSnapshotsConnection!
+
+  # APR snapshots
+  aprSnapshots(where: AprSnapshotWhereInput, orderBy: AprSnapshotOrderByInput, limit: Int, offset: Int): [AprSnapshot!]!
+  aprSnapshotById(id: String!): AprSnapshot
+  aprSnapshotsConnection(where: AprSnapshotWhereInput, orderBy: AprSnapshotOrderByInput, first: Int, after: String): AprSnapshotsConnection!
+
+  pnlAprSnapshots(where: PnlAprSnapshotWhereInput, orderBy: PnlAprSnapshotOrderByInput, limit: Int, offset: Int): [PnlAprSnapshot!]!
+  pnlAprSnapshotById(id: String!): PnlAprSnapshot
+  pnlAprSnapshotsConnection(where: PnlAprSnapshotWhereInput, orderBy: PnlAprSnapshotOrderByInput, first: Int, after: String): PnlAprSnapshotsConnection!
+
+  # GLV vaults
+  glvs(where: GlvWhereInput, orderBy: GlvOrderByInput, limit: Int, offset: Int): [Glv!]!
+  glvById(id: String!): Glv
+  glvsConnection(where: GlvWhereInput, orderBy: GlvOrderByInput, first: Int, after: String): GlvsConnection!
+
+  # Pool values
+  cumulativePoolValues(where: CumulativePoolValueWhereInput, orderBy: CumulativePoolValueOrderByInput, limit: Int, offset: Int): [CumulativePoolValue!]!
+  cumulativePoolValueById(id: String!): CumulativePoolValue
+  cumulativePoolValuesConnection(where: CumulativePoolValueWhereInput, orderBy: CumulativePoolValueOrderByInput, first: Int, after: String): CumulativePoolValuesConnection!
+
+  # Volume
+  volumeInfos(where: VolumeInfoWhereInput, orderBy: VolumeInfoOrderByInput, limit: Int, offset: Int): [VolumeInfo!]!
+  volumeInfoById(id: String!): VolumeInfo
+  volumeInfosConnection(where: VolumeInfoWhereInput, orderBy: VolumeInfoOrderByInput, first: Int, after: String): VolumeInfosConnection!
+
+  swapVolumeInfos(where: SwapVolumeInfoWhereInput, orderBy: SwapVolumeInfoOrderByInput, limit: Int, offset: Int): [SwapVolumeInfo!]!
+  swapVolumeInfoById(id: String!): SwapVolumeInfo
+  swapVolumeInfosConnection(where: SwapVolumeInfoWhereInput, orderBy: SwapVolumeInfoOrderByInput, first: Int, after: String): SwapVolumeInfosConnection!
+
+  positionVolumeInfos(where: PositionVolumeInfoWhereInput, orderBy: PositionVolumeInfoOrderByInput, limit: Int, offset: Int): [PositionVolumeInfo!]!
+  positionVolumeInfoById(id: String!): PositionVolumeInfo
+  positionVolumeInfosConnection(where: PositionVolumeInfoWhereInput, orderBy: PositionVolumeInfoOrderByInput, first: Int, after: String): PositionVolumeInfosConnection!
+
+  # On-chain settings
+  onChainSettings(where: OnChainSettingWhereInput, orderBy: OnChainSettingOrderByInput, limit: Int, offset: Int): [OnChainSetting!]!
+  onChainSettingById(id: String!): OnChainSetting
+  onChainSettingsConnection(where: OnChainSettingWhereInput, orderBy: OnChainSettingOrderByInput, first: Int, after: String): OnChainSettingsConnection!
+
+  # Referrals
+  referralCodeOwners(where: ReferralCodeOwnerWhereInput, orderBy: ReferralCodeOwnerOrderByInput, limit: Int, offset: Int): [ReferralCodeOwner!]!
+  referralCodeOwnerById(id: String!): ReferralCodeOwner
+  referralCodeOwnersConnection(where: ReferralCodeOwnerWhereInput, orderBy: ReferralCodeOwnerOrderByInput, first: Int, after: String): ReferralCodeOwnersConnection!
+
+  traderReferrals(where: TraderReferralWhereInput, orderBy: TraderReferralOrderByInput, limit: Int, offset: Int): [TraderReferral!]!
+  traderReferralById(id: String!): TraderReferral
+  traderReferralsConnection(where: TraderReferralWhereInput, orderBy: TraderReferralOrderByInput, first: Int, after: String): TraderReferralsConnection!
+
+  affiliateReferralTradeStatsByHours(where: AffiliateReferralTradeStatsByHourWhereInput, orderBy: AffiliateReferralTradeStatsByHourOrderByInput, limit: Int, offset: Int): [AffiliateReferralTradeStatsByHour!]!
+  affiliateReferralTradeStatsByHourById(id: String!): AffiliateReferralTradeStatsByHour
+  affiliateReferralTradeStatsByHoursConnection(where: AffiliateReferralTradeStatsByHourWhereInput, orderBy: AffiliateReferralTradeStatsByHourOrderByInput, first: Int, after: String): AffiliateReferralTradeStatsByHoursConnection!
+
+  traderReferralTradeStatsByHours(where: TraderReferralTradeStatsByHourWhereInput, orderBy: TraderReferralTradeStatsByHourOrderByInput, limit: Int, offset: Int): [TraderReferralTradeStatsByHour!]!
+  traderReferralTradeStatsByHourById(id: String!): TraderReferralTradeStatsByHour
+  traderReferralTradeStatsByHoursConnection(where: TraderReferralTradeStatsByHourWhereInput, orderBy: TraderReferralTradeStatsByHourOrderByInput, first: Int, after: String): TraderReferralTradeStatsByHoursConnection!
+
+  affiliateTraderStatsByHours(where: AffiliateTraderStatsByHourWhereInput, orderBy: AffiliateTraderStatsByHourOrderByInput, limit: Int, offset: Int): [AffiliateTraderStatsByHour!]!
+  affiliateTraderStatsByHourById(id: String!): AffiliateTraderStatsByHour
+  affiliateTraderStatsByHoursConnection(where: AffiliateTraderStatsByHourWhereInput, orderBy: AffiliateTraderStatsByHourOrderByInput, first: Int, after: String): AffiliateTraderStatsByHoursConnection!
+
+  # Claimable amounts
+  claimableCollateralGroups(where: ClaimableCollateralGroupWhereInput, orderBy: ClaimableCollateralGroupOrderByInput, limit: Int, offset: Int): [ClaimableCollateralGroup!]!
+  claimableCollateralGroupById(id: String!): ClaimableCollateralGroup
+  claimableCollateralGroupsConnection(where: ClaimableCollateralGroupWhereInput, orderBy: ClaimableCollateralGroupOrderByInput, first: Int, after: String): ClaimableCollateralGroupsConnection!
+
+  claimableCollaterals(where: ClaimableCollateralWhereInput, orderBy: ClaimableCollateralOrderByInput, limit: Int, offset: Int): [ClaimableCollateral!]!
+  claimableCollateralById(id: String!): ClaimableCollateral
+  claimableCollateralsConnection(where: ClaimableCollateralWhereInput, orderBy: ClaimableCollateralOrderByInput, first: Int, after: String): ClaimableCollateralsConnection!
+
+  claimableFundingFeeInfos(where: ClaimableFundingFeeInfoWhereInput, orderBy: ClaimableFundingFeeInfoOrderByInput, limit: Int, offset: Int): [ClaimableFundingFeeInfo!]!
+  claimableFundingFeeInfoById(id: String!): ClaimableFundingFeeInfo
+  claimableFundingFeeInfosConnection(where: ClaimableFundingFeeInfoWhereInput, orderBy: ClaimableFundingFeeInfoOrderByInput, first: Int, after: String): ClaimableFundingFeeInfosConnection!
+
+  claimRefs(where: ClaimRefWhereInput, orderBy: ClaimRefOrderByInput, limit: Int, offset: Int): [ClaimRef!]!
+  claimRefById(id: String!): ClaimRef
+  claimRefsConnection(where: ClaimRefWhereInput, orderBy: ClaimRefOrderByInput, first: Int, after: String): ClaimRefsConnection!
+
+  claimActions(where: ClaimActionWhereInput, orderBy: ClaimActionOrderByInput, limit: Int, offset: Int): [ClaimAction!]!
+  claimActionById(id: String!): ClaimAction
+  claimActionsConnection(where: ClaimActionWhereInput, orderBy: ClaimActionOrderByInput, first: Int, after: String): ClaimActionsConnection!
+
+  claimableAmounts(where: ClaimableAmountWhereInput, orderBy: ClaimableAmountOrderByInput, limit: Int, offset: Int): [ClaimableAmount!]!
+  claimableAmountById(id: String!): ClaimableAmount
+  claimableAmountsConnection(where: ClaimableAmountWhereInput, orderBy: ClaimableAmountOrderByInput, first: Int, after: String): ClaimableAmountsConnection!
+
+  distributions(where: DistributionWhereInput, orderBy: DistributionOrderByInput, limit: Int, offset: Int): [Distribution!]!
+  distributionById(id: String!): Distribution
+  distributionsConnection(where: DistributionWhereInput, orderBy: DistributionOrderByInput, first: Int, after: String): DistributionsConnection!
+
+  # PnL
+  cumulativePnls(where: CumulativePnlWhereInput, orderBy: CumulativePnlOrderByInput, limit: Int, offset: Int): [CumulativePnl!]!
+  cumulativePnlById(id: String!): CumulativePnl
+  cumulativePnlsConnection(where: CumulativePnlWhereInput, orderBy: CumulativePnlOrderByInput, first: Int, after: String): CumulativePnlsConnection!
+
+  # Staking
+  stakingPowers(where: StakingPowerWhereInput, orderBy: StakingPowerOrderByInput, limit: Int, offset: Int): [StakingPower!]!
+  stakingPowerById(id: String!): StakingPower
+  stakingPowersConnection(where: StakingPowerWhereInput, orderBy: StakingPowerOrderByInput, first: Int, after: String): StakingPowersConnection!
+
+  networkStakingPowers(where: NetworkStakingPowerWhereInput, orderBy: NetworkStakingPowerOrderByInput, limit: Int, offset: Int): [NetworkStakingPower!]!
+  networkStakingPowerById(id: String!): NetworkStakingPower
+  networkStakingPowersConnection(where: NetworkStakingPowerWhereInput, orderBy: NetworkStakingPowerOrderByInput, first: Int, after: String): NetworkStakingPowersConnection!
+
+  # Multichain funding
+  multichainFundingSendEvents(where: MultichainFundingSendEventWhereInput, orderBy: MultichainFundingSendEventOrderByInput, limit: Int, offset: Int): [MultichainFundingSendEvent!]!
+  multichainFundingSendEventById(id: String!): MultichainFundingSendEvent
+  multichainFundingSendEventsConnection(where: MultichainFundingSendEventWhereInput, orderBy: MultichainFundingSendEventOrderByInput, first: Int, after: String): MultichainFundingSendEventsConnection!
+
+  multichainFundingReceiveEvents(where: MultichainFundingReceiveEventWhereInput, orderBy: MultichainFundingReceiveEventOrderByInput, limit: Int, offset: Int): [MultichainFundingReceiveEvent!]!
+  multichainFundingReceiveEventById(id: String!): MultichainFundingReceiveEvent
+  multichainFundingReceiveEventsConnection(where: MultichainFundingReceiveEventWhereInput, orderBy: MultichainFundingReceiveEventOrderByInput, first: Int, after: String): MultichainFundingReceiveEventsConnection!
+
+  multichainSamechainFundingEvents(where: MultichainSamechainFundingEventWhereInput, orderBy: MultichainSamechainFundingEventOrderByInput, limit: Int, offset: Int): [MultichainSamechainFundingEvent!]!
+  multichainSamechainFundingEventById(id: String!): MultichainSamechainFundingEvent
+  multichainSamechainFundingEventsConnection(where: MultichainSamechainFundingEventWhereInput, orderBy: MultichainSamechainFundingEventOrderByInput, first: Int, after: String): MultichainSamechainFundingEventsConnection!
+
+  # Processor
+  processorStatuses(where: ProcessorStatusWhereInput, orderBy: ProcessorStatusOrderByInput, limit: Int, offset: Int): [ProcessorStatus!]!
+  processorStatusById(id: String!): ProcessorStatus
+  processorStatusesConnection(where: ProcessorStatusWhereInput, orderBy: ProcessorStatusOrderByInput, first: Int, after: String): ProcessorStatusesConnection!
+
+  # Computed aggregates
+  marketsAprByPeriod(where: MarketAprsWhereInput): [MarketApr!]
+  glvsAprByPeriod(where: GlvAprsWhereInputWhereInput): [GlvApr!]
+  totalPositionChanges: Float
+  periodAccountStats(where: WhereInput): [PeriodAccountStatObject!]
+  periodAccountVolume(where: AccountVolumeWhereInput): AccountVolumeStatObject
+  accountPnlHistoryStats(where: WhereInput): [AccountPnlHistoryPointObject!]
+  accountPnlSummaryStats(where: WhereInput): [AccountPnlSummaryBucketObject!]
+  positionsVolume(where: PositionVolumeByAllMarketsWhereInput): [PositionMarketVolumeInfo!]
+  positionTotalCollateralAmount(where: PositionTotalCollateralAmountWhereInput): [PositionTotalCollateralAmount!]
+  marketsPnlAprByPeriod(where: MarketPnlAprsWhereInput): [MarketPnlApr!]
+  glvsPnlAprByPeriod(where: GlvPnlAprsWhereInputWhereInput): [GlvPnlApr!]
+  multichainFunding(where: MultichainFundingWhereInput): [MultichainFundingInfo!]
+  performanceSnapshots(where: PerformanceWhereInput): PerformanceSnapshots
+  annualizedPerformance(where: PerformanceWhereInput): AnnualizedPerformanceObject
+  squidStatus: SquidStatus
+  marketsNetRatesByPeriod(where: MarketNetRatesWhereInput): MarketNetRatesResponse
+  affiliateStats(where: AffiliateStatsWhereInput): AffiliateStatsResponse
+  traderReferralStats(where: TraderReferralStatsWhereInput): TraderReferralStatsResponse
+}
+
+# ---------------------------------------------------------------------------
+# Input types (filter stubs — fields vary per entity; examples shown)
+# ---------------------------------------------------------------------------
+
+input PlatformStatsWhereInput {
+  id_eq: String
+  id_in: [String!]
+}
+
+input PlatformStatsOrderByInput {
+  _placeholder: String
+}
+
+input AccountStatWhereInput {
+  id_eq: String
+  account_eq: String
+  period_eq: String
+  dayTimestamp_gte: Int
+  dayTimestamp_lte: Int
+}
+
+input AccountStatOrderByInput {
+  _placeholder: String
+}
+
+input PositionWhereInput {
+  id_eq: String
+  account_eq: String
+  market_eq: String
+  isLong_eq: Boolean
+  sizeInUsd_gte: BigInt
+}
+
+input PositionOrderByInput {
+  _placeholder: String
+}
+
+input PriceWhereInput {
+  token_eq: String
+  timestamp_gte: Int
+  timestamp_lte: Int
+  type_eq: PriceType
+}
+
+input PriceOrderByInput {
+  _placeholder: String
+}
+
+input MarketWhereInput {
+  id_eq: String
+  indexToken_eq: String
+}
+
+input MarketOrderByInput {
+  _placeholder: String
+}
+
+input MarketInfoWhereInput {
+  id_eq: String
+  marketTokenAddress_eq: String
+  isDisabled_eq: Boolean
+}
+
+input MarketInfoOrderByInput {
+  _placeholder: String
+}
+
+input PositionChangeWhereInput {
+  account_eq: String
+  market_eq: String
+  isLong_eq: Boolean
+  type_eq: PositionChangeType
+  timestamp_gte: Int
+  timestamp_lte: Int
+}
+
+input PositionChangeOrderByInput {
+  _placeholder: String
+}
+
+input TradeActionWhereInput {
+  account_eq: String
+  market_eq: String
+  isLong_eq: Boolean
+  timestamp_gte: Int
+  timestamp_lte: Int
+}
+
+input TradeActionOrderByInput {
+  _placeholder: String
+}
+
+input OrderWhereInput {
+  id_eq: String
+  account_eq: String
+  status_eq: OrderStatus
+  market_eq: String
+}
+
+input OrderOrderByInput {
+  _placeholder: String
+}
+
+input SwapInfoWhereInput {
+  account_eq: String
+  marketAddress_eq: String
+  timestamp_gte: Int
+}
+
+input SwapInfoOrderByInput {
+  _placeholder: String
+}
+
+input CollectedFeesInfoWhereInput {
+  address_eq: String
+  period_eq: String
+  entityType_eq: EntityType
+  timestampGroup_gte: Int
+}
+
+input CollectedFeesInfoOrderByInput {
+  _placeholder: String
+}
+
+input SwapFeesInfoWhereInput {
+  marketAddress_eq: String
+  tokenAddress_eq: String
+}
+
+input SwapFeesInfoOrderByInput {
+  _placeholder: String
+}
+
+input SwapFeesInfoWithPeriodWhereInput {
+  marketAddress_eq: String
+  period_eq: String
+}
+
+input SwapFeesInfoWithPeriodOrderByInput {
+  _placeholder: String
+}
+
+input PositionFeesEntityWhereInput {
+  marketAddress_eq: String
+  trader_eq: String
+  type_eq: PositionFeesEntityType
+  timestamp_gte: Int
+}
+
+input PositionFeesEntityOrderByInput {
+  _placeholder: String
+}
+
+input PositionFeesInfoWithPeriodWhereInput {
+  marketAddress_eq: String
+  period_eq: String
+}
+
+input PositionFeesInfoWithPeriodOrderByInput {
+  _placeholder: String
+}
+
+input FundingRateSnapshotWhereInput {
+  marketAddress_eq: String
+  timestamp_gte: Int
+  timestamp_lte: Int
+}
+
+input FundingRateSnapshotOrderByInput {
+  _placeholder: String
+}
+
+input BorrowingRateSnapshotWhereInput {
+  marketAddress_eq: String
+  timestamp_gte: Int
+  timestamp_lte: Int
+}
+
+input BorrowingRateSnapshotOrderByInput {
+  _placeholder: String
+}
+
+input AprSnapshotWhereInput {
+  address_eq: String
+  entityType_eq: EntityType
+  period_eq: String
+}
+
+input AprSnapshotOrderByInput {
+  _placeholder: String
+}
+
+input PnlAprSnapshotWhereInput {
+  address_eq: String
+  entityType_eq: EntityType
+}
+
+input PnlAprSnapshotOrderByInput {
+  _placeholder: String
+}
+
+input GlvWhereInput {
+  id_eq: String
+  glvTokenAddress_eq: String
+}
+
+input GlvOrderByInput {
+  _placeholder: String
+}
+
+input CumulativePoolValueWhereInput {
+  address_eq: String
+  period_eq: String
+  entityType_eq: EntityType
+}
+
+input CumulativePoolValueOrderByInput {
+  _placeholder: String
+}
+
+input VolumeInfoWhereInput {
+  period_eq: String
+  timestampGroup_gte: Int
+}
+
+input VolumeInfoOrderByInput {
+  _placeholder: String
+}
+
+input SwapVolumeInfoWhereInput {
+  marketAddress_eq: String
+  period_eq: String
+}
+
+input SwapVolumeInfoOrderByInput {
+  _placeholder: String
+}
+
+input PositionVolumeInfoWhereInput {
+  marketAddress_eq: String
+  period_eq: String
+}
+
+input PositionVolumeInfoOrderByInput {
+  _placeholder: String
+}
+
+input OnChainSettingWhereInput {
+  key_eq: String
+  type_eq: OnChainSettingType
+}
+
+input OnChainSettingOrderByInput {
+  _placeholder: String
+}
+
+input ReferralCodeOwnerWhereInput {
+  code_eq: String
+  owner_eq: String
+}
+
+input ReferralCodeOwnerOrderByInput {
+  _placeholder: String
+}
+
+input TraderReferralWhereInput {
+  trader_eq: String
+  referralCode_eq: String
+}
+
+input TraderReferralOrderByInput {
+  _placeholder: String
+}
+
+input AffiliateReferralTradeStatsByHourWhereInput {
+  affiliate_eq: String
+  timestamp_gte: Int
+}
+
+input AffiliateReferralTradeStatsByHourOrderByInput {
+  _placeholder: String
+}
+
+input TraderReferralTradeStatsByHourWhereInput {
+  trader_eq: String
+  timestamp_gte: Int
+}
+
+input TraderReferralTradeStatsByHourOrderByInput {
+  _placeholder: String
+}
+
+input AffiliateTraderStatsByHourWhereInput {
+  affiliate_eq: String
+  timestamp_gte: Int
+}
+
+input AffiliateTraderStatsByHourOrderByInput {
+  _placeholder: String
+}
+
+input ClaimableCollateralGroupWhereInput {
+  marketAddress_eq: String
+  tokenAddress_eq: String
+}
+
+input ClaimableCollateralGroupOrderByInput {
+  _placeholder: String
+}
+
+input ClaimableCollateralWhereInput {
+  account_eq: String
+  marketAddress_eq: String
+  claimed_eq: Boolean
+}
+
+input ClaimableCollateralOrderByInput {
+  _placeholder: String
+}
+
+input ClaimableFundingFeeInfoWhereInput {
+  account_eq: String
+  marketAddress_eq: String
+}
+
+input ClaimableFundingFeeInfoOrderByInput {
+  _placeholder: String
+}
+
+input ClaimRefWhereInput {
+  account_eq: String
+}
+
+input ClaimRefOrderByInput {
+  _placeholder: String
+}
+
+input ClaimActionWhereInput {
+  account_eq: String
+  type_eq: ClaimActionType
+  timestamp_gte: Int
+}
+
+input ClaimActionOrderByInput {
+  _placeholder: String
+}
+
+input ClaimableAmountWhereInput {
+  account_eq: String
+  tokenAddress_eq: String
+}
+
+input ClaimableAmountOrderByInput {
+  _placeholder: String
+}
+
+input DistributionWhereInput {
+  account_eq: String
+  typeId_eq: BigInt
+  timestamp_gte: Int
+}
+
+input DistributionOrderByInput {
+  _placeholder: String
+}
+
+input CumulativePnlWhereInput {
+  account_eq: String
+  market_eq: String
+}
+
+input CumulativePnlOrderByInput {
+  _placeholder: String
+}
+
+input StakingPowerWhereInput {
+  account_eq: String
+  timestamp_gte: Int
+}
+
+input StakingPowerOrderByInput {
+  _placeholder: String
+}
+
+input NetworkStakingPowerWhereInput {
+  timestamp_gte: Int
+}
+
+input NetworkStakingPowerOrderByInput {
+  _placeholder: String
+}
+
+input MultichainFundingSendEventWhereInput {
+  account_eq: String
+  sourceChainId_eq: BigInt
+  timestamp_gte: Int
+}
+
+input MultichainFundingSendEventOrderByInput {
+  _placeholder: String
+}
+
+input MultichainFundingReceiveEventWhereInput {
+  account_eq: String
+  destChainId_eq: BigInt
+  timestamp_gte: Int
+}
+
+input MultichainFundingReceiveEventOrderByInput {
+  _placeholder: String
+}
+
+input MultichainSamechainFundingEventWhereInput {
+  account_eq: String
+  chainId_eq: BigInt
+}
+
+input MultichainSamechainFundingEventOrderByInput {
+  _placeholder: String
+}
+
+input ProcessorStatusWhereInput {
+  processor_eq: String
+}
+
+input ProcessorStatusOrderByInput {
+  _placeholder: String
+}
+
+# Computed query inputs
+input MarketAprsWhereInput {
+  period: String
+  timestamp: Int
+}
+
+input GlvAprsWhereInputWhereInput {
+  period: String
+  timestamp: Int
+}
+
+input AccountVolumeWhereInput {
+  account: String
+  period: String
+}
+
+input WhereInput {
+  account: String
+  from: Int
+  to: Int
+}
+
+input PositionVolumeByAllMarketsWhereInput {
+  account: String
+  from: Int
+  to: Int
+}
+
+input PositionTotalCollateralAmountWhereInput {
+  account: String
+}
+
+input MarketPnlAprsWhereInput {
+  period: String
+  timestamp: Int
+}
+
+input GlvPnlAprsWhereInputWhereInput {
+  period: String
+  timestamp: Int
+}
+
+input MultichainFundingWhereInput {
+  account: String
+}
+
+input PerformanceWhereInput {
+  account: String
+  from: Int
+  to: Int
+}
+
+input MarketNetRatesWhereInput {
+  period: String
+  timestamp: Int
+}
+
+input AffiliateStatsWhereInput {
+  affiliate: String
+  from: Int
+  to: Int
+  period: String
+}
+
+input TraderReferralStatsWhereInput {
+  trader: String
+  from: Int
+  to: Int
+  period: String
+}
