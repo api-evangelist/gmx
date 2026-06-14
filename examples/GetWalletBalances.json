@@ -1,0 +1,30 @@
+{
+  "method": "GET",
+  "path": "/balances/wallet",
+  "operationId": "GetWalletBalances",
+  "summary": "",
+  "tags": [
+    "Balances"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "address",
+      "required": true,
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "$ref": "#/components/schemas/WalletBalance"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

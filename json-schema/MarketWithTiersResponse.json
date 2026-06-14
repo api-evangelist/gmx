@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/MarketWithTiersResponse.json",
+  "title": "MarketWithTiersResponse",
+  "properties": {
+    "minCollateralUsd": {
+      "type": "string"
+    },
+    "minPositionSizeUsd": {
+      "type": "string"
+    },
+    "leverageTiers": {
+      "items": {
+        "$ref": "#/components/schemas/LeverageTierResponse"
+      },
+      "type": "array"
+    },
+    "isSpotOnly": {
+      "type": "boolean"
+    },
+    "listingDate": {
+      "type": "number",
+      "format": "double"
+    },
+    "isListed": {
+      "type": "boolean"
+    },
+    "shortTokenAddress": {
+      "type": "string"
+    },
+    "longTokenAddress": {
+      "type": "string"
+    },
+    "indexTokenAddress": {
+      "type": "string"
+    },
+    "marketTokenAddress": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "minCollateralUsd",
+    "minPositionSizeUsd",
+    "leverageTiers",
+    "isSpotOnly",
+    "isListed",
+    "shortTokenAddress",
+    "longTokenAddress",
+    "indexTokenAddress",
+    "marketTokenAddress",
+    "symbol"
+  ],
+  "type": "object"
+}

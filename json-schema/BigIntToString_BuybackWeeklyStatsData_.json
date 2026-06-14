@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/BigIntToString_BuybackWeeklyStatsData_.json",
+  "title": "BigIntToString_BuybackWeeklyStatsData_",
+  "properties": {
+    "weeks": {
+      "items": {
+        "properties": {
+          "cumulativeAccrued": {
+            "type": "string"
+          },
+          "weeklyAccrued": {
+            "type": "string"
+          },
+          "weekEnd": {
+            "type": "number",
+            "format": "double"
+          },
+          "weekStart": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "required": [
+          "cumulativeAccrued",
+          "weeklyAccrued",
+          "weekEnd",
+          "weekStart"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "summary": {
+      "properties": {
+        "weeksTracked": {
+          "type": "number",
+          "format": "double"
+        },
+        "latestWeekAccrued": {
+          "type": "string"
+        },
+        "totalAccrued": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "weeksTracked",
+        "latestWeekAccrued",
+        "totalAccrued"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "weeks",
+    "summary"
+  ],
+  "type": "object",
+  "description": "Recursively converts bigint types to string types in a type definition.\nHandles primitives, objects, arrays, and nested structures.\nPreserves Date type as-is."
+}

@@ -1,0 +1,21 @@
+{
+  "method": "GET",
+  "path": "/markets",
+  "operationId": "GetMarkets",
+  "summary": "",
+  "tags": [
+    "Markets"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "$ref": "#/components/schemas/MarketWithTiersResponse"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

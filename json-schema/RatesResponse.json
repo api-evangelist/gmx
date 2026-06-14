@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/RatesResponse.json",
+  "title": "RatesResponse",
+  "items": {
+    "$ref": "#/components/schemas/MarketRatesResponse"
+  },
+  "type": "array"
+}

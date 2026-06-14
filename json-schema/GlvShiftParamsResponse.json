@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/GlvShiftParamsResponse.json",
+  "title": "GlvShiftParamsResponse",
+  "properties": {
+    "minMarketTokens": {
+      "type": "string"
+    },
+    "marketTokenAmount": {
+      "type": "string"
+    },
+    "toMarket": {
+      "type": "string"
+    },
+    "fromMarket": {
+      "type": "string"
+    },
+    "glv": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "minMarketTokens",
+    "marketTokenAmount",
+    "toMarket",
+    "fromMarket",
+    "glv"
+  ],
+  "type": "object"
+}

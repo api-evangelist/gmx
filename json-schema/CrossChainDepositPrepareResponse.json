@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/CrossChainDepositPrepareResponse.json",
+  "title": "CrossChainDepositPrepareResponse",
+  "properties": {
+    "expiresAt": {
+      "type": "number",
+      "format": "double"
+    },
+    "nativeFee": {
+      "type": "string"
+    },
+    "composeGas": {
+      "type": "string"
+    },
+    "payload": {
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "data",
+        "to"
+      ],
+      "type": "object"
+    },
+    "payloadType": {
+      "type": "string",
+      "enum": [
+        "transaction"
+      ],
+      "nullable": false
+    }
+  },
+  "required": [
+    "expiresAt",
+    "nativeFee",
+    "composeGas",
+    "payload",
+    "payloadType"
+  ],
+  "type": "object"
+}

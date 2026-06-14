@@ -1,0 +1,89 @@
+{
+  "method": "GET",
+  "path": "/trades",
+  "operationId": "GetTrades",
+  "summary": "",
+  "tags": [
+    "Trades"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "address",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "in": "query",
+      "name": "symbol",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "in": "query",
+      "name": "marketAddress",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "in": "query",
+      "name": "since",
+      "required": false,
+      "schema": {
+        "format": "double",
+        "type": "number"
+      }
+    },
+    {
+      "in": "query",
+      "name": "until",
+      "required": false,
+      "schema": {
+        "format": "double",
+        "type": "number"
+      }
+    },
+    {
+      "in": "query",
+      "name": "actions",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "in": "query",
+      "name": "limit",
+      "required": false,
+      "schema": {
+        "format": "double",
+        "type": "number"
+      }
+    },
+    {
+      "in": "query",
+      "name": "cursor",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/TradesListResponse"
+      }
+    }
+  }
+}

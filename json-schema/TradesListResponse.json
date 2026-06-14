@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/TradesListResponse.json",
+  "title": "TradesListResponse",
+  "properties": {
+    "hasMore": {
+      "type": "boolean"
+    },
+    "nextCursor": {
+      "type": "string",
+      "nullable": true
+    },
+    "trades": {
+      "items": {
+        "$ref": "#/components/schemas/TradeResponse"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "hasMore",
+    "nextCursor",
+    "trades"
+  ],
+  "type": "object"
+}

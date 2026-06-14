@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/Pick_MarketInfoResponse.MarketValuesFieldKey_.json",
+  "title": "Pick_MarketInfoResponse.MarketValuesFieldKey_",
+  "properties": {
+    "marketTokenAddress": {
+      "type": "string"
+    },
+    "longPoolAmount": {
+      "type": "string"
+    },
+    "shortPoolAmount": {
+      "type": "string"
+    },
+    "poolValueMax": {
+      "type": "string"
+    },
+    "poolValueMin": {
+      "type": "string"
+    },
+    "totalBorrowingFees": {
+      "type": "string"
+    },
+    "positionImpactPoolAmount": {
+      "type": "string"
+    },
+    "swapImpactPoolAmountLong": {
+      "type": "string"
+    },
+    "swapImpactPoolAmountShort": {
+      "type": "string"
+    },
+    "longInterestUsd": {
+      "type": "string"
+    },
+    "shortInterestUsd": {
+      "type": "string"
+    },
+    "longInterestInTokens": {
+      "type": "string"
+    },
+    "shortInterestInTokens": {
+      "type": "string"
+    },
+    "borrowingFactorPerSecondForLongs": {
+      "type": "string"
+    },
+    "borrowingFactorPerSecondForShorts": {
+      "type": "string"
+    },
+    "fundingFactorPerSecond": {
+      "type": "string"
+    },
+    "longsPayShorts": {
+      "type": "boolean"
+    },
+    "virtualPoolAmountForLongToken": {
+      "type": "string"
+    },
+    "virtualPoolAmountForShortToken": {
+      "type": "string"
+    },
+    "virtualInventoryForPositions": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "marketTokenAddress",
+    "longPoolAmount",
+    "shortPoolAmount",
+    "poolValueMax",
+    "poolValueMin",
+    "totalBorrowingFees",
+    "positionImpactPoolAmount",
+    "swapImpactPoolAmountLong",
+    "swapImpactPoolAmountShort",
+    "longInterestUsd",
+    "shortInterestUsd",
+    "longInterestInTokens",
+    "shortInterestInTokens",
+    "borrowingFactorPerSecondForLongs",
+    "borrowingFactorPerSecondForShorts",
+    "fundingFactorPerSecond",
+    "longsPayShorts",
+    "virtualPoolAmountForLongToken",
+    "virtualPoolAmountForShortToken",
+    "virtualInventoryForPositions"
+  ],
+  "type": "object",
+  "description": "From T, pick a set of properties whose keys are in the union K"
+}

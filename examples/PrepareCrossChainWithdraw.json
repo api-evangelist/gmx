@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "path": "/gmx-account/withdraw/cross-chain/prepare",
+  "operationId": "PrepareCrossChainWithdraw",
+  "summary": "",
+  "tags": [
+    "GMX Account"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/CrossChainWithdrawPrepareResponse"
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/ApprovalPrepareRequest.json",
+  "title": "ApprovalPrepareRequest",
+  "properties": {
+    "signingNetwork": {
+      "type": "string"
+    },
+    "maxAllowedCount": {
+      "type": "string"
+    },
+    "expiresAt": {
+      "type": "string"
+    },
+    "shouldAdd": {
+      "type": "boolean"
+    },
+    "subaccountAddress": {
+      "type": "string"
+    },
+    "account": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "maxAllowedCount",
+    "expiresAt",
+    "shouldAdd",
+    "subaccountAddress",
+    "account"
+  ],
+  "type": "object"
+}

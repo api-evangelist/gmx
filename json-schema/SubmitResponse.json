@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/SubmitResponse.json",
+  "title": "SubmitResponse",
+  "properties": {
+    "traceId": {
+      "type": "string"
+    },
+    "error": {
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message",
+        "code"
+      ],
+      "type": "object"
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "txHash": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/components/schemas/OrderTransactionStatus"
+    },
+    "requestId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "status",
+    "requestId"
+  ],
+  "type": "object"
+}

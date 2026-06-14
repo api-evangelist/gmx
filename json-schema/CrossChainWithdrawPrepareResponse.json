@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/CrossChainWithdrawPrepareResponse.json",
+  "title": "CrossChainWithdrawPrepareResponse",
+  "properties": {
+    "expiresAt": {
+      "type": "number",
+      "format": "double"
+    },
+    "payload": {
+      "properties": {
+        "gasPaymentParams": {
+          "$ref": "#/components/schemas/GasPaymentParamsDto"
+        },
+        "relayRouterAddress": {
+          "type": "string"
+        },
+        "relayParams": {
+          "$ref": "#/components/schemas/Record_string.unknown_"
+        },
+        "typedData": {
+          "properties": {
+            "message": {
+              "$ref": "#/components/schemas/Record_string.unknown_"
+            },
+            "primaryType": {
+              "type": "string",
+              "enum": [
+                "BridgeOut"
+              ],
+              "nullable": false
+            },
+            "types": {
+              "$ref": "#/components/schemas/Record_string._name-string--type-string_-Array_"
+            },
+            "domain": {
+              "$ref": "#/components/schemas/Record_string.unknown_"
+            }
+          },
+          "required": [
+            "message",
+            "primaryType",
+            "types",
+            "domain"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "gasPaymentParams",
+        "relayRouterAddress",
+        "relayParams",
+        "typedData"
+      ],
+      "type": "object"
+    },
+    "requestId": {
+      "type": "string",
+      "description": "Server-generated id; pass back to /submit and use for /status polling."
+    },
+    "payloadType": {
+      "type": "string",
+      "enum": [
+        "typed-data"
+      ],
+      "nullable": false
+    }
+  },
+  "required": [
+    "expiresAt",
+    "payload",
+    "requestId",
+    "payloadType"
+  ],
+  "type": "object"
+}

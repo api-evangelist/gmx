@@ -1,0 +1,53 @@
+{
+  "method": "GET",
+  "path": "/performance/annualized",
+  "operationId": "GetAnnualized",
+  "summary": "",
+  "tags": [
+    "Performance"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "period",
+      "required": false,
+      "schema": {
+        "$ref": "#/components/schemas/ApiParameterPeriod"
+      }
+    },
+    {
+      "in": "query",
+      "name": "address",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "properties": {
+            "entity": {
+              "type": "string"
+            },
+            "performance": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "entity",
+            "address"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

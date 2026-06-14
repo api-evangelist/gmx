@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/MarketConfigResponse.json",
+  "title": "MarketConfigResponse",
+  "$ref": "#/components/schemas/Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__"
+}

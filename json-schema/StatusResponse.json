@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/StatusResponse.json",
+  "title": "StatusResponse",
+  "properties": {
+    "traceId": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "error": {
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message",
+        "code"
+      ],
+      "type": "object"
+    },
+    "gelatoStatusCode": {
+      "type": "number",
+      "format": "double"
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "cancellationReason": {
+      "type": "string"
+    },
+    "orderKeys": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "executionTxnHash": {
+      "type": "string"
+    },
+    "createdTxnHash": {
+      "type": "string"
+    },
+    "txHash": {
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/components/schemas/OrderTransactionStatus"
+    },
+    "requestId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "updatedAt",
+    "createdAt",
+    "status",
+    "requestId"
+  ],
+  "type": "object"
+}

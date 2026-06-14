@@ -1,0 +1,44 @@
+{
+  "method": "GET",
+  "path": "/markets/tickers",
+  "operationId": "GetMarketsTickers",
+  "summary": "",
+  "tags": [
+    "Markets"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "addresses",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "in": "query",
+      "name": "symbols",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "$ref": "#/components/schemas/MarketTickerResponse"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

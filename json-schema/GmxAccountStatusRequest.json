@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/GmxAccountStatusRequest.json",
+  "title": "GmxAccountStatusRequest",
+  "properties": {
+    "requestId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "requestId"
+  ],
+  "type": "object"
+}

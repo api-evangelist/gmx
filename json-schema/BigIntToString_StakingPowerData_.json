@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/BigIntToString_StakingPowerData_.json",
+  "title": "BigIntToString_StakingPowerData_",
+  "properties": {
+    "loyaltyTrackingStart": {
+      "type": "number",
+      "format": "double"
+    },
+    "powerAccrualStart": {
+      "type": "number",
+      "format": "double"
+    },
+    "treasuryGmxBalance": {
+      "type": "string"
+    },
+    "projectedRewardShare": {
+      "type": "string"
+    },
+    "powerResetCount": {
+      "type": "number",
+      "format": "double"
+    },
+    "lastPowerResetAt": {
+      "type": "number",
+      "format": "double"
+    },
+    "loyaltyRatio": {
+      "type": "number",
+      "format": "double"
+    },
+    "currentStaked": {
+      "type": "string"
+    },
+    "historicalMaxStaked": {
+      "type": "string"
+    },
+    "userSharePercent": {
+      "type": "number",
+      "format": "double"
+    },
+    "totalNetworkPower": {
+      "type": "string"
+    },
+    "cumulativePower": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "loyaltyTrackingStart",
+    "powerAccrualStart",
+    "treasuryGmxBalance",
+    "projectedRewardShare",
+    "powerResetCount",
+    "lastPowerResetAt",
+    "loyaltyRatio",
+    "currentStaked",
+    "historicalMaxStaked",
+    "userSharePercent",
+    "totalNetworkPower",
+    "cumulativePower"
+  ],
+  "type": "object",
+  "description": "Recursively converts bigint types to string types in a type definition.\nHandles primitives, objects, arrays, and nested structures.\nPreserves Date type as-is."
+}

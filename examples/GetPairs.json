@@ -1,0 +1,21 @@
+{
+  "method": "GET",
+  "path": "/pairs",
+  "operationId": "GetPairs",
+  "summary": "",
+  "tags": [
+    "Pairs"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "$ref": "#/components/schemas/PairResponse"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

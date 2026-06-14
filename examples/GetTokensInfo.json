@@ -1,0 +1,21 @@
+{
+  "method": "GET",
+  "path": "/tokens/info",
+  "operationId": "GetTokensInfo",
+  "summary": "",
+  "tags": [
+    "Tokens"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "$ref": "#/components/schemas/TokenInfoResponse"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/MarketDirectionFilter.json",
+  "title": "MarketDirectionFilter",
+  "properties": {
+    "collateralAddress": {
+      "type": "string"
+    },
+    "direction": {
+      "$ref": "#/components/schemas/TradeDirection"
+    },
+    "marketAddress": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "direction",
+    "marketAddress"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,38 @@
+{
+  "method": "GET",
+  "path": "/allowances",
+  "operationId": "GetAllowances",
+  "summary": "",
+  "tags": [
+    "Allowances"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "address",
+      "required": true,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "in": "query",
+      "name": "spender",
+      "required": true,
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "$ref": "#/components/schemas/TokenAllowance"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/MarketInfoResponse.json",
+  "title": "MarketInfoResponse",
+  "properties": {
+    "borrowingFactorPerSecondForShorts": {
+      "type": "string"
+    },
+    "borrowingFactorPerSecondForLongs": {
+      "type": "string"
+    },
+    "fundingFactorPerSecond": {
+      "type": "string"
+    },
+    "totalBorrowingFees": {
+      "type": "string"
+    },
+    "virtualInventoryForPositions": {
+      "type": "string"
+    },
+    "virtualPoolAmountForShortToken": {
+      "type": "string"
+    },
+    "virtualPoolAmountForLongToken": {
+      "type": "string"
+    },
+    "longsPayShorts": {
+      "type": "boolean"
+    },
+    "shortInterestInTokens": {
+      "type": "string"
+    },
+    "longInterestInTokens": {
+      "type": "string"
+    },
+    "shortInterestUsd": {
+      "type": "string"
+    },
+    "longInterestUsd": {
+      "type": "string"
+    },
+    "positionImpactPoolAmount": {
+      "type": "string"
+    },
+    "poolValueMin": {
+      "type": "string"
+    },
+    "poolValueMax": {
+      "type": "string"
+    },
+    "shortPoolAmount": {
+      "type": "string"
+    },
+    "longPoolAmount": {
+      "type": "string"
+    },
+    "virtualShortTokenId": {
+      "type": "string"
+    },
+    "virtualLongTokenId": {
+      "type": "string"
+    },
+    "virtualMarketId": {
+      "type": "string"
+    },
+    "maxShortPoolUsdForDeposit": {
+      "type": "string"
+    },
+    "maxLongPoolUsdForDeposit": {
+      "type": "string"
+    },
+    "maxShortPoolAmount": {
+      "type": "string"
+    },
+    "maxLongPoolAmount": {
+      "type": "string"
+    },
+    "withdrawalFeeFactorBalanceWasNotImproved": {
+      "type": "string"
+    },
+    "withdrawalFeeFactorBalanceWasImproved": {
+      "type": "string"
+    },
+    "swapImpactExponentFactor": {
+      "type": "string"
+    },
+    "swapImpactFactorNegative": {
+      "type": "string"
+    },
+    "swapImpactFactorPositive": {
+      "type": "string"
+    },
+    "atomicSwapFeeFactor": {
+      "type": "string"
+    },
+    "swapFeeFactorForBalanceWasNotImproved": {
+      "type": "string"
+    },
+    "swapFeeFactorForBalanceWasImproved": {
+      "type": "string"
+    },
+    "useOpenInterestInTokensForBalance": {
+      "type": "boolean"
+    },
+    "positionImpactExponentFactorNegative": {
+      "type": "string"
+    },
+    "positionImpactExponentFactorPositive": {
+      "type": "string"
+    },
+    "lentPositionImpactPoolAmount": {
+      "type": "string"
+    },
+    "maxLendableImpactUsd": {
+      "type": "string"
+    },
+    "maxLendableImpactFactorForWithdrawals": {
+      "type": "string"
+    },
+    "maxLendableImpactFactor": {
+      "type": "string"
+    },
+    "maxFundingFactorPerSecond": {
+      "type": "string"
+    },
+    "minFundingFactorPerSecond": {
+      "type": "string"
+    },
+    "thresholdForDecreaseFunding": {
+      "type": "string"
+    },
+    "thresholdForStableFunding": {
+      "type": "string"
+    },
+    "fundingDecreaseFactorPerSecond": {
+      "type": "string"
+    },
+    "fundingIncreaseFactorPerSecond": {
+      "type": "string"
+    },
+    "fundingExponentFactor": {
+      "type": "string"
+    },
+    "fundingFactor": {
+      "type": "string"
+    },
+    "borrowingExponentFactorShort": {
+      "type": "string"
+    },
+    "borrowingExponentFactorLong": {
+      "type": "string"
+    },
+    "borrowingFactorShort": {
+      "type": "string"
+    },
+    "borrowingFactorLong": {
+      "type": "string"
+    },
+    "maxPositionImpactFactorForLiquidations": {
+      "type": "string"
+    },
+    "maxPositionImpactFactorNegative": {
+      "type": "string"
+    },
+    "maxPositionImpactFactorPositive": {
+      "type": "string"
+    },
+    "positionImpactFactorNegative": {
+      "type": "string"
+    },
+    "positionImpactFactorPositive": {
+      "type": "string"
+    },
+    "positionFeeFactorForBalanceWasNotImproved": {
+      "type": "string"
+    },
+    "positionFeeFactorForBalanceWasImproved": {
+      "type": "string"
+    },
+    "maxPnlFactorForWithdrawalsShort": {
+      "type": "string"
+    },
+    "maxPnlFactorForWithdrawalsLong": {
+      "type": "string"
+    },
+    "maxPnlFactorForDepositsShort": {
+      "type": "string"
+    },
+    "maxPnlFactorForDepositsLong": {
+      "type": "string"
+    },
+    "maxPnlFactorForTradersShort": {
+      "type": "string"
+    },
+    "maxPnlFactorForTradersLong": {
+      "type": "string"
+    },
+    "minCollateralFactorForOpenInterestShort": {
+      "type": "string"
+    },
+    "minCollateralFactorForOpenInterestLong": {
+      "type": "string"
+    },
+    "minCollateralFactorForLiquidation": {
+      "type": "string"
+    },
+    "minCollateralFactor": {
+      "type": "string"
+    },
+    "swapImpactPoolAmountShort": {
+      "type": "string"
+    },
+    "swapImpactPoolAmountLong": {
+      "type": "string"
+    },
+    "positionImpactPoolDistributionRate": {
+      "type": "string"
+    },
+    "minPositionImpactPoolAmount": {
+      "type": "string"
+    },
+    "maxOpenInterestShort": {
+      "type": "string"
+    },
+    "maxOpenInterestLong": {
+      "type": "string"
+    },
+    "openInterestReserveFactorShort": {
+      "type": "string"
+    },
+    "openInterestReserveFactorLong": {
+      "type": "string"
+    },
+    "reserveFactorShort": {
+      "type": "string"
+    },
+    "reserveFactorLong": {
+      "type": "string"
+    },
+    "data": {
+      "type": "string"
+    },
+    "isDisabled": {
+      "type": "boolean"
+    },
+    "isSpotOnly": {
+      "type": "boolean"
+    },
+    "isSameCollaterals": {
+      "type": "boolean"
+    },
+    "shortTokenAddress": {
+      "type": "string"
+    },
+    "longTokenAddress": {
+      "type": "string"
+    },
+    "indexTokenAddress": {
+      "type": "string"
+    },
+    "marketTokenAddress": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "borrowingFactorPerSecondForShorts",
+    "borrowingFactorPerSecondForLongs",
+    "fundingFactorPerSecond",
+    "totalBorrowingFees",
+    "virtualInventoryForPositions",
+    "virtualPoolAmountForShortToken",
+    "virtualPoolAmountForLongToken",
+    "longsPayShorts",
+    "shortInterestInTokens",
+    "longInterestInTokens",
+    "shortInterestUsd",
+    "longInterestUsd",
+    "positionImpactPoolAmount",
+    "poolValueMin",
+    "poolValueMax",
+    "shortPoolAmount",
+    "longPoolAmount",
+    "virtualShortTokenId",
+    "virtualLongTokenId",
+    "virtualMarketId",
+    "maxShortPoolUsdForDeposit",
+    "maxLongPoolUsdForDeposit",
+    "maxShortPoolAmount",
+    "maxLongPoolAmount",
+    "swapImpactExponentFactor",
+    "swapImpactFactorNegative",
+    "swapImpactFactorPositive",
+    "atomicSwapFeeFactor",
+    "swapFeeFactorForBalanceWasNotImproved",
+    "swapFeeFactorForBalanceWasImproved",
+    "useOpenInterestInTokensForBalance",
+    "positionImpactExponentFactorNegative",
+    "positionImpactExponentFactorPositive",
+    "lentPositionImpactPoolAmount",
+    "maxLendableImpactUsd",
+    "maxLendableImpactFactorForWithdrawals",
+    "maxLendableImpactFactor",
+    "maxFundingFactorPerSecond",
+    "minFundingFactorPerSecond",
+    "thresholdForDecreaseFunding",
+    "thresholdForStableFunding",
+    "fundingDecreaseFactorPerSecond",
+    "fundingIncreaseFactorPerSecond",
+    "fundingExponentFactor",
+    "fundingFactor",
+    "borrowingExponentFactorShort",
+    "borrowingExponentFactorLong",
+    "borrowingFactorShort",
+    "borrowingFactorLong",
+    "maxPositionImpactFactorForLiquidations",
+    "maxPositionImpactFactorNegative",
+    "maxPositionImpactFactorPositive",
+    "positionImpactFactorNegative",
+    "positionImpactFactorPositive",
+    "positionFeeFactorForBalanceWasNotImproved",
+    "positionFeeFactorForBalanceWasImproved",
+    "maxPnlFactorForTradersShort",
+    "maxPnlFactorForTradersLong",
+    "minCollateralFactorForOpenInterestShort",
+    "minCollateralFactorForOpenInterestLong",
+    "minCollateralFactorForLiquidation",
+    "minCollateralFactor",
+    "swapImpactPoolAmountShort",
+    "swapImpactPoolAmountLong",
+    "positionImpactPoolDistributionRate",
+    "minPositionImpactPoolAmount",
+    "maxOpenInterestShort",
+    "maxOpenInterestLong",
+    "openInterestReserveFactorShort",
+    "openInterestReserveFactorLong",
+    "reserveFactorShort",
+    "reserveFactorLong",
+    "data",
+    "isDisabled",
+    "isSpotOnly",
+    "isSameCollaterals",
+    "shortTokenAddress",
+    "longTokenAddress",
+    "indexTokenAddress",
+    "marketTokenAddress",
+    "name"
+  ],
+  "type": "object"
+}

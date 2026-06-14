@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "path": "/subaccounts/approval/prepare",
+  "operationId": "PrepareApproval",
+  "summary": "",
+  "tags": [
+    "Subaccounts"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/ApprovalPrepareResponse"
+      }
+    }
+  }
+}

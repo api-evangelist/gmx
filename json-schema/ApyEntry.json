@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/ApyEntry.json",
+  "title": "ApyEntry",
+  "properties": {
+    "bonusApr": {
+      "type": "number",
+      "format": "double"
+    },
+    "baseApy": {
+      "type": "number",
+      "format": "double"
+    },
+    "apy": {
+      "type": "number",
+      "format": "double"
+    }
+  },
+  "required": [
+    "bonusApr",
+    "baseApy",
+    "apy"
+  ],
+  "type": "object"
+}

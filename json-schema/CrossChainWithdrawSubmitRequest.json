@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/CrossChainWithdrawSubmitRequest.json",
+  "title": "CrossChainWithdrawSubmitRequest",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "Echo back the requestId from /prepare to link prepare\u2192submit\u2192status."
+    },
+    "relayerFeeAmount": {
+      "type": "string"
+    },
+    "relayerFeeTokenAddress": {
+      "type": "string"
+    },
+    "relayParamsPayload": {
+      "$ref": "#/components/schemas/Record_string.unknown_"
+    },
+    "bridgeOutParams": {
+      "$ref": "#/components/schemas/BridgeOutParamsDto"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "account": {
+      "type": "string"
+    },
+    "srcChainId": {
+      "type": "number",
+      "format": "double"
+    }
+  },
+  "required": [
+    "relayerFeeAmount",
+    "relayerFeeTokenAddress",
+    "relayParamsPayload",
+    "bridgeOutParams",
+    "signature",
+    "account",
+    "srcChainId"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/PrepareRequest.json",
+  "title": "PrepareRequest",
+  "properties": {
+    "subaccountApproval": {
+      "$ref": "#/components/schemas/Record_string.any_"
+    },
+    "subaccountAddress": {
+      "type": "string"
+    },
+    "from": {
+      "type": "string"
+    },
+    "mode": {
+      "$ref": "#/components/schemas/TransactionMode"
+    },
+    "uiFeeReceiver": {
+      "type": "string"
+    },
+    "referralCode": {
+      "type": "string"
+    },
+    "autoCancel": {
+      "type": "boolean"
+    },
+    "tpsl": {
+      "items": {
+        "properties": {
+          "size": {
+            "type": "string"
+          },
+          "triggerPrice": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "take-profit",
+              "stop-loss"
+            ]
+          }
+        },
+        "required": [
+          "triggerPrice",
+          "type"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "twapConfig": {
+      "properties": {
+        "frequency": {
+          "type": "number",
+          "format": "double"
+        },
+        "parts": {
+          "type": "number",
+          "format": "double"
+        },
+        "duration": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "parts",
+        "duration"
+      ],
+      "type": "object"
+    },
+    "gasPaymentToken": {
+      "type": "string"
+    },
+    "manualSwapPath": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "keepLeverage": {
+      "type": "boolean"
+    },
+    "receiveToken": {
+      "type": "string"
+    },
+    "collateralToPay": {
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "token",
+        "amount"
+      ],
+      "type": "object"
+    },
+    "executionFeeBufferBps": {
+      "type": "number",
+      "format": "double"
+    },
+    "acceptablePriceImpactBps": {
+      "type": "string"
+    },
+    "slippage": {
+      "type": "number",
+      "format": "double"
+    },
+    "collateralToken": {
+      "type": "string"
+    },
+    "triggerPrice": {
+      "type": "string"
+    },
+    "size": {
+      "type": "string"
+    },
+    "orderType": {
+      "$ref": "#/components/schemas/SimpleOrderType"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "long",
+        "short"
+      ]
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "kind": {
+      "$ref": "#/components/schemas/OrderKind"
+    }
+  },
+  "required": [
+    "mode",
+    "orderType",
+    "kind"
+  ],
+  "type": "object"
+}

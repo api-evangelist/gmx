@@ -1,0 +1,408 @@
+{
+  "@context": "https://api-evangelist.github.io/gmx/json-ld/context.jsonld",
+  "@type": "WebAPI",
+  "name": "@gmx-io/gmx-public-api",
+  "description": "Decentralized perpetual and spot exchange REST API",
+  "version": "1.0.0",
+  "url": "https://gmx.io",
+  "documentation": "https://docs.gmx.io/docs/api/overview/",
+  "provider": {
+    "@type": "Organization",
+    "name": "GMX",
+    "url": "https://gmx.io"
+  },
+  "availableOn": [
+    {
+      "@type": "WebAPI",
+      "name": "Arbitrum",
+      "url": "https://arbitrum.gmxapi.io/v1"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "Avalanche",
+      "url": "https://avalanche.gmxapi.io/v1"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "Botanix",
+      "url": "https://botanix.gmxapi.io/v1"
+    },
+    {
+      "@type": "WebAPI",
+      "name": "MegaETH",
+      "url": "https://megaeth.gmxapi.io/v1"
+    }
+  ],
+  "potentialAction": [
+    {
+      "@type": "EntryPoint",
+      "name": "GetTrades",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/trades",
+      "tags": [
+        "Trades"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "SearchTrades",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/trades/search",
+      "tags": [
+        "Trades"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetTokens",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/tokens",
+      "tags": [
+        "Tokens"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetTokensInfo",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/tokens/info",
+      "tags": [
+        "Tokens"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "FetchStatus",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/subaccounts/status",
+      "tags": [
+        "Subaccounts"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "PrepareApproval",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/subaccounts/approval/prepare",
+      "tags": [
+        "Subaccounts"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetStakingPower",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/staking/power",
+      "tags": [
+        "Staking"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetRates",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/rates",
+      "tags": [
+        "Rates"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetOhlcv",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/prices/ohlcv",
+      "tags": [
+        "Prices"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetPositionsInfo",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/positions",
+      "tags": [
+        "Positions"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetPositionByKey",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/positions/{key}",
+      "tags": [
+        "Positions"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetAnnualized",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/performance/annualized",
+      "tags": [
+        "Performance"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetSnapshots",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/performance/snapshots",
+      "tags": [
+        "Performance"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetPairs",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/pairs",
+      "tags": [
+        "Pairs"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetOrdersByAddress",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/orders",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetOrderByKey",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/orders/{key}",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "Prepare",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/orders/txns/prepare",
+      "tags": [
+        "Order Transactions"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "Submit",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/orders/txns/submit",
+      "tags": [
+        "Order Transactions"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "Status",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/orders/txns/status",
+      "tags": [
+        "Order Transactions"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "EditPrepare",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/orders/txns/edit/prepare",
+      "tags": [
+        "Order Transactions"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "CancelPrepare",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/orders/txns/cancel/prepare",
+      "tags": [
+        "Order Transactions"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "CollateralPrepare",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/orders/txns/collateral/prepare",
+      "tags": [
+        "Order Transactions"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetMarkets",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/markets",
+      "tags": [
+        "Markets"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetMarketsTickers",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/markets/tickers",
+      "tags": [
+        "Markets"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetMarketsInfo",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/markets/info",
+      "tags": [
+        "Markets"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetMarketsConfig",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/markets/config",
+      "tags": [
+        "Markets"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetMarketsValues",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/markets/values",
+      "tags": [
+        "Markets"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetLiquidityInfo",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/jit/liquidity_info",
+      "tags": [
+        "JIT"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetLiquidityHistory",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/jit/liquidity_history",
+      "tags": [
+        "JIT"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "PrepareCrossChainDeposit",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/gmx-account/deposit/cross-chain/prepare",
+      "tags": [
+        "GMX Account"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "PrepareCrossChainWithdraw",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/gmx-account/withdraw/cross-chain/prepare",
+      "tags": [
+        "GMX Account"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "SubmitCrossChainWithdraw",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/gmx-account/withdraw/cross-chain/submit",
+      "tags": [
+        "GMX Account"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "StatusCrossChainWithdraw",
+      "description": "",
+      "httpMethod": "POST",
+      "urlTemplate": "https://arbitrum.gmxapi.io/gmx-account/withdraw/cross-chain/status",
+      "tags": [
+        "GMX Account"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetWeeklyStats",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/buyback/weekly-stats",
+      "tags": [
+        "Buyback"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetWalletBalances",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/balances/wallet",
+      "tags": [
+        "Balances"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetApy",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/apy",
+      "tags": [
+        "APY"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "name": "GetAllowances",
+      "description": "",
+      "httpMethod": "GET",
+      "urlTemplate": "https://arbitrum.gmxapi.io/allowances",
+      "tags": [
+        "Allowances"
+      ]
+    }
+  ]
+}

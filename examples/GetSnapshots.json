@@ -1,0 +1,69 @@
+{
+  "method": "GET",
+  "path": "/performance/snapshots",
+  "operationId": "GetSnapshots",
+  "summary": "",
+  "tags": [
+    "Performance"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "period",
+      "required": false,
+      "schema": {
+        "$ref": "#/components/schemas/ApiParameterPeriod"
+      }
+    },
+    {
+      "in": "query",
+      "name": "address",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "properties": {
+            "snapshots": {
+              "items": {
+                "properties": {
+                  "performance": {
+                    "type": "string"
+                  },
+                  "snapshotTimestamp": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                },
+                "required": [
+                  "snapshotTimestamp"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "entity": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "snapshots",
+            "entity",
+            "address"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

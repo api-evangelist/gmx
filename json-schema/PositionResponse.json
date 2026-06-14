@@ -1,0 +1,206 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/PositionResponse.json",
+  "title": "PositionResponse",
+  "properties": {
+    "relatedOrders": {
+      "items": {
+        "$ref": "#/components/schemas/OrderResponse"
+      },
+      "type": "array"
+    },
+    "pendingClaimableFundingFeesUsd": {
+      "type": "string"
+    },
+    "pendingFundingFeesUsd": {
+      "type": "string"
+    },
+    "uiFeeUsd": {
+      "type": "string"
+    },
+    "closingFeeUsd": {
+      "type": "string"
+    },
+    "netValue": {
+      "type": "string"
+    },
+    "leverageWithoutPnl": {
+      "type": "string"
+    },
+    "leverageWithPnl": {
+      "type": "string"
+    },
+    "leverage": {
+      "type": "string"
+    },
+    "closePriceImpactDeltaUsd": {
+      "type": "string"
+    },
+    "pendingImpactUsd": {
+      "type": "string"
+    },
+    "priceImpactDiffUsd": {
+      "type": "string"
+    },
+    "netPriceImapctDeltaUsd": {
+      "type": "string"
+    },
+    "pnlAfterAllFeesPercentage": {
+      "type": "string"
+    },
+    "pnlAfterAllFees": {
+      "type": "string"
+    },
+    "netValueAfterAllFees": {
+      "type": "string"
+    },
+    "pnlAfterFeesPercentage": {
+      "type": "string"
+    },
+    "pnlAfterFees": {
+      "type": "string"
+    },
+    "pnlPercentage": {
+      "type": "string"
+    },
+    "hasLowCollateral": {
+      "type": "boolean"
+    },
+    "remainingCollateralAmount": {
+      "type": "string"
+    },
+    "remainingCollateralUsd": {
+      "type": "string"
+    },
+    "collateralUsd": {
+      "type": "string"
+    },
+    "liquidationPrice": {
+      "type": "string"
+    },
+    "entryPrice": {
+      "type": "string"
+    },
+    "markPrice": {
+      "type": "string"
+    },
+    "poolName": {
+      "type": "string"
+    },
+    "indexName": {
+      "type": "string"
+    },
+    "data": {
+      "type": "string"
+    },
+    "pendingImpactAmount": {
+      "type": "string"
+    },
+    "uiFeeAmount": {
+      "type": "string"
+    },
+    "traderDiscountAmount": {
+      "type": "string"
+    },
+    "positionFeeAmount": {
+      "type": "string"
+    },
+    "pnl": {
+      "type": "string"
+    },
+    "isOpening": {
+      "type": "boolean"
+    },
+    "claimableShortTokenAmount": {
+      "type": "string"
+    },
+    "claimableLongTokenAmount": {
+      "type": "string"
+    },
+    "fundingFeeAmount": {
+      "type": "string"
+    },
+    "isLong": {
+      "type": "boolean"
+    },
+    "decreasedAtTime": {
+      "type": "string"
+    },
+    "increasedAtTime": {
+      "type": "string"
+    },
+    "pendingBorrowingFeesUsd": {
+      "type": "string"
+    },
+    "collateralAmount": {
+      "type": "string"
+    },
+    "sizeInTokens": {
+      "type": "string"
+    },
+    "sizeInUsd": {
+      "type": "string"
+    },
+    "collateralTokenAddress": {
+      "type": "string"
+    },
+    "marketAddress": {
+      "type": "string"
+    },
+    "account": {
+      "type": "string"
+    },
+    "contractKey": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "pendingClaimableFundingFeesUsd",
+    "pendingFundingFeesUsd",
+    "uiFeeUsd",
+    "closingFeeUsd",
+    "netValue",
+    "closePriceImpactDeltaUsd",
+    "pendingImpactUsd",
+    "priceImpactDiffUsd",
+    "netPriceImapctDeltaUsd",
+    "pnlAfterAllFeesPercentage",
+    "pnlAfterAllFees",
+    "netValueAfterAllFees",
+    "pnlAfterFeesPercentage",
+    "pnlAfterFees",
+    "pnlPercentage",
+    "hasLowCollateral",
+    "remainingCollateralAmount",
+    "remainingCollateralUsd",
+    "collateralUsd",
+    "markPrice",
+    "poolName",
+    "indexName",
+    "data",
+    "pendingImpactAmount",
+    "uiFeeAmount",
+    "traderDiscountAmount",
+    "positionFeeAmount",
+    "pnl",
+    "claimableShortTokenAmount",
+    "claimableLongTokenAmount",
+    "fundingFeeAmount",
+    "isLong",
+    "decreasedAtTime",
+    "increasedAtTime",
+    "pendingBorrowingFeesUsd",
+    "collateralAmount",
+    "sizeInTokens",
+    "sizeInUsd",
+    "collateralTokenAddress",
+    "marketAddress",
+    "account",
+    "contractKey",
+    "key"
+  ],
+  "type": "object"
+}

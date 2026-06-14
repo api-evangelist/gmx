@@ -1,0 +1,45 @@
+{
+  "method": "GET",
+  "path": "/jit/liquidity_history",
+  "operationId": "GetLiquidityHistory",
+  "summary": "",
+  "tags": [
+    "JIT"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "period",
+      "required": true,
+      "schema": {
+        "$ref": "#/components/schemas/JitLiquidityHistoryPeriod"
+      }
+    },
+    {
+      "in": "query",
+      "name": "from",
+      "required": false,
+      "schema": {
+        "format": "double",
+        "type": "number"
+      }
+    },
+    {
+      "in": "query",
+      "name": "to",
+      "required": false,
+      "schema": {
+        "format": "double",
+        "type": "number"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/JitLiquidityHistoryResponse"
+      }
+    }
+  }
+}

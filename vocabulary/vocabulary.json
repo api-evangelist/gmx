@@ -1,0 +1,1379 @@
+{
+  "name": "GMX API Vocabulary",
+  "description": "Terms, schemas, and operations from the GMX REST API",
+  "source": "https://arbitrum.gmxapi.io/swagger.json",
+  "terms": {
+    "Trades": {
+      "type": "tag",
+      "description": "API tag: Trades"
+    },
+    "GetTrades": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/trades",
+      "description": ""
+    },
+    "SearchTrades": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/trades/search",
+      "description": "Trade history search supporting the same filters used by the GMX UI:\nmarketsDirections (per-tuple market+direction+collateral) and\norderEventCombinations (orderType+eventName+isDepositOrWithdraw+isTwap)."
+    },
+    "Tokens": {
+      "type": "tag",
+      "description": "API tag: Tokens"
+    },
+    "GetTokens": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/tokens",
+      "description": ""
+    },
+    "GetTokensInfo": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/tokens/info",
+      "description": ""
+    },
+    "Subaccounts": {
+      "type": "tag",
+      "description": "API tag: Subaccounts"
+    },
+    "FetchStatus": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/subaccounts/status",
+      "description": ""
+    },
+    "PrepareApproval": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/subaccounts/approval/prepare",
+      "description": ""
+    },
+    "Staking": {
+      "type": "tag",
+      "description": "API tag: Staking"
+    },
+    "GetStakingPower": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/staking/power",
+      "description": ""
+    },
+    "Rates": {
+      "type": "tag",
+      "description": "API tag: Rates"
+    },
+    "GetRates": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/rates",
+      "description": ""
+    },
+    "Prices": {
+      "type": "tag",
+      "description": "API tag: Prices"
+    },
+    "GetOhlcv": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/prices/ohlcv",
+      "description": ""
+    },
+    "Positions": {
+      "type": "tag",
+      "description": "API tag: Positions"
+    },
+    "GetPositionsInfo": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/positions",
+      "description": ""
+    },
+    "GetPositionByKey": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/positions/{key}",
+      "description": ""
+    },
+    "Performance": {
+      "type": "tag",
+      "description": "API tag: Performance"
+    },
+    "GetAnnualized": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/performance/annualized",
+      "description": ""
+    },
+    "GetSnapshots": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/performance/snapshots",
+      "description": ""
+    },
+    "Pairs": {
+      "type": "tag",
+      "description": "API tag: Pairs"
+    },
+    "GetPairs": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/pairs",
+      "description": ""
+    },
+    "Orders": {
+      "type": "tag",
+      "description": "API tag: Orders"
+    },
+    "GetOrdersByAddress": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/orders",
+      "description": ""
+    },
+    "GetOrderByKey": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/orders/{key}",
+      "description": ""
+    },
+    "Order Transactions": {
+      "type": "tag",
+      "description": "API tag: Order Transactions"
+    },
+    "Prepare": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/orders/txns/prepare",
+      "description": ""
+    },
+    "Submit": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/orders/txns/submit",
+      "description": ""
+    },
+    "Status": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/orders/txns/status",
+      "description": ""
+    },
+    "EditPrepare": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/orders/txns/edit/prepare",
+      "description": ""
+    },
+    "CancelPrepare": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/orders/txns/cancel/prepare",
+      "description": ""
+    },
+    "CollateralPrepare": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/orders/txns/collateral/prepare",
+      "description": ""
+    },
+    "Markets": {
+      "type": "tag",
+      "description": "API tag: Markets"
+    },
+    "GetMarkets": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/markets",
+      "description": ""
+    },
+    "GetMarketsTickers": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/markets/tickers",
+      "description": ""
+    },
+    "GetMarketsInfo": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/markets/info",
+      "description": ""
+    },
+    "GetMarketsConfig": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/markets/config",
+      "description": ""
+    },
+    "GetMarketsValues": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/markets/values",
+      "description": ""
+    },
+    "JIT": {
+      "type": "tag",
+      "description": "API tag: JIT"
+    },
+    "GetLiquidityInfo": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/jit/liquidity_info",
+      "description": ""
+    },
+    "GetLiquidityHistory": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/jit/liquidity_history",
+      "description": ""
+    },
+    "GMX Account": {
+      "type": "tag",
+      "description": "API tag: GMX Account"
+    },
+    "PrepareCrossChainDeposit": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/gmx-account/deposit/cross-chain/prepare",
+      "description": ""
+    },
+    "PrepareCrossChainWithdraw": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/gmx-account/withdraw/cross-chain/prepare",
+      "description": ""
+    },
+    "SubmitCrossChainWithdraw": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/gmx-account/withdraw/cross-chain/submit",
+      "description": ""
+    },
+    "StatusCrossChainWithdraw": {
+      "type": "operation",
+      "method": "POST",
+      "path": "/gmx-account/withdraw/cross-chain/status",
+      "description": ""
+    },
+    "Buyback": {
+      "type": "tag",
+      "description": "API tag: Buyback"
+    },
+    "GetWeeklyStats": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/buyback/weekly-stats",
+      "description": ""
+    },
+    "Balances": {
+      "type": "tag",
+      "description": "API tag: Balances"
+    },
+    "GetWalletBalances": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/balances/wallet",
+      "description": ""
+    },
+    "APY": {
+      "type": "tag",
+      "description": "API tag: APY"
+    },
+    "GetApy": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/apy",
+      "description": ""
+    },
+    "Allowances": {
+      "type": "tag",
+      "description": "API tag: Allowances"
+    },
+    "GetAllowances": {
+      "type": "operation",
+      "method": "GET",
+      "path": "/allowances",
+      "description": ""
+    },
+    "TradeActionResponse": {
+      "type": "schema",
+      "description": "Schema: TradeActionResponse",
+      "properties": [
+        "reasonBytes",
+        "reason",
+        "numberOfParts",
+        "twapGroupId",
+        "srcChainId",
+        "decreasePositionSwapType",
+        "proportionalPendingImpactUsd",
+        "collateralTotalCostAmount",
+        "swapImpactUsd",
+        "executionAmountOut",
+        "totalImpactUsd",
+        "liquidationFeeAmount",
+        "swapFeeUsd",
+        "fundingFeeAmount",
+        "borrowingFeeAmount",
+        "traderDiscountAmount",
+        "positionFeeAmount",
+        "priceImpactDiffUsd",
+        "priceImpactUsd",
+        "basePnlUsd",
+        "pnlUsd",
+        "minOutputAmount",
+        "collateralTokenPriceMax",
+        "collateralTokenPriceMin",
+        "indexTokenPriceMax",
+        "indexTokenPriceMin",
+        "executionPrice",
+        "triggerPrice",
+        "acceptablePrice",
+        "sizeDeltaInTokens",
+        "sizeDeltaUsd",
+        "isLong",
+        "marketAddress",
+        "shouldUnwrapNativeToken",
+        "initialCollateralDeltaAmount",
+        "initialCollateralTokenAddress",
+        "swapPath",
+        "transactionHash",
+        "timestamp",
+        "orderKey",
+        "orderType",
+        "account",
+        "eventName",
+        "id"
+      ]
+    },
+    "TradeResponse": {
+      "type": "schema",
+      "description": "Schema: TradeResponse",
+      "properties": []
+    },
+    "TradesListResponse": {
+      "type": "schema",
+      "description": "Schema: TradesListResponse",
+      "properties": [
+        "hasMore",
+        "nextCursor",
+        "trades"
+      ]
+    },
+    "TradeDirection": {
+      "type": "schema",
+      "description": "Schema: TradeDirection",
+      "properties": []
+    },
+    "MarketDirectionFilter": {
+      "type": "schema",
+      "description": "Schema: MarketDirectionFilter",
+      "properties": [
+        "collateralAddress",
+        "direction",
+        "marketAddress"
+      ]
+    },
+    "OrderEventCombination": {
+      "type": "schema",
+      "description": "Schema: OrderEventCombination",
+      "properties": [
+        "isTwap",
+        "isDepositOrWithdraw",
+        "orderType",
+        "eventName"
+      ]
+    },
+    "TradesSearchRequest": {
+      "type": "schema",
+      "description": "Schema: TradesSearchRequest",
+      "properties": [
+        "cursor",
+        "limit",
+        "showDebugValues",
+        "orderEventCombinations",
+        "marketsDirections",
+        "toTimestamp",
+        "fromTimestamp",
+        "forAllAccounts",
+        "address"
+      ]
+    },
+    "TokenResponse": {
+      "type": "schema",
+      "description": "Schema: TokenResponse",
+      "properties": [
+        "searchAliases",
+        "isStaking",
+        "isPlatformTradingToken",
+        "isPlatformToken",
+        "isV1Available",
+        "isChartDisabled",
+        "isTempHidden",
+        "isSynthetic",
+        "isStable",
+        "isShortable",
+        "isWrapped",
+        "isNative",
+        "isUsdg",
+        "contractVersion",
+        "isPermitDisabled",
+        "isPermitSupported",
+        "categories",
+        "imageUrl",
+        "reservesUrl",
+        "explorerUrl",
+        "explorerSymbol",
+        "metamaskSymbol",
+        "wrappedAddress",
+        "visualPrefix",
+        "visualMultiplier",
+        "address",
+        "decimals",
+        "baseSymbol",
+        "assetSymbol",
+        "symbol",
+        "name"
+      ]
+    },
+    "TokenInfoResponse": {
+      "type": "schema",
+      "description": "Schema: TokenInfoResponse",
+      "properties": [
+        "hasPriceFeedProvider",
+        "totalSupply",
+        "balance",
+        "balanceType",
+        "sourceChainBalance",
+        "gmxAccountBalance",
+        "walletBalance",
+        "prices",
+        "searchAliases",
+        "isStaking",
+        "isPlatformTradingToken",
+        "isPlatformToken",
+        "isV1Available",
+        "isChartDisabled",
+        "isTempHidden",
+        "isSynthetic",
+        "isStable",
+        "isShortable",
+        "isWrapped",
+        "isNative",
+        "isUsdg",
+        "contractVersion",
+        "isPermitDisabled",
+        "isPermitSupported",
+        "categories",
+        "imageUrl",
+        "reservesUrl",
+        "explorerUrl",
+        "explorerSymbol",
+        "metamaskSymbol",
+        "wrappedAddress",
+        "visualPrefix",
+        "visualMultiplier",
+        "address",
+        "decimals",
+        "baseSymbol",
+        "assetSymbol",
+        "symbol",
+        "name"
+      ]
+    },
+    "SubaccountStatusResponse": {
+      "type": "schema",
+      "description": "Schema: SubaccountStatusResponse",
+      "properties": [
+        "integrationId",
+        "multichainApprovalNonce",
+        "approvalNonce",
+        "expiresAt",
+        "remainingActions",
+        "currentActionsCount",
+        "maxAllowedCount",
+        "active"
+      ]
+    },
+    "SubaccountStatusRequest": {
+      "type": "schema",
+      "description": "Schema: SubaccountStatusRequest",
+      "properties": [
+        "subaccountAddress",
+        "account"
+      ]
+    },
+    "Record_string._name-string--type-string_-Array_": {
+      "type": "schema",
+      "description": "Construct a type with a set of properties K of type T",
+      "properties": []
+    },
+    "Record_string.any_": {
+      "type": "schema",
+      "description": "Construct a type with a set of properties K of type T",
+      "properties": []
+    },
+    "ApprovalPrepareResponse": {
+      "type": "schema",
+      "description": "Schema: ApprovalPrepareResponse",
+      "properties": [
+        "nonce",
+        "relayRouterAddress",
+        "primaryType",
+        "message",
+        "types",
+        "domain"
+      ]
+    },
+    "ApprovalPrepareRequest": {
+      "type": "schema",
+      "description": "Schema: ApprovalPrepareRequest",
+      "properties": [
+        "signingNetwork",
+        "maxAllowedCount",
+        "expiresAt",
+        "shouldAdd",
+        "subaccountAddress",
+        "account"
+      ]
+    },
+    "BigIntToString_StakingPowerData_": {
+      "type": "schema",
+      "description": "Recursively converts bigint types to string types in a type definition.\nHandles primitives, objects, arrays, and nested structures.\nPreserves Date type as-is.",
+      "properties": [
+        "loyaltyTrackingStart",
+        "powerAccrualStart",
+        "treasuryGmxBalance",
+        "projectedRewardShare",
+        "powerResetCount",
+        "lastPowerResetAt",
+        "loyaltyRatio",
+        "currentStaked",
+        "historicalMaxStaked",
+        "userSharePercent",
+        "totalNetworkPower",
+        "cumulativePower"
+      ]
+    },
+    "StakingPowerResponse": {
+      "type": "schema",
+      "description": "Schema: StakingPowerResponse",
+      "properties": []
+    },
+    "RatesSnapshotResponse": {
+      "type": "schema",
+      "description": "Schema: RatesSnapshotResponse",
+      "properties": [
+        "timestamp",
+        "borrowingRateShort",
+        "borrowingRateLong",
+        "fundingRateShort",
+        "fundingRateLong",
+        "netRateShort",
+        "netRateLong"
+      ]
+    },
+    "MarketRatesResponse": {
+      "type": "schema",
+      "description": "Schema: MarketRatesResponse",
+      "properties": [
+        "ratesSnapshots",
+        "marketAddress"
+      ]
+    },
+    "RatesResponse": {
+      "type": "schema",
+      "description": "Schema: RatesResponse",
+      "properties": []
+    },
+    "ApiParameterPeriod": {
+      "type": "schema",
+      "description": "Schema: ApiParameterPeriod",
+      "properties": []
+    },
+    "OhlcvCandle": {
+      "type": "schema",
+      "description": "Schema: OhlcvCandle",
+      "properties": [
+        "close",
+        "low",
+        "high",
+        "open",
+        "timestamp"
+      ]
+    },
+    "OrderResponse": {
+      "type": "schema",
+      "description": "Schema: OrderResponse",
+      "properties": [
+        "requestId",
+        "dataList",
+        "autoCancel",
+        "isFrozen",
+        "shouldUnwrapNativeToken",
+        "isLong",
+        "srcChainId",
+        "validFromTime",
+        "updatedAtTime",
+        "minOutputAmount",
+        "callbackGasLimit",
+        "executionFee",
+        "acceptablePrice",
+        "triggerPrice",
+        "initialCollateralDeltaAmount",
+        "sizeDeltaUsd",
+        "decreasePositionSwapType",
+        "orderType",
+        "swapPath",
+        "initialCollateralTokenAddress",
+        "marketAddress",
+        "uiFeeReceiver",
+        "callbackContract",
+        "cancellationReceiver",
+        "receiver",
+        "account",
+        "key"
+      ]
+    },
+    "PositionResponse": {
+      "type": "schema",
+      "description": "Schema: PositionResponse",
+      "properties": [
+        "relatedOrders",
+        "pendingClaimableFundingFeesUsd",
+        "pendingFundingFeesUsd",
+        "uiFeeUsd",
+        "closingFeeUsd",
+        "netValue",
+        "leverageWithoutPnl",
+        "leverageWithPnl",
+        "leverage",
+        "closePriceImpactDeltaUsd",
+        "pendingImpactUsd",
+        "priceImpactDiffUsd",
+        "netPriceImapctDeltaUsd",
+        "pnlAfterAllFeesPercentage",
+        "pnlAfterAllFees",
+        "netValueAfterAllFees",
+        "pnlAfterFeesPercentage",
+        "pnlAfterFees",
+        "pnlPercentage",
+        "hasLowCollateral",
+        "remainingCollateralAmount",
+        "remainingCollateralUsd",
+        "collateralUsd",
+        "liquidationPrice",
+        "entryPrice",
+        "markPrice",
+        "poolName",
+        "indexName",
+        "data",
+        "pendingImpactAmount",
+        "uiFeeAmount",
+        "traderDiscountAmount",
+        "positionFeeAmount",
+        "pnl",
+        "isOpening",
+        "claimableShortTokenAmount",
+        "claimableLongTokenAmount",
+        "fundingFeeAmount",
+        "isLong",
+        "decreasedAtTime",
+        "increasedAtTime",
+        "pendingBorrowingFeesUsd",
+        "collateralAmount",
+        "sizeInTokens",
+        "sizeInUsd",
+        "collateralTokenAddress",
+        "marketAddress",
+        "account",
+        "contractKey",
+        "key"
+      ]
+    },
+    "PairResponse": {
+      "type": "schema",
+      "description": "Schema: PairResponse",
+      "properties": [
+        "liquidity_in_usd",
+        "pool_id",
+        "volume_usd",
+        "next_funding_rate_timestamp",
+        "next_funding_rate",
+        "funding_rate",
+        "short_open_interest",
+        "long_open_interest",
+        "open_interest",
+        "low",
+        "high",
+        "last_price",
+        "product_type",
+        "target_volume",
+        "base_volume",
+        "target_currency",
+        "base_currency",
+        "ticker_id"
+      ]
+    },
+    "TransactionMode": {
+      "type": "schema",
+      "description": "Schema: TransactionMode",
+      "properties": []
+    },
+    "PrepareResponse": {
+      "type": "schema",
+      "description": "Schema: PrepareResponse",
+      "properties": [
+        "traceId",
+        "warnings",
+        "expiresAt",
+        "estimates",
+        "payload",
+        "requestId",
+        "mode",
+        "payloadType"
+      ]
+    },
+    "OrderKind": {
+      "type": "schema",
+      "description": "Schema: OrderKind",
+      "properties": []
+    },
+    "SimpleOrderType": {
+      "type": "schema",
+      "description": "Schema: SimpleOrderType",
+      "properties": []
+    },
+    "PrepareRequest": {
+      "type": "schema",
+      "description": "Schema: PrepareRequest",
+      "properties": [
+        "subaccountApproval",
+        "subaccountAddress",
+        "from",
+        "mode",
+        "uiFeeReceiver",
+        "referralCode",
+        "autoCancel",
+        "tpsl",
+        "twapConfig",
+        "gasPaymentToken",
+        "manualSwapPath",
+        "keepLeverage",
+        "receiveToken",
+        "collateralToPay",
+        "executionFeeBufferBps",
+        "acceptablePriceImpactBps",
+        "slippage",
+        "collateralToken",
+        "triggerPrice",
+        "size",
+        "orderType",
+        "direction",
+        "symbol",
+        "kind"
+      ]
+    },
+    "OrderTransactionStatus": {
+      "type": "schema",
+      "description": "Schema: OrderTransactionStatus",
+      "properties": []
+    },
+    "SubmitResponse": {
+      "type": "schema",
+      "description": "Schema: SubmitResponse",
+      "properties": [
+        "traceId",
+        "error",
+        "taskId",
+        "txHash",
+        "status",
+        "requestId"
+      ]
+    },
+    "SubmitRequest": {
+      "type": "schema",
+      "description": "Schema: SubmitRequest",
+      "properties": [
+        "from",
+        "signature",
+        "eip712Data",
+        "requestId",
+        "mode"
+      ]
+    },
+    "StatusResponse": {
+      "type": "schema",
+      "description": "Schema: StatusResponse",
+      "properties": [
+        "traceId",
+        "updatedAt",
+        "createdAt",
+        "error",
+        "gelatoStatusCode",
+        "taskId",
+        "cancellationReason",
+        "orderKeys",
+        "executionTxnHash",
+        "createdTxnHash",
+        "txHash",
+        "status",
+        "requestId"
+      ]
+    },
+    "StatusRequest": {
+      "type": "schema",
+      "description": "Schema: StatusRequest",
+      "properties": [
+        "requestId"
+      ]
+    },
+    "EditPrepareRequest": {
+      "type": "schema",
+      "description": "Schema: EditPrepareRequest",
+      "properties": [
+        "subaccountApproval",
+        "subaccountAddress",
+        "from",
+        "mode",
+        "executionFeeTopUp",
+        "newAutoCancel",
+        "newAcceptablePrice",
+        "newTriggerPrice",
+        "newSize",
+        "orderIds"
+      ]
+    },
+    "CancelPrepareRequest": {
+      "type": "schema",
+      "description": "Schema: CancelPrepareRequest",
+      "properties": [
+        "subaccountApproval",
+        "subaccountAddress",
+        "from",
+        "mode",
+        "all",
+        "orderIds",
+        "orderId"
+      ]
+    },
+    "CollateralOperation": {
+      "type": "schema",
+      "description": "Schema: CollateralOperation",
+      "properties": []
+    },
+    "CollateralPrepareRequest": {
+      "type": "schema",
+      "description": "Schema: CollateralPrepareRequest",
+      "properties": [
+        "subaccountApproval",
+        "subaccountAddress",
+        "from",
+        "mode",
+        "uiFeeReceiver",
+        "gasPaymentToken",
+        "executionFeeBufferBps",
+        "slippage",
+        "amount",
+        "positionKey",
+        "operation"
+      ]
+    },
+    "LeverageTierResponse": {
+      "type": "schema",
+      "description": "Schema: LeverageTierResponse",
+      "properties": [
+        "maxPositionSize",
+        "minCollateralFactor",
+        "maxLeverage"
+      ]
+    },
+    "MarketWithTiersResponse": {
+      "type": "schema",
+      "description": "Schema: MarketWithTiersResponse",
+      "properties": [
+        "minCollateralUsd",
+        "minPositionSizeUsd",
+        "leverageTiers",
+        "isSpotOnly",
+        "listingDate",
+        "isListed",
+        "shortTokenAddress",
+        "longTokenAddress",
+        "indexTokenAddress",
+        "marketTokenAddress",
+        "symbol"
+      ]
+    },
+    "MarketTickerResponse": {
+      "type": "schema",
+      "description": "Schema: MarketTickerResponse",
+      "properties": [
+        "netRateShort",
+        "netRateLong",
+        "borrowingRateShort",
+        "borrowingRateLong",
+        "fundingRateShort",
+        "fundingRateLong",
+        "poolAmountShortUsd",
+        "poolAmountLongUsd",
+        "availableLiquidityShort",
+        "availableLiquidityLong",
+        "shortInterestUsdMark",
+        "longInterestUsdMark",
+        "shortInterestUsd",
+        "longInterestUsd",
+        "shortInterestInTokens",
+        "longInterestInTokens",
+        "priceChangePercent24hBps",
+        "priceChange24h",
+        "close24h",
+        "open24h",
+        "low24h",
+        "high24h",
+        "markPrice",
+        "maxPrice",
+        "minPrice",
+        "marketTokenAddress",
+        "symbol"
+      ]
+    },
+    "MarketInfoResponse": {
+      "type": "schema",
+      "description": "Schema: MarketInfoResponse",
+      "properties": [
+        "borrowingFactorPerSecondForShorts",
+        "borrowingFactorPerSecondForLongs",
+        "fundingFactorPerSecond",
+        "totalBorrowingFees",
+        "virtualInventoryForPositions",
+        "virtualPoolAmountForShortToken",
+        "virtualPoolAmountForLongToken",
+        "longsPayShorts",
+        "shortInterestInTokens",
+        "longInterestInTokens",
+        "shortInterestUsd",
+        "longInterestUsd",
+        "positionImpactPoolAmount",
+        "poolValueMin",
+        "poolValueMax",
+        "shortPoolAmount",
+        "longPoolAmount",
+        "virtualShortTokenId",
+        "virtualLongTokenId",
+        "virtualMarketId",
+        "maxShortPoolUsdForDeposit",
+        "maxLongPoolUsdForDeposit",
+        "maxShortPoolAmount",
+        "maxLongPoolAmount",
+        "withdrawalFeeFactorBalanceWasNotImproved",
+        "withdrawalFeeFactorBalanceWasImproved",
+        "swapImpactExponentFactor",
+        "swapImpactFactorNegative",
+        "swapImpactFactorPositive",
+        "atomicSwapFeeFactor",
+        "swapFeeFactorForBalanceWasNotImproved",
+        "swapFeeFactorForBalanceWasImproved",
+        "useOpenInterestInTokensForBalance",
+        "positionImpactExponentFactorNegative",
+        "positionImpactExponentFactorPositive",
+        "lentPositionImpactPoolAmount",
+        "maxLendableImpactUsd",
+        "maxLendableImpactFactorForWithdrawals",
+        "maxLendableImpactFactor",
+        "maxFundingFactorPerSecond",
+        "minFundingFactorPerSecond",
+        "thresholdForDecreaseFunding",
+        "thresholdForStableFunding",
+        "fundingDecreaseFactorPerSecond",
+        "fundingIncreaseFactorPerSecond",
+        "fundingExponentFactor",
+        "fundingFactor",
+        "borrowingExponentFactorShort",
+        "borrowingExponentFactorLong",
+        "borrowingFactorShort",
+        "borrowingFactorLong",
+        "maxPositionImpactFactorForLiquidations",
+        "maxPositionImpactFactorNegative",
+        "maxPositionImpactFactorPositive",
+        "positionImpactFactorNegative",
+        "positionImpactFactorPositive",
+        "positionFeeFactorForBalanceWasNotImproved",
+        "positionFeeFactorForBalanceWasImproved",
+        "maxPnlFactorForWithdrawalsShort",
+        "maxPnlFactorForWithdrawalsLong",
+        "maxPnlFactorForDepositsShort",
+        "maxPnlFactorForDepositsLong",
+        "maxPnlFactorForTradersShort",
+        "maxPnlFactorForTradersLong",
+        "minCollateralFactorForOpenInterestShort",
+        "minCollateralFactorForOpenInterestLong",
+        "minCollateralFactorForLiquidation",
+        "minCollateralFactor",
+        "swapImpactPoolAmountShort",
+        "swapImpactPoolAmountLong",
+        "positionImpactPoolDistributionRate",
+        "minPositionImpactPoolAmount",
+        "maxOpenInterestShort",
+        "maxOpenInterestLong",
+        "openInterestReserveFactorShort",
+        "openInterestReserveFactorLong",
+        "reserveFactorShort",
+        "reserveFactorLong",
+        "data",
+        "isDisabled",
+        "isSpotOnly",
+        "isSameCollaterals",
+        "shortTokenAddress",
+        "longTokenAddress",
+        "indexTokenAddress",
+        "marketTokenAddress",
+        "name"
+      ]
+    },
+    "Pick_MarketInfoResponse.Exclude_keyofMarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress___": {
+      "type": "schema",
+      "description": "From T, pick a set of properties whose keys are in the union K",
+      "properties": [
+        "marketTokenAddress",
+        "indexTokenAddress",
+        "longTokenAddress",
+        "shortTokenAddress",
+        "isSameCollaterals",
+        "isSpotOnly",
+        "name",
+        "data",
+        "isDisabled",
+        "maxLongPoolAmount",
+        "maxShortPoolAmount",
+        "maxLongPoolUsdForDeposit",
+        "maxShortPoolUsdForDeposit",
+        "reserveFactorLong",
+        "reserveFactorShort",
+        "openInterestReserveFactorLong",
+        "openInterestReserveFactorShort",
+        "maxOpenInterestLong",
+        "maxOpenInterestShort",
+        "borrowingFactorLong",
+        "borrowingFactorShort",
+        "borrowingExponentFactorLong",
+        "borrowingExponentFactorShort",
+        "fundingFactor",
+        "fundingExponentFactor",
+        "fundingIncreaseFactorPerSecond",
+        "fundingDecreaseFactorPerSecond",
+        "thresholdForStableFunding",
+        "thresholdForDecreaseFunding",
+        "minFundingFactorPerSecond",
+        "maxFundingFactorPerSecond",
+        "minPositionImpactPoolAmount",
+        "positionImpactPoolDistributionRate",
+        "minCollateralFactor",
+        "minCollateralFactorForLiquidation",
+        "minCollateralFactorForOpenInterestLong",
+        "minCollateralFactorForOpenInterestShort",
+        "maxPnlFactorForTradersLong",
+        "maxPnlFactorForTradersShort",
+        "maxPnlFactorForDepositsLong",
+        "maxPnlFactorForDepositsShort",
+        "maxPnlFactorForWithdrawalsLong",
+        "maxPnlFactorForWithdrawalsShort",
+        "positionFeeFactorForBalanceWasImproved",
+        "positionFeeFactorForBalanceWasNotImproved",
+        "positionImpactFactorPositive",
+        "positionImpactFactorNegative",
+        "maxPositionImpactFactorPositive",
+        "maxPositionImpactFactorNegative",
+        "maxPositionImpactFactorForLiquidations",
+        "maxLendableImpactFactor",
+        "maxLendableImpactFactorForWithdrawals",
+        "maxLendableImpactUsd",
+        "lentPositionImpactPoolAmount",
+        "positionImpactExponentFactorPositive",
+        "positionImpactExponentFactorNegative",
+        "useOpenInterestInTokensForBalance",
+        "swapFeeFactorForBalanceWasImproved",
+        "swapFeeFactorForBalanceWasNotImproved",
+        "atomicSwapFeeFactor",
+        "swapImpactFactorPositive",
+        "swapImpactFactorNegative",
+        "swapImpactExponentFactor",
+        "withdrawalFeeFactorBalanceWasImproved",
+        "withdrawalFeeFactorBalanceWasNotImproved",
+        "virtualMarketId",
+        "virtualLongTokenId",
+        "virtualShortTokenId"
+      ]
+    },
+    "Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__": {
+      "type": "schema",
+      "description": "Construct a type with the properties of T except for those in type K.",
+      "properties": []
+    },
+    "MarketConfigResponse": {
+      "type": "schema",
+      "description": "Schema: MarketConfigResponse",
+      "properties": []
+    },
+    "Pick_MarketInfoResponse.MarketValuesFieldKey_": {
+      "type": "schema",
+      "description": "From T, pick a set of properties whose keys are in the union K",
+      "properties": [
+        "marketTokenAddress",
+        "longPoolAmount",
+        "shortPoolAmount",
+        "poolValueMax",
+        "poolValueMin",
+        "totalBorrowingFees",
+        "positionImpactPoolAmount",
+        "swapImpactPoolAmountLong",
+        "swapImpactPoolAmountShort",
+        "longInterestUsd",
+        "shortInterestUsd",
+        "longInterestInTokens",
+        "shortInterestInTokens",
+        "borrowingFactorPerSecondForLongs",
+        "borrowingFactorPerSecondForShorts",
+        "fundingFactorPerSecond",
+        "longsPayShorts",
+        "virtualPoolAmountForLongToken",
+        "virtualPoolAmountForShortToken",
+        "virtualInventoryForPositions"
+      ]
+    },
+    "MarketValuesResponse": {
+      "type": "schema",
+      "description": "Schema: MarketValuesResponse",
+      "properties": []
+    },
+    "GlvShiftParamsResponse": {
+      "type": "schema",
+      "description": "Schema: GlvShiftParamsResponse",
+      "properties": [
+        "minMarketTokens",
+        "marketTokenAmount",
+        "toMarket",
+        "fromMarket",
+        "glv"
+      ]
+    },
+    "JitLiquidityInfoItemResponse": {
+      "type": "schema",
+      "description": "Schema: JitLiquidityInfoItemResponse",
+      "properties": [
+        "glvShiftParams",
+        "maxReservedUsdWithJitShort",
+        "maxReservedUsdWithJitLong",
+        "market",
+        "glv"
+      ]
+    },
+    "JitLiquidityInfoResponse": {
+      "type": "schema",
+      "description": "Schema: JitLiquidityInfoResponse",
+      "properties": [
+        "liquidityInfos"
+      ]
+    },
+    "JitLiquiditySnapshotResponse": {
+      "type": "schema",
+      "description": "Schema: JitLiquiditySnapshotResponse",
+      "properties": [
+        "shortLiquidityUsd",
+        "longLiquidityUsd",
+        "timestamp",
+        "glvAddress",
+        "marketAddress"
+      ]
+    },
+    "JitLiquidityHistoryResponse": {
+      "type": "schema",
+      "description": "Schema: JitLiquidityHistoryResponse",
+      "properties": [
+        "snapshots"
+      ]
+    },
+    "JitLiquidityHistoryPeriod": {
+      "type": "schema",
+      "description": "Schema: JitLiquidityHistoryPeriod",
+      "properties": []
+    },
+    "CrossChainDepositPrepareResponse": {
+      "type": "schema",
+      "description": "Schema: CrossChainDepositPrepareResponse",
+      "properties": [
+        "expiresAt",
+        "nativeFee",
+        "composeGas",
+        "payload",
+        "payloadType"
+      ]
+    },
+    "CrossChainDepositPrepareRequest": {
+      "type": "schema",
+      "description": "Schema: CrossChainDepositPrepareRequest",
+      "properties": [
+        "innerData",
+        "nativeDropAmount",
+        "nativeFee",
+        "composeGas",
+        "tokenKind",
+        "isNativeOnSource",
+        "destinationStargatePoolAddress",
+        "sourceStargatePoolAddress",
+        "tokenAddress",
+        "tokenSymbol",
+        "amount",
+        "account",
+        "srcChainId"
+      ]
+    },
+    "Record_string.unknown_": {
+      "type": "schema",
+      "description": "Construct a type with a set of properties K of type T",
+      "properties": []
+    },
+    "GasPaymentParamsDto": {
+      "type": "schema",
+      "description": "Schema: GasPaymentParamsDto",
+      "properties": [
+        "gasPaymentTokenAmount",
+        "gasPaymentTokenAddress",
+        "relayerFeeAmount",
+        "relayerFeeTokenAddress"
+      ]
+    },
+    "CrossChainWithdrawPrepareResponse": {
+      "type": "schema",
+      "description": "Schema: CrossChainWithdrawPrepareResponse",
+      "properties": [
+        "expiresAt",
+        "payload",
+        "requestId",
+        "payloadType"
+      ]
+    },
+    "BridgeOutParamsDto": {
+      "type": "schema",
+      "description": "Schema: BridgeOutParamsDto",
+      "properties": [
+        "data",
+        "provider",
+        "minAmountOut",
+        "amount",
+        "token"
+      ]
+    },
+    "CrossChainWithdrawPrepareRequest": {
+      "type": "schema",
+      "description": "Schema: CrossChainWithdrawPrepareRequest",
+      "properties": [
+        "gasPaymentToken",
+        "bridgeOutParams",
+        "account",
+        "srcChainId"
+      ]
+    },
+    "CrossChainWithdrawSubmitResponse": {
+      "type": "schema",
+      "description": "Schema: CrossChainWithdrawSubmitResponse",
+      "properties": [
+        "error",
+        "taskId",
+        "status",
+        "requestId"
+      ]
+    },
+    "CrossChainWithdrawSubmitRequest": {
+      "type": "schema",
+      "description": "Schema: CrossChainWithdrawSubmitRequest",
+      "properties": [
+        "requestId",
+        "relayerFeeAmount",
+        "relayerFeeTokenAddress",
+        "relayParamsPayload",
+        "bridgeOutParams",
+        "signature",
+        "account",
+        "srcChainId"
+      ]
+    },
+    "GmxAccountStatusResponse": {
+      "type": "schema",
+      "description": "Schema: GmxAccountStatusResponse",
+      "properties": [
+        "updatedAt",
+        "createdAt",
+        "error",
+        "gelatoStatusCode",
+        "taskId",
+        "txHash",
+        "status",
+        "requestId"
+      ]
+    },
+    "GmxAccountStatusRequest": {
+      "type": "schema",
+      "description": "Schema: GmxAccountStatusRequest",
+      "properties": [
+        "requestId"
+      ]
+    },
+    "BigIntToString_BuybackWeeklyStatsData_": {
+      "type": "schema",
+      "description": "Recursively converts bigint types to string types in a type definition.\nHandles primitives, objects, arrays, and nested structures.\nPreserves Date type as-is.",
+      "properties": [
+        "weeks",
+        "summary"
+      ]
+    },
+    "BuybackWeeklyStatsResponse": {
+      "type": "schema",
+      "description": "Schema: BuybackWeeklyStatsResponse",
+      "properties": []
+    },
+    "WalletBalance": {
+      "type": "schema",
+      "description": "Schema: WalletBalance",
+      "properties": [
+        "balance",
+        "decimals",
+        "address",
+        "symbol"
+      ]
+    },
+    "ApyEntry": {
+      "type": "schema",
+      "description": "Schema: ApyEntry",
+      "properties": [
+        "bonusApr",
+        "baseApy",
+        "apy"
+      ]
+    },
+    "Record_string.ApyEntry_": {
+      "type": "schema",
+      "description": "Construct a type with a set of properties K of type T",
+      "properties": []
+    },
+    "ApyResponse": {
+      "type": "schema",
+      "description": "Schema: ApyResponse",
+      "properties": [
+        "glvs",
+        "markets"
+      ]
+    },
+    "TokenAllowance": {
+      "type": "schema",
+      "description": "Schema: TokenAllowance",
+      "properties": [
+        "allowance",
+        "decimals",
+        "address",
+        "symbol"
+      ]
+    }
+  }
+}

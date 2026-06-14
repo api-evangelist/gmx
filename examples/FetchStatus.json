@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "path": "/subaccounts/status",
+  "operationId": "FetchStatus",
+  "summary": "",
+  "tags": [
+    "Subaccounts"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/SubaccountStatusResponse"
+      }
+    }
+  }
+}

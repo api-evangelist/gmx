@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/GasPaymentParamsDto.json",
+  "title": "GasPaymentParamsDto",
+  "properties": {
+    "gasPaymentTokenAmount": {
+      "type": "string"
+    },
+    "gasPaymentTokenAddress": {
+      "type": "string"
+    },
+    "relayerFeeAmount": {
+      "type": "string"
+    },
+    "relayerFeeTokenAddress": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "gasPaymentTokenAmount",
+    "gasPaymentTokenAddress",
+    "relayerFeeAmount",
+    "relayerFeeTokenAddress"
+  ],
+  "type": "object"
+}

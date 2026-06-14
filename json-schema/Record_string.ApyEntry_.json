@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/Record_string.ApyEntry_.json",
+  "title": "Record_string.ApyEntry_",
+  "properties": {},
+  "additionalProperties": {
+    "$ref": "#/components/schemas/ApyEntry"
+  },
+  "type": "object",
+  "description": "Construct a type with a set of properties K of type T"
+}

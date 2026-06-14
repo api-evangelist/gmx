@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "path": "/gmx-account/deposit/cross-chain/prepare",
+  "operationId": "PrepareCrossChainDeposit",
+  "summary": "",
+  "tags": [
+    "GMX Account"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/CrossChainDepositPrepareResponse"
+      }
+    }
+  }
+}

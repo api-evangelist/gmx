@@ -1,0 +1,27 @@
+{
+  "method": "GET",
+  "path": "/apy",
+  "operationId": "GetApy",
+  "summary": "",
+  "tags": [
+    "APY"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "period",
+      "required": false,
+      "schema": {
+        "$ref": "#/components/schemas/ApiParameterPeriod"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/ApyResponse"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "method": "GET",
+  "path": "/orders",
+  "operationId": "GetOrdersByAddress",
+  "summary": "",
+  "tags": [
+    "Orders"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "address",
+      "required": true,
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "$ref": "#/components/schemas/OrderResponse"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

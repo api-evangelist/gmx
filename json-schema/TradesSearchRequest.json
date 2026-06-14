@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/TradesSearchRequest.json",
+  "title": "TradesSearchRequest",
+  "properties": {
+    "cursor": {
+      "type": "string",
+      "description": "Opaque pagination cursor returned by previous response."
+    },
+    "limit": {
+      "type": "number",
+      "format": "double",
+      "description": "Page size, 1..1000. Defaults to 100."
+    },
+    "showDebugValues": {
+      "type": "boolean",
+      "description": "When false (default), excludes MarketIncrease/Decrease/Swap OrderCreated debug events."
+    },
+    "orderEventCombinations": {
+      "items": {
+        "$ref": "#/components/schemas/OrderEventCombination"
+      },
+      "type": "array"
+    },
+    "marketsDirections": {
+      "items": {
+        "$ref": "#/components/schemas/MarketDirectionFilter"
+      },
+      "type": "array"
+    },
+    "toTimestamp": {
+      "type": "number",
+      "format": "double",
+      "description": "Inclusive upper-bound timestamp filter. Accepts seconds or milliseconds."
+    },
+    "fromTimestamp": {
+      "type": "number",
+      "format": "double",
+      "description": "Inclusive lower-bound timestamp filter. Accepts seconds or milliseconds."
+    },
+    "forAllAccounts": {
+      "type": "boolean",
+      "description": "When true, returns trades for all accounts."
+    },
+    "address": {
+      "type": "string",
+      "description": "Trader address. Required unless `forAllAccounts` is true."
+    }
+  },
+  "type": "object"
+}

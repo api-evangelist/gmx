@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/OrderResponse.json",
+  "title": "OrderResponse",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "nullable": true
+    },
+    "dataList": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "autoCancel": {
+      "type": "boolean"
+    },
+    "isFrozen": {
+      "type": "boolean"
+    },
+    "shouldUnwrapNativeToken": {
+      "type": "boolean"
+    },
+    "isLong": {
+      "type": "boolean"
+    },
+    "srcChainId": {
+      "type": "string"
+    },
+    "validFromTime": {
+      "type": "string"
+    },
+    "updatedAtTime": {
+      "type": "string"
+    },
+    "minOutputAmount": {
+      "type": "string"
+    },
+    "callbackGasLimit": {
+      "type": "string"
+    },
+    "executionFee": {
+      "type": "string"
+    },
+    "acceptablePrice": {
+      "type": "string"
+    },
+    "triggerPrice": {
+      "type": "string"
+    },
+    "initialCollateralDeltaAmount": {
+      "type": "string"
+    },
+    "sizeDeltaUsd": {
+      "type": "string"
+    },
+    "decreasePositionSwapType": {
+      "type": "number",
+      "format": "double"
+    },
+    "orderType": {
+      "type": "number",
+      "format": "double"
+    },
+    "swapPath": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "initialCollateralTokenAddress": {
+      "type": "string"
+    },
+    "marketAddress": {
+      "type": "string"
+    },
+    "uiFeeReceiver": {
+      "type": "string"
+    },
+    "callbackContract": {
+      "type": "string"
+    },
+    "cancellationReceiver": {
+      "type": "string"
+    },
+    "receiver": {
+      "type": "string"
+    },
+    "account": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "requestId",
+    "dataList",
+    "autoCancel",
+    "isFrozen",
+    "shouldUnwrapNativeToken",
+    "isLong",
+    "srcChainId",
+    "validFromTime",
+    "updatedAtTime",
+    "minOutputAmount",
+    "callbackGasLimit",
+    "executionFee",
+    "acceptablePrice",
+    "triggerPrice",
+    "initialCollateralDeltaAmount",
+    "sizeDeltaUsd",
+    "decreasePositionSwapType",
+    "orderType",
+    "swapPath",
+    "initialCollateralTokenAddress",
+    "marketAddress",
+    "uiFeeReceiver",
+    "callbackContract",
+    "cancellationReceiver",
+    "receiver",
+    "account",
+    "key"
+  ],
+  "type": "object"
+}

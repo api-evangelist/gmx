@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/SubaccountStatusResponse.json",
+  "title": "SubaccountStatusResponse",
+  "properties": {
+    "integrationId": {
+      "type": "string",
+      "nullable": true
+    },
+    "multichainApprovalNonce": {
+      "type": "string"
+    },
+    "approvalNonce": {
+      "type": "string"
+    },
+    "expiresAt": {
+      "type": "string"
+    },
+    "remainingActions": {
+      "type": "string"
+    },
+    "currentActionsCount": {
+      "type": "string"
+    },
+    "maxAllowedCount": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "integrationId",
+    "multichainApprovalNonce",
+    "approvalNonce",
+    "expiresAt",
+    "remainingActions",
+    "currentActionsCount",
+    "maxAllowedCount",
+    "active"
+  ],
+  "type": "object"
+}

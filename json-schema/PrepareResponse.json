@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/PrepareResponse.json",
+  "title": "PrepareResponse",
+  "properties": {
+    "traceId": {
+      "type": "string"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "expiresAt": {
+      "type": "number",
+      "format": "double"
+    },
+    "estimates": {
+      "properties": {
+        "fundingFeeUsd": {
+          "type": "string"
+        },
+        "borrowingFeeUsd": {
+          "type": "string"
+        },
+        "positionFeeUsd": {
+          "type": "string"
+        },
+        "sizeDeltaUsd": {
+          "type": "string"
+        },
+        "acceptablePrice": {
+          "type": "string"
+        },
+        "executionFeeAmount": {
+          "type": "string"
+        },
+        "swapPriceImpactDeltaUsd": {
+          "type": "string"
+        },
+        "positionPriceImpactDeltaUsd": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "fundingFeeUsd",
+        "borrowingFeeUsd",
+        "positionFeeUsd",
+        "sizeDeltaUsd",
+        "acceptablePrice",
+        "executionFeeAmount",
+        "swapPriceImpactDeltaUsd",
+        "positionPriceImpactDeltaUsd"
+      ],
+      "type": "object"
+    },
+    "payload": {
+      "$ref": "#/components/schemas/Record_string.any_"
+    },
+    "requestId": {
+      "type": "string"
+    },
+    "mode": {
+      "$ref": "#/components/schemas/TransactionMode"
+    },
+    "payloadType": {
+      "type": "string",
+      "enum": [
+        "transaction",
+        "typed-data"
+      ]
+    }
+  },
+  "required": [
+    "payload",
+    "requestId",
+    "mode",
+    "payloadType"
+  ],
+  "type": "object"
+}

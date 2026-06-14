@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/TradeActionResponse.json",
+  "title": "TradeActionResponse",
+  "properties": {
+    "reasonBytes": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "numberOfParts": {
+      "type": "number",
+      "format": "double"
+    },
+    "twapGroupId": {
+      "type": "string"
+    },
+    "srcChainId": {
+      "type": "number",
+      "format": "double"
+    },
+    "decreasePositionSwapType": {
+      "type": "string"
+    },
+    "proportionalPendingImpactUsd": {
+      "type": "string"
+    },
+    "collateralTotalCostAmount": {
+      "type": "string"
+    },
+    "swapImpactUsd": {
+      "type": "string"
+    },
+    "executionAmountOut": {
+      "type": "string"
+    },
+    "totalImpactUsd": {
+      "type": "string"
+    },
+    "liquidationFeeAmount": {
+      "type": "string"
+    },
+    "swapFeeUsd": {
+      "type": "string"
+    },
+    "fundingFeeAmount": {
+      "type": "string"
+    },
+    "borrowingFeeAmount": {
+      "type": "string"
+    },
+    "traderDiscountAmount": {
+      "type": "string"
+    },
+    "positionFeeAmount": {
+      "type": "string"
+    },
+    "priceImpactDiffUsd": {
+      "type": "string"
+    },
+    "priceImpactUsd": {
+      "type": "string"
+    },
+    "basePnlUsd": {
+      "type": "string"
+    },
+    "pnlUsd": {
+      "type": "string"
+    },
+    "minOutputAmount": {
+      "type": "string"
+    },
+    "collateralTokenPriceMax": {
+      "type": "string"
+    },
+    "collateralTokenPriceMin": {
+      "type": "string"
+    },
+    "indexTokenPriceMax": {
+      "type": "string"
+    },
+    "indexTokenPriceMin": {
+      "type": "string"
+    },
+    "executionPrice": {
+      "type": "string"
+    },
+    "triggerPrice": {
+      "type": "string"
+    },
+    "acceptablePrice": {
+      "type": "string"
+    },
+    "sizeDeltaInTokens": {
+      "type": "string"
+    },
+    "sizeDeltaUsd": {
+      "type": "string"
+    },
+    "isLong": {
+      "type": "boolean"
+    },
+    "marketAddress": {
+      "type": "string"
+    },
+    "shouldUnwrapNativeToken": {
+      "type": "boolean"
+    },
+    "initialCollateralDeltaAmount": {
+      "type": "string"
+    },
+    "initialCollateralTokenAddress": {
+      "type": "string"
+    },
+    "swapPath": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "transactionHash": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "number",
+      "format": "double"
+    },
+    "orderKey": {
+      "type": "string"
+    },
+    "orderType": {
+      "type": "number",
+      "format": "double"
+    },
+    "account": {
+      "type": "string"
+    },
+    "eventName": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "initialCollateralDeltaAmount",
+    "initialCollateralTokenAddress",
+    "swapPath",
+    "transactionHash",
+    "timestamp",
+    "orderKey",
+    "orderType",
+    "account",
+    "eventName",
+    "id"
+  ],
+  "type": "object"
+}

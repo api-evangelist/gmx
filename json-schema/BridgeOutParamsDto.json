@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/BridgeOutParamsDto.json",
+  "title": "BridgeOutParamsDto",
+  "properties": {
+    "data": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "minAmountOut": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "data",
+    "provider",
+    "minAmountOut",
+    "amount",
+    "token"
+  ],
+  "type": "object"
+}

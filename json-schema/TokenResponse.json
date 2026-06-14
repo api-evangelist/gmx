@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/TokenResponse.json",
+  "title": "TokenResponse",
+  "properties": {
+    "searchAliases": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "isStaking": {
+      "type": "boolean"
+    },
+    "isPlatformTradingToken": {
+      "type": "boolean"
+    },
+    "isPlatformToken": {
+      "type": "boolean"
+    },
+    "isV1Available": {
+      "type": "boolean"
+    },
+    "isChartDisabled": {
+      "type": "boolean"
+    },
+    "isTempHidden": {
+      "type": "boolean"
+    },
+    "isSynthetic": {
+      "type": "boolean"
+    },
+    "isStable": {
+      "type": "boolean"
+    },
+    "isShortable": {
+      "type": "boolean"
+    },
+    "isWrapped": {
+      "type": "boolean"
+    },
+    "isNative": {
+      "type": "boolean"
+    },
+    "isUsdg": {
+      "type": "boolean"
+    },
+    "contractVersion": {
+      "type": "string"
+    },
+    "isPermitDisabled": {
+      "type": "boolean"
+    },
+    "isPermitSupported": {
+      "type": "boolean"
+    },
+    "categories": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "reservesUrl": {
+      "type": "string"
+    },
+    "explorerUrl": {
+      "type": "string"
+    },
+    "explorerSymbol": {
+      "type": "string"
+    },
+    "metamaskSymbol": {
+      "type": "string"
+    },
+    "wrappedAddress": {
+      "type": "string"
+    },
+    "visualPrefix": {
+      "type": "string"
+    },
+    "visualMultiplier": {
+      "type": "number",
+      "format": "double"
+    },
+    "address": {
+      "type": "string"
+    },
+    "decimals": {
+      "type": "number",
+      "format": "double"
+    },
+    "baseSymbol": {
+      "type": "string"
+    },
+    "assetSymbol": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "address",
+    "decimals",
+    "symbol",
+    "name"
+  ],
+  "type": "object"
+}

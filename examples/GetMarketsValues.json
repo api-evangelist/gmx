@@ -1,0 +1,21 @@
+{
+  "method": "GET",
+  "path": "/markets/values",
+  "operationId": "GetMarketsValues",
+  "summary": "",
+  "tags": [
+    "Markets"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "items": {
+          "$ref": "#/components/schemas/MarketValuesResponse"
+        },
+        "type": "array"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "method": "GET",
+  "path": "/buyback/weekly-stats",
+  "operationId": "GetWeeklyStats",
+  "summary": "",
+  "tags": [
+    "Buyback"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/BuybackWeeklyStatsResponse"
+      }
+    }
+  }
+}

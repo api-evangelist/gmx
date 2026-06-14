@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "path": "/trades/search",
+  "operationId": "SearchTrades",
+  "summary": "",
+  "tags": [
+    "Trades"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/TradesListResponse"
+      }
+    }
+  }
+}

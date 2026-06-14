@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/SubmitRequest.json",
+  "title": "SubmitRequest",
+  "properties": {
+    "from": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "eip712Data": {
+      "$ref": "#/components/schemas/Record_string.any_"
+    },
+    "requestId": {
+      "type": "string"
+    },
+    "mode": {
+      "$ref": "#/components/schemas/TransactionMode"
+    }
+  },
+  "type": "object"
+}

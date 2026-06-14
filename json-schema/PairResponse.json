@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/PairResponse.json",
+  "title": "PairResponse",
+  "properties": {
+    "liquidity_in_usd": {
+      "type": "number",
+      "format": "double"
+    },
+    "pool_id": {
+      "type": "string"
+    },
+    "volume_usd": {
+      "type": "number",
+      "format": "double"
+    },
+    "next_funding_rate_timestamp": {
+      "type": "number",
+      "format": "double"
+    },
+    "next_funding_rate": {
+      "type": "number",
+      "format": "double"
+    },
+    "funding_rate": {
+      "type": "number",
+      "format": "double"
+    },
+    "short_open_interest": {
+      "type": "number",
+      "format": "double"
+    },
+    "long_open_interest": {
+      "type": "number",
+      "format": "double"
+    },
+    "open_interest": {
+      "type": "number",
+      "format": "double"
+    },
+    "low": {
+      "type": "number",
+      "format": "double"
+    },
+    "high": {
+      "type": "number",
+      "format": "double"
+    },
+    "last_price": {
+      "type": "number",
+      "format": "double"
+    },
+    "product_type": {
+      "type": "string"
+    },
+    "target_volume": {
+      "type": "number",
+      "format": "double"
+    },
+    "base_volume": {
+      "type": "number",
+      "format": "double"
+    },
+    "target_currency": {
+      "type": "string"
+    },
+    "base_currency": {
+      "type": "string"
+    },
+    "ticker_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "pool_id",
+    "last_price",
+    "product_type",
+    "target_volume",
+    "base_volume",
+    "target_currency",
+    "base_currency",
+    "ticker_id"
+  ],
+  "type": "object"
+}

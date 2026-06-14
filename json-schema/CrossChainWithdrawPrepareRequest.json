@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/CrossChainWithdrawPrepareRequest.json",
+  "title": "CrossChainWithdrawPrepareRequest",
+  "properties": {
+    "gasPaymentToken": {
+      "type": "string",
+      "description": "Optional ERC-20 token to pay relayer fee in. Defaults to chain's gas-payment token."
+    },
+    "bridgeOutParams": {
+      "$ref": "#/components/schemas/BridgeOutParamsDto"
+    },
+    "account": {
+      "type": "string"
+    },
+    "srcChainId": {
+      "type": "number",
+      "format": "double"
+    }
+  },
+  "required": [
+    "bridgeOutParams",
+    "account",
+    "srcChainId"
+  ],
+  "type": "object"
+}

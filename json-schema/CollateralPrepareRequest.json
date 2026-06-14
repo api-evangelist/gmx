@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/CollateralPrepareRequest.json",
+  "title": "CollateralPrepareRequest",
+  "properties": {
+    "subaccountApproval": {
+      "$ref": "#/components/schemas/Record_string.any_"
+    },
+    "subaccountAddress": {
+      "type": "string"
+    },
+    "from": {
+      "type": "string"
+    },
+    "mode": {
+      "$ref": "#/components/schemas/TransactionMode"
+    },
+    "uiFeeReceiver": {
+      "type": "string"
+    },
+    "gasPaymentToken": {
+      "type": "string"
+    },
+    "executionFeeBufferBps": {
+      "type": "number",
+      "format": "double"
+    },
+    "slippage": {
+      "type": "number",
+      "format": "double"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "positionKey": {
+      "type": "string"
+    },
+    "operation": {
+      "$ref": "#/components/schemas/CollateralOperation"
+    }
+  },
+  "required": [
+    "from",
+    "mode",
+    "amount",
+    "positionKey",
+    "operation"
+  ],
+  "type": "object"
+}

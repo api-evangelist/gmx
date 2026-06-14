@@ -1,0 +1,13 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "gmx": "https://gmx.io/vocab#",
+    "defi": "https://w3id.org/defi#",
+    "WebAPI": "schema:WebAPI",
+    "EntryPoint": "schema:EntryPoint",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "documentation": "schema:documentation"
+  }
+}

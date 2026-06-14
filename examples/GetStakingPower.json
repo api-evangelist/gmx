@@ -1,0 +1,27 @@
+{
+  "method": "GET",
+  "path": "/staking/power",
+  "operationId": "GetStakingPower",
+  "summary": "",
+  "tags": [
+    "Staking"
+  ],
+  "parameters": [
+    {
+      "in": "query",
+      "name": "address",
+      "required": true,
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/StakingPowerResponse"
+      }
+    }
+  }
+}

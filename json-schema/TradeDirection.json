@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/TradeDirection.json",
+  "title": "TradeDirection",
+  "type": "string",
+  "enum": [
+    "long",
+    "short",
+    "swap",
+    "any"
+  ]
+}

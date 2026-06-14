@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/ApprovalPrepareResponse.json",
+  "title": "ApprovalPrepareResponse",
+  "properties": {
+    "nonce": {
+      "type": "string"
+    },
+    "relayRouterAddress": {
+      "type": "string"
+    },
+    "primaryType": {
+      "type": "string"
+    },
+    "message": {
+      "$ref": "#/components/schemas/Record_string.any_"
+    },
+    "types": {
+      "$ref": "#/components/schemas/Record_string._name-string--type-string_-Array_"
+    },
+    "domain": {
+      "properties": {
+        "verifyingContract": {
+          "type": "string"
+        },
+        "chainId": {
+          "type": "number",
+          "format": "double"
+        },
+        "version": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "verifyingContract",
+        "chainId",
+        "version",
+        "name"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "nonce",
+    "relayRouterAddress",
+    "primaryType",
+    "message",
+    "types",
+    "domain"
+  ],
+  "type": "object"
+}

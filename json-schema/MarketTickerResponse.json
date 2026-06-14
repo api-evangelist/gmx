@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/MarketTickerResponse.json",
+  "title": "MarketTickerResponse",
+  "properties": {
+    "netRateShort": {
+      "type": "string"
+    },
+    "netRateLong": {
+      "type": "string"
+    },
+    "borrowingRateShort": {
+      "type": "string"
+    },
+    "borrowingRateLong": {
+      "type": "string"
+    },
+    "fundingRateShort": {
+      "type": "string"
+    },
+    "fundingRateLong": {
+      "type": "string"
+    },
+    "poolAmountShortUsd": {
+      "type": "string"
+    },
+    "poolAmountLongUsd": {
+      "type": "string"
+    },
+    "availableLiquidityShort": {
+      "type": "string"
+    },
+    "availableLiquidityLong": {
+      "type": "string"
+    },
+    "shortInterestUsdMark": {
+      "type": "string"
+    },
+    "longInterestUsdMark": {
+      "type": "string"
+    },
+    "shortInterestUsd": {
+      "type": "string"
+    },
+    "longInterestUsd": {
+      "type": "string"
+    },
+    "shortInterestInTokens": {
+      "type": "string"
+    },
+    "longInterestInTokens": {
+      "type": "string"
+    },
+    "priceChangePercent24hBps": {
+      "type": "string"
+    },
+    "priceChange24h": {
+      "type": "string"
+    },
+    "close24h": {
+      "type": "string"
+    },
+    "open24h": {
+      "type": "string"
+    },
+    "low24h": {
+      "type": "string"
+    },
+    "high24h": {
+      "type": "string"
+    },
+    "markPrice": {
+      "type": "string"
+    },
+    "maxPrice": {
+      "type": "string"
+    },
+    "minPrice": {
+      "type": "string"
+    },
+    "marketTokenAddress": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "netRateShort",
+    "netRateLong",
+    "borrowingRateShort",
+    "borrowingRateLong",
+    "fundingRateShort",
+    "fundingRateLong",
+    "poolAmountShortUsd",
+    "poolAmountLongUsd",
+    "availableLiquidityShort",
+    "availableLiquidityLong",
+    "shortInterestUsdMark",
+    "longInterestUsdMark",
+    "shortInterestUsd",
+    "longInterestUsd",
+    "shortInterestInTokens",
+    "longInterestInTokens",
+    "priceChangePercent24hBps",
+    "priceChange24h",
+    "close24h",
+    "open24h",
+    "low24h",
+    "high24h",
+    "markPrice",
+    "maxPrice",
+    "minPrice",
+    "marketTokenAddress",
+    "symbol"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/LeverageTierResponse.json",
+  "title": "LeverageTierResponse",
+  "properties": {
+    "maxPositionSize": {
+      "type": "string"
+    },
+    "minCollateralFactor": {
+      "type": "string"
+    },
+    "maxLeverage": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "minCollateralFactor",
+    "maxLeverage"
+  ],
+  "type": "object"
+}

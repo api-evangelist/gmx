@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/Record_string._name-string--type-string_-Array_.json",
+  "title": "Record_string._name-string--type-string_-Array_",
+  "properties": {},
+  "additionalProperties": {
+    "items": {
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "name"
+      ],
+      "type": "object"
+    },
+    "type": "array"
+  },
+  "type": "object",
+  "description": "Construct a type with a set of properties K of type T"
+}

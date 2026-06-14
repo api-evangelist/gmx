@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/JitLiquidityInfoItemResponse.json",
+  "title": "JitLiquidityInfoItemResponse",
+  "properties": {
+    "glvShiftParams": {
+      "items": {
+        "$ref": "#/components/schemas/GlvShiftParamsResponse"
+      },
+      "type": "array"
+    },
+    "maxReservedUsdWithJitShort": {
+      "type": "string"
+    },
+    "maxReservedUsdWithJitLong": {
+      "type": "string"
+    },
+    "market": {
+      "type": "string"
+    },
+    "glv": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "glvShiftParams",
+    "maxReservedUsdWithJitShort",
+    "maxReservedUsdWithJitLong",
+    "market",
+    "glv"
+  ],
+  "type": "object"
+}

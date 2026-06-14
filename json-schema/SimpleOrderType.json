@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/SimpleOrderType.json",
+  "title": "SimpleOrderType",
+  "enum": [
+    "market",
+    "limit",
+    "stop-market",
+    "take-profit",
+    "stop-loss",
+    "twap"
+  ],
+  "type": "string"
+}

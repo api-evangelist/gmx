@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/gmx/json-schema/CrossChainDepositPrepareRequest.json",
+  "title": "CrossChainDepositPrepareRequest",
+  "properties": {
+    "innerData": {
+      "type": "string",
+      "description": "Optional extra payload appended to the LayerZero compose message (hex)."
+    },
+    "nativeDropAmount": {
+      "type": "string",
+      "description": "Optional native drop (gas) for the destination chain, in destination native decimals."
+    },
+    "nativeFee": {
+      "type": "string",
+      "description": "Optional; when omitted, server quotes Stargate `nativeFee` on the source chain."
+    },
+    "composeGas": {
+      "type": "string",
+      "description": "Optional client-supplied destination compose-gas hint; bypasses server quote."
+    },
+    "tokenKind": {
+      "type": "string",
+      "enum": [
+        "trade",
+        "platform"
+      ],
+      "description": "\"trade\" \u2192 `IStargate.sendToken` (default); \"platform\" \u2192 `IStargate.send`."
+    },
+    "isNativeOnSource": {
+      "type": "boolean",
+      "description": "Whether the source-chain token is the chain's native gas asset (ETH/BNB/etc.) \u2014\nStargate auto-wraps it to WETH/WBNB on the source side. Optional override;\notherwise resolved from the registry."
+    },
+    "destinationStargatePoolAddress": {
+      "type": "string",
+      "description": "Optional override; otherwise resolved from the registry by symbol/token."
+    },
+    "sourceStargatePoolAddress": {
+      "type": "string",
+      "description": "Optional override; otherwise resolved from the registry by symbol/token."
+    },
+    "tokenAddress": {
+      "type": "string",
+      "description": "Token address on the settlement chain (alternative to `tokenSymbol`)."
+    },
+    "tokenSymbol": {
+      "type": "string",
+      "description": "Token identifier. Provide one of:\n - `tokenSymbol` (e.g. \"USDC\" | \"USDT\" | \"ETH\"), or\n - `tokenAddress` on the settlement chain.\nStargate pool addresses and source-side `isNativeOnSource` are resolved server-side."
+    },
+    "amount": {
+      "type": "string",
+      "description": "Amount in token-native decimals as a base-10 string."
+    },
+    "account": {
+      "type": "string",
+      "description": "GMX account that will receive the deposit on the settlement chain."
+    },
+    "srcChainId": {
+      "type": "number",
+      "format": "double",
+      "description": "Source chain id (where the user holds funds and signs the bridge tx)."
+    }
+  },
+  "required": [
+    "amount",
+    "account",
+    "srcChainId"
+  ],
+  "type": "object"
+}

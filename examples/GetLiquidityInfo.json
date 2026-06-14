@@ -1,0 +1,18 @@
+{
+  "method": "GET",
+  "path": "/jit/liquidity_info",
+  "operationId": "GetLiquidityInfo",
+  "summary": "",
+  "tags": [
+    "JIT"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "Success",
+      "schema": {
+        "$ref": "#/components/schemas/JitLiquidityInfoResponse"
+      }
+    }
+  }
+}
