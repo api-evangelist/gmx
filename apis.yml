@@ -134,7 +134,7 @@ common:
   url: https://discord.gg/ymN38YefH9
 - type: Blog
   url: https://medium.com/@gmx.io
-- type: Changelog
+- type: ChangeLog
   url: https://docs.gmx.io/docs/ai-agents/overview/
 integrations:
 - name: Arbitrum
