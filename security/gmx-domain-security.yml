@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: gmx.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 22 20:16:09 2026 GMT
+  hsts: false
+- host: docs.gmx.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 14 22:31:50 2026 GMT
+  hsts: false
+- host: arbitrum.gmxapi.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 10 01:17:29 2026 GMT
+  hsts: null
+domains:
+- domain: gmx.io
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: gmxapi.io
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
