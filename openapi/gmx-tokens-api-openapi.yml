@@ -1,0 +1,228 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances Tokens API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Tokens
+paths:
+  /tokens:
+    get:
+      operationId: GetTokens
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TokenResponse'
+                type: array
+        '500':
+          description: Internal Server Error
+      tags:
+      - Tokens
+      security: []
+      parameters: []
+  /tokens/info:
+    get:
+      operationId: GetTokensInfo
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TokenInfoResponse'
+                type: array
+        '500':
+          description: Internal Server Error
+      tags:
+      - Tokens
+      security: []
+      parameters: []
+components:
+  schemas:
+    TokenResponse:
+      properties:
+        searchAliases:
+          items:
+            type: string
+          type: array
+        isStaking:
+          type: boolean
+        isPlatformTradingToken:
+          type: boolean
+        isPlatformToken:
+          type: boolean
+        isV1Available:
+          type: boolean
+        isChartDisabled:
+          type: boolean
+        isTempHidden:
+          type: boolean
+        isSynthetic:
+          type: boolean
+        isStable:
+          type: boolean
+        isShortable:
+          type: boolean
+        isWrapped:
+          type: boolean
+        isNative:
+          type: boolean
+        isUsdg:
+          type: boolean
+        contractVersion:
+          type: string
+        isPermitDisabled:
+          type: boolean
+        isPermitSupported:
+          type: boolean
+        categories:
+          items:
+            type: string
+          type: array
+        imageUrl:
+          type: string
+        reservesUrl:
+          type: string
+        explorerUrl:
+          type: string
+        explorerSymbol:
+          type: string
+        metamaskSymbol:
+          type: string
+        wrappedAddress:
+          type: string
+        visualPrefix:
+          type: string
+        visualMultiplier:
+          type: number
+          format: double
+        address:
+          type: string
+        decimals:
+          type: number
+          format: double
+        baseSymbol:
+          type: string
+        assetSymbol:
+          type: string
+        symbol:
+          type: string
+        name:
+          type: string
+      required:
+      - address
+      - decimals
+      - symbol
+      - name
+      type: object
+    TokenInfoResponse:
+      properties:
+        hasPriceFeedProvider:
+          type: boolean
+        totalSupply:
+          type: string
+        balance:
+          type: string
+        balanceType:
+          type: number
+          format: double
+        sourceChainBalance:
+          type: string
+        gmxAccountBalance:
+          type: string
+        walletBalance:
+          type: string
+        prices:
+          properties:
+            maxPrice:
+              type: string
+            minPrice:
+              type: string
+          required:
+          - maxPrice
+          - minPrice
+          type: object
+        searchAliases:
+          items:
+            type: string
+          type: array
+        isStaking:
+          type: boolean
+        isPlatformTradingToken:
+          type: boolean
+        isPlatformToken:
+          type: boolean
+        isV1Available:
+          type: boolean
+        isChartDisabled:
+          type: boolean
+        isTempHidden:
+          type: boolean
+        isSynthetic:
+          type: boolean
+        isStable:
+          type: boolean
+        isShortable:
+          type: boolean
+        isWrapped:
+          type: boolean
+        isNative:
+          type: boolean
+        isUsdg:
+          type: boolean
+        contractVersion:
+          type: string
+        isPermitDisabled:
+          type: boolean
+        isPermitSupported:
+          type: boolean
+        categories:
+          items:
+            type: string
+          type: array
+        imageUrl:
+          type: string
+        reservesUrl:
+          type: string
+        explorerUrl:
+          type: string
+        explorerSymbol:
+          type: string
+        metamaskSymbol:
+          type: string
+        wrappedAddress:
+          type: string
+        visualPrefix:
+          type: string
+        visualMultiplier:
+          type: number
+          format: double
+        address:
+          type: string
+        decimals:
+          type: number
+          format: double
+        baseSymbol:
+          type: string
+        assetSymbol:
+          type: string
+        symbol:
+          type: string
+        name:
+          type: string
+      required:
+      - prices
+      - address
+      - decimals
+      - symbol
+      - name
+      type: object

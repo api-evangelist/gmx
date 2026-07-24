@@ -1,0 +1,529 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances Order Transactions API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Order Transactions
+paths:
+  /orders/txns/prepare:
+    post:
+      operationId: Prepare
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrepareResponse'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      tags:
+      - Order Transactions
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrepareRequest'
+  /orders/txns/submit:
+    post:
+      operationId: Submit
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubmitResponse'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      tags:
+      - Order Transactions
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitRequest'
+  /orders/txns/status:
+    post:
+      operationId: Status
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      tags:
+      - Order Transactions
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusRequest'
+  /orders/txns/edit/prepare:
+    post:
+      operationId: EditPrepare
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrepareResponse'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      tags:
+      - Order Transactions
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditPrepareRequest'
+  /orders/txns/cancel/prepare:
+    post:
+      operationId: CancelPrepare
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrepareResponse'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      tags:
+      - Order Transactions
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelPrepareRequest'
+  /orders/txns/collateral/prepare:
+    post:
+      operationId: CollateralPrepare
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrepareResponse'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      tags:
+      - Order Transactions
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollateralPrepareRequest'
+components:
+  schemas:
+    SubmitResponse:
+      properties:
+        traceId:
+          type: string
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        taskId:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrderTransactionStatus'
+        requestId:
+          type: string
+      required:
+      - status
+      - requestId
+      type: object
+    SimpleOrderType:
+      enum:
+      - market
+      - limit
+      - stop-market
+      - take-profit
+      - stop-loss
+      - twap
+      type: string
+    TransactionMode:
+      enum:
+      - express
+      - classic
+      type: string
+    OrderKind:
+      enum:
+      - increase
+      - decrease
+      - swap
+      type: string
+    EditPrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        executionFeeTopUp:
+          type: string
+        newAutoCancel:
+          type: boolean
+        newAcceptablePrice:
+          type: string
+        newTriggerPrice:
+          type: string
+        newSize:
+          type: string
+        orderIds:
+          items:
+            type: string
+          type: array
+      required:
+      - from
+      - mode
+      - orderIds
+      type: object
+    SubmitRequest:
+      properties:
+        from:
+          type: string
+        signature:
+          type: string
+        eip712Data:
+          $ref: '#/components/schemas/Record_string.any_'
+        requestId:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+      type: object
+    PrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        uiFeeReceiver:
+          type: string
+        referralCode:
+          type: string
+        autoCancel:
+          type: boolean
+        tpsl:
+          items:
+            properties:
+              size:
+                type: string
+              triggerPrice:
+                type: string
+              type:
+                type: string
+                enum:
+                - take-profit
+                - stop-loss
+            required:
+            - triggerPrice
+            - type
+            type: object
+          type: array
+        twapConfig:
+          properties:
+            frequency:
+              type: number
+              format: double
+            parts:
+              type: number
+              format: double
+            duration:
+              type: number
+              format: double
+          required:
+          - parts
+          - duration
+          type: object
+        gasPaymentToken:
+          type: string
+        manualSwapPath:
+          items:
+            type: string
+          type: array
+        keepLeverage:
+          type: boolean
+        receiveToken:
+          type: string
+        collateralToPay:
+          properties:
+            token:
+              type: string
+            amount:
+              type: string
+          required:
+          - token
+          - amount
+          type: object
+        executionFeeBufferBps:
+          type: number
+          format: double
+        acceptablePriceImpactBps:
+          type: string
+        slippage:
+          type: number
+          format: double
+        collateralToken:
+          type: string
+        triggerPrice:
+          type: string
+        size:
+          type: string
+        orderType:
+          $ref: '#/components/schemas/SimpleOrderType'
+        direction:
+          type: string
+          enum:
+          - long
+          - short
+        symbol:
+          type: string
+        kind:
+          $ref: '#/components/schemas/OrderKind'
+      required:
+      - mode
+      - orderType
+      - kind
+      type: object
+    Record_string.any_:
+      properties: {}
+      additionalProperties: {}
+      type: object
+      description: Construct a type with a set of properties K of type T
+    StatusResponse:
+      properties:
+        traceId:
+          type: string
+        updatedAt:
+          type: string
+        createdAt:
+          type: string
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        gelatoStatusCode:
+          type: number
+          format: double
+        taskId:
+          type: string
+        cancellationReason:
+          type: string
+        orderKeys:
+          items:
+            type: string
+          type: array
+        executionTxnHash:
+          type: string
+        createdTxnHash:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrderTransactionStatus'
+        requestId:
+          type: string
+      required:
+      - updatedAt
+      - createdAt
+      - status
+      - requestId
+      type: object
+    PrepareResponse:
+      properties:
+        traceId:
+          type: string
+        warnings:
+          items:
+            type: string
+          type: array
+        expiresAt:
+          type: number
+          format: double
+        estimates:
+          properties:
+            fundingFeeUsd:
+              type: string
+            borrowingFeeUsd:
+              type: string
+            positionFeeUsd:
+              type: string
+            sizeDeltaUsd:
+              type: string
+            acceptablePrice:
+              type: string
+            executionFeeAmount:
+              type: string
+            swapPriceImpactDeltaUsd:
+              type: string
+            positionPriceImpactDeltaUsd:
+              type: string
+          required:
+          - fundingFeeUsd
+          - borrowingFeeUsd
+          - positionFeeUsd
+          - sizeDeltaUsd
+          - acceptablePrice
+          - executionFeeAmount
+          - swapPriceImpactDeltaUsd
+          - positionPriceImpactDeltaUsd
+          type: object
+        payload:
+          $ref: '#/components/schemas/Record_string.any_'
+        requestId:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        payloadType:
+          type: string
+          enum:
+          - transaction
+          - typed-data
+      required:
+      - payload
+      - requestId
+      - mode
+      - payloadType
+      type: object
+    CollateralOperation:
+      type: string
+      enum:
+      - deposit
+      - withdraw
+    OrderTransactionStatus:
+      enum:
+      - prepared
+      - relay_accepted
+      - relay_pending
+      - relay_submitted
+      - created
+      - executed
+      - cancelled
+      - relay_failed
+      - relay_reverted
+      type: string
+    CollateralPrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        uiFeeReceiver:
+          type: string
+        gasPaymentToken:
+          type: string
+        executionFeeBufferBps:
+          type: number
+          format: double
+        slippage:
+          type: number
+          format: double
+        amount:
+          type: string
+        positionKey:
+          type: string
+        operation:
+          $ref: '#/components/schemas/CollateralOperation'
+      required:
+      - from
+      - mode
+      - amount
+      - positionKey
+      - operation
+      type: object
+    StatusRequest:
+      properties:
+        requestId:
+          type: string
+      required:
+      - requestId
+      type: object
+    CancelPrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        all:
+          type: boolean
+        orderIds:
+          items:
+            type: string
+          type: array
+        orderId:
+          type: string
+      required:
+      - from
+      - mode
+      type: object

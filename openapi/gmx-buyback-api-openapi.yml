@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances Buyback API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Buyback
+paths:
+  /buyback/weekly-stats:
+    get:
+      operationId: GetWeeklyStats
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuybackWeeklyStatsResponse'
+        '500':
+          description: Internal Server Error
+      tags:
+      - Buyback
+      security: []
+      parameters: []
+components:
+  schemas:
+    BuybackWeeklyStatsResponse:
+      $ref: '#/components/schemas/BigIntToString_BuybackWeeklyStatsData_'
+    BigIntToString_BuybackWeeklyStatsData_:
+      properties:
+        weeks:
+          items:
+            properties:
+              cumulativeAccrued:
+                type: string
+              weeklyAccrued:
+                type: string
+              weekEnd:
+                type: number
+                format: double
+              weekStart:
+                type: number
+                format: double
+            required:
+            - cumulativeAccrued
+            - weeklyAccrued
+            - weekEnd
+            - weekStart
+            type: object
+          type: array
+        summary:
+          properties:
+            weeksTracked:
+              type: number
+              format: double
+            latestWeekAccrued:
+              type: string
+            totalAccrued:
+              type: string
+          required:
+          - weeksTracked
+          - latestWeekAccrued
+          - totalAccrued
+          type: object
+      required:
+      - weeks
+      - summary
+      type: object
+      description: 'Recursively converts bigint types to string types in a type definition.
+
+        Handles primitives, objects, arrays, and nested structures.
+
+        Preserves Date type as-is.'

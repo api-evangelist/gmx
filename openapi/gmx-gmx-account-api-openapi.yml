@@ -1,0 +1,423 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances GMX Account API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: GMX Account
+paths:
+  /gmx-account/deposit/cross-chain/prepare:
+    post:
+      operationId: PrepareCrossChainDeposit
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CrossChainDepositPrepareResponse'
+        '400':
+          description: Bad Request
+        '429':
+          description: Too Many Requests
+        '500':
+          description: Internal Server Error
+      tags:
+      - GMX Account
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrossChainDepositPrepareRequest'
+  /gmx-account/withdraw/cross-chain/prepare:
+    post:
+      operationId: PrepareCrossChainWithdraw
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CrossChainWithdrawPrepareResponse'
+        '400':
+          description: Bad Request
+        '429':
+          description: Too Many Requests
+        '500':
+          description: Internal Server Error
+      tags:
+      - GMX Account
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrossChainWithdrawPrepareRequest'
+  /gmx-account/withdraw/cross-chain/submit:
+    post:
+      operationId: SubmitCrossChainWithdraw
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CrossChainWithdrawSubmitResponse'
+        '400':
+          description: Bad Request
+        '429':
+          description: Too Many Requests
+      tags:
+      - GMX Account
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrossChainWithdrawSubmitRequest'
+  /gmx-account/withdraw/cross-chain/status:
+    post:
+      operationId: StatusCrossChainWithdraw
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GmxAccountStatusResponse'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '429':
+          description: Too Many Requests
+      tags:
+      - GMX Account
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GmxAccountStatusRequest'
+components:
+  schemas:
+    Record_string._name-string--type-string_-Array_:
+      properties: {}
+      additionalProperties:
+        items:
+          properties:
+            type:
+              type: string
+            name:
+              type: string
+          required:
+          - type
+          - name
+          type: object
+        type: array
+      type: object
+      description: Construct a type with a set of properties K of type T
+    CrossChainDepositPrepareResponse:
+      properties:
+        expiresAt:
+          type: number
+          format: double
+        nativeFee:
+          type: string
+        composeGas:
+          type: string
+        payload:
+          properties:
+            value:
+              type: string
+            data:
+              type: string
+            to:
+              type: string
+          required:
+          - value
+          - data
+          - to
+          type: object
+        payloadType:
+          type: string
+          enum:
+          - transaction
+          nullable: false
+      required:
+      - expiresAt
+      - nativeFee
+      - composeGas
+      - payload
+      - payloadType
+      type: object
+    Record_string.unknown_:
+      properties: {}
+      additionalProperties: {}
+      type: object
+      description: Construct a type with a set of properties K of type T
+    CrossChainWithdrawPrepareResponse:
+      properties:
+        expiresAt:
+          type: number
+          format: double
+        payload:
+          properties:
+            gasPaymentParams:
+              $ref: '#/components/schemas/GasPaymentParamsDto'
+            relayRouterAddress:
+              type: string
+            relayParams:
+              $ref: '#/components/schemas/Record_string.unknown_'
+            typedData:
+              properties:
+                message:
+                  $ref: '#/components/schemas/Record_string.unknown_'
+                primaryType:
+                  type: string
+                  enum:
+                  - BridgeOut
+                  nullable: false
+                types:
+                  $ref: '#/components/schemas/Record_string._name-string--type-string_-Array_'
+                domain:
+                  $ref: '#/components/schemas/Record_string.unknown_'
+              required:
+              - message
+              - primaryType
+              - types
+              - domain
+              type: object
+          required:
+          - gasPaymentParams
+          - relayRouterAddress
+          - relayParams
+          - typedData
+          type: object
+        requestId:
+          type: string
+          description: Server-generated id; pass back to /submit and use for /status polling.
+        payloadType:
+          type: string
+          enum:
+          - typed-data
+          nullable: false
+      required:
+      - expiresAt
+      - payload
+      - requestId
+      - payloadType
+      type: object
+    GasPaymentParamsDto:
+      properties:
+        gasPaymentTokenAmount:
+          type: string
+        gasPaymentTokenAddress:
+          type: string
+        relayerFeeAmount:
+          type: string
+        relayerFeeTokenAddress:
+          type: string
+      required:
+      - gasPaymentTokenAmount
+      - gasPaymentTokenAddress
+      - relayerFeeAmount
+      - relayerFeeTokenAddress
+      type: object
+    CrossChainWithdrawSubmitResponse:
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        taskId:
+          type: string
+        status:
+          type: string
+          enum:
+          - relay_accepted
+          - relay_failed
+        requestId:
+          type: string
+      required:
+      - status
+      - requestId
+      type: object
+    CrossChainWithdrawSubmitRequest:
+      properties:
+        requestId:
+          type: string
+          description: Echo back the requestId from /prepare to link prepare→submit→status.
+        relayerFeeAmount:
+          type: string
+        relayerFeeTokenAddress:
+          type: string
+        relayParamsPayload:
+          $ref: '#/components/schemas/Record_string.unknown_'
+        bridgeOutParams:
+          $ref: '#/components/schemas/BridgeOutParamsDto'
+        signature:
+          type: string
+        account:
+          type: string
+        srcChainId:
+          type: number
+          format: double
+      required:
+      - relayerFeeAmount
+      - relayerFeeTokenAddress
+      - relayParamsPayload
+      - bridgeOutParams
+      - signature
+      - account
+      - srcChainId
+      type: object
+    CrossChainWithdrawPrepareRequest:
+      properties:
+        gasPaymentToken:
+          type: string
+          description: Optional ERC-20 token to pay relayer fee in. Defaults to chain's gas-payment token.
+        bridgeOutParams:
+          $ref: '#/components/schemas/BridgeOutParamsDto'
+        account:
+          type: string
+        srcChainId:
+          type: number
+          format: double
+      required:
+      - bridgeOutParams
+      - account
+      - srcChainId
+      type: object
+    CrossChainDepositPrepareRequest:
+      properties:
+        innerData:
+          type: string
+          description: Optional extra payload appended to the LayerZero compose message (hex).
+        nativeDropAmount:
+          type: string
+          description: Optional native drop (gas) for the destination chain, in destination native decimals.
+        nativeFee:
+          type: string
+          description: Optional; when omitted, server quotes Stargate `nativeFee` on the source chain.
+        composeGas:
+          type: string
+          description: Optional client-supplied destination compose-gas hint; bypasses server quote.
+        tokenKind:
+          type: string
+          enum:
+          - trade
+          - platform
+          description: '"trade" → `IStargate.sendToken` (default); "platform" → `IStargate.send`.'
+        isNativeOnSource:
+          type: boolean
+          description: 'Whether the source-chain token is the chain''s native gas asset (ETH/BNB/etc.) —
+
+            Stargate auto-wraps it to WETH/WBNB on the source side. Optional override;
+
+            otherwise resolved from the registry.'
+        destinationStargatePoolAddress:
+          type: string
+          description: Optional override; otherwise resolved from the registry by symbol/token.
+        sourceStargatePoolAddress:
+          type: string
+          description: Optional override; otherwise resolved from the registry by symbol/token.
+        tokenAddress:
+          type: string
+          description: Token address on the settlement chain (alternative to `tokenSymbol`).
+        tokenSymbol:
+          type: string
+          description: "Token identifier. Provide one of:\n - `tokenSymbol` (e.g. \"USDC\" | \"USDT\" | \"ETH\"), or\n - `tokenAddress` on the settlement chain.\nStargate pool addresses and source-side `isNativeOnSource` are resolved server-side."
+        amount:
+          type: string
+          description: Amount in token-native decimals as a base-10 string.
+        account:
+          type: string
+          description: GMX account that will receive the deposit on the settlement chain.
+        srcChainId:
+          type: number
+          format: double
+          description: Source chain id (where the user holds funds and signs the bridge tx).
+      required:
+      - amount
+      - account
+      - srcChainId
+      type: object
+    GmxAccountStatusRequest:
+      properties:
+        requestId:
+          type: string
+      required:
+      - requestId
+      type: object
+    BridgeOutParamsDto:
+      properties:
+        data:
+          type: string
+        provider:
+          type: string
+        minAmountOut:
+          type: string
+        amount:
+          type: string
+        token:
+          type: string
+      required:
+      - data
+      - provider
+      - minAmountOut
+      - amount
+      - token
+      type: object
+    GmxAccountStatusResponse:
+      properties:
+        updatedAt:
+          type: string
+        createdAt:
+          type: string
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        gelatoStatusCode:
+          type: number
+          format: double
+        taskId:
+          type: string
+        txHash:
+          type: string
+        status:
+          type: string
+        requestId:
+          type: string
+      required:
+      - updatedAt
+      - createdAt
+      - status
+      - requestId
+      type: object

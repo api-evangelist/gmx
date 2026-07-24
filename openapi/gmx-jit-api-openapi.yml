@@ -1,0 +1,148 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances JIT API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: JIT
+paths:
+  /jit/liquidity_info:
+    get:
+      operationId: GetLiquidityInfo
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JitLiquidityInfoResponse'
+        '500':
+          description: Internal Server Error
+      tags:
+      - JIT
+      security: []
+      parameters: []
+  /jit/liquidity_history:
+    get:
+      operationId: GetLiquidityHistory
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JitLiquidityHistoryResponse'
+        '400':
+          description: Bad Request - Invalid period
+        '500':
+          description: Internal Server Error
+      tags:
+      - JIT
+      security: []
+      parameters:
+      - in: query
+        name: period
+        required: true
+        schema:
+          $ref: '#/components/schemas/JitLiquidityHistoryPeriod'
+      - in: query
+        name: from
+        required: false
+        schema:
+          format: double
+          type: number
+      - in: query
+        name: to
+        required: false
+        schema:
+          format: double
+          type: number
+components:
+  schemas:
+    JitLiquidityHistoryResponse:
+      properties:
+        snapshots:
+          items:
+            $ref: '#/components/schemas/JitLiquiditySnapshotResponse'
+          type: array
+      required:
+      - snapshots
+      type: object
+    JitLiquidityInfoResponse:
+      properties:
+        liquidityInfos:
+          items:
+            $ref: '#/components/schemas/JitLiquidityInfoItemResponse'
+          type: array
+      required:
+      - liquidityInfos
+      type: object
+    GlvShiftParamsResponse:
+      properties:
+        minMarketTokens:
+          type: string
+        marketTokenAmount:
+          type: string
+        toMarket:
+          type: string
+        fromMarket:
+          type: string
+        glv:
+          type: string
+      required:
+      - minMarketTokens
+      - marketTokenAmount
+      - toMarket
+      - fromMarket
+      - glv
+      type: object
+    JitLiquidityHistoryPeriod:
+      type: string
+      enum:
+      - 1h
+      - 1d
+    JitLiquiditySnapshotResponse:
+      properties:
+        shortLiquidityUsd:
+          type: string
+        longLiquidityUsd:
+          type: string
+        timestamp:
+          type: number
+          format: double
+        glvAddress:
+          type: string
+        marketAddress:
+          type: string
+      required:
+      - shortLiquidityUsd
+      - longLiquidityUsd
+      - timestamp
+      - glvAddress
+      - marketAddress
+      type: object
+    JitLiquidityInfoItemResponse:
+      properties:
+        glvShiftParams:
+          items:
+            $ref: '#/components/schemas/GlvShiftParamsResponse'
+          type: array
+        maxReservedUsdWithJitShort:
+          type: string
+        maxReservedUsdWithJitLong:
+          type: string
+        market:
+          type: string
+        glv:
+          type: string
+      required:
+      - glvShiftParams
+      - maxReservedUsdWithJitShort
+      - maxReservedUsdWithJitLong
+      - market
+      - glv
+      type: object

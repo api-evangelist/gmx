@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances Performance API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Performance
+paths:
+  /performance/annualized:
+    get:
+      operationId: GetAnnualized
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    entity:
+                      type: string
+                    performance:
+                      type: string
+                    address:
+                      type: string
+                  required:
+                  - entity
+                  - address
+                  type: object
+                type: array
+        '400':
+          description: Invalid period
+        '500':
+          description: Internal Server Error
+      tags:
+      - Performance
+      security: []
+      parameters:
+      - in: query
+        name: period
+        required: false
+        schema:
+          $ref: '#/components/schemas/ApiParameterPeriod'
+      - in: query
+        name: address
+        required: false
+        schema:
+          type: string
+  /performance/snapshots:
+    get:
+      operationId: GetSnapshots
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    snapshots:
+                      items:
+                        properties:
+                          performance:
+                            type: string
+                          snapshotTimestamp:
+                            type: number
+                            format: double
+                        required:
+                        - snapshotTimestamp
+                        type: object
+                      type: array
+                    entity:
+                      type: string
+                    address:
+                      type: string
+                  required:
+                  - snapshots
+                  - entity
+                  - address
+                  type: object
+                type: array
+        '400':
+          description: Invalid period
+        '500':
+          description: Internal Server Error
+      tags:
+      - Performance
+      security: []
+      parameters:
+      - in: query
+        name: period
+        required: false
+        schema:
+          $ref: '#/components/schemas/ApiParameterPeriod'
+      - in: query
+        name: address
+        required: false
+        schema:
+          type: string
+components:
+  schemas:
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string

@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances Rates API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Rates
+paths:
+  /rates:
+    get:
+      operationId: GetRates
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatesResponse'
+        '400':
+          description: Invalid period or averageBy
+        '500':
+          description: Internal Server Error
+      tags:
+      - Rates
+      security: []
+      parameters:
+      - in: query
+        name: period
+        required: false
+        schema:
+          $ref: '#/components/schemas/ApiParameterPeriod'
+      - in: query
+        name: averageBy
+        required: false
+        schema:
+          $ref: '#/components/schemas/ApiParameterPeriod'
+      - in: query
+        name: address
+        required: false
+        schema:
+          type: string
+components:
+  schemas:
+    RatesSnapshotResponse:
+      properties:
+        timestamp:
+          type: number
+          format: double
+        borrowingRateShort:
+          type: string
+        borrowingRateLong:
+          type: string
+        fundingRateShort:
+          type: string
+        fundingRateLong:
+          type: string
+        netRateShort:
+          type: string
+        netRateLong:
+          type: string
+      required:
+      - timestamp
+      - borrowingRateShort
+      - borrowingRateLong
+      - fundingRateShort
+      - fundingRateLong
+      - netRateShort
+      - netRateLong
+      type: object
+    RatesResponse:
+      items:
+        $ref: '#/components/schemas/MarketRatesResponse'
+      type: array
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string
+    MarketRatesResponse:
+      properties:
+        ratesSnapshots:
+          items:
+            $ref: '#/components/schemas/RatesSnapshotResponse'
+          type: array
+        marketAddress:
+          type: string
+      required:
+      - ratesSnapshots
+      - marketAddress
+      type: object

@@ -1,0 +1,298 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances Trades API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Trades
+paths:
+  /trades:
+    get:
+      operationId: GetTrades
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TradesListResponse'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      tags:
+      - Trades
+      security: []
+      parameters:
+      - in: query
+        name: address
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: symbol
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: marketAddress
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: since
+        required: false
+        schema:
+          format: double
+          type: number
+      - in: query
+        name: until
+        required: false
+        schema:
+          format: double
+          type: number
+      - in: query
+        name: actions
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - in: query
+        name: limit
+        required: false
+        schema:
+          format: double
+          type: number
+      - in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+  /trades/search:
+    post:
+      operationId: SearchTrades
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TradesListResponse'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+      description: 'Trade history search supporting the same filters used by the GMX UI:
+
+        marketsDirections (per-tuple market+direction+collateral) and
+
+        orderEventCombinations (orderType+eventName+isDepositOrWithdraw+isTwap).'
+      tags:
+      - Trades
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TradesSearchRequest'
+components:
+  schemas:
+    TradesListResponse:
+      properties:
+        hasMore:
+          type: boolean
+        nextCursor:
+          type: string
+          nullable: true
+        trades:
+          items:
+            $ref: '#/components/schemas/TradeResponse'
+          type: array
+      required:
+      - hasMore
+      - nextCursor
+      - trades
+      type: object
+    TradesSearchRequest:
+      properties:
+        cursor:
+          type: string
+          description: Opaque pagination cursor returned by previous response.
+        limit:
+          type: number
+          format: double
+          description: Page size, 1..1000. Defaults to 100.
+        showDebugValues:
+          type: boolean
+          description: When false (default), excludes MarketIncrease/Decrease/Swap OrderCreated debug events.
+        orderEventCombinations:
+          items:
+            $ref: '#/components/schemas/OrderEventCombination'
+          type: array
+        marketsDirections:
+          items:
+            $ref: '#/components/schemas/MarketDirectionFilter'
+          type: array
+        toTimestamp:
+          type: number
+          format: double
+          description: Inclusive upper-bound timestamp filter. Accepts seconds or milliseconds.
+        fromTimestamp:
+          type: number
+          format: double
+          description: Inclusive lower-bound timestamp filter. Accepts seconds or milliseconds.
+        forAllAccounts:
+          type: boolean
+          description: When true, returns trades for all accounts.
+        address:
+          type: string
+          description: Trader address. Required unless `forAllAccounts` is true.
+      type: object
+    MarketDirectionFilter:
+      properties:
+        collateralAddress:
+          type: string
+        direction:
+          $ref: '#/components/schemas/TradeDirection'
+        marketAddress:
+          type: string
+      required:
+      - direction
+      - marketAddress
+      type: object
+    TradeResponse:
+      $ref: '#/components/schemas/TradeActionResponse'
+    TradeDirection:
+      type: string
+      enum:
+      - long
+      - short
+      - swap
+      - any
+    OrderEventCombination:
+      properties:
+        isTwap:
+          type: boolean
+        isDepositOrWithdraw:
+          type: boolean
+        orderType:
+          type: number
+          format: double
+        eventName:
+          type: string
+      type: object
+    TradeActionResponse:
+      properties:
+        reasonBytes:
+          type: string
+        reason:
+          type: string
+        numberOfParts:
+          type: number
+          format: double
+        twapGroupId:
+          type: string
+        srcChainId:
+          type: number
+          format: double
+        decreasePositionSwapType:
+          type: string
+        proportionalPendingImpactUsd:
+          type: string
+        collateralTotalCostAmount:
+          type: string
+        swapImpactUsd:
+          type: string
+        executionAmountOut:
+          type: string
+        totalImpactUsd:
+          type: string
+        liquidationFeeAmount:
+          type: string
+        swapFeeUsd:
+          type: string
+        fundingFeeAmount:
+          type: string
+        borrowingFeeAmount:
+          type: string
+        traderDiscountAmount:
+          type: string
+        positionFeeAmount:
+          type: string
+        priceImpactDiffUsd:
+          type: string
+        priceImpactUsd:
+          type: string
+        basePnlUsd:
+          type: string
+        pnlUsd:
+          type: string
+        minOutputAmount:
+          type: string
+        collateralTokenPriceMax:
+          type: string
+        collateralTokenPriceMin:
+          type: string
+        indexTokenPriceMax:
+          type: string
+        indexTokenPriceMin:
+          type: string
+        executionPrice:
+          type: string
+        triggerPrice:
+          type: string
+        acceptablePrice:
+          type: string
+        sizeDeltaInTokens:
+          type: string
+        sizeDeltaUsd:
+          type: string
+        isLong:
+          type: boolean
+        marketAddress:
+          type: string
+        shouldUnwrapNativeToken:
+          type: boolean
+        initialCollateralDeltaAmount:
+          type: string
+        initialCollateralTokenAddress:
+          type: string
+        swapPath:
+          items:
+            type: string
+          type: array
+        transactionHash:
+          type: string
+        timestamp:
+          type: number
+          format: double
+        orderKey:
+          type: string
+        orderType:
+          type: number
+          format: double
+        account:
+          type: string
+        eventName:
+          type: string
+        id:
+          type: string
+      required:
+      - initialCollateralDeltaAmount
+      - initialCollateralTokenAddress
+      - swapPath
+      - transactionHash
+      - timestamp
+      - orderKey
+      - orderType
+      - account
+      - eventName
+      - id
+      type: object

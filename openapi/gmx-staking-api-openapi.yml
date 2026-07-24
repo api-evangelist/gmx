@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances Staking API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Staking
+paths:
+  /staking/power:
+    get:
+      operationId: GetStakingPower
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StakingPowerResponse'
+        '400':
+          description: Bad Request - Invalid address
+        '500':
+          description: Internal Server Error
+      tags:
+      - Staking
+      security: []
+      parameters:
+      - in: query
+        name: address
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    BigIntToString_StakingPowerData_:
+      properties:
+        loyaltyTrackingStart:
+          type: number
+          format: double
+        powerAccrualStart:
+          type: number
+          format: double
+        treasuryGmxBalance:
+          type: string
+        projectedRewardShare:
+          type: string
+        powerResetCount:
+          type: number
+          format: double
+        lastPowerResetAt:
+          type: number
+          format: double
+        loyaltyRatio:
+          type: number
+          format: double
+        currentStaked:
+          type: string
+        historicalMaxStaked:
+          type: string
+        userSharePercent:
+          type: number
+          format: double
+        totalNetworkPower:
+          type: string
+        cumulativePower:
+          type: string
+      required:
+      - loyaltyTrackingStart
+      - powerAccrualStart
+      - treasuryGmxBalance
+      - projectedRewardShare
+      - powerResetCount
+      - lastPowerResetAt
+      - loyaltyRatio
+      - currentStaked
+      - historicalMaxStaked
+      - userSharePercent
+      - totalNetworkPower
+      - cumulativePower
+      type: object
+      description: 'Recursively converts bigint types to string types in a type definition.
+
+        Handles primitives, objects, arrays, and nested structures.
+
+        Preserves Date type as-is.'
+    StakingPowerResponse:
+      $ref: '#/components/schemas/BigIntToString_StakingPowerData_'

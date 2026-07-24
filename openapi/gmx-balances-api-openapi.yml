@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances Balances API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Balances
+paths:
+  /balances/wallet:
+    get:
+      operationId: GetWalletBalances
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WalletBalance'
+                type: array
+        '400':
+          description: Bad Request - Invalid address
+        '500':
+          description: Internal Server Error
+      tags:
+      - Balances
+      security: []
+      parameters:
+      - in: query
+        name: address
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    WalletBalance:
+      properties:
+        balance:
+          type: string
+        decimals:
+          type: number
+          format: double
+        address:
+          type: string
+        symbol:
+          type: string
+      required:
+      - balance
+      - decimals
+      - address
+      - symbol
+      type: object

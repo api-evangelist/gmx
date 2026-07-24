@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances APY API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: APY
+paths:
+  /apy:
+    get:
+      operationId: GetApy
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApyResponse'
+        '400':
+          description: Invalid period
+        '500':
+          description: Internal Server Error
+      tags:
+      - APY
+      security: []
+      parameters:
+      - in: query
+        name: period
+        required: false
+        schema:
+          $ref: '#/components/schemas/ApiParameterPeriod'
+components:
+  schemas:
+    ApyResponse:
+      properties:
+        glvs:
+          $ref: '#/components/schemas/Record_string.ApyEntry_'
+        markets:
+          $ref: '#/components/schemas/Record_string.ApyEntry_'
+      required:
+      - glvs
+      - markets
+      type: object
+    ApyEntry:
+      properties:
+        bonusApr:
+          type: number
+          format: double
+        baseApy:
+          type: number
+          format: double
+        apy:
+          type: number
+          format: double
+      required:
+      - bonusApr
+      - baseApy
+      - apy
+      type: object
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string
+    Record_string.ApyEntry_:
+      properties: {}
+      additionalProperties:
+        $ref: '#/components/schemas/ApyEntry'
+      type: object
+      description: Construct a type with a set of properties K of type T

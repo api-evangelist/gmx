@@ -1,0 +1,176 @@
+openapi: 3.0.0
+info:
+  title: '@gmx-io/gmx-public-api Allowances Subaccounts API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Subaccounts
+paths:
+  /subaccounts/status:
+    post:
+      operationId: FetchStatus
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubaccountStatusResponse'
+        '400':
+          description: Bad Request
+      tags:
+      - Subaccounts
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubaccountStatusRequest'
+  /subaccounts/approval/prepare:
+    post:
+      operationId: PrepareApproval
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApprovalPrepareResponse'
+        '400':
+          description: Bad Request
+      tags:
+      - Subaccounts
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalPrepareRequest'
+components:
+  schemas:
+    Record_string._name-string--type-string_-Array_:
+      properties: {}
+      additionalProperties:
+        items:
+          properties:
+            type:
+              type: string
+            name:
+              type: string
+          required:
+          - type
+          - name
+          type: object
+        type: array
+      type: object
+      description: Construct a type with a set of properties K of type T
+    SubaccountStatusResponse:
+      properties:
+        integrationId:
+          type: string
+          nullable: true
+        multichainApprovalNonce:
+          type: string
+        approvalNonce:
+          type: string
+        expiresAt:
+          type: string
+        remainingActions:
+          type: string
+        currentActionsCount:
+          type: string
+        maxAllowedCount:
+          type: string
+        active:
+          type: boolean
+      required:
+      - integrationId
+      - multichainApprovalNonce
+      - approvalNonce
+      - expiresAt
+      - remainingActions
+      - currentActionsCount
+      - maxAllowedCount
+      - active
+      type: object
+    Record_string.any_:
+      properties: {}
+      additionalProperties: {}
+      type: object
+      description: Construct a type with a set of properties K of type T
+    SubaccountStatusRequest:
+      properties:
+        subaccountAddress:
+          type: string
+        account:
+          type: string
+      required:
+      - subaccountAddress
+      - account
+      type: object
+    ApprovalPrepareRequest:
+      properties:
+        signingNetwork:
+          type: string
+        maxAllowedCount:
+          type: string
+        expiresAt:
+          type: string
+        shouldAdd:
+          type: boolean
+        subaccountAddress:
+          type: string
+        account:
+          type: string
+      required:
+      - maxAllowedCount
+      - expiresAt
+      - shouldAdd
+      - subaccountAddress
+      - account
+      type: object
+    ApprovalPrepareResponse:
+      properties:
+        nonce:
+          type: string
+        relayRouterAddress:
+          type: string
+        primaryType:
+          type: string
+        message:
+          $ref: '#/components/schemas/Record_string.any_'
+        types:
+          $ref: '#/components/schemas/Record_string._name-string--type-string_-Array_'
+        domain:
+          properties:
+            verifyingContract:
+              type: string
+            chainId:
+              type: number
+              format: double
+            version:
+              type: string
+            name:
+              type: string
+          required:
+          - verifyingContract
+          - chainId
+          - version
+          - name
+          type: object
+      required:
+      - nonce
+      - relayRouterAddress
+      - primaryType
+      - message
+      - types
+      - domain
+      type: object
