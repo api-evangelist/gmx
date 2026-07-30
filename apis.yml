@@ -12,7 +12,19 @@ description: 'GMX is a decentralized perpetual and spot exchange deployed on Arb
   access. Data coverage includes markets, tickers, tokens, positions, orders, rates,
   APY, performance, wallet balances, GLP/GM/GLV token analytics, OHLCV, buyback stats,
   and staking power.'
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/gmx.png
 tags:
 - DeFi
 - Perpetual Exchange
@@ -30,31 +42,12 @@ created: '2026-06-14'
 modified: '2026-06-14'
 specificationVersion: '0.19'
 apis:
-- aid: gmx:gmx-api
-  name: GMX API
-  description: Primary HTTP integration surface for GMX, actively developed and OpenAPI-documented.
-    Covers account data, order information, trading analytics, wallet balances, allowances,
-    staking power, buyback stats, JIT liquidity, subaccounts, and API-relayed order
-    workflows across all supported networks.
-  humanURL: https://docs.gmx.io/docs/api/overview/
-  baseURL: https://arbitrum.gmxapi.io/v1
-  tags:
-  - Trading
-  - Orders
-  - Positions
-  - Analytics
-  - Accounts
-  properties:
-  - type: Documentation
-    url: https://docs.gmx.io/docs/api/overview/
-  - type: OpenAPI
-    url: https://docs.gmx.io/docs/api/overview/
 - aid: gmx:oracle-api
   name: GMX Oracle API
-  description: Stable, read-only REST API providing oracle prices, market information,
-    liquidity snapshots, APY data, and GM/GLV token info for Arbitrum, Avalanche,
-    Botanix, and MegaETH. Primary endpoints live at {chain}-api.gmxinfra.io with documented
-    fallback hosts for high availability.
+  description: >-
+    Stable, read-only REST API providing oracle prices, market information, liquidity snapshots, APY data,
+    and GM/GLV token info for Arbitrum, Avalanche, Botanix, and MegaETH. Primary endpoints live at {chain}-api.gmxinfra.io
+    with documented fallback hosts for high availability.
   humanURL: https://docs.gmx.io/docs/api/rest/
   baseURL: https://arbitrum-api.gmxinfra.io
   tags:
@@ -68,9 +61,9 @@ apis:
     url: https://docs.gmx.io/docs/api/rest/
 - aid: gmx:graphql-api
   name: GMX GraphQL API
-  description: Historical on-chain data for GMX via Subsquid-powered GraphQL endpoints.
-    Enables deep queries over trades, liquidity events, positions, and protocol metrics
-    indexed from Arbitrum and Avalanche chains.
+  description: >-
+    Historical on-chain data for GMX via Subsquid-powered GraphQL endpoints. Enables deep queries over
+    trades, liquidity events, positions, and protocol metrics indexed from Arbitrum and Avalanche chains.
   humanURL: https://docs.gmx.io/docs/api/subsquid/
   baseURL: https://gmx.squids.live/gmx-synthetics-arbitrum:prod/api/graphql
   tags:
@@ -87,10 +80,10 @@ apis:
     type: GraphQLSchema
 - aid: gmx:integration-api
   name: GMX Integration API
-  description: CoinGecko-compatible trading pairs API for GMX markets on Arbitrum
-    and Avalanche, returning ticker IDs, base and target currencies, product type
-    (Spot or Perpetual), last price, 24-hour high/low, base and target volumes, and
-    open interest for each market.
+  description: >-
+    CoinGecko-compatible trading pairs API for GMX markets on Arbitrum and Avalanche, returning ticker
+    IDs, base and target currencies, product type (Spot or Perpetual), last price, 24-hour high/low, base
+    and target volumes, and open interest for each market.
   humanURL: https://github.com/gmx-io/gmx-integration-api
   baseURL: https://gmx-integration-cg.vercel.app/api
   tags:
@@ -105,10 +98,10 @@ apis:
     url: https://github.com/gmx-io/gmx-integration-api
 - aid: gmx:typescript-sdk
   name: GMX TypeScript SDK
-  description: 'Official @gmx-io/sdk package shipping two clients: GmxSdk (SDK v1)
-    for full read/write access via RPC, and GmxApiSdk (SDK v2) for lightweight read-only
-    HTTP access covering markets, tickers, tokens, pairs, rates, APY, performance,
-    positions, orders, OHLCV, buyback stats, and staking power.'
+  description: >-
+    Official @gmx-io/sdk package shipping two clients: GmxSdk (SDK v1) for full read/write access via
+    RPC, and GmxApiSdk (SDK v2) for lightweight read-only HTTP access covering markets, tickers, tokens,
+    pairs, rates, APY, performance, positions, orders, OHLCV, buyback stats, and staking power.
   humanURL: https://docs.gmx.io/docs/sdk/
   baseURL: https://www.npmjs.com/package/@gmx-io/sdk
   tags:
@@ -121,6 +114,222 @@ apis:
     url: https://docs.gmx.io/docs/sdk/
   - type: GitHub
     url: https://github.com/gmx-io/gmx-interface
+- aid: gmx:gmx-allowances-api
+  name: GMX Allowances API
+  description: The Allowances API from GMX — 1 operation(s) for allowances.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Allowances
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-allowances-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-apy-api
+  name: GMX APY API
+  description: The APY API from GMX — 1 operation(s) for apy.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - APY
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-apy-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-balances-api
+  name: GMX Balances API
+  description: The Balances API from GMX — 1 operation(s) for balances.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-balances-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-buyback-api
+  name: GMX Buyback API
+  description: The Buyback API from GMX — 1 operation(s) for buyback.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Buyback
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-buyback-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-gmx-account-api
+  name: GMX GMX Account API
+  description: The GMX Account API from GMX — 4 operation(s) for gmx account.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - GMX Account
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-gmx-account-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-jit-api
+  name: GMX JIT API
+  description: The JIT API from GMX — 2 operation(s) for jit.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - JIT
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-jit-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-markets-api
+  name: GMX Markets API
+  description: The Markets API from GMX — 5 operation(s) for markets.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Markets
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-markets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-order-transactions-api
+  name: GMX Order Transactions API
+  description: The Order Transactions API from GMX — 6 operation(s) for order transactions.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Order Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-order-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-orders-api
+  name: GMX Orders API
+  description: The Orders API from GMX — 2 operation(s) for orders.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-orders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-pairs-api
+  name: GMX Pairs API
+  description: The Pairs API from GMX — 1 operation(s) for pairs.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Pairs
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-pairs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-performance-api
+  name: GMX Performance API
+  description: The Performance API from GMX — 2 operation(s) for performance.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Performance
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-performance-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-positions-api
+  name: GMX Positions API
+  description: The Positions API from GMX — 2 operation(s) for positions.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Positions
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-positions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-prices-api
+  name: GMX Prices API
+  description: The Prices API from GMX — 1 operation(s) for prices.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Prices
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-prices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-rates-api
+  name: GMX Rates API
+  description: The Rates API from GMX — 1 operation(s) for rates.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Rates
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-rates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-staking-api
+  name: GMX Staking API
+  description: The Staking API from GMX — 1 operation(s) for staking.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Staking
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-staking-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-subaccounts-api
+  name: GMX Subaccounts API
+  description: The Subaccounts API from GMX — 2 operation(s) for subaccounts.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Subaccounts
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-subaccounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-tokens-api
+  name: GMX Tokens API
+  description: The Tokens API from GMX — 2 operation(s) for tokens.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-trades-api
+  name: GMX Trades API
+  description: The Trades API from GMX — 2 operation(s) for trades.
+  humanURL: https://docs.gmx.io/docs/api/overview/
+  baseURL: https://arbitrum.gmxapi.io/v1
+  tags:
+  - Trades
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-trades-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
 common:
 - type: AgenticAccess
   url: agentic-access/gmx-agentic-access.yml
