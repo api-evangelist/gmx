@@ -1,0 +1,421 @@
+{
+  "item": [
+    {
+      "id": "8f44338e-a358-4f5a-a48b-bb7eed98fd60",
+      "name": "Positions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11ed502c-86ce-4ed2-9df9-7dec8b93d21c",
+          "name": "Get Positions Info",
+          "request": {
+            "name": "Get Positions Info",
+            "description": {},
+            "url": {
+              "path": [
+                "positions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "includeRelatedOrders",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a647df6-4696-4d03-84ff-85aead479bb7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeRelatedOrders",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"pendingClaimableFundingFeesUsd\": \"string\",\n    \"pendingFundingFeesUsd\": \"string\",\n    \"uiFeeUsd\": \"string\",\n    \"closingFeeUsd\": \"string\",\n    \"netValue\": \"string\",\n    \"closePriceImpactDeltaUsd\": \"string\",\n    \"pendingImpactUsd\": \"string\",\n    \"priceImpactDiffUsd\": \"string\",\n    \"netPriceImapctDeltaUsd\": \"string\",\n    \"pnlAfterAllFeesPercentage\": \"string\",\n    \"pnlAfterAllFees\": \"string\",\n    \"netValueAfterAllFees\": \"string\",\n    \"pnlAfterFeesPercentage\": \"string\",\n    \"pnlAfterFees\": \"string\",\n    \"pnlPercentage\": \"string\",\n    \"hasLowCollateral\": true,\n    \"remainingCollateralAmount\": \"string\",\n    \"remainingCollateralUsd\": \"string\",\n    \"collateralUsd\": \"string\",\n    \"markPrice\": \"string\",\n    \"poolName\": \"string\",\n    \"indexName\": \"string\",\n    \"data\": \"string\",\n    \"pendingImpactAmount\": \"string\",\n    \"uiFeeAmount\": \"string\",\n    \"traderDiscountAmount\": \"string\",\n    \"positionFeeAmount\": \"string\",\n    \"pnl\": \"string\",\n    \"claimableShortTokenAmount\": \"string\",\n    \"claimableLongTokenAmount\": \"string\",\n    \"fundingFeeAmount\": \"string\",\n    \"isLong\": true,\n    \"decreasedAtTime\": \"string\",\n    \"increasedAtTime\": \"string\",\n    \"pendingBorrowingFeesUsd\": \"string\",\n    \"collateralAmount\": \"string\",\n    \"sizeInTokens\": \"string\",\n    \"sizeInUsd\": \"string\",\n    \"collateralTokenAddress\": \"string\",\n    \"marketAddress\": \"string\",\n    \"account\": \"string\",\n    \"contractKey\": \"string\",\n    \"key\": \"string\",\n    \"relatedOrders\": [\n      {\n        \"requestId\": \"string\",\n        \"dataList\": [\n          \"string\",\n          \"string\"\n        ],\n        \"autoCancel\": true,\n        \"isFrozen\": true,\n        \"shouldUnwrapNativeToken\": false,\n        \"isLong\": true,\n        \"srcChainId\": \"string\",\n        \"validFromTime\": \"string\",\n        \"updatedAtTime\": \"string\",\n        \"minOutputAmount\": \"string\",\n        \"callbackGasLimit\": \"string\",\n        \"executionFee\": \"string\",\n        \"acceptablePrice\": \"string\",\n        \"triggerPrice\": \"string\",\n        \"initialCollateralDeltaAmount\": \"string\",\n        \"sizeDeltaUsd\": \"string\",\n        \"decreasePositionSwapType\": 957.7924196456622,\n        \"orderType\": 20.732476157743207,\n        \"swapPath\": [\n          \"string\",\n          \"string\"\n        ],\n        \"initialCollateralTokenAddress\": \"string\",\n        \"marketAddress\": \"string\",\n        \"uiFeeReceiver\": \"string\",\n        \"callbackContract\": \"string\",\n        \"cancellationReceiver\": \"string\",\n        \"receiver\": \"string\",\n        \"account\": \"string\",\n        \"key\": \"string\"\n      },\n      {\n        \"requestId\": \"string\",\n        \"dataList\": [\n          \"string\",\n          \"string\"\n        ],\n        \"autoCancel\": false,\n        \"isFrozen\": true,\n        \"shouldUnwrapNativeToken\": false,\n        \"isLong\": true,\n        \"srcChainId\": \"string\",\n        \"validFromTime\": \"string\",\n        \"updatedAtTime\": \"string\",\n        \"minOutputAmount\": \"string\",\n        \"callbackGasLimit\": \"string\",\n        \"executionFee\": \"string\",\n        \"acceptablePrice\": \"string\",\n        \"triggerPrice\": \"string\",\n        \"initialCollateralDeltaAmount\": \"string\",\n        \"sizeDeltaUsd\": \"string\",\n        \"decreasePositionSwapType\": 3399.903527343694,\n        \"orderType\": 9849.833545484418,\n        \"swapPath\": [\n          \"string\",\n          \"string\"\n        ],\n        \"initialCollateralTokenAddress\": \"string\",\n        \"marketAddress\": \"string\",\n        \"uiFeeReceiver\": \"string\",\n        \"callbackContract\": \"string\",\n        \"cancellationReceiver\": \"string\",\n        \"receiver\": \"string\",\n        \"account\": \"string\",\n        \"key\": \"string\"\n      }\n    ],\n    \"leverageWithoutPnl\": \"string\",\n    \"leverageWithPnl\": \"string\",\n    \"leverage\": \"string\",\n    \"liquidationPrice\": \"string\",\n    \"entryPrice\": \"string\",\n    \"isOpening\": false\n  },\n  {\n    \"pendingClaimableFundingFeesUsd\": \"string\",\n    \"pendingFundingFeesUsd\": \"string\",\n    \"uiFeeUsd\": \"string\",\n    \"closingFeeUsd\": \"string\",\n    \"netValue\": \"string\",\n    \"closePriceImpactDeltaUsd\": \"string\",\n    \"pendingImpactUsd\": \"string\",\n    \"priceImpactDiffUsd\": \"string\",\n    \"netPriceImapctDeltaUsd\": \"string\",\n    \"pnlAfterAllFeesPercentage\": \"string\",\n    \"pnlAfterAllFees\": \"string\",\n    \"netValueAfterAllFees\": \"string\",\n    \"pnlAfterFeesPercentage\": \"string\",\n    \"pnlAfterFees\": \"string\",\n    \"pnlPercentage\": \"string\",\n    \"hasLowCollateral\": true,\n    \"remainingCollateralAmount\": \"string\",\n    \"remainingCollateralUsd\": \"string\",\n    \"collateralUsd\": \"string\",\n    \"markPrice\": \"string\",\n    \"poolName\": \"string\",\n    \"indexName\": \"string\",\n    \"data\": \"string\",\n    \"pendingImpactAmount\": \"string\",\n    \"uiFeeAmount\": \"string\",\n    \"traderDiscountAmount\": \"string\",\n    \"positionFeeAmount\": \"string\",\n    \"pnl\": \"string\",\n    \"claimableShortTokenAmount\": \"string\",\n    \"claimableLongTokenAmount\": \"string\",\n    \"fundingFeeAmount\": \"string\",\n    \"isLong\": true,\n    \"decreasedAtTime\": \"string\",\n    \"increasedAtTime\": \"string\",\n    \"pendingBorrowingFeesUsd\": \"string\",\n    \"collateralAmount\": \"string\",\n    \"sizeInTokens\": \"string\",\n    \"sizeInUsd\": \"string\",\n    \"collateralTokenAddress\": \"string\",\n    \"marketAddress\": \"string\",\n    \"account\": \"string\",\n    \"contractKey\": \"string\",\n    \"key\": \"string\",\n    \"relatedOrders\": [\n      {\n        \"requestId\": \"string\",\n        \"dataList\": [\n          \"string\",\n          \"string\"\n        ],\n        \"autoCancel\": false,\n        \"isFrozen\": false,\n        \"shouldUnwrapNativeToken\": true,\n        \"isLong\": false,\n        \"srcChainId\": \"string\",\n        \"validFromTime\": \"string\",\n        \"updatedAtTime\": \"string\",\n        \"minOutputAmount\": \"string\",\n        \"callbackGasLimit\": \"string\",\n        \"executionFee\": \"string\",\n        \"acceptablePrice\": \"string\",\n        \"triggerPrice\": \"string\",\n        \"initialCollateralDeltaAmount\": \"string\",\n        \"sizeDeltaUsd\": \"string\",\n        \"decreasePositionSwapType\": 7597.697340127226,\n        \"orderType\": 8224.616951671493,\n        \"swapPath\": [\n          \"string\",\n          \"string\"\n        ],\n        \"initialCollateralTokenAddress\": \"string\",\n        \"marketAddress\": \"string\",\n        \"uiFeeReceiver\": \"string\",\n        \"callbackContract\": \"string\",\n        \"cancellationReceiver\": \"string\",\n        \"receiver\": \"string\",\n        \"account\": \"string\",\n        \"key\": \"string\"\n      },\n      {\n        \"requestId\": \"string\",\n        \"dataList\": [\n          \"string\",\n          \"string\"\n        ],\n        \"autoCancel\": false,\n        \"isFrozen\": false,\n        \"shouldUnwrapNativeToken\": false,\n        \"isLong\": true,\n        \"srcChainId\": \"string\",\n        \"validFromTime\": \"string\",\n        \"updatedAtTime\": \"string\",\n        \"minOutputAmount\": \"string\",\n        \"callbackGasLimit\": \"string\",\n        \"executionFee\": \"string\",\n        \"acceptablePrice\": \"string\",\n        \"triggerPrice\": \"string\",\n        \"initialCollateralDeltaAmount\": \"string\",\n        \"sizeDeltaUsd\": \"string\",\n        \"decreasePositionSwapType\": 7754.025377747885,\n        \"orderType\": 27.23113088863638,\n        \"swapPath\": [\n          \"string\",\n          \"string\"\n        ],\n        \"initialCollateralTokenAddress\": \"string\",\n        \"marketAddress\": \"string\",\n        \"uiFeeReceiver\": \"string\",\n        \"callbackContract\": \"string\",\n        \"cancellationReceiver\": \"string\",\n        \"receiver\": \"string\",\n        \"account\": \"string\",\n        \"key\": \"string\"\n      }\n    ],\n    \"leverageWithoutPnl\": \"string\",\n    \"leverageWithPnl\": \"string\",\n    \"leverage\": \"string\",\n    \"liquidationPrice\": \"string\",\n    \"entryPrice\": \"string\",\n    \"isOpening\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "335cf4aa-68f9-4cdf-9e28-4b9f2df10fc5",
+              "name": "Bad Request - Invalid address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeRelatedOrders",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ab6889d-396b-4f7a-a570-7ae620d4cb80",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includeRelatedOrders",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31fc28ef-3273-4b36-a34e-c44f00c24cfa",
+          "name": "Get Position By Key",
+          "request": {
+            "name": "Get Position By Key",
+            "description": {},
+            "url": {
+              "path": [
+                "positions",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeRelatedOrders",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ec4c93f-e0f0-4ed2-b3f3-e7dfb7756262",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "positions",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeRelatedOrders",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pendingClaimableFundingFeesUsd\": \"string\",\n  \"pendingFundingFeesUsd\": \"string\",\n  \"uiFeeUsd\": \"string\",\n  \"closingFeeUsd\": \"string\",\n  \"netValue\": \"string\",\n  \"closePriceImpactDeltaUsd\": \"string\",\n  \"pendingImpactUsd\": \"string\",\n  \"priceImpactDiffUsd\": \"string\",\n  \"netPriceImapctDeltaUsd\": \"string\",\n  \"pnlAfterAllFeesPercentage\": \"string\",\n  \"pnlAfterAllFees\": \"string\",\n  \"netValueAfterAllFees\": \"string\",\n  \"pnlAfterFeesPercentage\": \"string\",\n  \"pnlAfterFees\": \"string\",\n  \"pnlPercentage\": \"string\",\n  \"hasLowCollateral\": false,\n  \"remainingCollateralAmount\": \"string\",\n  \"remainingCollateralUsd\": \"string\",\n  \"collateralUsd\": \"string\",\n  \"markPrice\": \"string\",\n  \"poolName\": \"string\",\n  \"indexName\": \"string\",\n  \"data\": \"string\",\n  \"pendingImpactAmount\": \"string\",\n  \"uiFeeAmount\": \"string\",\n  \"traderDiscountAmount\": \"string\",\n  \"positionFeeAmount\": \"string\",\n  \"pnl\": \"string\",\n  \"claimableShortTokenAmount\": \"string\",\n  \"claimableLongTokenAmount\": \"string\",\n  \"fundingFeeAmount\": \"string\",\n  \"isLong\": false,\n  \"decreasedAtTime\": \"string\",\n  \"increasedAtTime\": \"string\",\n  \"pendingBorrowingFeesUsd\": \"string\",\n  \"collateralAmount\": \"string\",\n  \"sizeInTokens\": \"string\",\n  \"sizeInUsd\": \"string\",\n  \"collateralTokenAddress\": \"string\",\n  \"marketAddress\": \"string\",\n  \"account\": \"string\",\n  \"contractKey\": \"string\",\n  \"key\": \"string\",\n  \"relatedOrders\": [\n    {\n      \"requestId\": \"string\",\n      \"dataList\": [\n        \"string\",\n        \"string\"\n      ],\n      \"autoCancel\": false,\n      \"isFrozen\": true,\n      \"shouldUnwrapNativeToken\": true,\n      \"isLong\": false,\n      \"srcChainId\": \"string\",\n      \"validFromTime\": \"string\",\n      \"updatedAtTime\": \"string\",\n      \"minOutputAmount\": \"string\",\n      \"callbackGasLimit\": \"string\",\n      \"executionFee\": \"string\",\n      \"acceptablePrice\": \"string\",\n      \"triggerPrice\": \"string\",\n      \"initialCollateralDeltaAmount\": \"string\",\n      \"sizeDeltaUsd\": \"string\",\n      \"decreasePositionSwapType\": 5367.47911607518,\n      \"orderType\": 7258.73371006953,\n      \"swapPath\": [\n        \"string\",\n        \"string\"\n      ],\n      \"initialCollateralTokenAddress\": \"string\",\n      \"marketAddress\": \"string\",\n      \"uiFeeReceiver\": \"string\",\n      \"callbackContract\": \"string\",\n      \"cancellationReceiver\": \"string\",\n      \"receiver\": \"string\",\n      \"account\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"requestId\": \"string\",\n      \"dataList\": [\n        \"string\",\n        \"string\"\n      ],\n      \"autoCancel\": false,\n      \"isFrozen\": true,\n      \"shouldUnwrapNativeToken\": true,\n      \"isLong\": true,\n      \"srcChainId\": \"string\",\n      \"validFromTime\": \"string\",\n      \"updatedAtTime\": \"string\",\n      \"minOutputAmount\": \"string\",\n      \"callbackGasLimit\": \"string\",\n      \"executionFee\": \"string\",\n      \"acceptablePrice\": \"string\",\n      \"triggerPrice\": \"string\",\n      \"initialCollateralDeltaAmount\": \"string\",\n      \"sizeDeltaUsd\": \"string\",\n      \"decreasePositionSwapType\": 2698.529564111737,\n      \"orderType\": 1320.7443207205495,\n      \"swapPath\": [\n        \"string\",\n        \"string\"\n      ],\n      \"initialCollateralTokenAddress\": \"string\",\n      \"marketAddress\": \"string\",\n      \"uiFeeReceiver\": \"string\",\n      \"callbackContract\": \"string\",\n      \"cancellationReceiver\": \"string\",\n      \"receiver\": \"string\",\n      \"account\": \"string\",\n      \"key\": \"string\"\n    }\n  ],\n  \"leverageWithoutPnl\": \"string\",\n  \"leverageWithPnl\": \"string\",\n  \"leverage\": \"string\",\n  \"liquidationPrice\": \"string\",\n  \"entryPrice\": \"string\",\n  \"isOpening\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ae1039b-964f-4d9c-bf68-84a2757cdae9",
+              "name": "Bad Request - Invalid key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "positions",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeRelatedOrders",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92809311-31d1-48d2-ae0c-ca45c86e5c94",
+              "name": "Position not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "positions",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeRelatedOrders",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db5d28ed-0c39-42fe-aba2-c7036b80f1da",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "positions",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeRelatedOrders",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d23b0cfc-5d02-4ef7-90ad-e52cfc271aaa",
+    "name": "@gmx-io/gmx-public-api Allowances Positions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "@gmx-io/gmx-public-api Allowances API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Allowances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetAllowances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/allowances",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "spender",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

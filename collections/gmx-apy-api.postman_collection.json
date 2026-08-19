@@ -1,0 +1,178 @@
+{
+  "item": [
+    {
+      "id": "7ba2235f-26b9-46b0-a3a9-5ea51474d50e",
+      "name": "APY",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9bd72e5-30ad-4c9e-bc6e-9896aeb77018",
+          "name": "Get Apy",
+          "request": {
+            "name": "Get Apy",
+            "description": {},
+            "url": {
+              "path": [
+                "apy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5e84c7a-8d90-4d96-bcb6-44fdc41dd91a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"glvs\": {\n    \"key_0\": {\n      \"bonusApr\": 6367.167916450248,\n      \"baseApy\": 1611.956001920456,\n      \"apy\": 1268.6649129533644\n    }\n  },\n  \"markets\": {\n    \"key_0\": {\n      \"bonusApr\": 6538.283859452112,\n      \"baseApy\": 1180.9117316252705,\n      \"apy\": 1513.0773119832352\n    },\n    \"key_1\": {\n      \"bonusApr\": 163.30393713045345,\n      \"baseApy\": 6885.245376410953,\n      \"apy\": 4251.1542698065505\n    },\n    \"key_2\": {\n      \"bonusApr\": 9795.443468580723,\n      \"baseApy\": 2961.3799418394206,\n      \"apy\": 7461.491372265816\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9a9c3f1-3634-489c-a1f4-0cb63a6aab99",
+              "name": "Invalid period",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de19fc57-b145-4cea-86da-a6ef2f5f8419",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c2103a2f-176a-4414-bb5e-c87fc909f027",
+    "name": "@gmx-io/gmx-public-api Allowances APY API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

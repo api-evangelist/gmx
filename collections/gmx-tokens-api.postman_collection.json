@@ -1,0 +1,227 @@
+{
+  "item": [
+    {
+      "id": "8d83e3e6-1412-4e0e-b049-246191df082f",
+      "name": "Tokens",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e1847915-5eff-48c8-acf4-5899732fd346",
+          "name": "Get Tokens",
+          "request": {
+            "name": "Get Tokens",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c23e2e7-90c0-4c9f-8723-8ab1f1ceda22",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"string\",\n    \"decimals\": 7260.1273530525705,\n    \"symbol\": \"string\",\n    \"name\": \"string\",\n    \"searchAliases\": [\n      \"string\",\n      \"string\"\n    ],\n    \"isStaking\": false,\n    \"isPlatformTradingToken\": true,\n    \"isPlatformToken\": false,\n    \"isV1Available\": false,\n    \"isChartDisabled\": true,\n    \"isTempHidden\": false,\n    \"isSynthetic\": false,\n    \"isStable\": false,\n    \"isShortable\": true,\n    \"isWrapped\": false,\n    \"isNative\": false,\n    \"isUsdg\": true,\n    \"contractVersion\": \"string\",\n    \"isPermitDisabled\": true,\n    \"isPermitSupported\": false,\n    \"categories\": [\n      \"string\",\n      \"string\"\n    ],\n    \"imageUrl\": \"string\",\n    \"reservesUrl\": \"string\",\n    \"explorerUrl\": \"string\",\n    \"explorerSymbol\": \"string\",\n    \"metamaskSymbol\": \"string\",\n    \"wrappedAddress\": \"string\",\n    \"visualPrefix\": \"string\",\n    \"visualMultiplier\": 7186.725651254795,\n    \"baseSymbol\": \"string\",\n    \"assetSymbol\": \"string\"\n  },\n  {\n    \"address\": \"string\",\n    \"decimals\": 2336.0124676296546,\n    \"symbol\": \"string\",\n    \"name\": \"string\",\n    \"searchAliases\": [\n      \"string\",\n      \"string\"\n    ],\n    \"isStaking\": true,\n    \"isPlatformTradingToken\": true,\n    \"isPlatformToken\": false,\n    \"isV1Available\": true,\n    \"isChartDisabled\": false,\n    \"isTempHidden\": false,\n    \"isSynthetic\": false,\n    \"isStable\": false,\n    \"isShortable\": true,\n    \"isWrapped\": true,\n    \"isNative\": false,\n    \"isUsdg\": false,\n    \"contractVersion\": \"string\",\n    \"isPermitDisabled\": false,\n    \"isPermitSupported\": true,\n    \"categories\": [\n      \"string\",\n      \"string\"\n    ],\n    \"imageUrl\": \"string\",\n    \"reservesUrl\": \"string\",\n    \"explorerUrl\": \"string\",\n    \"explorerSymbol\": \"string\",\n    \"metamaskSymbol\": \"string\",\n    \"wrappedAddress\": \"string\",\n    \"visualPrefix\": \"string\",\n    \"visualMultiplier\": 5243.294142425186,\n    \"baseSymbol\": \"string\",\n    \"assetSymbol\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3799e266-978d-49b1-b79b-33c2ded83924",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2391558b-5b8e-403a-a68b-6cf4bfe820e7",
+          "name": "Get Tokens Info",
+          "request": {
+            "name": "Get Tokens Info",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04b95a80-e8e1-4b6b-98b9-81f301b8c397",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"prices\": {\n      \"maxPrice\": \"string\",\n      \"minPrice\": \"string\"\n    },\n    \"address\": \"string\",\n    \"decimals\": 3801.7739452088426,\n    \"symbol\": \"string\",\n    \"name\": \"string\",\n    \"hasPriceFeedProvider\": false,\n    \"totalSupply\": \"string\",\n    \"balance\": \"string\",\n    \"balanceType\": 721.0310478826353,\n    \"sourceChainBalance\": \"string\",\n    \"gmxAccountBalance\": \"string\",\n    \"walletBalance\": \"string\",\n    \"searchAliases\": [\n      \"string\",\n      \"string\"\n    ],\n    \"isStaking\": false,\n    \"isPlatformTradingToken\": true,\n    \"isPlatformToken\": true,\n    \"isV1Available\": false,\n    \"isChartDisabled\": true,\n    \"isTempHidden\": false,\n    \"isSynthetic\": false,\n    \"isStable\": true,\n    \"isShortable\": false,\n    \"isWrapped\": true,\n    \"isNative\": true,\n    \"isUsdg\": false,\n    \"contractVersion\": \"string\",\n    \"isPermitDisabled\": true,\n    \"isPermitSupported\": false,\n    \"categories\": [\n      \"string\",\n      \"string\"\n    ],\n    \"imageUrl\": \"string\",\n    \"reservesUrl\": \"string\",\n    \"explorerUrl\": \"string\",\n    \"explorerSymbol\": \"string\",\n    \"metamaskSymbol\": \"string\",\n    \"wrappedAddress\": \"string\",\n    \"visualPrefix\": \"string\",\n    \"visualMultiplier\": 1664.2936135879106,\n    \"baseSymbol\": \"string\",\n    \"assetSymbol\": \"string\"\n  },\n  {\n    \"prices\": {\n      \"maxPrice\": \"string\",\n      \"minPrice\": \"string\"\n    },\n    \"address\": \"string\",\n    \"decimals\": 3565.1965371999363,\n    \"symbol\": \"string\",\n    \"name\": \"string\",\n    \"hasPriceFeedProvider\": false,\n    \"totalSupply\": \"string\",\n    \"balance\": \"string\",\n    \"balanceType\": 2378.9675212494,\n    \"sourceChainBalance\": \"string\",\n    \"gmxAccountBalance\": \"string\",\n    \"walletBalance\": \"string\",\n    \"searchAliases\": [\n      \"string\",\n      \"string\"\n    ],\n    \"isStaking\": false,\n    \"isPlatformTradingToken\": false,\n    \"isPlatformToken\": true,\n    \"isV1Available\": false,\n    \"isChartDisabled\": true,\n    \"isTempHidden\": false,\n    \"isSynthetic\": true,\n    \"isStable\": false,\n    \"isShortable\": false,\n    \"isWrapped\": true,\n    \"isNative\": true,\n    \"isUsdg\": false,\n    \"contractVersion\": \"string\",\n    \"isPermitDisabled\": true,\n    \"isPermitSupported\": false,\n    \"categories\": [\n      \"string\",\n      \"string\"\n    ],\n    \"imageUrl\": \"string\",\n    \"reservesUrl\": \"string\",\n    \"explorerUrl\": \"string\",\n    \"explorerSymbol\": \"string\",\n    \"metamaskSymbol\": \"string\",\n    \"wrappedAddress\": \"string\",\n    \"visualPrefix\": \"string\",\n    \"visualMultiplier\": 3158.804936896107,\n    \"baseSymbol\": \"string\",\n    \"assetSymbol\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc24064e-7083-4ea2-97c9-f33ccc20745f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5b754fd9-0548-45cb-9707-762cac334d61",
+    "name": "@gmx-io/gmx-public-api Allowances Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

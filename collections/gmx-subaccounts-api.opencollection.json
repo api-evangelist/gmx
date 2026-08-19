@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "@gmx-io/gmx-public-api Allowances Subaccounts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subaccounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FetchStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/subaccounts/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PrepareApproval",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/subaccounts/approval/prepare",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

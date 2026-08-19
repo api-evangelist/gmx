@@ -1,0 +1,128 @@
+{
+  "item": [
+    {
+      "id": "c27b5fa8-1a96-46ab-b3f9-bf4d77162ff0",
+      "name": "Pairs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99fa97e1-eb6b-4e84-8dd4-10df6128282c",
+          "name": "Get Pairs",
+          "request": {
+            "name": "Get Pairs",
+            "description": {},
+            "url": {
+              "path": [
+                "pairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6401a4b1-19a4-40aa-8298-8766fa594b1b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"pool_id\": \"string\",\n    \"last_price\": 9480.927865950754,\n    \"product_type\": \"string\",\n    \"target_volume\": 8981.832974393246,\n    \"base_volume\": 3475.8273838896594,\n    \"target_currency\": \"string\",\n    \"base_currency\": \"string\",\n    \"ticker_id\": \"string\",\n    \"liquidity_in_usd\": 9363.858178996546,\n    \"volume_usd\": 6867.422345576245,\n    \"next_funding_rate_timestamp\": 9753.099202650288,\n    \"next_funding_rate\": 4075.955254749639,\n    \"funding_rate\": 7522.460948016561,\n    \"short_open_interest\": 282.79813986969214,\n    \"long_open_interest\": 3438.6626265278974,\n    \"open_interest\": 3278.8396113232643,\n    \"low\": 9077.17705318101,\n    \"high\": 9616.663550947047\n  },\n  {\n    \"pool_id\": \"string\",\n    \"last_price\": 8356.965189890816,\n    \"product_type\": \"string\",\n    \"target_volume\": 1068.0817383484564,\n    \"base_volume\": 3552.8248610423007,\n    \"target_currency\": \"string\",\n    \"base_currency\": \"string\",\n    \"ticker_id\": \"string\",\n    \"liquidity_in_usd\": 6768.789755077293,\n    \"volume_usd\": 6420.700230712567,\n    \"next_funding_rate_timestamp\": 4806.270161923043,\n    \"next_funding_rate\": 1737.3443319619487,\n    \"funding_rate\": 3242.8492274415444,\n    \"short_open_interest\": 1793.32172847383,\n    \"long_open_interest\": 2134.651110414463,\n    \"open_interest\": 9769.242796700655,\n    \"low\": 5473.344755736679,\n    \"high\": 2072.626945829763\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1c90775-dcf8-4177-bf4e-9bcd9c47d66d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bece68be-1052-4b01-8557-0906e869e493",
+    "name": "@gmx-io/gmx-public-api Allowances Pairs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

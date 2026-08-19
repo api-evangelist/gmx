@@ -1,0 +1,378 @@
+{
+  "item": [
+    {
+      "id": "10009223-8aa8-4d8d-bd0a-de53ded4438c",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e22e3dd0-68a0-42fe-b08c-558427d4adaa",
+          "name": "Get Orders By Address",
+          "request": {
+            "name": "Get Orders By Address",
+            "description": {},
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "726bb7b6-2b7a-4f7b-8865-2c6740392327",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"requestId\": \"string\",\n    \"dataList\": [\n      \"string\",\n      \"string\"\n    ],\n    \"autoCancel\": true,\n    \"isFrozen\": true,\n    \"shouldUnwrapNativeToken\": true,\n    \"isLong\": true,\n    \"srcChainId\": \"string\",\n    \"validFromTime\": \"string\",\n    \"updatedAtTime\": \"string\",\n    \"minOutputAmount\": \"string\",\n    \"callbackGasLimit\": \"string\",\n    \"executionFee\": \"string\",\n    \"acceptablePrice\": \"string\",\n    \"triggerPrice\": \"string\",\n    \"initialCollateralDeltaAmount\": \"string\",\n    \"sizeDeltaUsd\": \"string\",\n    \"decreasePositionSwapType\": 6744.913358050727,\n    \"orderType\": 1759.9443103091373,\n    \"swapPath\": [\n      \"string\",\n      \"string\"\n    ],\n    \"initialCollateralTokenAddress\": \"string\",\n    \"marketAddress\": \"string\",\n    \"uiFeeReceiver\": \"string\",\n    \"callbackContract\": \"string\",\n    \"cancellationReceiver\": \"string\",\n    \"receiver\": \"string\",\n    \"account\": \"string\",\n    \"key\": \"string\"\n  },\n  {\n    \"requestId\": \"string\",\n    \"dataList\": [\n      \"string\",\n      \"string\"\n    ],\n    \"autoCancel\": true,\n    \"isFrozen\": false,\n    \"shouldUnwrapNativeToken\": false,\n    \"isLong\": false,\n    \"srcChainId\": \"string\",\n    \"validFromTime\": \"string\",\n    \"updatedAtTime\": \"string\",\n    \"minOutputAmount\": \"string\",\n    \"callbackGasLimit\": \"string\",\n    \"executionFee\": \"string\",\n    \"acceptablePrice\": \"string\",\n    \"triggerPrice\": \"string\",\n    \"initialCollateralDeltaAmount\": \"string\",\n    \"sizeDeltaUsd\": \"string\",\n    \"decreasePositionSwapType\": 7322.458244695429,\n    \"orderType\": 726.0248706120742,\n    \"swapPath\": [\n      \"string\",\n      \"string\"\n    ],\n    \"initialCollateralTokenAddress\": \"string\",\n    \"marketAddress\": \"string\",\n    \"uiFeeReceiver\": \"string\",\n    \"callbackContract\": \"string\",\n    \"cancellationReceiver\": \"string\",\n    \"receiver\": \"string\",\n    \"account\": \"string\",\n    \"key\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2b4fe68-4a1e-420f-ba90-87e626f38787",
+              "name": "Bad Request - Invalid address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b663715-37a6-4b17-84ad-13066c43c017",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "799c39d3-3b7e-4e32-bcf5-20269dcdf344",
+          "name": "Get Order By Key",
+          "request": {
+            "name": "Get Order By Key",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a8cb052-7d45-4f21-8a8d-90709e89adef",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"string\",\n  \"dataList\": [\n    \"string\",\n    \"string\"\n  ],\n  \"autoCancel\": true,\n  \"isFrozen\": true,\n  \"shouldUnwrapNativeToken\": false,\n  \"isLong\": false,\n  \"srcChainId\": \"string\",\n  \"validFromTime\": \"string\",\n  \"updatedAtTime\": \"string\",\n  \"minOutputAmount\": \"string\",\n  \"callbackGasLimit\": \"string\",\n  \"executionFee\": \"string\",\n  \"acceptablePrice\": \"string\",\n  \"triggerPrice\": \"string\",\n  \"initialCollateralDeltaAmount\": \"string\",\n  \"sizeDeltaUsd\": \"string\",\n  \"decreasePositionSwapType\": 2260.459555804969,\n  \"orderType\": 7313.914745519272,\n  \"swapPath\": [\n    \"string\",\n    \"string\"\n  ],\n  \"initialCollateralTokenAddress\": \"string\",\n  \"marketAddress\": \"string\",\n  \"uiFeeReceiver\": \"string\",\n  \"callbackContract\": \"string\",\n  \"cancellationReceiver\": \"string\",\n  \"receiver\": \"string\",\n  \"account\": \"string\",\n  \"key\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be0f1a1c-9fbe-4cc3-b14d-cb5eaf0fa542",
+              "name": "Bad Request - Invalid key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c16174e-82bd-4b92-8d9d-c8c5afc8b5cf",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9be18351-275d-4f85-a3e9-db0a7e26fc55",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "24070e10-221f-4b38-b43e-3ebf0bfabfdc",
+    "name": "@gmx-io/gmx-public-api Allowances Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

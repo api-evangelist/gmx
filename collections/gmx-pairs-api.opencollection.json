@@ -1,0 +1,28 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "@gmx-io/gmx-public-api Allowances Pairs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pairs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetPairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/pairs"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

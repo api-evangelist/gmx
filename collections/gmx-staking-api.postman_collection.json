@@ -1,0 +1,183 @@
+{
+  "item": [
+    {
+      "id": "09e1a0e5-e4d8-4ff5-ba70-42486f32dee9",
+      "name": "Staking",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "55244c47-0401-44f5-a94c-5cbfba78389f",
+          "name": "Get Staking Power",
+          "request": {
+            "name": "Get Staking Power",
+            "description": {},
+            "url": {
+              "path": [
+                "staking",
+                "power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb99f22c-02c5-4f25-8b46-7626beb6993c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "staking",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"loyaltyTrackingStart\": 9932.272519146232,\n  \"powerAccrualStart\": 9063.769178693266,\n  \"treasuryGmxBalance\": \"string\",\n  \"projectedRewardShare\": \"string\",\n  \"powerResetCount\": 1306.533566628858,\n  \"lastPowerResetAt\": 1608.7513773690675,\n  \"loyaltyRatio\": 7512.033456212995,\n  \"currentStaked\": \"string\",\n  \"historicalMaxStaked\": \"string\",\n  \"userSharePercent\": 3930.871658879922,\n  \"totalNetworkPower\": \"string\",\n  \"cumulativePower\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf423519-2301-4ede-9e0a-9342fcbe0b2d",
+              "name": "Bad Request - Invalid address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "staking",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "71e90d10-d463-4e49-963f-e6569e1dc9a5",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "staking",
+                    "power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "61aa3637-ac66-4a83-a23c-1161a5119db3",
+    "name": "@gmx-io/gmx-public-api Allowances Staking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

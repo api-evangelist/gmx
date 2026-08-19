@@ -1,0 +1,212 @@
+{
+  "item": [
+    {
+      "id": "d8645ffa-1dae-4067-b734-5e5fb071f4af",
+      "name": "Rates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "903754d5-4796-4dfb-a1bc-065eec248975",
+          "name": "Get Rates",
+          "request": {
+            "name": "Get Rates",
+            "description": {},
+            "url": {
+              "path": [
+                "rates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "averageBy",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e5b534b-eab8-413e-bb31-e0ad9e29a9a7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "averageBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ratesSnapshots\": [\n      {\n        \"timestamp\": 3843.4469169990493,\n        \"borrowingRateShort\": \"string\",\n        \"borrowingRateLong\": \"string\",\n        \"fundingRateShort\": \"string\",\n        \"fundingRateLong\": \"string\",\n        \"netRateShort\": \"string\",\n        \"netRateLong\": \"string\"\n      },\n      {\n        \"timestamp\": 6142.094814121245,\n        \"borrowingRateShort\": \"string\",\n        \"borrowingRateLong\": \"string\",\n        \"fundingRateShort\": \"string\",\n        \"fundingRateLong\": \"string\",\n        \"netRateShort\": \"string\",\n        \"netRateLong\": \"string\"\n      }\n    ],\n    \"marketAddress\": \"string\"\n  },\n  {\n    \"ratesSnapshots\": [\n      {\n        \"timestamp\": 8555.618997961968,\n        \"borrowingRateShort\": \"string\",\n        \"borrowingRateLong\": \"string\",\n        \"fundingRateShort\": \"string\",\n        \"fundingRateLong\": \"string\",\n        \"netRateShort\": \"string\",\n        \"netRateLong\": \"string\"\n      },\n      {\n        \"timestamp\": 3372.493283882202,\n        \"borrowingRateShort\": \"string\",\n        \"borrowingRateLong\": \"string\",\n        \"fundingRateShort\": \"string\",\n        \"fundingRateLong\": \"string\",\n        \"netRateShort\": \"string\",\n        \"netRateLong\": \"string\"\n      }\n    ],\n    \"marketAddress\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27c2fc92-4c9d-4473-a988-3a927a379ed4",
+              "name": "Invalid period or averageBy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "averageBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e58aab2c-a1d2-4fbf-a33c-0ce9261faa65",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "averageBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "63941e2c-6aca-4045-b8b3-ca1532020189",
+    "name": "@gmx-io/gmx-public-api Allowances Rates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

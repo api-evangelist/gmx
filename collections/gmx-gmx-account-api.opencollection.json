@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "@gmx-io/gmx-public-api Allowances GMX Account API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GMX Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PrepareCrossChainDeposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gmx-account/deposit/cross-chain/prepare",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "PrepareCrossChainWithdraw",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gmx-account/withdraw/cross-chain/prepare",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "SubmitCrossChainWithdraw",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gmx-account/withdraw/cross-chain/submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "StatusCrossChainWithdraw",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gmx-account/withdraw/cross-chain/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

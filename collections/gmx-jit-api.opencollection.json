@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "@gmx-io/gmx-public-api Allowances JIT API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JIT",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetLiquidityInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/jit/liquidity_info"
+          }
+        },
+        {
+          "info": {
+            "name": "GetLiquidityHistory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/jit/liquidity_history",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

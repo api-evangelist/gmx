@@ -1,0 +1,291 @@
+{
+  "item": [
+    {
+      "id": "5d1e514d-1ab1-4839-b623-c65c6a05ed1b",
+      "name": "Subaccounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "05808caf-bcf3-4c0d-b2f0-35eb986d68cb",
+          "name": "Fetch Status",
+          "request": {
+            "name": "Fetch Status",
+            "description": {},
+            "url": {
+              "path": [
+                "subaccounts",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subaccountAddress\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d8fff29-2e06-4ef9-bdae-9094617a998a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subaccounts",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subaccountAddress\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"integrationId\": \"string\",\n  \"multichainApprovalNonce\": \"string\",\n  \"approvalNonce\": \"string\",\n  \"expiresAt\": \"string\",\n  \"remainingActions\": \"string\",\n  \"currentActionsCount\": \"string\",\n  \"maxAllowedCount\": \"string\",\n  \"active\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66eb9327-0387-4c93-a1c7-71958a5870ef",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subaccounts",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subaccountAddress\": \"<string>\",\n  \"account\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdd070c6-3369-4e61-8db9-495ced89d6bb",
+          "name": "Prepare Approval",
+          "request": {
+            "name": "Prepare Approval",
+            "description": {},
+            "url": {
+              "path": [
+                "subaccounts",
+                "approval",
+                "prepare"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"maxAllowedCount\": \"<string>\",\n  \"expiresAt\": \"<string>\",\n  \"shouldAdd\": \"<boolean>\",\n  \"subaccountAddress\": \"<string>\",\n  \"account\": \"<string>\",\n  \"signingNetwork\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f445c548-44c1-4ac3-a0b0-695bae074f3a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subaccounts",
+                    "approval",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxAllowedCount\": \"<string>\",\n  \"expiresAt\": \"<string>\",\n  \"shouldAdd\": \"<boolean>\",\n  \"subaccountAddress\": \"<string>\",\n  \"account\": \"<string>\",\n  \"signingNetwork\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nonce\": \"string\",\n  \"relayRouterAddress\": \"string\",\n  \"primaryType\": \"string\",\n  \"message\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"types\": {\n    \"key_0\": [\n      {\n        \"type\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"type\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  },\n  \"domain\": {\n    \"verifyingContract\": \"string\",\n    \"chainId\": 3584.7630273184104,\n    \"version\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13442a1b-439a-4514-99f0-65e8dced7f8a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subaccounts",
+                    "approval",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxAllowedCount\": \"<string>\",\n  \"expiresAt\": \"<string>\",\n  \"shouldAdd\": \"<boolean>\",\n  \"subaccountAddress\": \"<string>\",\n  \"account\": \"<string>\",\n  \"signingNetwork\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7e0db9a9-9c50-4a38-bf8c-a84d436062b0",
+    "name": "@gmx-io/gmx-public-api Allowances Subaccounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

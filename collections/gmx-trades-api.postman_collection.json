@@ -1,0 +1,483 @@
+{
+  "item": [
+    {
+      "id": "5c55ecc1-f8c2-44f1-ada2-a29b4b771cc0",
+      "name": "Trades",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5dc59461-06f6-42cb-8ec0-e531a35517bf",
+          "name": "Get Trades",
+          "request": {
+            "name": "Get Trades",
+            "description": {},
+            "url": {
+              "path": [
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "symbol",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "marketAddress",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "actions",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "actions",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39769c80-0498-4544-9ab9-30d500a205bf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "marketAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "actions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": true,\n  \"nextCursor\": \"string\",\n  \"trades\": [\n    {\n      \"initialCollateralDeltaAmount\": \"string\",\n      \"initialCollateralTokenAddress\": \"string\",\n      \"swapPath\": [\n        \"string\",\n        \"string\"\n      ],\n      \"transactionHash\": \"string\",\n      \"timestamp\": 6655.850682545955,\n      \"orderKey\": \"string\",\n      \"orderType\": 8782.710986981514,\n      \"account\": \"string\",\n      \"eventName\": \"string\",\n      \"id\": \"string\",\n      \"reasonBytes\": \"string\",\n      \"reason\": \"string\",\n      \"numberOfParts\": 8413.344576637985,\n      \"twapGroupId\": \"string\",\n      \"srcChainId\": 1908.4248912956957,\n      \"decreasePositionSwapType\": \"string\",\n      \"proportionalPendingImpactUsd\": \"string\",\n      \"collateralTotalCostAmount\": \"string\",\n      \"swapImpactUsd\": \"string\",\n      \"executionAmountOut\": \"string\",\n      \"totalImpactUsd\": \"string\",\n      \"liquidationFeeAmount\": \"string\",\n      \"swapFeeUsd\": \"string\",\n      \"fundingFeeAmount\": \"string\",\n      \"borrowingFeeAmount\": \"string\",\n      \"traderDiscountAmount\": \"string\",\n      \"positionFeeAmount\": \"string\",\n      \"priceImpactDiffUsd\": \"string\",\n      \"priceImpactUsd\": \"string\",\n      \"basePnlUsd\": \"string\",\n      \"pnlUsd\": \"string\",\n      \"minOutputAmount\": \"string\",\n      \"collateralTokenPriceMax\": \"string\",\n      \"collateralTokenPriceMin\": \"string\",\n      \"indexTokenPriceMax\": \"string\",\n      \"indexTokenPriceMin\": \"string\",\n      \"executionPrice\": \"string\",\n      \"triggerPrice\": \"string\",\n      \"acceptablePrice\": \"string\",\n      \"sizeDeltaInTokens\": \"string\",\n      \"sizeDeltaUsd\": \"string\",\n      \"isLong\": false,\n      \"marketAddress\": \"string\",\n      \"shouldUnwrapNativeToken\": false\n    },\n    {\n      \"initialCollateralDeltaAmount\": \"string\",\n      \"initialCollateralTokenAddress\": \"string\",\n      \"swapPath\": [\n        \"string\",\n        \"string\"\n      ],\n      \"transactionHash\": \"string\",\n      \"timestamp\": 7058.997364616302,\n      \"orderKey\": \"string\",\n      \"orderType\": 9632.378601057706,\n      \"account\": \"string\",\n      \"eventName\": \"string\",\n      \"id\": \"string\",\n      \"reasonBytes\": \"string\",\n      \"reason\": \"string\",\n      \"numberOfParts\": 5049.883060262587,\n      \"twapGroupId\": \"string\",\n      \"srcChainId\": 9025.757775231341,\n      \"decreasePositionSwapType\": \"string\",\n      \"proportionalPendingImpactUsd\": \"string\",\n      \"collateralTotalCostAmount\": \"string\",\n      \"swapImpactUsd\": \"string\",\n      \"executionAmountOut\": \"string\",\n      \"totalImpactUsd\": \"string\",\n      \"liquidationFeeAmount\": \"string\",\n      \"swapFeeUsd\": \"string\",\n      \"fundingFeeAmount\": \"string\",\n      \"borrowingFeeAmount\": \"string\",\n      \"traderDiscountAmount\": \"string\",\n      \"positionFeeAmount\": \"string\",\n      \"priceImpactDiffUsd\": \"string\",\n      \"priceImpactUsd\": \"string\",\n      \"basePnlUsd\": \"string\",\n      \"pnlUsd\": \"string\",\n      \"minOutputAmount\": \"string\",\n      \"collateralTokenPriceMax\": \"string\",\n      \"collateralTokenPriceMin\": \"string\",\n      \"indexTokenPriceMax\": \"string\",\n      \"indexTokenPriceMin\": \"string\",\n      \"executionPrice\": \"string\",\n      \"triggerPrice\": \"string\",\n      \"acceptablePrice\": \"string\",\n      \"sizeDeltaInTokens\": \"string\",\n      \"sizeDeltaUsd\": \"string\",\n      \"isLong\": true,\n      \"marketAddress\": \"string\",\n      \"shouldUnwrapNativeToken\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f97e3eca-6153-4c9c-8c28-bf304d3c416f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "marketAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "actions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "88614ef7-337c-4db6-9c67-b200e56ba252",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "symbol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "marketAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "actions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "actions",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffc51e99-d7f5-4895-b2a7-ca9ccb7d16c6",
+          "name": "Search Trades",
+          "request": {
+            "name": "Search Trades",
+            "description": {
+              "content": "Trade history search supporting the same filters used by the GMX UI:\nmarketsDirections (per-tuple market+direction+collateral) and\norderEventCombinations (orderType+eventName+isDepositOrWithdraw+isTwap).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trades",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cursor\": \"<string>\",\n  \"limit\": \"<double>\",\n  \"showDebugValues\": \"<boolean>\",\n  \"orderEventCombinations\": [\n    {\n      \"isTwap\": \"<boolean>\",\n      \"isDepositOrWithdraw\": \"<boolean>\",\n      \"orderType\": \"<double>\",\n      \"eventName\": \"<string>\"\n    },\n    {\n      \"isTwap\": \"<boolean>\",\n      \"isDepositOrWithdraw\": \"<boolean>\",\n      \"orderType\": \"<double>\",\n      \"eventName\": \"<string>\"\n    }\n  ],\n  \"marketsDirections\": [\n    {\n      \"direction\": \"<string>\",\n      \"marketAddress\": \"<string>\",\n      \"collateralAddress\": \"<string>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"marketAddress\": \"<string>\",\n      \"collateralAddress\": \"<string>\"\n    }\n  ],\n  \"toTimestamp\": \"<double>\",\n  \"fromTimestamp\": \"<double>\",\n  \"forAllAccounts\": \"<boolean>\",\n  \"address\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e4060750-f2b2-4628-82ee-acca2bc38e9e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"limit\": \"<double>\",\n  \"showDebugValues\": \"<boolean>\",\n  \"orderEventCombinations\": [\n    {\n      \"isTwap\": \"<boolean>\",\n      \"isDepositOrWithdraw\": \"<boolean>\",\n      \"orderType\": \"<double>\",\n      \"eventName\": \"<string>\"\n    },\n    {\n      \"isTwap\": \"<boolean>\",\n      \"isDepositOrWithdraw\": \"<boolean>\",\n      \"orderType\": \"<double>\",\n      \"eventName\": \"<string>\"\n    }\n  ],\n  \"marketsDirections\": [\n    {\n      \"direction\": \"<string>\",\n      \"marketAddress\": \"<string>\",\n      \"collateralAddress\": \"<string>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"marketAddress\": \"<string>\",\n      \"collateralAddress\": \"<string>\"\n    }\n  ],\n  \"toTimestamp\": \"<double>\",\n  \"fromTimestamp\": \"<double>\",\n  \"forAllAccounts\": \"<boolean>\",\n  \"address\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hasMore\": false,\n  \"nextCursor\": \"string\",\n  \"trades\": [\n    {\n      \"initialCollateralDeltaAmount\": \"string\",\n      \"initialCollateralTokenAddress\": \"string\",\n      \"swapPath\": [\n        \"string\",\n        \"string\"\n      ],\n      \"transactionHash\": \"string\",\n      \"timestamp\": 4736.873302661924,\n      \"orderKey\": \"string\",\n      \"orderType\": 7804.121079788987,\n      \"account\": \"string\",\n      \"eventName\": \"string\",\n      \"id\": \"string\",\n      \"reasonBytes\": \"string\",\n      \"reason\": \"string\",\n      \"numberOfParts\": 4980.583661307356,\n      \"twapGroupId\": \"string\",\n      \"srcChainId\": 9872.448320263164,\n      \"decreasePositionSwapType\": \"string\",\n      \"proportionalPendingImpactUsd\": \"string\",\n      \"collateralTotalCostAmount\": \"string\",\n      \"swapImpactUsd\": \"string\",\n      \"executionAmountOut\": \"string\",\n      \"totalImpactUsd\": \"string\",\n      \"liquidationFeeAmount\": \"string\",\n      \"swapFeeUsd\": \"string\",\n      \"fundingFeeAmount\": \"string\",\n      \"borrowingFeeAmount\": \"string\",\n      \"traderDiscountAmount\": \"string\",\n      \"positionFeeAmount\": \"string\",\n      \"priceImpactDiffUsd\": \"string\",\n      \"priceImpactUsd\": \"string\",\n      \"basePnlUsd\": \"string\",\n      \"pnlUsd\": \"string\",\n      \"minOutputAmount\": \"string\",\n      \"collateralTokenPriceMax\": \"string\",\n      \"collateralTokenPriceMin\": \"string\",\n      \"indexTokenPriceMax\": \"string\",\n      \"indexTokenPriceMin\": \"string\",\n      \"executionPrice\": \"string\",\n      \"triggerPrice\": \"string\",\n      \"acceptablePrice\": \"string\",\n      \"sizeDeltaInTokens\": \"string\",\n      \"sizeDeltaUsd\": \"string\",\n      \"isLong\": false,\n      \"marketAddress\": \"string\",\n      \"shouldUnwrapNativeToken\": false\n    },\n    {\n      \"initialCollateralDeltaAmount\": \"string\",\n      \"initialCollateralTokenAddress\": \"string\",\n      \"swapPath\": [\n        \"string\",\n        \"string\"\n      ],\n      \"transactionHash\": \"string\",\n      \"timestamp\": 1328.8028848102706,\n      \"orderKey\": \"string\",\n      \"orderType\": 7886.7924297585305,\n      \"account\": \"string\",\n      \"eventName\": \"string\",\n      \"id\": \"string\",\n      \"reasonBytes\": \"string\",\n      \"reason\": \"string\",\n      \"numberOfParts\": 4489.931936160157,\n      \"twapGroupId\": \"string\",\n      \"srcChainId\": 9574.154744736952,\n      \"decreasePositionSwapType\": \"string\",\n      \"proportionalPendingImpactUsd\": \"string\",\n      \"collateralTotalCostAmount\": \"string\",\n      \"swapImpactUsd\": \"string\",\n      \"executionAmountOut\": \"string\",\n      \"totalImpactUsd\": \"string\",\n      \"liquidationFeeAmount\": \"string\",\n      \"swapFeeUsd\": \"string\",\n      \"fundingFeeAmount\": \"string\",\n      \"borrowingFeeAmount\": \"string\",\n      \"traderDiscountAmount\": \"string\",\n      \"positionFeeAmount\": \"string\",\n      \"priceImpactDiffUsd\": \"string\",\n      \"priceImpactUsd\": \"string\",\n      \"basePnlUsd\": \"string\",\n      \"pnlUsd\": \"string\",\n      \"minOutputAmount\": \"string\",\n      \"collateralTokenPriceMax\": \"string\",\n      \"collateralTokenPriceMin\": \"string\",\n      \"indexTokenPriceMax\": \"string\",\n      \"indexTokenPriceMin\": \"string\",\n      \"executionPrice\": \"string\",\n      \"triggerPrice\": \"string\",\n      \"acceptablePrice\": \"string\",\n      \"sizeDeltaInTokens\": \"string\",\n      \"sizeDeltaUsd\": \"string\",\n      \"isLong\": true,\n      \"marketAddress\": \"string\",\n      \"shouldUnwrapNativeToken\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6eb14841-5f33-43f4-8676-3332d6bdfe14",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"limit\": \"<double>\",\n  \"showDebugValues\": \"<boolean>\",\n  \"orderEventCombinations\": [\n    {\n      \"isTwap\": \"<boolean>\",\n      \"isDepositOrWithdraw\": \"<boolean>\",\n      \"orderType\": \"<double>\",\n      \"eventName\": \"<string>\"\n    },\n    {\n      \"isTwap\": \"<boolean>\",\n      \"isDepositOrWithdraw\": \"<boolean>\",\n      \"orderType\": \"<double>\",\n      \"eventName\": \"<string>\"\n    }\n  ],\n  \"marketsDirections\": [\n    {\n      \"direction\": \"<string>\",\n      \"marketAddress\": \"<string>\",\n      \"collateralAddress\": \"<string>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"marketAddress\": \"<string>\",\n      \"collateralAddress\": \"<string>\"\n    }\n  ],\n  \"toTimestamp\": \"<double>\",\n  \"fromTimestamp\": \"<double>\",\n  \"forAllAccounts\": \"<boolean>\",\n  \"address\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07f61dea-e77b-4f49-9191-f00248bab426",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trades",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cursor\": \"<string>\",\n  \"limit\": \"<double>\",\n  \"showDebugValues\": \"<boolean>\",\n  \"orderEventCombinations\": [\n    {\n      \"isTwap\": \"<boolean>\",\n      \"isDepositOrWithdraw\": \"<boolean>\",\n      \"orderType\": \"<double>\",\n      \"eventName\": \"<string>\"\n    },\n    {\n      \"isTwap\": \"<boolean>\",\n      \"isDepositOrWithdraw\": \"<boolean>\",\n      \"orderType\": \"<double>\",\n      \"eventName\": \"<string>\"\n    }\n  ],\n  \"marketsDirections\": [\n    {\n      \"direction\": \"<string>\",\n      \"marketAddress\": \"<string>\",\n      \"collateralAddress\": \"<string>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"marketAddress\": \"<string>\",\n      \"collateralAddress\": \"<string>\"\n    }\n  ],\n  \"toTimestamp\": \"<double>\",\n  \"fromTimestamp\": \"<double>\",\n  \"forAllAccounts\": \"<boolean>\",\n  \"address\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cd9f4a86-52cf-499a-8796-077f166c6753",
+    "name": "@gmx-io/gmx-public-api Allowances Trades API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

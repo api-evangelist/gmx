@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "@gmx-io/gmx-public-api Allowances Order Transactions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Prepare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/orders/txns/prepare",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Submit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/orders/txns/submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/orders/txns/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "EditPrepare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/orders/txns/edit/prepare",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CancelPrepare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/orders/txns/cancel/prepare",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CollateralPrepare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/orders/txns/collateral/prepare",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

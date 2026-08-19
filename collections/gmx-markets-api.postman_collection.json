@@ -1,0 +1,626 @@
+{
+  "item": [
+    {
+      "id": "c49e4910-dae3-4938-9843-b19a9d0cba93",
+      "name": "Markets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a142bf0c-a460-4c12-8ee6-4f6817eda8d7",
+          "name": "Get Markets",
+          "request": {
+            "name": "Get Markets",
+            "description": {},
+            "url": {
+              "path": [
+                "markets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fac6f8f5-a294-44bd-aeca-961b936bfa53",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"minCollateralUsd\": \"string\",\n    \"minPositionSizeUsd\": \"string\",\n    \"leverageTiers\": [\n      {\n        \"minCollateralFactor\": \"string\",\n        \"maxLeverage\": \"string\",\n        \"maxPositionSize\": \"string\"\n      },\n      {\n        \"minCollateralFactor\": \"string\",\n        \"maxLeverage\": \"string\",\n        \"maxPositionSize\": \"string\"\n      }\n    ],\n    \"isSpotOnly\": false,\n    \"isListed\": true,\n    \"shortTokenAddress\": \"string\",\n    \"longTokenAddress\": \"string\",\n    \"indexTokenAddress\": \"string\",\n    \"marketTokenAddress\": \"string\",\n    \"symbol\": \"string\",\n    \"listingDate\": 1203.330046130412\n  },\n  {\n    \"minCollateralUsd\": \"string\",\n    \"minPositionSizeUsd\": \"string\",\n    \"leverageTiers\": [\n      {\n        \"minCollateralFactor\": \"string\",\n        \"maxLeverage\": \"string\",\n        \"maxPositionSize\": \"string\"\n      },\n      {\n        \"minCollateralFactor\": \"string\",\n        \"maxLeverage\": \"string\",\n        \"maxPositionSize\": \"string\"\n      }\n    ],\n    \"isSpotOnly\": false,\n    \"isListed\": false,\n    \"shortTokenAddress\": \"string\",\n    \"longTokenAddress\": \"string\",\n    \"indexTokenAddress\": \"string\",\n    \"marketTokenAddress\": \"string\",\n    \"symbol\": \"string\",\n    \"listingDate\": 1980.8821038288493\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e43fe27-ba92-483b-9270-5ef0aa432da8",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9121d085-f9c7-4faf-9618-bd3b45faf71d",
+          "name": "Get Markets Tickers",
+          "request": {
+            "name": "Get Markets Tickers",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "tickers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "addresses",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "addresses",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "symbols",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "symbols",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27d922df-6bab-417d-8d58-0058c4801f82",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "tickers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "addresses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "addresses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "symbols",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "symbols",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"netRateShort\": \"string\",\n    \"netRateLong\": \"string\",\n    \"borrowingRateShort\": \"string\",\n    \"borrowingRateLong\": \"string\",\n    \"fundingRateShort\": \"string\",\n    \"fundingRateLong\": \"string\",\n    \"poolAmountShortUsd\": \"string\",\n    \"poolAmountLongUsd\": \"string\",\n    \"availableLiquidityShort\": \"string\",\n    \"availableLiquidityLong\": \"string\",\n    \"shortInterestUsdMark\": \"string\",\n    \"longInterestUsdMark\": \"string\",\n    \"shortInterestUsd\": \"string\",\n    \"longInterestUsd\": \"string\",\n    \"shortInterestInTokens\": \"string\",\n    \"longInterestInTokens\": \"string\",\n    \"priceChangePercent24hBps\": \"string\",\n    \"priceChange24h\": \"string\",\n    \"close24h\": \"string\",\n    \"open24h\": \"string\",\n    \"low24h\": \"string\",\n    \"high24h\": \"string\",\n    \"markPrice\": \"string\",\n    \"maxPrice\": \"string\",\n    \"minPrice\": \"string\",\n    \"marketTokenAddress\": \"string\",\n    \"symbol\": \"string\"\n  },\n  {\n    \"netRateShort\": \"string\",\n    \"netRateLong\": \"string\",\n    \"borrowingRateShort\": \"string\",\n    \"borrowingRateLong\": \"string\",\n    \"fundingRateShort\": \"string\",\n    \"fundingRateLong\": \"string\",\n    \"poolAmountShortUsd\": \"string\",\n    \"poolAmountLongUsd\": \"string\",\n    \"availableLiquidityShort\": \"string\",\n    \"availableLiquidityLong\": \"string\",\n    \"shortInterestUsdMark\": \"string\",\n    \"longInterestUsdMark\": \"string\",\n    \"shortInterestUsd\": \"string\",\n    \"longInterestUsd\": \"string\",\n    \"shortInterestInTokens\": \"string\",\n    \"longInterestInTokens\": \"string\",\n    \"priceChangePercent24hBps\": \"string\",\n    \"priceChange24h\": \"string\",\n    \"close24h\": \"string\",\n    \"open24h\": \"string\",\n    \"low24h\": \"string\",\n    \"high24h\": \"string\",\n    \"markPrice\": \"string\",\n    \"maxPrice\": \"string\",\n    \"minPrice\": \"string\",\n    \"marketTokenAddress\": \"string\",\n    \"symbol\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "776a1c61-2f55-4a67-aed4-00736a86a7b6",
+              "name": "Bad Request - Invalid market addresses or symbols",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "tickers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "addresses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "addresses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "symbols",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "symbols",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a1725a1-332a-4fc2-a667-de6bf207c88b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "tickers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "addresses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "addresses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "symbols",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "symbols",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e989b4f9-8a59-4b4e-9b7c-3084abd088af",
+          "name": "Get Markets Info",
+          "request": {
+            "name": "Get Markets Info",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f56d32d0-3eea-461b-b5e7-be19e19f5fa2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"borrowingFactorPerSecondForShorts\": \"string\",\n    \"borrowingFactorPerSecondForLongs\": \"string\",\n    \"fundingFactorPerSecond\": \"string\",\n    \"totalBorrowingFees\": \"string\",\n    \"virtualInventoryForPositions\": \"string\",\n    \"virtualPoolAmountForShortToken\": \"string\",\n    \"virtualPoolAmountForLongToken\": \"string\",\n    \"longsPayShorts\": true,\n    \"shortInterestInTokens\": \"string\",\n    \"longInterestInTokens\": \"string\",\n    \"shortInterestUsd\": \"string\",\n    \"longInterestUsd\": \"string\",\n    \"positionImpactPoolAmount\": \"string\",\n    \"poolValueMin\": \"string\",\n    \"poolValueMax\": \"string\",\n    \"shortPoolAmount\": \"string\",\n    \"longPoolAmount\": \"string\",\n    \"virtualShortTokenId\": \"string\",\n    \"virtualLongTokenId\": \"string\",\n    \"virtualMarketId\": \"string\",\n    \"maxShortPoolUsdForDeposit\": \"string\",\n    \"maxLongPoolUsdForDeposit\": \"string\",\n    \"maxShortPoolAmount\": \"string\",\n    \"maxLongPoolAmount\": \"string\",\n    \"swapImpactExponentFactor\": \"string\",\n    \"swapImpactFactorNegative\": \"string\",\n    \"swapImpactFactorPositive\": \"string\",\n    \"atomicSwapFeeFactor\": \"string\",\n    \"swapFeeFactorForBalanceWasNotImproved\": \"string\",\n    \"swapFeeFactorForBalanceWasImproved\": \"string\",\n    \"useOpenInterestInTokensForBalance\": false,\n    \"positionImpactExponentFactorNegative\": \"string\",\n    \"positionImpactExponentFactorPositive\": \"string\",\n    \"lentPositionImpactPoolAmount\": \"string\",\n    \"maxLendableImpactUsd\": \"string\",\n    \"maxLendableImpactFactorForWithdrawals\": \"string\",\n    \"maxLendableImpactFactor\": \"string\",\n    \"maxFundingFactorPerSecond\": \"string\",\n    \"minFundingFactorPerSecond\": \"string\",\n    \"thresholdForDecreaseFunding\": \"string\",\n    \"thresholdForStableFunding\": \"string\",\n    \"fundingDecreaseFactorPerSecond\": \"string\",\n    \"fundingIncreaseFactorPerSecond\": \"string\",\n    \"fundingExponentFactor\": \"string\",\n    \"fundingFactor\": \"string\",\n    \"borrowingExponentFactorShort\": \"string\",\n    \"borrowingExponentFactorLong\": \"string\",\n    \"borrowingFactorShort\": \"string\",\n    \"borrowingFactorLong\": \"string\",\n    \"maxPositionImpactFactorForLiquidations\": \"string\",\n    \"maxPositionImpactFactorNegative\": \"string\",\n    \"maxPositionImpactFactorPositive\": \"string\",\n    \"positionImpactFactorNegative\": \"string\",\n    \"positionImpactFactorPositive\": \"string\",\n    \"positionFeeFactorForBalanceWasNotImproved\": \"string\",\n    \"positionFeeFactorForBalanceWasImproved\": \"string\",\n    \"maxPnlFactorForTradersShort\": \"string\",\n    \"maxPnlFactorForTradersLong\": \"string\",\n    \"minCollateralFactorForOpenInterestShort\": \"string\",\n    \"minCollateralFactorForOpenInterestLong\": \"string\",\n    \"minCollateralFactorForLiquidation\": \"string\",\n    \"minCollateralFactor\": \"string\",\n    \"swapImpactPoolAmountShort\": \"string\",\n    \"swapImpactPoolAmountLong\": \"string\",\n    \"positionImpactPoolDistributionRate\": \"string\",\n    \"minPositionImpactPoolAmount\": \"string\",\n    \"maxOpenInterestShort\": \"string\",\n    \"maxOpenInterestLong\": \"string\",\n    \"openInterestReserveFactorShort\": \"string\",\n    \"openInterestReserveFactorLong\": \"string\",\n    \"reserveFactorShort\": \"string\",\n    \"reserveFactorLong\": \"string\",\n    \"data\": \"string\",\n    \"isDisabled\": false,\n    \"isSpotOnly\": true,\n    \"isSameCollaterals\": false,\n    \"shortTokenAddress\": \"string\",\n    \"longTokenAddress\": \"string\",\n    \"indexTokenAddress\": \"string\",\n    \"marketTokenAddress\": \"string\",\n    \"name\": \"string\",\n    \"withdrawalFeeFactorBalanceWasNotImproved\": \"string\",\n    \"withdrawalFeeFactorBalanceWasImproved\": \"string\",\n    \"maxPnlFactorForWithdrawalsShort\": \"string\",\n    \"maxPnlFactorForWithdrawalsLong\": \"string\",\n    \"maxPnlFactorForDepositsShort\": \"string\",\n    \"maxPnlFactorForDepositsLong\": \"string\"\n  },\n  {\n    \"borrowingFactorPerSecondForShorts\": \"string\",\n    \"borrowingFactorPerSecondForLongs\": \"string\",\n    \"fundingFactorPerSecond\": \"string\",\n    \"totalBorrowingFees\": \"string\",\n    \"virtualInventoryForPositions\": \"string\",\n    \"virtualPoolAmountForShortToken\": \"string\",\n    \"virtualPoolAmountForLongToken\": \"string\",\n    \"longsPayShorts\": false,\n    \"shortInterestInTokens\": \"string\",\n    \"longInterestInTokens\": \"string\",\n    \"shortInterestUsd\": \"string\",\n    \"longInterestUsd\": \"string\",\n    \"positionImpactPoolAmount\": \"string\",\n    \"poolValueMin\": \"string\",\n    \"poolValueMax\": \"string\",\n    \"shortPoolAmount\": \"string\",\n    \"longPoolAmount\": \"string\",\n    \"virtualShortTokenId\": \"string\",\n    \"virtualLongTokenId\": \"string\",\n    \"virtualMarketId\": \"string\",\n    \"maxShortPoolUsdForDeposit\": \"string\",\n    \"maxLongPoolUsdForDeposit\": \"string\",\n    \"maxShortPoolAmount\": \"string\",\n    \"maxLongPoolAmount\": \"string\",\n    \"swapImpactExponentFactor\": \"string\",\n    \"swapImpactFactorNegative\": \"string\",\n    \"swapImpactFactorPositive\": \"string\",\n    \"atomicSwapFeeFactor\": \"string\",\n    \"swapFeeFactorForBalanceWasNotImproved\": \"string\",\n    \"swapFeeFactorForBalanceWasImproved\": \"string\",\n    \"useOpenInterestInTokensForBalance\": true,\n    \"positionImpactExponentFactorNegative\": \"string\",\n    \"positionImpactExponentFactorPositive\": \"string\",\n    \"lentPositionImpactPoolAmount\": \"string\",\n    \"maxLendableImpactUsd\": \"string\",\n    \"maxLendableImpactFactorForWithdrawals\": \"string\",\n    \"maxLendableImpactFactor\": \"string\",\n    \"maxFundingFactorPerSecond\": \"string\",\n    \"minFundingFactorPerSecond\": \"string\",\n    \"thresholdForDecreaseFunding\": \"string\",\n    \"thresholdForStableFunding\": \"string\",\n    \"fundingDecreaseFactorPerSecond\": \"string\",\n    \"fundingIncreaseFactorPerSecond\": \"string\",\n    \"fundingExponentFactor\": \"string\",\n    \"fundingFactor\": \"string\",\n    \"borrowingExponentFactorShort\": \"string\",\n    \"borrowingExponentFactorLong\": \"string\",\n    \"borrowingFactorShort\": \"string\",\n    \"borrowingFactorLong\": \"string\",\n    \"maxPositionImpactFactorForLiquidations\": \"string\",\n    \"maxPositionImpactFactorNegative\": \"string\",\n    \"maxPositionImpactFactorPositive\": \"string\",\n    \"positionImpactFactorNegative\": \"string\",\n    \"positionImpactFactorPositive\": \"string\",\n    \"positionFeeFactorForBalanceWasNotImproved\": \"string\",\n    \"positionFeeFactorForBalanceWasImproved\": \"string\",\n    \"maxPnlFactorForTradersShort\": \"string\",\n    \"maxPnlFactorForTradersLong\": \"string\",\n    \"minCollateralFactorForOpenInterestShort\": \"string\",\n    \"minCollateralFactorForOpenInterestLong\": \"string\",\n    \"minCollateralFactorForLiquidation\": \"string\",\n    \"minCollateralFactor\": \"string\",\n    \"swapImpactPoolAmountShort\": \"string\",\n    \"swapImpactPoolAmountLong\": \"string\",\n    \"positionImpactPoolDistributionRate\": \"string\",\n    \"minPositionImpactPoolAmount\": \"string\",\n    \"maxOpenInterestShort\": \"string\",\n    \"maxOpenInterestLong\": \"string\",\n    \"openInterestReserveFactorShort\": \"string\",\n    \"openInterestReserveFactorLong\": \"string\",\n    \"reserveFactorShort\": \"string\",\n    \"reserveFactorLong\": \"string\",\n    \"data\": \"string\",\n    \"isDisabled\": true,\n    \"isSpotOnly\": false,\n    \"isSameCollaterals\": true,\n    \"shortTokenAddress\": \"string\",\n    \"longTokenAddress\": \"string\",\n    \"indexTokenAddress\": \"string\",\n    \"marketTokenAddress\": \"string\",\n    \"name\": \"string\",\n    \"withdrawalFeeFactorBalanceWasNotImproved\": \"string\",\n    \"withdrawalFeeFactorBalanceWasImproved\": \"string\",\n    \"maxPnlFactorForWithdrawalsShort\": \"string\",\n    \"maxPnlFactorForWithdrawalsLong\": \"string\",\n    \"maxPnlFactorForDepositsShort\": \"string\",\n    \"maxPnlFactorForDepositsLong\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81e20651-e848-4c47-88a8-902aa08d56c8",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcd99d0a-aa22-4cab-bcec-045ba6cdb402",
+          "name": "Get Markets Config",
+          "request": {
+            "name": "Get Markets Config",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e44cdfdf-d6db-41ff-8f4d-d9c61a6b7b19",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"marketTokenAddress\": \"string\",\n    \"indexTokenAddress\": \"string\",\n    \"longTokenAddress\": \"string\",\n    \"shortTokenAddress\": \"string\",\n    \"isSameCollaterals\": true,\n    \"isSpotOnly\": false,\n    \"name\": \"string\",\n    \"data\": \"string\",\n    \"isDisabled\": true,\n    \"maxLongPoolAmount\": \"string\",\n    \"maxShortPoolAmount\": \"string\",\n    \"maxLongPoolUsdForDeposit\": \"string\",\n    \"maxShortPoolUsdForDeposit\": \"string\",\n    \"reserveFactorLong\": \"string\",\n    \"reserveFactorShort\": \"string\",\n    \"openInterestReserveFactorLong\": \"string\",\n    \"openInterestReserveFactorShort\": \"string\",\n    \"maxOpenInterestLong\": \"string\",\n    \"maxOpenInterestShort\": \"string\",\n    \"borrowingFactorLong\": \"string\",\n    \"borrowingFactorShort\": \"string\",\n    \"borrowingExponentFactorLong\": \"string\",\n    \"borrowingExponentFactorShort\": \"string\",\n    \"fundingFactor\": \"string\",\n    \"fundingExponentFactor\": \"string\",\n    \"fundingIncreaseFactorPerSecond\": \"string\",\n    \"fundingDecreaseFactorPerSecond\": \"string\",\n    \"thresholdForStableFunding\": \"string\",\n    \"thresholdForDecreaseFunding\": \"string\",\n    \"minFundingFactorPerSecond\": \"string\",\n    \"maxFundingFactorPerSecond\": \"string\",\n    \"minPositionImpactPoolAmount\": \"string\",\n    \"positionImpactPoolDistributionRate\": \"string\",\n    \"minCollateralFactor\": \"string\",\n    \"minCollateralFactorForLiquidation\": \"string\",\n    \"minCollateralFactorForOpenInterestLong\": \"string\",\n    \"minCollateralFactorForOpenInterestShort\": \"string\",\n    \"maxPnlFactorForTradersLong\": \"string\",\n    \"maxPnlFactorForTradersShort\": \"string\",\n    \"positionFeeFactorForBalanceWasImproved\": \"string\",\n    \"positionFeeFactorForBalanceWasNotImproved\": \"string\",\n    \"positionImpactFactorPositive\": \"string\",\n    \"positionImpactFactorNegative\": \"string\",\n    \"maxPositionImpactFactorPositive\": \"string\",\n    \"maxPositionImpactFactorNegative\": \"string\",\n    \"maxPositionImpactFactorForLiquidations\": \"string\",\n    \"maxLendableImpactFactor\": \"string\",\n    \"maxLendableImpactFactorForWithdrawals\": \"string\",\n    \"maxLendableImpactUsd\": \"string\",\n    \"lentPositionImpactPoolAmount\": \"string\",\n    \"positionImpactExponentFactorPositive\": \"string\",\n    \"positionImpactExponentFactorNegative\": \"string\",\n    \"useOpenInterestInTokensForBalance\": false,\n    \"swapFeeFactorForBalanceWasImproved\": \"string\",\n    \"swapFeeFactorForBalanceWasNotImproved\": \"string\",\n    \"atomicSwapFeeFactor\": \"string\",\n    \"swapImpactFactorPositive\": \"string\",\n    \"swapImpactFactorNegative\": \"string\",\n    \"swapImpactExponentFactor\": \"string\",\n    \"virtualMarketId\": \"string\",\n    \"virtualLongTokenId\": \"string\",\n    \"virtualShortTokenId\": \"string\",\n    \"maxPnlFactorForDepositsLong\": \"string\",\n    \"maxPnlFactorForDepositsShort\": \"string\",\n    \"maxPnlFactorForWithdrawalsLong\": \"string\",\n    \"maxPnlFactorForWithdrawalsShort\": \"string\",\n    \"withdrawalFeeFactorBalanceWasImproved\": \"string\",\n    \"withdrawalFeeFactorBalanceWasNotImproved\": \"string\"\n  },\n  {\n    \"marketTokenAddress\": \"string\",\n    \"indexTokenAddress\": \"string\",\n    \"longTokenAddress\": \"string\",\n    \"shortTokenAddress\": \"string\",\n    \"isSameCollaterals\": true,\n    \"isSpotOnly\": false,\n    \"name\": \"string\",\n    \"data\": \"string\",\n    \"isDisabled\": false,\n    \"maxLongPoolAmount\": \"string\",\n    \"maxShortPoolAmount\": \"string\",\n    \"maxLongPoolUsdForDeposit\": \"string\",\n    \"maxShortPoolUsdForDeposit\": \"string\",\n    \"reserveFactorLong\": \"string\",\n    \"reserveFactorShort\": \"string\",\n    \"openInterestReserveFactorLong\": \"string\",\n    \"openInterestReserveFactorShort\": \"string\",\n    \"maxOpenInterestLong\": \"string\",\n    \"maxOpenInterestShort\": \"string\",\n    \"borrowingFactorLong\": \"string\",\n    \"borrowingFactorShort\": \"string\",\n    \"borrowingExponentFactorLong\": \"string\",\n    \"borrowingExponentFactorShort\": \"string\",\n    \"fundingFactor\": \"string\",\n    \"fundingExponentFactor\": \"string\",\n    \"fundingIncreaseFactorPerSecond\": \"string\",\n    \"fundingDecreaseFactorPerSecond\": \"string\",\n    \"thresholdForStableFunding\": \"string\",\n    \"thresholdForDecreaseFunding\": \"string\",\n    \"minFundingFactorPerSecond\": \"string\",\n    \"maxFundingFactorPerSecond\": \"string\",\n    \"minPositionImpactPoolAmount\": \"string\",\n    \"positionImpactPoolDistributionRate\": \"string\",\n    \"minCollateralFactor\": \"string\",\n    \"minCollateralFactorForLiquidation\": \"string\",\n    \"minCollateralFactorForOpenInterestLong\": \"string\",\n    \"minCollateralFactorForOpenInterestShort\": \"string\",\n    \"maxPnlFactorForTradersLong\": \"string\",\n    \"maxPnlFactorForTradersShort\": \"string\",\n    \"positionFeeFactorForBalanceWasImproved\": \"string\",\n    \"positionFeeFactorForBalanceWasNotImproved\": \"string\",\n    \"positionImpactFactorPositive\": \"string\",\n    \"positionImpactFactorNegative\": \"string\",\n    \"maxPositionImpactFactorPositive\": \"string\",\n    \"maxPositionImpactFactorNegative\": \"string\",\n    \"maxPositionImpactFactorForLiquidations\": \"string\",\n    \"maxLendableImpactFactor\": \"string\",\n    \"maxLendableImpactFactorForWithdrawals\": \"string\",\n    \"maxLendableImpactUsd\": \"string\",\n    \"lentPositionImpactPoolAmount\": \"string\",\n    \"positionImpactExponentFactorPositive\": \"string\",\n    \"positionImpactExponentFactorNegative\": \"string\",\n    \"useOpenInterestInTokensForBalance\": true,\n    \"swapFeeFactorForBalanceWasImproved\": \"string\",\n    \"swapFeeFactorForBalanceWasNotImproved\": \"string\",\n    \"atomicSwapFeeFactor\": \"string\",\n    \"swapImpactFactorPositive\": \"string\",\n    \"swapImpactFactorNegative\": \"string\",\n    \"swapImpactExponentFactor\": \"string\",\n    \"virtualMarketId\": \"string\",\n    \"virtualLongTokenId\": \"string\",\n    \"virtualShortTokenId\": \"string\",\n    \"maxPnlFactorForDepositsLong\": \"string\",\n    \"maxPnlFactorForDepositsShort\": \"string\",\n    \"maxPnlFactorForWithdrawalsLong\": \"string\",\n    \"maxPnlFactorForWithdrawalsShort\": \"string\",\n    \"withdrawalFeeFactorBalanceWasImproved\": \"string\",\n    \"withdrawalFeeFactorBalanceWasNotImproved\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "759c83cb-abaa-4e49-adfd-4893b5725879",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40c77ac2-99b3-4993-8c85-54193c22eab4",
+          "name": "Get Markets Values",
+          "request": {
+            "name": "Get Markets Values",
+            "description": {},
+            "url": {
+              "path": [
+                "markets",
+                "values"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54b1995f-9cd5-4f48-8c2b-bfaf3fe99bdd",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"marketTokenAddress\": \"string\",\n    \"longPoolAmount\": \"string\",\n    \"shortPoolAmount\": \"string\",\n    \"poolValueMax\": \"string\",\n    \"poolValueMin\": \"string\",\n    \"totalBorrowingFees\": \"string\",\n    \"positionImpactPoolAmount\": \"string\",\n    \"swapImpactPoolAmountLong\": \"string\",\n    \"swapImpactPoolAmountShort\": \"string\",\n    \"longInterestUsd\": \"string\",\n    \"shortInterestUsd\": \"string\",\n    \"longInterestInTokens\": \"string\",\n    \"shortInterestInTokens\": \"string\",\n    \"borrowingFactorPerSecondForLongs\": \"string\",\n    \"borrowingFactorPerSecondForShorts\": \"string\",\n    \"fundingFactorPerSecond\": \"string\",\n    \"longsPayShorts\": true,\n    \"virtualPoolAmountForLongToken\": \"string\",\n    \"virtualPoolAmountForShortToken\": \"string\",\n    \"virtualInventoryForPositions\": \"string\"\n  },\n  {\n    \"marketTokenAddress\": \"string\",\n    \"longPoolAmount\": \"string\",\n    \"shortPoolAmount\": \"string\",\n    \"poolValueMax\": \"string\",\n    \"poolValueMin\": \"string\",\n    \"totalBorrowingFees\": \"string\",\n    \"positionImpactPoolAmount\": \"string\",\n    \"swapImpactPoolAmountLong\": \"string\",\n    \"swapImpactPoolAmountShort\": \"string\",\n    \"longInterestUsd\": \"string\",\n    \"shortInterestUsd\": \"string\",\n    \"longInterestInTokens\": \"string\",\n    \"shortInterestInTokens\": \"string\",\n    \"borrowingFactorPerSecondForLongs\": \"string\",\n    \"borrowingFactorPerSecondForShorts\": \"string\",\n    \"fundingFactorPerSecond\": \"string\",\n    \"longsPayShorts\": true,\n    \"virtualPoolAmountForLongToken\": \"string\",\n    \"virtualPoolAmountForShortToken\": \"string\",\n    \"virtualInventoryForPositions\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a1ebb99-17b7-4162-8da4-5671884e029c",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    "values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "850638b1-b0c8-49a0-9553-e764ac251f21",
+    "name": "@gmx-io/gmx-public-api Allowances Markets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

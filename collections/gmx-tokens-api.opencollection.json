@@ -1,0 +1,38 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "@gmx-io/gmx-public-api Allowances Tokens API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetTokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/tokens"
+          }
+        },
+        {
+          "info": {
+            "name": "GetTokensInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/tokens/info"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

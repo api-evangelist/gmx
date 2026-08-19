@@ -1,0 +1,848 @@
+{
+  "item": [
+    {
+      "id": "d9c0263c-643d-4da9-a5f6-8845048d8c30",
+      "name": "GMX Account",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3d6ee80-ecc2-449a-bb80-83c99ffb24bf",
+          "name": "Prepare Cross Chain Deposit",
+          "request": {
+            "name": "Prepare Cross Chain Deposit",
+            "description": {},
+            "url": {
+              "path": [
+                "gmx-account",
+                "deposit",
+                "cross-chain",
+                "prepare"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<string>\",\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"innerData\": \"<string>\",\n  \"nativeDropAmount\": \"<string>\",\n  \"nativeFee\": \"<string>\",\n  \"composeGas\": \"<string>\",\n  \"tokenKind\": \"<string>\",\n  \"isNativeOnSource\": \"<boolean>\",\n  \"destinationStargatePoolAddress\": \"<string>\",\n  \"sourceStargatePoolAddress\": \"<string>\",\n  \"tokenAddress\": \"<string>\",\n  \"tokenSymbol\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e3c6f56f-65ca-4a3b-800d-f413ee56bd30",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "deposit",
+                    "cross-chain",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"innerData\": \"<string>\",\n  \"nativeDropAmount\": \"<string>\",\n  \"nativeFee\": \"<string>\",\n  \"composeGas\": \"<string>\",\n  \"tokenKind\": \"<string>\",\n  \"isNativeOnSource\": \"<boolean>\",\n  \"destinationStargatePoolAddress\": \"<string>\",\n  \"sourceStargatePoolAddress\": \"<string>\",\n  \"tokenAddress\": \"<string>\",\n  \"tokenSymbol\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"expiresAt\": 1073.9746531646888,\n  \"nativeFee\": \"string\",\n  \"composeGas\": \"string\",\n  \"payload\": {\n    \"value\": \"string\",\n    \"data\": \"string\",\n    \"to\": \"string\"\n  },\n  \"payloadType\": \"transaction\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12ede4eb-ff9d-4310-bffa-bfac3c6d7fc6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "deposit",
+                    "cross-chain",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"innerData\": \"<string>\",\n  \"nativeDropAmount\": \"<string>\",\n  \"nativeFee\": \"<string>\",\n  \"composeGas\": \"<string>\",\n  \"tokenKind\": \"<string>\",\n  \"isNativeOnSource\": \"<boolean>\",\n  \"destinationStargatePoolAddress\": \"<string>\",\n  \"sourceStargatePoolAddress\": \"<string>\",\n  \"tokenAddress\": \"<string>\",\n  \"tokenSymbol\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f473a4a-543e-4cde-8196-8f8c49b0d172",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "deposit",
+                    "cross-chain",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"innerData\": \"<string>\",\n  \"nativeDropAmount\": \"<string>\",\n  \"nativeFee\": \"<string>\",\n  \"composeGas\": \"<string>\",\n  \"tokenKind\": \"<string>\",\n  \"isNativeOnSource\": \"<boolean>\",\n  \"destinationStargatePoolAddress\": \"<string>\",\n  \"sourceStargatePoolAddress\": \"<string>\",\n  \"tokenAddress\": \"<string>\",\n  \"tokenSymbol\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2efece43-e804-4d7a-991a-3d438f8d7ecc",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "deposit",
+                    "cross-chain",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<string>\",\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"innerData\": \"<string>\",\n  \"nativeDropAmount\": \"<string>\",\n  \"nativeFee\": \"<string>\",\n  \"composeGas\": \"<string>\",\n  \"tokenKind\": \"<string>\",\n  \"isNativeOnSource\": \"<boolean>\",\n  \"destinationStargatePoolAddress\": \"<string>\",\n  \"sourceStargatePoolAddress\": \"<string>\",\n  \"tokenAddress\": \"<string>\",\n  \"tokenSymbol\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82e47098-1a45-4a2e-8ba4-cf7b9259a600",
+          "name": "Prepare Cross Chain Withdraw",
+          "request": {
+            "name": "Prepare Cross Chain Withdraw",
+            "description": {},
+            "url": {
+              "path": [
+                "gmx-account",
+                "withdraw",
+                "cross-chain",
+                "prepare"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bridgeOutParams\": {\n    \"data\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"minAmountOut\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"gasPaymentToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7ce0ff73-c86e-402a-aac1-a91da46aa292",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bridgeOutParams\": {\n    \"data\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"minAmountOut\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"gasPaymentToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"expiresAt\": 5186.479752409658,\n  \"payload\": {\n    \"gasPaymentParams\": {\n      \"gasPaymentTokenAmount\": \"string\",\n      \"gasPaymentTokenAddress\": \"string\",\n      \"relayerFeeAmount\": \"string\",\n      \"relayerFeeTokenAddress\": \"string\"\n    },\n    \"relayRouterAddress\": \"string\",\n    \"relayParams\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"typedData\": {\n      \"message\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"primaryType\": \"BridgeOut\",\n      \"types\": {\n        \"key_0\": [\n          {\n            \"type\": \"string\",\n            \"name\": \"string\"\n          },\n          {\n            \"type\": \"string\",\n            \"name\": \"string\"\n          }\n        ]\n      },\n      \"domain\": {\n        \"key_0\": {}\n      }\n    }\n  },\n  \"requestId\": \"string\",\n  \"payloadType\": \"typed-data\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54701e09-be94-4905-a0fc-4eda5f3d1373",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bridgeOutParams\": {\n    \"data\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"minAmountOut\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"gasPaymentToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f620827b-2282-44e1-84b4-f1c811ef4923",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bridgeOutParams\": {\n    \"data\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"minAmountOut\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"gasPaymentToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ba1cefe-53ab-4579-9bdc-2271fa533569",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bridgeOutParams\": {\n    \"data\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"minAmountOut\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"gasPaymentToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "077ac10e-9251-42c8-8da6-9ce4b553cc9e",
+          "name": "Submit Cross Chain Withdraw",
+          "request": {
+            "name": "Submit Cross Chain Withdraw",
+            "description": {},
+            "url": {
+              "path": [
+                "gmx-account",
+                "withdraw",
+                "cross-chain",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"relayerFeeAmount\": \"<string>\",\n  \"relayerFeeTokenAddress\": \"<string>\",\n  \"relayParamsPayload\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"bridgeOutParams\": {\n    \"data\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"minAmountOut\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"signature\": \"<string>\",\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"requestId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec6a0d24-386b-4c7d-912f-b82cd6afb100",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"relayerFeeAmount\": \"<string>\",\n  \"relayerFeeTokenAddress\": \"<string>\",\n  \"relayParamsPayload\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"bridgeOutParams\": {\n    \"data\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"minAmountOut\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"signature\": \"<string>\",\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"requestId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"relay_failed\",\n  \"requestId\": \"string\",\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": \"string\"\n  },\n  \"taskId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ae0d52f-e7f7-467c-be60-7ba86da7c205",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"relayerFeeAmount\": \"<string>\",\n  \"relayerFeeTokenAddress\": \"<string>\",\n  \"relayParamsPayload\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"bridgeOutParams\": {\n    \"data\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"minAmountOut\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"signature\": \"<string>\",\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"requestId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2021ab3d-6130-4d5d-b553-7c9135b88a31",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"relayerFeeAmount\": \"<string>\",\n  \"relayerFeeTokenAddress\": \"<string>\",\n  \"relayParamsPayload\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"bridgeOutParams\": {\n    \"data\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"minAmountOut\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"token\": \"<string>\"\n  },\n  \"signature\": \"<string>\",\n  \"account\": \"<string>\",\n  \"srcChainId\": \"<double>\",\n  \"requestId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc7efa53-6d61-447c-96e1-1c368f971359",
+          "name": "Status Cross Chain Withdraw",
+          "request": {
+            "name": "Status Cross Chain Withdraw",
+            "description": {},
+            "url": {
+              "path": [
+                "gmx-account",
+                "withdraw",
+                "cross-chain",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "38e0858c-6a23-4eda-8d2c-bd3a091992cd",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"updatedAt\": \"string\",\n  \"createdAt\": \"string\",\n  \"status\": \"string\",\n  \"requestId\": \"string\",\n  \"error\": {\n    \"message\": \"string\",\n    \"code\": \"string\"\n  },\n  \"gelatoStatusCode\": 1236.35491659704,\n  \"taskId\": \"string\",\n  \"txHash\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e209c74-be8c-4178-9585-d893e91ccd39",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a46697aa-5c43-4eda-a250-2f28888dc98b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c6a461d-fdb6-4c1d-87fe-20d62d938ccc",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "gmx-account",
+                    "withdraw",
+                    "cross-chain",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1cb2ad07-791d-4e48-abc4-423fc69386fa",
+    "name": "@gmx-io/gmx-public-api Allowances GMX Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

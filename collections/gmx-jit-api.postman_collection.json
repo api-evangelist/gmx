@@ -1,0 +1,316 @@
+{
+  "item": [
+    {
+      "id": "ec95b93a-b0aa-45fb-a52c-643376e1aa59",
+      "name": "JIT",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5f92d5c5-f576-4fd1-9e61-016e83b07baf",
+          "name": "Get Liquidity Info",
+          "request": {
+            "name": "Get Liquidity Info",
+            "description": {},
+            "url": {
+              "path": [
+                "jit",
+                "liquidity_info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb3316c1-05a9-42b7-a002-277b480014c0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jit",
+                    "liquidity_info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"liquidityInfos\": [\n    {\n      \"glvShiftParams\": [\n        {\n          \"minMarketTokens\": \"string\",\n          \"marketTokenAmount\": \"string\",\n          \"toMarket\": \"string\",\n          \"fromMarket\": \"string\",\n          \"glv\": \"string\"\n        },\n        {\n          \"minMarketTokens\": \"string\",\n          \"marketTokenAmount\": \"string\",\n          \"toMarket\": \"string\",\n          \"fromMarket\": \"string\",\n          \"glv\": \"string\"\n        }\n      ],\n      \"maxReservedUsdWithJitShort\": \"string\",\n      \"maxReservedUsdWithJitLong\": \"string\",\n      \"market\": \"string\",\n      \"glv\": \"string\"\n    },\n    {\n      \"glvShiftParams\": [\n        {\n          \"minMarketTokens\": \"string\",\n          \"marketTokenAmount\": \"string\",\n          \"toMarket\": \"string\",\n          \"fromMarket\": \"string\",\n          \"glv\": \"string\"\n        },\n        {\n          \"minMarketTokens\": \"string\",\n          \"marketTokenAmount\": \"string\",\n          \"toMarket\": \"string\",\n          \"fromMarket\": \"string\",\n          \"glv\": \"string\"\n        }\n      ],\n      \"maxReservedUsdWithJitShort\": \"string\",\n      \"maxReservedUsdWithJitLong\": \"string\",\n      \"market\": \"string\",\n      \"glv\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b5bc929-46df-448f-91b4-184bc451f104",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jit",
+                    "liquidity_info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fdd6b59-72a6-4cf3-b37b-75b40d823a57",
+          "name": "Get Liquidity History",
+          "request": {
+            "name": "Get Liquidity History",
+            "description": {},
+            "url": {
+              "path": [
+                "jit",
+                "liquidity_history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<double>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5115559-831f-4702-908d-c08ba99248df",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jit",
+                    "liquidity_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<double>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"snapshots\": [\n    {\n      \"shortLiquidityUsd\": \"string\",\n      \"longLiquidityUsd\": \"string\",\n      \"timestamp\": 8204.225735976792,\n      \"glvAddress\": \"string\",\n      \"marketAddress\": \"string\"\n    },\n    {\n      \"shortLiquidityUsd\": \"string\",\n      \"longLiquidityUsd\": \"string\",\n      \"timestamp\": 8318.6678370149,\n      \"glvAddress\": \"string\",\n      \"marketAddress\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5f43c5e-0112-4ae4-8e64-b843b0db919c",
+              "name": "Bad Request - Invalid period",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jit",
+                    "liquidity_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<double>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39ae6af8-2373-473e-8ea3-be25913a5c5a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jit",
+                    "liquidity_history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<double>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b8844ee9-dc6e-40d0-b11e-b6e107b6cac2",
+    "name": "@gmx-io/gmx-public-api Allowances JIT API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

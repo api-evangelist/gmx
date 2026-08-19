@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "@gmx-io/gmx-public-api Allowances Markets API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetMarkets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/markets"
+          }
+        },
+        {
+          "info": {
+            "name": "GetMarketsTickers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/markets/tickers",
+            "params": [
+              {
+                "name": "addresses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "symbols",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GetMarketsInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/markets/info"
+          }
+        },
+        {
+          "info": {
+            "name": "GetMarketsConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/markets/config"
+          }
+        },
+        {
+          "info": {
+            "name": "GetMarketsValues",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/markets/values"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "c7fd9b28-c0f2-4719-a02c-33bda8e13f1c",
+      "name": "Buyback",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d06e78e4-0e1b-4a3f-ba60-6987e6b882a7",
+          "name": "Get Weekly Stats",
+          "request": {
+            "name": "Get Weekly Stats",
+            "description": {},
+            "url": {
+              "path": [
+                "buyback",
+                "weekly-stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c98ef0ce-2f29-4437-a31b-0d6667f77696",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "buyback",
+                    "weekly-stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"weeks\": [\n    {\n      \"cumulativeAccrued\": \"string\",\n      \"weeklyAccrued\": \"string\",\n      \"weekEnd\": 2581.3333588561536,\n      \"weekStart\": 5117.6015383978265\n    },\n    {\n      \"cumulativeAccrued\": \"string\",\n      \"weeklyAccrued\": \"string\",\n      \"weekEnd\": 636.373910578798,\n      \"weekStart\": 565.3907602769348\n    }\n  ],\n  \"summary\": {\n    \"weeksTracked\": 6037.561924933399,\n    \"latestWeekAccrued\": \"string\",\n    \"totalAccrued\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87df2e81-a44a-4061-b8eb-49726c5c03fc",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "buyback",
+                    "weekly-stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "237e7b4f-c140-49e4-b2db-a08ccc7ac621",
+    "name": "@gmx-io/gmx-public-api Allowances Buyback API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
