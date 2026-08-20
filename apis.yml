@@ -69,6 +69,11 @@ apis:
   tags:
   - GraphQL
   - Historical Data
+  - Onchain
+  - Subsquid
+  tags_raw:
+  - GraphQL
+  - Historical Data
   - On-Chain
   - Subsquid
   properties:
@@ -156,6 +161,8 @@ apis:
   humanURL: https://docs.gmx.io/docs/api/overview/
   baseURL: https://arbitrum.gmxapi.io/v1
   tags:
+  - Buy Back
+  tags_raw:
   - Buyback
   properties:
   - type: OpenAPI
@@ -216,6 +223,8 @@ apis:
   humanURL: https://docs.gmx.io/docs/api/overview/
   baseURL: https://arbitrum.gmxapi.io/v1
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
