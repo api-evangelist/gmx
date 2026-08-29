@@ -12,6 +12,17 @@ description: 'GMX is a decentralized perpetual and spot exchange deployed on Arb
   access. Data coverage includes markets, tickers, tokens, positions, orders, rates,
   APY, performance, wallet balances, GLP/GM/GLV token analytics, OHLCV, buyback stats,
   and staking power.'
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: unknown
