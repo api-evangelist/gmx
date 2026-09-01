@@ -80,7 +80,7 @@ apis:
   tags:
   - GraphQL
   - Historical Data
-  - On-Chain
+  - Onchain
   - Subsquid
   tags_raw:
   - GraphQL
@@ -172,7 +172,7 @@ apis:
   humanURL: https://docs.gmx.io/docs/api/overview/
   baseURL: https://arbitrum.gmxapi.io/v1
   tags:
-  - Buyback
+  - Buy Back
   tags_raw:
   - Buyback
   properties:
