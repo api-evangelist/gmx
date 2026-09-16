@@ -2,16 +2,14 @@ aid: gmx
 url: https://raw.githubusercontent.com/api-evangelist/gmx/refs/heads/main/apis.yml
 name: GMX
 kind: company
-description: 'GMX is a decentralized perpetual and spot exchange deployed on Arbitrum,
-  Avalanche, Botanix, and MegaETH, supporting trades with up to 100x leverage and
-  low-price-impact token swaps powered by oracle-based pricing. The platform exposes
-  four integration surfaces: a GMX REST API (primary, OpenAPI-documented) for account
-  data, orders, analytics, and relayed workflows; an Oracle API (stable) for oracle
-  prices, markets, liquidity snapshots, and APY; a GraphQL API via Subsquid for historical
-  on-chain data; and an MCP server plus TypeScript SDK for AI-agent and programmatic
-  access. Data coverage includes markets, tickers, tokens, positions, orders, rates,
-  APY, performance, wallet balances, GLP/GM/GLV token analytics, OHLCV, buyback stats,
-  and staking power.'
+description: 'GMX is a decentralized perpetual and spot exchange deployed on Arbitrum, Avalanche, Botanix,
+  and MegaETH, supporting trades with up to 100x leverage and low-price-impact token swaps powered by
+  oracle-based pricing. The platform exposes four integration surfaces: a GMX REST API (primary, OpenAPI-documented)
+  for account data, orders, analytics, and relayed workflows; an Oracle API (stable) for oracle prices,
+  markets, liquidity snapshots, and APY; a GraphQL API via Subsquid for historical on-chain data; and
+  an MCP server plus TypeScript SDK for AI-agent and programmatic access. Data coverage includes markets,
+  tickers, tokens, positions, orders, rates, APY, performance, wallet balances, GLP/GM/GLV token analytics,
+  OHLCV, buyback stats, and staking power.'
 deliveryModel:
   model: unknown
   open_source: false
@@ -50,15 +48,14 @@ tags:
 - Avalanche
 - Web3
 created: '2026-06-14'
-modified: '2026-06-14'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: gmx:oracle-api
   name: GMX Oracle API
-  description: >-
-    Stable, read-only REST API providing oracle prices, market information, liquidity snapshots, APY data,
-    and GM/GLV token info for Arbitrum, Avalanche, Botanix, and MegaETH. Primary endpoints live at {chain}-api.gmxinfra.io
-    with documented fallback hosts for high availability.
+  description: Stable, read-only REST API providing oracle prices, market information, liquidity snapshots,
+    APY data, and GM/GLV token info for Arbitrum, Avalanche, Botanix, and MegaETH. Primary endpoints live
+    at {chain}-api.gmxinfra.io with documented fallback hosts for high availability.
   humanURL: https://docs.gmx.io/docs/api/rest/
   baseURL: https://arbitrum-api.gmxinfra.io
   tags:
@@ -72,9 +69,9 @@ apis:
     url: https://docs.gmx.io/docs/api/rest/
 - aid: gmx:graphql-api
   name: GMX GraphQL API
-  description: >-
-    Historical on-chain data for GMX via Subsquid-powered GraphQL endpoints. Enables deep queries over
-    trades, liquidity events, positions, and protocol metrics indexed from Arbitrum and Avalanche chains.
+  description: Historical on-chain data for GMX via Subsquid-powered GraphQL endpoints. Enables deep queries
+    over trades, liquidity events, positions, and protocol metrics indexed from Arbitrum and Avalanche
+    chains.
   humanURL: https://docs.gmx.io/docs/api/subsquid/
   baseURL: https://gmx.squids.live/gmx-synthetics-arbitrum:prod/api/graphql
   tags:
@@ -96,10 +93,9 @@ apis:
     type: GraphQLSchema
 - aid: gmx:integration-api
   name: GMX Integration API
-  description: >-
-    CoinGecko-compatible trading pairs API for GMX markets on Arbitrum and Avalanche, returning ticker
-    IDs, base and target currencies, product type (Spot or Perpetual), last price, 24-hour high/low, base
-    and target volumes, and open interest for each market.
+  description: CoinGecko-compatible trading pairs API for GMX markets on Arbitrum and Avalanche, returning
+    ticker IDs, base and target currencies, product type (Spot or Perpetual), last price, 24-hour high/low,
+    base and target volumes, and open interest for each market.
   humanURL: https://github.com/gmx-io/gmx-integration-api
   baseURL: https://gmx-integration-cg.vercel.app/api
   tags:
@@ -114,10 +110,9 @@ apis:
     url: https://github.com/gmx-io/gmx-integration-api
 - aid: gmx:typescript-sdk
   name: GMX TypeScript SDK
-  description: >-
-    Official @gmx-io/sdk package shipping two clients: GmxSdk (SDK v1) for full read/write access via
-    RPC, and GmxApiSdk (SDK v2) for lightweight read-only HTTP access covering markets, tickers, tokens,
-    pairs, rates, APY, performance, positions, orders, OHLCV, buyback stats, and staking power.
+  description: 'Official @gmx-io/sdk package shipping two clients: GmxSdk (SDK v1) for full read/write
+    access via RPC, and GmxApiSdk (SDK v2) for lightweight read-only HTTP access covering markets, tickers,
+    tokens, pairs, rates, APY, performance, positions, orders, OHLCV, buyback stats, and staking power.'
   humanURL: https://docs.gmx.io/docs/sdk/
   baseURL: https://www.npmjs.com/package/@gmx-io/sdk
   tags:
@@ -181,7 +176,7 @@ apis:
   - type: Documentation
     url: https://docs.gmx.io/docs/api/overview/
 - aid: gmx:gmx-gmx-account-api
-  name: GMX GMX Account API
+  name: GMX Account API
   description: The GMX Account API from GMX — 4 operation(s) for gmx account.
   humanURL: https://docs.gmx.io/docs/api/overview/
   baseURL: https://arbitrum.gmxapi.io/v1
