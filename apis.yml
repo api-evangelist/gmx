@@ -53,9 +53,10 @@ specificationVersion: '0.23'
 apis:
 - aid: gmx:oracle-api
   name: GMX Oracle API
-  description: Stable, read-only REST API providing oracle prices, market information, liquidity snapshots,
-    APY data, and GM/GLV token info for Arbitrum, Avalanche, Botanix, and MegaETH. Primary endpoints live
-    at {chain}-api.gmxinfra.io with documented fallback hosts for high availability.
+  description: >-
+    Stable, read-only REST API providing oracle prices, market information, liquidity snapshots, APY data,
+    and GM/GLV token info for Arbitrum, Avalanche, Botanix, and MegaETH. Primary endpoints live at {chain}-api.gmxinfra.io
+    with documented fallback hosts for high availability.
   humanURL: https://docs.gmx.io/docs/api/rest/
   baseURL: https://arbitrum-api.gmxinfra.io
   tags:
@@ -69,9 +70,9 @@ apis:
     url: https://docs.gmx.io/docs/api/rest/
 - aid: gmx:graphql-api
   name: GMX GraphQL API
-  description: Historical on-chain data for GMX via Subsquid-powered GraphQL endpoints. Enables deep queries
-    over trades, liquidity events, positions, and protocol metrics indexed from Arbitrum and Avalanche
-    chains.
+  description: >-
+    Historical on-chain data for GMX via Subsquid-powered GraphQL endpoints. Enables deep queries over
+    trades, liquidity events, positions, and protocol metrics indexed from Arbitrum and Avalanche chains.
   humanURL: https://docs.gmx.io/docs/api/subsquid/
   baseURL: https://gmx.squids.live/gmx-synthetics-arbitrum:prod/api/graphql
   tags:
@@ -93,9 +94,10 @@ apis:
     type: GraphQLSchema
 - aid: gmx:integration-api
   name: GMX Integration API
-  description: CoinGecko-compatible trading pairs API for GMX markets on Arbitrum and Avalanche, returning
-    ticker IDs, base and target currencies, product type (Spot or Perpetual), last price, 24-hour high/low,
-    base and target volumes, and open interest for each market.
+  description: >-
+    CoinGecko-compatible trading pairs API for GMX markets on Arbitrum and Avalanche, returning ticker
+    IDs, base and target currencies, product type (Spot or Perpetual), last price, 24-hour high/low, base
+    and target volumes, and open interest for each market.
   humanURL: https://github.com/gmx-io/gmx-integration-api
   baseURL: https://gmx-integration-cg.vercel.app/api
   tags:
@@ -110,9 +112,10 @@ apis:
     url: https://github.com/gmx-io/gmx-integration-api
 - aid: gmx:typescript-sdk
   name: GMX TypeScript SDK
-  description: 'Official @gmx-io/sdk package shipping two clients: GmxSdk (SDK v1) for full read/write
-    access via RPC, and GmxApiSdk (SDK v2) for lightweight read-only HTTP access covering markets, tickers,
-    tokens, pairs, rates, APY, performance, positions, orders, OHLCV, buyback stats, and staking power.'
+  description: >-
+    Official @gmx-io/sdk package shipping two clients: GmxSdk (SDK v1) for full read/write access via
+    RPC, and GmxApiSdk (SDK v2) for lightweight read-only HTTP access covering markets, tickers, tokens,
+    pairs, rates, APY, performance, positions, orders, OHLCV, buyback stats, and staking power.
   humanURL: https://docs.gmx.io/docs/sdk/
   baseURL: https://www.npmjs.com/package/@gmx-io/sdk
   tags:
@@ -159,20 +162,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/gmx-balances-api-openapi.yml
-  - type: Documentation
-    url: https://docs.gmx.io/docs/api/overview/
-- aid: gmx:gmx-buyback-api
-  name: GMX Buyback API
-  description: The Buyback API from GMX — 1 operation(s) for buyback.
-  humanURL: https://docs.gmx.io/docs/api/overview/
-  baseURL: https://arbitrum.gmxapi.io/v1
-  tags:
-  - Buy Back
-  tags_raw:
-  - Buyback
-  properties:
-  - type: OpenAPI
-    url: openapi/gmx-buyback-api-openapi.yml
   - type: Documentation
     url: https://docs.gmx.io/docs/api/overview/
 - aid: gmx:gmx-gmx-account-api
@@ -343,6 +332,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/gmx-trades-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-buy-back-api
+  name: GMX Buy Back API
+  description: The Buy Back API from GMX — 1 operation(s) for buy back.
+  humanURL: https://docs.gmx.io/docs/api/rest/
+  baseURL: https://arbitrum-api.gmxinfra.io
+  tags:
+  - Buy Back
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-buy-back-api-openapi.yml
   - type: Documentation
     url: https://docs.gmx.io/docs/api/overview/
 common:
