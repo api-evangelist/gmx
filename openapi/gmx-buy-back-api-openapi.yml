@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: '@gmx-io/gmx-public-api Allowances Buyback API'
+  title: '@gmx-io/gmx-public-api Buyback API'
   version: 1.0.0
   license:
     name: Copyright
@@ -8,7 +8,7 @@ info:
 servers:
 - url: /v1
 tags:
-- name: Buyback
+- name: Buy Back
 paths:
   /buyback/weekly-stats:
     get:
@@ -23,9 +23,11 @@ paths:
         '500':
           description: Internal Server Error
       tags:
-      - Buyback
+      - Buy Back
       security: []
       parameters: []
+      summary: Get weekly stats
+      x-summary-source: derived
 components:
   schemas:
     BuybackWeeklyStatsResponse:

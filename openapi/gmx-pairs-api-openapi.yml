@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: '@gmx-io/gmx-public-api Allowances Pairs API'
+  title: '@gmx-io/gmx-public-api Pairs API'
   version: 1.0.0
   license:
     name: Copyright
@@ -28,6 +28,8 @@ paths:
       - Pairs
       security: []
       parameters: []
+      summary: Get pairs
+      x-summary-source: derived
 components:
   schemas:
     PairResponse:

@@ -1,28 +1,11 @@
 {
   "provider": "gmx",
   "sources": [
-    "gmx-allowances-api-openapi.yml",
-    "gmx-apy-api-openapi.yml",
-    "gmx-balances-api-openapi.yml",
-    "gmx-buyback-api-openapi.yml",
-    "gmx-gmx-account-api-openapi.yml",
-    "gmx-jit-api-openapi.yml",
-    "gmx-markets-api-openapi.yml",
-    "gmx-order-transactions-api-openapi.yml",
-    "gmx-orders-api-openapi.yml",
-    "gmx-pairs-api-openapi.yml",
-    "gmx-performance-api-openapi.yml",
-    "gmx-positions-api-openapi.yml",
-    "gmx-prices-api-openapi.yml",
-    "gmx-rates-api-openapi.yml",
-    "gmx-staking-api-openapi.yml",
-    "gmx-subaccounts-api-openapi.yml",
-    "gmx-tokens-api-openapi.yml",
-    "gmx-trades-api-openapi.yml"
+    "_original/openapi.json"
   ],
   "outputs": [
-    "gmx-allowances-api-openapi.yml",
     "gmx-apy-api-openapi.yml",
+    "gmx-allowances-api-openapi.yml",
     "gmx-balances-api-openapi.yml",
     "gmx-buyback-api-openapi.yml",
     "gmx-gmx-account-api-openapi.yml",
@@ -40,9 +23,53 @@
     "gmx-tokens-api-openapi.yml",
     "gmx-trades-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "openapi.json: declared missing tag: APY",
+    "openapi.json: declared missing tag: Allowances",
+    "openapi.json: declared missing tag: Balances",
+    "openapi.json: declared missing tag: Buyback",
+    "openapi.json: declared missing tag: GMX Account",
+    "openapi.json: declared missing tag: JIT",
+    "openapi.json: declared missing tag: Markets",
+    "openapi.json: declared missing tag: Order Transactions",
+    "openapi.json: declared missing tag: Orders",
+    "openapi.json: declared missing tag: Pairs",
+    "openapi.json: declared missing tag: Performance",
+    "openapi.json: declared missing tag: Positions",
+    "openapi.json: declared missing tag: Prices",
+    "openapi.json: declared missing tag: Rates",
+    "openapi.json: declared missing tag: Staking",
+    "openapi.json: declared missing tag: Subaccounts",
+    "openapi.json: declared missing tag: Tokens",
+    "openapi.json: declared missing tag: Trades",
+    "superseded outputs removed: gmx-buy-back-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 22 total)"
+  ],
+  "skipped": [
+    "gmx-allowances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-apy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-buy-back-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-gmx-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-jit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-markets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-order-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-pairs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-performance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-positions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-prices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-rates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-staking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-subaccounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gmx-trades-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

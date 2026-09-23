@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: '@gmx-io/gmx-public-api Allowances API'
   version: 1.0.0
@@ -40,6 +40,8 @@ paths:
         required: true
         schema:
           type: string
+      summary: Get allowances
+      x-summary-source: derived
 components:
   schemas:
     TokenAllowance:

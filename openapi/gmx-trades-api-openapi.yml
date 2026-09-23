@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: '@gmx-io/gmx-public-api Allowances Trades API'
+  title: '@gmx-io/gmx-public-api Trades API'
   version: 1.0.0
   license:
     name: Copyright
@@ -73,6 +73,8 @@ paths:
         required: false
         schema:
           type: string
+      summary: Get trades
+      x-summary-source: derived
   /trades/search:
     post:
       operationId: SearchTrades
@@ -102,73 +104,10 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TradesSearchRequest'
+      summary: Search trades
+      x-summary-source: derived
 components:
   schemas:
-    TradesListResponse:
-      properties:
-        hasMore:
-          type: boolean
-        nextCursor:
-          type: string
-          nullable: true
-        trades:
-          items:
-            $ref: '#/components/schemas/TradeResponse'
-          type: array
-      required:
-      - hasMore
-      - nextCursor
-      - trades
-      type: object
-    TradesSearchRequest:
-      properties:
-        cursor:
-          type: string
-          description: Opaque pagination cursor returned by previous response.
-        limit:
-          type: number
-          format: double
-          description: Page size, 1..1000. Defaults to 100.
-        showDebugValues:
-          type: boolean
-          description: When false (default), excludes MarketIncrease/Decrease/Swap OrderCreated debug events.
-        orderEventCombinations:
-          items:
-            $ref: '#/components/schemas/OrderEventCombination'
-          type: array
-        marketsDirections:
-          items:
-            $ref: '#/components/schemas/MarketDirectionFilter'
-          type: array
-        toTimestamp:
-          type: number
-          format: double
-          description: Inclusive upper-bound timestamp filter. Accepts seconds or milliseconds.
-        fromTimestamp:
-          type: number
-          format: double
-          description: Inclusive lower-bound timestamp filter. Accepts seconds or milliseconds.
-        forAllAccounts:
-          type: boolean
-          description: When true, returns trades for all accounts.
-        address:
-          type: string
-          description: Trader address. Required unless `forAllAccounts` is true.
-      type: object
-    MarketDirectionFilter:
-      properties:
-        collateralAddress:
-          type: string
-        direction:
-          $ref: '#/components/schemas/TradeDirection'
-        marketAddress:
-          type: string
-      required:
-      - direction
-      - marketAddress
-      type: object
-    TradeResponse:
-      $ref: '#/components/schemas/TradeActionResponse'
     TradeDirection:
       type: string
       enum:
@@ -187,6 +126,35 @@ components:
           format: double
         eventName:
           type: string
+      type: object
+    MarketDirectionFilter:
+      properties:
+        collateralAddress:
+          type: string
+        direction:
+          $ref: '#/components/schemas/TradeDirection'
+        marketAddress:
+          type: string
+      required:
+      - direction
+      - marketAddress
+      type: object
+    TradesListResponse:
+      properties:
+        hasMore:
+          type: boolean
+        nextCursor:
+          type:
+          - string
+          - 'null'
+        trades:
+          items:
+            $ref: '#/components/schemas/TradeResponse'
+          type: array
+      required:
+      - hasMore
+      - nextCursor
+      - trades
       type: object
     TradeActionResponse:
       properties:
@@ -295,4 +263,41 @@ components:
       - account
       - eventName
       - id
+      type: object
+    TradeResponse:
+      $ref: '#/components/schemas/TradeActionResponse'
+    TradesSearchRequest:
+      properties:
+        cursor:
+          type: string
+          description: Opaque pagination cursor returned by previous response.
+        limit:
+          type: number
+          format: double
+          description: Page size, 1..1000. Defaults to 100.
+        showDebugValues:
+          type: boolean
+          description: When false (default), excludes MarketIncrease/Decrease/Swap OrderCreated debug events.
+        orderEventCombinations:
+          items:
+            $ref: '#/components/schemas/OrderEventCombination'
+          type: array
+        marketsDirections:
+          items:
+            $ref: '#/components/schemas/MarketDirectionFilter'
+          type: array
+        toTimestamp:
+          type: number
+          format: double
+          description: Inclusive upper-bound timestamp filter. Accepts seconds or milliseconds.
+        fromTimestamp:
+          type: number
+          format: double
+          description: Inclusive lower-bound timestamp filter. Accepts seconds or milliseconds.
+        forAllAccounts:
+          type: boolean
+          description: When true, returns trades for all accounts.
+        address:
+          type: string
+          description: Trader address. Required unless `forAllAccounts` is true.
       type: object

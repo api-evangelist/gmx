@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: '@gmx-io/gmx-public-api Allowances Staking API'
+  title: '@gmx-io/gmx-public-api Staking API'
   version: 1.0.0
   license:
     name: Copyright
@@ -33,6 +33,8 @@ paths:
         required: true
         schema:
           type: string
+      summary: Get staking power
+      x-summary-source: derived
 components:
   schemas:
     BigIntToString_StakingPowerData_:

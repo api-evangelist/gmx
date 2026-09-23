@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: '@gmx-io/gmx-public-api Allowances Markets API'
+  title: '@gmx-io/gmx-public-api Markets API'
   version: 1.0.0
   license:
     name: Copyright
@@ -28,6 +28,8 @@ paths:
       - Markets
       security: []
       parameters: []
+      summary: Get markets
+      x-summary-source: derived
   /markets/tickers:
     get:
       operationId: GetMarketsTickers
@@ -62,6 +64,8 @@ paths:
           type: array
           items:
             type: string
+      summary: Get markets tickers
+      x-summary-source: derived
   /markets/info:
     get:
       operationId: GetMarketsInfo
@@ -80,6 +84,8 @@ paths:
       - Markets
       security: []
       parameters: []
+      summary: Get markets info
+      x-summary-source: derived
   /markets/config:
     get:
       operationId: GetMarketsConfig
@@ -98,6 +104,8 @@ paths:
       - Markets
       security: []
       parameters: []
+      summary: Get markets config
+      x-summary-source: derived
   /markets/values:
     get:
       operationId: GetMarketsValues
@@ -116,22 +124,10 @@ paths:
       - Markets
       security: []
       parameters: []
+      summary: Get markets values
+      x-summary-source: derived
 components:
   schemas:
-    MarketValuesResponse:
-      $ref: '#/components/schemas/Pick_MarketInfoResponse.MarketValuesFieldKey_'
-    LeverageTierResponse:
-      properties:
-        maxPositionSize:
-          type: string
-        minCollateralFactor:
-          type: string
-        maxLeverage:
-          type: string
-      required:
-      - minCollateralFactor
-      - maxLeverage
-      type: object
     MarketWithTiersResponse:
       properties:
         minCollateralUsd:
@@ -168,6 +164,94 @@ components:
       - shortTokenAddress
       - longTokenAddress
       - indexTokenAddress
+      - marketTokenAddress
+      - symbol
+      type: object
+    Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__:
+      $ref: '#/components/schemas/Pick_MarketInfoResponse.Exclude_keyofMarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress___'
+      description: Construct a type with the properties of T except for those in type K.
+    MarketTickerResponse:
+      properties:
+        netRateShort:
+          type: string
+        netRateLong:
+          type: string
+        borrowingRateShort:
+          type: string
+        borrowingRateLong:
+          type: string
+        fundingRateShort:
+          type: string
+        fundingRateLong:
+          type: string
+        poolAmountShortUsd:
+          type: string
+        poolAmountLongUsd:
+          type: string
+        availableLiquidityShort:
+          type: string
+        availableLiquidityLong:
+          type: string
+        shortInterestUsdMark:
+          type: string
+        longInterestUsdMark:
+          type: string
+        shortInterestUsd:
+          type: string
+        longInterestUsd:
+          type: string
+        shortInterestInTokens:
+          type: string
+        longInterestInTokens:
+          type: string
+        priceChangePercent24hBps:
+          type: string
+        priceChange24h:
+          type: string
+        close24h:
+          type: string
+        open24h:
+          type: string
+        low24h:
+          type: string
+        high24h:
+          type: string
+        markPrice:
+          type: string
+        maxPrice:
+          type: string
+        minPrice:
+          type: string
+        marketTokenAddress:
+          type: string
+        symbol:
+          type: string
+      required:
+      - netRateShort
+      - netRateLong
+      - borrowingRateShort
+      - borrowingRateLong
+      - fundingRateShort
+      - fundingRateLong
+      - poolAmountShortUsd
+      - poolAmountLongUsd
+      - availableLiquidityShort
+      - availableLiquidityLong
+      - shortInterestUsdMark
+      - longInterestUsdMark
+      - shortInterestUsd
+      - longInterestUsd
+      - shortInterestInTokens
+      - longInterestInTokens
+      - priceChangePercent24hBps
+      - priceChange24h
+      - close24h
+      - open24h
+      - low24h
+      - high24h
+      - markPrice
+      - maxPrice
+      - minPrice
       - marketTokenAddress
       - symbol
       type: object
@@ -430,76 +514,6 @@ components:
       - marketTokenAddress
       - name
       type: object
-    Pick_MarketInfoResponse.MarketValuesFieldKey_:
-      properties:
-        marketTokenAddress:
-          type: string
-        longPoolAmount:
-          type: string
-        shortPoolAmount:
-          type: string
-        poolValueMax:
-          type: string
-        poolValueMin:
-          type: string
-        totalBorrowingFees:
-          type: string
-        positionImpactPoolAmount:
-          type: string
-        swapImpactPoolAmountLong:
-          type: string
-        swapImpactPoolAmountShort:
-          type: string
-        longInterestUsd:
-          type: string
-        shortInterestUsd:
-          type: string
-        longInterestInTokens:
-          type: string
-        shortInterestInTokens:
-          type: string
-        borrowingFactorPerSecondForLongs:
-          type: string
-        borrowingFactorPerSecondForShorts:
-          type: string
-        fundingFactorPerSecond:
-          type: string
-        longsPayShorts:
-          type: boolean
-        virtualPoolAmountForLongToken:
-          type: string
-        virtualPoolAmountForShortToken:
-          type: string
-        virtualInventoryForPositions:
-          type: string
-      required:
-      - marketTokenAddress
-      - longPoolAmount
-      - shortPoolAmount
-      - poolValueMax
-      - poolValueMin
-      - totalBorrowingFees
-      - positionImpactPoolAmount
-      - swapImpactPoolAmountLong
-      - swapImpactPoolAmountShort
-      - longInterestUsd
-      - shortInterestUsd
-      - longInterestInTokens
-      - shortInterestInTokens
-      - borrowingFactorPerSecondForLongs
-      - borrowingFactorPerSecondForShorts
-      - fundingFactorPerSecond
-      - longsPayShorts
-      - virtualPoolAmountForLongToken
-      - virtualPoolAmountForShortToken
-      - virtualInventoryForPositions
-      type: object
-      description: From T, pick a set of properties whose keys are in the union K
-    MarketConfigResponse:
-      $ref: '#/components/schemas/Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__'
-    Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__:
-      $ref: '#/components/schemas/Pick_MarketInfoResponse.Exclude_keyofMarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress___'
-      description: Construct a type with the properties of T except for those in type K.
     Pick_MarketInfoResponse.Exclude_keyofMarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress___:
       properties:
         marketTokenAddress:
@@ -703,88 +717,84 @@ components:
       - virtualShortTokenId
       type: object
       description: From T, pick a set of properties whose keys are in the union K
-    MarketTickerResponse:
+    Pick_MarketInfoResponse.MarketValuesFieldKey_:
       properties:
-        netRateShort:
+        marketTokenAddress:
           type: string
-        netRateLong:
+        longPoolAmount:
           type: string
-        borrowingRateShort:
+        shortPoolAmount:
           type: string
-        borrowingRateLong:
+        poolValueMax:
           type: string
-        fundingRateShort:
+        poolValueMin:
           type: string
-        fundingRateLong:
+        totalBorrowingFees:
           type: string
-        poolAmountShortUsd:
+        positionImpactPoolAmount:
           type: string
-        poolAmountLongUsd:
+        swapImpactPoolAmountLong:
           type: string
-        availableLiquidityShort:
-          type: string
-        availableLiquidityLong:
-          type: string
-        shortInterestUsdMark:
-          type: string
-        longInterestUsdMark:
-          type: string
-        shortInterestUsd:
+        swapImpactPoolAmountShort:
           type: string
         longInterestUsd:
           type: string
-        shortInterestInTokens:
+        shortInterestUsd:
           type: string
         longInterestInTokens:
           type: string
-        priceChangePercent24hBps:
+        shortInterestInTokens:
           type: string
-        priceChange24h:
+        borrowingFactorPerSecondForLongs:
           type: string
-        close24h:
+        borrowingFactorPerSecondForShorts:
           type: string
-        open24h:
+        fundingFactorPerSecond:
           type: string
-        low24h:
+        longsPayShorts:
+          type: boolean
+        virtualPoolAmountForLongToken:
           type: string
-        high24h:
+        virtualPoolAmountForShortToken:
           type: string
-        markPrice:
-          type: string
-        maxPrice:
-          type: string
-        minPrice:
-          type: string
-        marketTokenAddress:
-          type: string
-        symbol:
+        virtualInventoryForPositions:
           type: string
       required:
-      - netRateShort
-      - netRateLong
-      - borrowingRateShort
-      - borrowingRateLong
-      - fundingRateShort
-      - fundingRateLong
-      - poolAmountShortUsd
-      - poolAmountLongUsd
-      - availableLiquidityShort
-      - availableLiquidityLong
-      - shortInterestUsdMark
-      - longInterestUsdMark
-      - shortInterestUsd
-      - longInterestUsd
-      - shortInterestInTokens
-      - longInterestInTokens
-      - priceChangePercent24hBps
-      - priceChange24h
-      - close24h
-      - open24h
-      - low24h
-      - high24h
-      - markPrice
-      - maxPrice
-      - minPrice
       - marketTokenAddress
-      - symbol
+      - longPoolAmount
+      - shortPoolAmount
+      - poolValueMax
+      - poolValueMin
+      - totalBorrowingFees
+      - positionImpactPoolAmount
+      - swapImpactPoolAmountLong
+      - swapImpactPoolAmountShort
+      - longInterestUsd
+      - shortInterestUsd
+      - longInterestInTokens
+      - shortInterestInTokens
+      - borrowingFactorPerSecondForLongs
+      - borrowingFactorPerSecondForShorts
+      - fundingFactorPerSecond
+      - longsPayShorts
+      - virtualPoolAmountForLongToken
+      - virtualPoolAmountForShortToken
+      - virtualInventoryForPositions
       type: object
+      description: From T, pick a set of properties whose keys are in the union K
+    LeverageTierResponse:
+      properties:
+        maxPositionSize:
+          type: string
+        minCollateralFactor:
+          type: string
+        maxLeverage:
+          type: string
+      required:
+      - minCollateralFactor
+      - maxLeverage
+      type: object
+    MarketValuesResponse:
+      $ref: '#/components/schemas/Pick_MarketInfoResponse.MarketValuesFieldKey_'
+    MarketConfigResponse:
+      $ref: '#/components/schemas/Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__'

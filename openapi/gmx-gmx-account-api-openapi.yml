@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: '@gmx-io/gmx-public-api Allowances GMX Account API'
+  title: '@gmx-io/gmx-public-api GMX Account API'
   version: 1.0.0
   license:
     name: Copyright
@@ -36,6 +36,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CrossChainDepositPrepareRequest'
+      summary: Prepare cross chain deposit
+      x-summary-source: derived
   /gmx-account/withdraw/cross-chain/prepare:
     post:
       operationId: PrepareCrossChainWithdraw
@@ -62,6 +64,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CrossChainWithdrawPrepareRequest'
+      summary: Prepare cross chain withdraw
+      x-summary-source: derived
   /gmx-account/withdraw/cross-chain/submit:
     post:
       operationId: SubmitCrossChainWithdraw
@@ -86,6 +90,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CrossChainWithdrawSubmitRequest'
+      summary: Submit cross chain withdraw
+      x-summary-source: derived
   /gmx-account/withdraw/cross-chain/status:
     post:
       operationId: StatusCrossChainWithdraw
@@ -112,6 +118,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GmxAccountStatusRequest'
+      summary: Status cross chain withdraw
+      x-summary-source: derived
 components:
   schemas:
     Record_string._name-string--type-string_-Array_:
@@ -130,113 +138,6 @@ components:
         type: array
       type: object
       description: Construct a type with a set of properties K of type T
-    CrossChainDepositPrepareResponse:
-      properties:
-        expiresAt:
-          type: number
-          format: double
-        nativeFee:
-          type: string
-        composeGas:
-          type: string
-        payload:
-          properties:
-            value:
-              type: string
-            data:
-              type: string
-            to:
-              type: string
-          required:
-          - value
-          - data
-          - to
-          type: object
-        payloadType:
-          type: string
-          enum:
-          - transaction
-          nullable: false
-      required:
-      - expiresAt
-      - nativeFee
-      - composeGas
-      - payload
-      - payloadType
-      type: object
-    Record_string.unknown_:
-      properties: {}
-      additionalProperties: {}
-      type: object
-      description: Construct a type with a set of properties K of type T
-    CrossChainWithdrawPrepareResponse:
-      properties:
-        expiresAt:
-          type: number
-          format: double
-        payload:
-          properties:
-            gasPaymentParams:
-              $ref: '#/components/schemas/GasPaymentParamsDto'
-            relayRouterAddress:
-              type: string
-            relayParams:
-              $ref: '#/components/schemas/Record_string.unknown_'
-            typedData:
-              properties:
-                message:
-                  $ref: '#/components/schemas/Record_string.unknown_'
-                primaryType:
-                  type: string
-                  enum:
-                  - BridgeOut
-                  nullable: false
-                types:
-                  $ref: '#/components/schemas/Record_string._name-string--type-string_-Array_'
-                domain:
-                  $ref: '#/components/schemas/Record_string.unknown_'
-              required:
-              - message
-              - primaryType
-              - types
-              - domain
-              type: object
-          required:
-          - gasPaymentParams
-          - relayRouterAddress
-          - relayParams
-          - typedData
-          type: object
-        requestId:
-          type: string
-          description: Server-generated id; pass back to /submit and use for /status polling.
-        payloadType:
-          type: string
-          enum:
-          - typed-data
-          nullable: false
-      required:
-      - expiresAt
-      - payload
-      - requestId
-      - payloadType
-      type: object
-    GasPaymentParamsDto:
-      properties:
-        gasPaymentTokenAmount:
-          type: string
-        gasPaymentTokenAddress:
-          type: string
-        relayerFeeAmount:
-          type: string
-        relayerFeeTokenAddress:
-          type: string
-      required:
-      - gasPaymentTokenAmount
-      - gasPaymentTokenAddress
-      - relayerFeeAmount
-      - relayerFeeTokenAddress
-      type: object
     CrossChainWithdrawSubmitResponse:
       properties:
         error:
@@ -262,34 +163,21 @@ components:
       - status
       - requestId
       type: object
-    CrossChainWithdrawSubmitRequest:
+    GasPaymentParamsDto:
       properties:
-        requestId:
+        gasPaymentTokenAmount:
           type: string
-          description: Echo back the requestId from /prepare to link prepare→submit→status.
+        gasPaymentTokenAddress:
+          type: string
         relayerFeeAmount:
           type: string
         relayerFeeTokenAddress:
           type: string
-        relayParamsPayload:
-          $ref: '#/components/schemas/Record_string.unknown_'
-        bridgeOutParams:
-          $ref: '#/components/schemas/BridgeOutParamsDto'
-        signature:
-          type: string
-        account:
-          type: string
-        srcChainId:
-          type: number
-          format: double
       required:
+      - gasPaymentTokenAmount
+      - gasPaymentTokenAddress
       - relayerFeeAmount
       - relayerFeeTokenAddress
-      - relayParamsPayload
-      - bridgeOutParams
-      - signature
-      - account
-      - srcChainId
       type: object
     CrossChainWithdrawPrepareRequest:
       properties:
@@ -307,6 +195,56 @@ components:
       - bridgeOutParams
       - account
       - srcChainId
+      type: object
+    CrossChainWithdrawPrepareResponse:
+      properties:
+        expiresAt:
+          type: number
+          format: double
+        payload:
+          properties:
+            gasPaymentParams:
+              $ref: '#/components/schemas/GasPaymentParamsDto'
+            relayRouterAddress:
+              type: string
+            relayParams:
+              $ref: '#/components/schemas/Record_string.unknown_'
+            typedData:
+              properties:
+                message:
+                  $ref: '#/components/schemas/Record_string.unknown_'
+                primaryType:
+                  type: string
+                  enum:
+                  - BridgeOut
+                types:
+                  $ref: '#/components/schemas/Record_string._name-string--type-string_-Array_'
+                domain:
+                  $ref: '#/components/schemas/Record_string.unknown_'
+              required:
+              - message
+              - primaryType
+              - types
+              - domain
+              type: object
+          required:
+          - gasPaymentParams
+          - relayRouterAddress
+          - relayParams
+          - typedData
+          type: object
+        requestId:
+          type: string
+          description: Server-generated id; pass back to /submit and use for /status polling.
+        payloadType:
+          type: string
+          enum:
+          - typed-data
+      required:
+      - expiresAt
+      - payload
+      - requestId
+      - payloadType
       type: object
     CrossChainDepositPrepareRequest:
       properties:
@@ -369,24 +307,43 @@ components:
       required:
       - requestId
       type: object
-    BridgeOutParamsDto:
+    Record_string.unknown_:
+      properties: {}
+      additionalProperties: {}
+      type: object
+      description: Construct a type with a set of properties K of type T
+    CrossChainDepositPrepareResponse:
       properties:
-        data:
+        expiresAt:
+          type: number
+          format: double
+        nativeFee:
           type: string
-        provider:
+        composeGas:
           type: string
-        minAmountOut:
+        payload:
+          properties:
+            value:
+              type: string
+            data:
+              type: string
+            to:
+              type: string
+          required:
+          - value
+          - data
+          - to
+          type: object
+        payloadType:
           type: string
-        amount:
-          type: string
-        token:
-          type: string
+          enum:
+          - transaction
       required:
-      - data
-      - provider
-      - minAmountOut
-      - amount
-      - token
+      - expiresAt
+      - nativeFee
+      - composeGas
+      - payload
+      - payloadType
       type: object
     GmxAccountStatusResponse:
       properties:
@@ -420,4 +377,52 @@ components:
       - createdAt
       - status
       - requestId
+      type: object
+    CrossChainWithdrawSubmitRequest:
+      properties:
+        requestId:
+          type: string
+          description: Echo back the requestId from /prepare to link prepare→submit→status.
+        relayerFeeAmount:
+          type: string
+        relayerFeeTokenAddress:
+          type: string
+        relayParamsPayload:
+          $ref: '#/components/schemas/Record_string.unknown_'
+        bridgeOutParams:
+          $ref: '#/components/schemas/BridgeOutParamsDto'
+        signature:
+          type: string
+        account:
+          type: string
+        srcChainId:
+          type: number
+          format: double
+      required:
+      - relayerFeeAmount
+      - relayerFeeTokenAddress
+      - relayParamsPayload
+      - bridgeOutParams
+      - signature
+      - account
+      - srcChainId
+      type: object
+    BridgeOutParamsDto:
+      properties:
+        data:
+          type: string
+        provider:
+          type: string
+        minAmountOut:
+          type: string
+        amount:
+          type: string
+        token:
+          type: string
+      required:
+      - data
+      - provider
+      - minAmountOut
+      - amount
+      - token
       type: object

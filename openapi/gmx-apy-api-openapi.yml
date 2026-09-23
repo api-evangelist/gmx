@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: '@gmx-io/gmx-public-api Allowances APY API'
+  title: '@gmx-io/gmx-public-api APY API'
   version: 1.0.0
   license:
     name: Copyright
@@ -33,6 +33,8 @@ paths:
         required: false
         schema:
           $ref: '#/components/schemas/ApiParameterPeriod'
+      summary: Get apy
+      x-summary-source: derived
 components:
   schemas:
     ApyResponse:
@@ -44,22 +46,6 @@ components:
       required:
       - glvs
       - markets
-      type: object
-    ApyEntry:
-      properties:
-        bonusApr:
-          type: number
-          format: double
-        baseApy:
-          type: number
-          format: double
-        apy:
-          type: number
-          format: double
-      required:
-      - bonusApr
-      - baseApy
-      - apy
       type: object
     ApiParameterPeriod:
       enum:
@@ -77,3 +63,19 @@ components:
         $ref: '#/components/schemas/ApyEntry'
       type: object
       description: Construct a type with a set of properties K of type T
+    ApyEntry:
+      properties:
+        bonusApr:
+          type: number
+          format: double
+        baseApy:
+          type: number
+          format: double
+        apy:
+          type: number
+          format: double
+      required:
+      - bonusApr
+      - baseApy
+      - apy
+      type: object
