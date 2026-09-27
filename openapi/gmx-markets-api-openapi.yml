@@ -128,6 +128,83 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    LeverageTierResponse:
+      properties:
+        maxPositionSize:
+          type: string
+        minCollateralFactor:
+          type: string
+        maxLeverage:
+          type: string
+      required:
+      - minCollateralFactor
+      - maxLeverage
+      type: object
+    Pick_MarketInfoResponse.MarketValuesFieldKey_:
+      properties:
+        marketTokenAddress:
+          type: string
+        longPoolAmount:
+          type: string
+        shortPoolAmount:
+          type: string
+        poolValueMax:
+          type: string
+        poolValueMin:
+          type: string
+        totalBorrowingFees:
+          type: string
+        positionImpactPoolAmount:
+          type: string
+        swapImpactPoolAmountLong:
+          type: string
+        swapImpactPoolAmountShort:
+          type: string
+        longInterestUsd:
+          type: string
+        shortInterestUsd:
+          type: string
+        longInterestInTokens:
+          type: string
+        shortInterestInTokens:
+          type: string
+        borrowingFactorPerSecondForLongs:
+          type: string
+        borrowingFactorPerSecondForShorts:
+          type: string
+        fundingFactorPerSecond:
+          type: string
+        longsPayShorts:
+          type: boolean
+        virtualPoolAmountForLongToken:
+          type: string
+        virtualPoolAmountForShortToken:
+          type: string
+        virtualInventoryForPositions:
+          type: string
+      required:
+      - marketTokenAddress
+      - longPoolAmount
+      - shortPoolAmount
+      - poolValueMax
+      - poolValueMin
+      - totalBorrowingFees
+      - positionImpactPoolAmount
+      - swapImpactPoolAmountLong
+      - swapImpactPoolAmountShort
+      - longInterestUsd
+      - shortInterestUsd
+      - longInterestInTokens
+      - shortInterestInTokens
+      - borrowingFactorPerSecondForLongs
+      - borrowingFactorPerSecondForShorts
+      - fundingFactorPerSecond
+      - longsPayShorts
+      - virtualPoolAmountForLongToken
+      - virtualPoolAmountForShortToken
+      - virtualInventoryForPositions
+      type: object
+      description: From T, pick a set of properties whose keys are in the union K
     MarketWithTiersResponse:
       properties:
         minCollateralUsd:
@@ -167,9 +244,8 @@ components:
       - marketTokenAddress
       - symbol
       type: object
-    Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__:
-      $ref: '#/components/schemas/Pick_MarketInfoResponse.Exclude_keyofMarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress___'
-      description: Construct a type with the properties of T except for those in type K.
+    MarketValuesResponse:
+      $ref: '#/components/schemas/Pick_MarketInfoResponse.MarketValuesFieldKey_'
     MarketTickerResponse:
       properties:
         netRateShort:
@@ -255,6 +331,214 @@ components:
       - marketTokenAddress
       - symbol
       type: object
+    MarketConfigResponse:
+      $ref: '#/components/schemas/Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__'
+    Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__:
+      $ref: '#/components/schemas/Pick_MarketInfoResponse.Exclude_keyofMarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress___'
+      description: Construct a type with the properties of T except for those in type K.
+    Pick_MarketInfoResponse.Exclude_keyofMarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress___:
+      properties:
+        marketTokenAddress:
+          type: string
+        indexTokenAddress:
+          type: string
+        longTokenAddress:
+          type: string
+        shortTokenAddress:
+          type: string
+        isSameCollaterals:
+          type: boolean
+        isSpotOnly:
+          type: boolean
+        name:
+          type: string
+        data:
+          type: string
+        isDisabled:
+          type: boolean
+        maxLongPoolAmount:
+          type: string
+        maxShortPoolAmount:
+          type: string
+        maxLongPoolUsdForDeposit:
+          type: string
+        maxShortPoolUsdForDeposit:
+          type: string
+        reserveFactorLong:
+          type: string
+        reserveFactorShort:
+          type: string
+        openInterestReserveFactorLong:
+          type: string
+        openInterestReserveFactorShort:
+          type: string
+        maxOpenInterestLong:
+          type: string
+        maxOpenInterestShort:
+          type: string
+        borrowingFactorLong:
+          type: string
+        borrowingFactorShort:
+          type: string
+        borrowingExponentFactorLong:
+          type: string
+        borrowingExponentFactorShort:
+          type: string
+        fundingFactor:
+          type: string
+        fundingExponentFactor:
+          type: string
+        fundingIncreaseFactorPerSecond:
+          type: string
+        fundingDecreaseFactorPerSecond:
+          type: string
+        thresholdForStableFunding:
+          type: string
+        thresholdForDecreaseFunding:
+          type: string
+        minFundingFactorPerSecond:
+          type: string
+        maxFundingFactorPerSecond:
+          type: string
+        minPositionImpactPoolAmount:
+          type: string
+        positionImpactPoolDistributionRate:
+          type: string
+        minCollateralFactor:
+          type: string
+        minCollateralFactorForLiquidation:
+          type: string
+        minCollateralFactorForOpenInterestLong:
+          type: string
+        minCollateralFactorForOpenInterestShort:
+          type: string
+        maxPnlFactorForTradersLong:
+          type: string
+        maxPnlFactorForTradersShort:
+          type: string
+        maxPnlFactorForDepositsLong:
+          type: string
+        maxPnlFactorForDepositsShort:
+          type: string
+        maxPnlFactorForWithdrawalsLong:
+          type: string
+        maxPnlFactorForWithdrawalsShort:
+          type: string
+        positionFeeFactorForBalanceWasImproved:
+          type: string
+        positionFeeFactorForBalanceWasNotImproved:
+          type: string
+        positionImpactFactorPositive:
+          type: string
+        positionImpactFactorNegative:
+          type: string
+        maxPositionImpactFactorPositive:
+          type: string
+        maxPositionImpactFactorNegative:
+          type: string
+        maxPositionImpactFactorForLiquidations:
+          type: string
+        maxLendableImpactFactor:
+          type: string
+        maxLendableImpactFactorForWithdrawals:
+          type: string
+        maxLendableImpactUsd:
+          type: string
+        lentPositionImpactPoolAmount:
+          type: string
+        positionImpactExponentFactorPositive:
+          type: string
+        positionImpactExponentFactorNegative:
+          type: string
+        useOpenInterestInTokensForBalance:
+          type: boolean
+        swapFeeFactorForBalanceWasImproved:
+          type: string
+        swapFeeFactorForBalanceWasNotImproved:
+          type: string
+        atomicSwapFeeFactor:
+          type: string
+        swapImpactFactorPositive:
+          type: string
+        swapImpactFactorNegative:
+          type: string
+        swapImpactExponentFactor:
+          type: string
+        withdrawalFeeFactorBalanceWasImproved:
+          type: string
+        withdrawalFeeFactorBalanceWasNotImproved:
+          type: string
+        virtualMarketId:
+          type: string
+        virtualLongTokenId:
+          type: string
+        virtualShortTokenId:
+          type: string
+      required:
+      - marketTokenAddress
+      - indexTokenAddress
+      - longTokenAddress
+      - shortTokenAddress
+      - isSameCollaterals
+      - isSpotOnly
+      - name
+      - data
+      - isDisabled
+      - maxLongPoolAmount
+      - maxShortPoolAmount
+      - maxLongPoolUsdForDeposit
+      - maxShortPoolUsdForDeposit
+      - reserveFactorLong
+      - reserveFactorShort
+      - openInterestReserveFactorLong
+      - openInterestReserveFactorShort
+      - maxOpenInterestLong
+      - maxOpenInterestShort
+      - borrowingFactorLong
+      - borrowingFactorShort
+      - borrowingExponentFactorLong
+      - borrowingExponentFactorShort
+      - fundingFactor
+      - fundingExponentFactor
+      - fundingIncreaseFactorPerSecond
+      - fundingDecreaseFactorPerSecond
+      - thresholdForStableFunding
+      - thresholdForDecreaseFunding
+      - minFundingFactorPerSecond
+      - maxFundingFactorPerSecond
+      - minPositionImpactPoolAmount
+      - positionImpactPoolDistributionRate
+      - minCollateralFactor
+      - minCollateralFactorForLiquidation
+      - minCollateralFactorForOpenInterestLong
+      - minCollateralFactorForOpenInterestShort
+      - maxPnlFactorForTradersLong
+      - maxPnlFactorForTradersShort
+      - positionFeeFactorForBalanceWasImproved
+      - positionFeeFactorForBalanceWasNotImproved
+      - positionImpactFactorPositive
+      - positionImpactFactorNegative
+      - maxPositionImpactFactorPositive
+      - maxPositionImpactFactorNegative
+      - maxPositionImpactFactorForLiquidations
+      - maxLendableImpactFactor
+      - maxLendableImpactFactorForWithdrawals
+      - maxLendableImpactUsd
+      - lentPositionImpactPoolAmount
+      - positionImpactExponentFactorPositive
+      - positionImpactExponentFactorNegative
+      - useOpenInterestInTokensForBalance
+      - swapFeeFactorForBalanceWasImproved
+      - swapFeeFactorForBalanceWasNotImproved
+      - atomicSwapFeeFactor
+      - swapImpactFactorPositive
+      - swapImpactFactorNegative
+      - swapImpactExponentFactor
+      - virtualMarketId
+      - virtualLongTokenId
+      - virtualShortTokenId
+      type: object
+      description: From T, pick a set of properties whose keys are in the union K
     MarketInfoResponse:
       properties:
         borrowingFactorPerSecondForShorts:
@@ -514,287 +798,3 @@ components:
       - marketTokenAddress
       - name
       type: object
-    Pick_MarketInfoResponse.Exclude_keyofMarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress___:
-      properties:
-        marketTokenAddress:
-          type: string
-        indexTokenAddress:
-          type: string
-        longTokenAddress:
-          type: string
-        shortTokenAddress:
-          type: string
-        isSameCollaterals:
-          type: boolean
-        isSpotOnly:
-          type: boolean
-        name:
-          type: string
-        data:
-          type: string
-        isDisabled:
-          type: boolean
-        maxLongPoolAmount:
-          type: string
-        maxShortPoolAmount:
-          type: string
-        maxLongPoolUsdForDeposit:
-          type: string
-        maxShortPoolUsdForDeposit:
-          type: string
-        reserveFactorLong:
-          type: string
-        reserveFactorShort:
-          type: string
-        openInterestReserveFactorLong:
-          type: string
-        openInterestReserveFactorShort:
-          type: string
-        maxOpenInterestLong:
-          type: string
-        maxOpenInterestShort:
-          type: string
-        borrowingFactorLong:
-          type: string
-        borrowingFactorShort:
-          type: string
-        borrowingExponentFactorLong:
-          type: string
-        borrowingExponentFactorShort:
-          type: string
-        fundingFactor:
-          type: string
-        fundingExponentFactor:
-          type: string
-        fundingIncreaseFactorPerSecond:
-          type: string
-        fundingDecreaseFactorPerSecond:
-          type: string
-        thresholdForStableFunding:
-          type: string
-        thresholdForDecreaseFunding:
-          type: string
-        minFundingFactorPerSecond:
-          type: string
-        maxFundingFactorPerSecond:
-          type: string
-        minPositionImpactPoolAmount:
-          type: string
-        positionImpactPoolDistributionRate:
-          type: string
-        minCollateralFactor:
-          type: string
-        minCollateralFactorForLiquidation:
-          type: string
-        minCollateralFactorForOpenInterestLong:
-          type: string
-        minCollateralFactorForOpenInterestShort:
-          type: string
-        maxPnlFactorForTradersLong:
-          type: string
-        maxPnlFactorForTradersShort:
-          type: string
-        maxPnlFactorForDepositsLong:
-          type: string
-        maxPnlFactorForDepositsShort:
-          type: string
-        maxPnlFactorForWithdrawalsLong:
-          type: string
-        maxPnlFactorForWithdrawalsShort:
-          type: string
-        positionFeeFactorForBalanceWasImproved:
-          type: string
-        positionFeeFactorForBalanceWasNotImproved:
-          type: string
-        positionImpactFactorPositive:
-          type: string
-        positionImpactFactorNegative:
-          type: string
-        maxPositionImpactFactorPositive:
-          type: string
-        maxPositionImpactFactorNegative:
-          type: string
-        maxPositionImpactFactorForLiquidations:
-          type: string
-        maxLendableImpactFactor:
-          type: string
-        maxLendableImpactFactorForWithdrawals:
-          type: string
-        maxLendableImpactUsd:
-          type: string
-        lentPositionImpactPoolAmount:
-          type: string
-        positionImpactExponentFactorPositive:
-          type: string
-        positionImpactExponentFactorNegative:
-          type: string
-        useOpenInterestInTokensForBalance:
-          type: boolean
-        swapFeeFactorForBalanceWasImproved:
-          type: string
-        swapFeeFactorForBalanceWasNotImproved:
-          type: string
-        atomicSwapFeeFactor:
-          type: string
-        swapImpactFactorPositive:
-          type: string
-        swapImpactFactorNegative:
-          type: string
-        swapImpactExponentFactor:
-          type: string
-        withdrawalFeeFactorBalanceWasImproved:
-          type: string
-        withdrawalFeeFactorBalanceWasNotImproved:
-          type: string
-        virtualMarketId:
-          type: string
-        virtualLongTokenId:
-          type: string
-        virtualShortTokenId:
-          type: string
-      required:
-      - marketTokenAddress
-      - indexTokenAddress
-      - longTokenAddress
-      - shortTokenAddress
-      - isSameCollaterals
-      - isSpotOnly
-      - name
-      - data
-      - isDisabled
-      - maxLongPoolAmount
-      - maxShortPoolAmount
-      - maxLongPoolUsdForDeposit
-      - maxShortPoolUsdForDeposit
-      - reserveFactorLong
-      - reserveFactorShort
-      - openInterestReserveFactorLong
-      - openInterestReserveFactorShort
-      - maxOpenInterestLong
-      - maxOpenInterestShort
-      - borrowingFactorLong
-      - borrowingFactorShort
-      - borrowingExponentFactorLong
-      - borrowingExponentFactorShort
-      - fundingFactor
-      - fundingExponentFactor
-      - fundingIncreaseFactorPerSecond
-      - fundingDecreaseFactorPerSecond
-      - thresholdForStableFunding
-      - thresholdForDecreaseFunding
-      - minFundingFactorPerSecond
-      - maxFundingFactorPerSecond
-      - minPositionImpactPoolAmount
-      - positionImpactPoolDistributionRate
-      - minCollateralFactor
-      - minCollateralFactorForLiquidation
-      - minCollateralFactorForOpenInterestLong
-      - minCollateralFactorForOpenInterestShort
-      - maxPnlFactorForTradersLong
-      - maxPnlFactorForTradersShort
-      - positionFeeFactorForBalanceWasImproved
-      - positionFeeFactorForBalanceWasNotImproved
-      - positionImpactFactorPositive
-      - positionImpactFactorNegative
-      - maxPositionImpactFactorPositive
-      - maxPositionImpactFactorNegative
-      - maxPositionImpactFactorForLiquidations
-      - maxLendableImpactFactor
-      - maxLendableImpactFactorForWithdrawals
-      - maxLendableImpactUsd
-      - lentPositionImpactPoolAmount
-      - positionImpactExponentFactorPositive
-      - positionImpactExponentFactorNegative
-      - useOpenInterestInTokensForBalance
-      - swapFeeFactorForBalanceWasImproved
-      - swapFeeFactorForBalanceWasNotImproved
-      - atomicSwapFeeFactor
-      - swapImpactFactorPositive
-      - swapImpactFactorNegative
-      - swapImpactExponentFactor
-      - virtualMarketId
-      - virtualLongTokenId
-      - virtualShortTokenId
-      type: object
-      description: From T, pick a set of properties whose keys are in the union K
-    Pick_MarketInfoResponse.MarketValuesFieldKey_:
-      properties:
-        marketTokenAddress:
-          type: string
-        longPoolAmount:
-          type: string
-        shortPoolAmount:
-          type: string
-        poolValueMax:
-          type: string
-        poolValueMin:
-          type: string
-        totalBorrowingFees:
-          type: string
-        positionImpactPoolAmount:
-          type: string
-        swapImpactPoolAmountLong:
-          type: string
-        swapImpactPoolAmountShort:
-          type: string
-        longInterestUsd:
-          type: string
-        shortInterestUsd:
-          type: string
-        longInterestInTokens:
-          type: string
-        shortInterestInTokens:
-          type: string
-        borrowingFactorPerSecondForLongs:
-          type: string
-        borrowingFactorPerSecondForShorts:
-          type: string
-        fundingFactorPerSecond:
-          type: string
-        longsPayShorts:
-          type: boolean
-        virtualPoolAmountForLongToken:
-          type: string
-        virtualPoolAmountForShortToken:
-          type: string
-        virtualInventoryForPositions:
-          type: string
-      required:
-      - marketTokenAddress
-      - longPoolAmount
-      - shortPoolAmount
-      - poolValueMax
-      - poolValueMin
-      - totalBorrowingFees
-      - positionImpactPoolAmount
-      - swapImpactPoolAmountLong
-      - swapImpactPoolAmountShort
-      - longInterestUsd
-      - shortInterestUsd
-      - longInterestInTokens
-      - shortInterestInTokens
-      - borrowingFactorPerSecondForLongs
-      - borrowingFactorPerSecondForShorts
-      - fundingFactorPerSecond
-      - longsPayShorts
-      - virtualPoolAmountForLongToken
-      - virtualPoolAmountForShortToken
-      - virtualInventoryForPositions
-      type: object
-      description: From T, pick a set of properties whose keys are in the union K
-    LeverageTierResponse:
-      properties:
-        maxPositionSize:
-          type: string
-        minCollateralFactor:
-          type: string
-        maxLeverage:
-          type: string
-      required:
-      - minCollateralFactor
-      - maxLeverage
-      type: object
-    MarketValuesResponse:
-      $ref: '#/components/schemas/Pick_MarketInfoResponse.MarketValuesFieldKey_'
-    MarketConfigResponse:
-      $ref: '#/components/schemas/Omit_MarketInfoResponse.Exclude_MarketValuesFieldKey.marketTokenAddress__'

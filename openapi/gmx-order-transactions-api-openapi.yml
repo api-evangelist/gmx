@@ -168,120 +168,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OrderKind:
+    SimpleOrderType:
       enum:
-      - increase
-      - decrease
-      - swap
+      - market
+      - limit
+      - stop-market
+      - take-profit
+      - stop-loss
+      - twap
       type: string
-    CollateralOperation:
-      type: string
-      enum:
-      - deposit
-      - withdraw
-    SubmitResponse:
-      properties:
-        traceId:
-          type: string
-        error:
-          properties:
-            message:
-              type: string
-            code:
-              type: string
-          required:
-          - message
-          - code
-          type: object
-        taskId:
-          type: string
-        txHash:
-          type: string
-        status:
-          $ref: '#/components/schemas/OrderTransactionStatus'
-        requestId:
-          type: string
-      required:
-      - status
-      - requestId
+    Record_string.any_:
+      properties: {}
+      additionalProperties: {}
       type: object
-    StatusRequest:
-      properties:
-        requestId:
-          type: string
-      required:
-      - requestId
-      type: object
-    SubmitRequest:
-      properties:
-        from:
-          type: string
-        signature:
-          type: string
-        eip712Data:
-          $ref: '#/components/schemas/Record_string.any_'
-        requestId:
-          type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-      type: object
-    OrderTransactionStatus:
-      enum:
-      - prepared
-      - relay_accepted
-      - relay_pending
-      - relay_submitted
-      - created
-      - executed
-      - cancelled
-      - relay_failed
-      - relay_reverted
-      type: string
-    StatusResponse:
-      properties:
-        traceId:
-          type: string
-        updatedAt:
-          type: string
-        createdAt:
-          type: string
-        error:
-          properties:
-            message:
-              type: string
-            code:
-              type: string
-          required:
-          - message
-          - code
-          type: object
-        gelatoStatusCode:
-          type: number
-          format: double
-        taskId:
-          type: string
-        cancellationReason:
-          type: string
-        orderKeys:
-          items:
-            type: string
-          type: array
-        executionTxnHash:
-          type: string
-        createdTxnHash:
-          type: string
-        txHash:
-          type: string
-        status:
-          $ref: '#/components/schemas/OrderTransactionStatus'
-        requestId:
-          type: string
-      required:
-      - updatedAt
-      - createdAt
-      - status
-      - requestId
-      type: object
+      description: Construct a type with a set of properties K of type T
     CollateralPrepareRequest:
       properties:
         subaccountApproval:
@@ -315,127 +215,6 @@ components:
       - positionKey
       - operation
       type: object
-    SimpleOrderType:
-      enum:
-      - market
-      - limit
-      - stop-market
-      - take-profit
-      - stop-loss
-      - twap
-      type: string
-    CancelPrepareRequest:
-      properties:
-        subaccountApproval:
-          $ref: '#/components/schemas/Record_string.any_'
-        subaccountAddress:
-          type: string
-        from:
-          type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-        all:
-          type: boolean
-        orderIds:
-          items:
-            type: string
-          type: array
-        orderId:
-          type: string
-      required:
-      - from
-      - mode
-      type: object
-    EditPrepareRequest:
-      properties:
-        subaccountApproval:
-          $ref: '#/components/schemas/Record_string.any_'
-        subaccountAddress:
-          type: string
-        from:
-          type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-        executionFeeTopUp:
-          type: string
-        newAutoCancel:
-          type: boolean
-        newAcceptablePrice:
-          type: string
-        newTriggerPrice:
-          type: string
-        newSize:
-          type: string
-        orderIds:
-          items:
-            type: string
-          type: array
-      required:
-      - from
-      - mode
-      - orderIds
-      type: object
-    PrepareResponse:
-      properties:
-        traceId:
-          type: string
-        warnings:
-          items:
-            type: string
-          type: array
-        expiresAt:
-          type: number
-          format: double
-        estimates:
-          properties:
-            fundingFeeUsd:
-              type: string
-            borrowingFeeUsd:
-              type: string
-            positionFeeUsd:
-              type: string
-            sizeDeltaUsd:
-              type: string
-            acceptablePrice:
-              type: string
-            executionFeeAmount:
-              type: string
-            swapPriceImpactDeltaUsd:
-              type: string
-            positionPriceImpactDeltaUsd:
-              type: string
-          required:
-          - fundingFeeUsd
-          - borrowingFeeUsd
-          - positionFeeUsd
-          - sizeDeltaUsd
-          - acceptablePrice
-          - executionFeeAmount
-          - swapPriceImpactDeltaUsd
-          - positionPriceImpactDeltaUsd
-          type: object
-        payload:
-          $ref: '#/components/schemas/Record_string.any_'
-        requestId:
-          type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-        payloadType:
-          type: string
-          enum:
-          - transaction
-          - typed-data
-      required:
-      - payload
-      - requestId
-      - mode
-      - payloadType
-      type: object
-    TransactionMode:
-      enum:
-      - express
-      - classic
-      type: string
     PrepareRequest:
       properties:
         subaccountApproval:
@@ -534,8 +313,229 @@ components:
       - orderType
       - kind
       type: object
-    Record_string.any_:
-      properties: {}
-      additionalProperties: {}
+    PrepareResponse:
+      properties:
+        traceId:
+          type: string
+        warnings:
+          items:
+            type: string
+          type: array
+        expiresAt:
+          type: number
+          format: double
+        estimates:
+          properties:
+            fundingFeeUsd:
+              type: string
+            borrowingFeeUsd:
+              type: string
+            positionFeeUsd:
+              type: string
+            sizeDeltaUsd:
+              type: string
+            acceptablePrice:
+              type: string
+            executionFeeAmount:
+              type: string
+            swapPriceImpactDeltaUsd:
+              type: string
+            positionPriceImpactDeltaUsd:
+              type: string
+          required:
+          - fundingFeeUsd
+          - borrowingFeeUsd
+          - positionFeeUsd
+          - sizeDeltaUsd
+          - acceptablePrice
+          - executionFeeAmount
+          - swapPriceImpactDeltaUsd
+          - positionPriceImpactDeltaUsd
+          type: object
+        payload:
+          $ref: '#/components/schemas/Record_string.any_'
+        requestId:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        payloadType:
+          type: string
+          enum:
+          - transaction
+          - typed-data
+      required:
+      - payload
+      - requestId
+      - mode
+      - payloadType
       type: object
-      description: Construct a type with a set of properties K of type T
+    SubmitRequest:
+      properties:
+        from:
+          type: string
+        signature:
+          type: string
+        eip712Data:
+          $ref: '#/components/schemas/Record_string.any_'
+        requestId:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+      type: object
+    CancelPrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        all:
+          type: boolean
+        orderIds:
+          items:
+            type: string
+          type: array
+        orderId:
+          type: string
+      required:
+      - from
+      - mode
+      type: object
+    EditPrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        executionFeeTopUp:
+          type: string
+        newAutoCancel:
+          type: boolean
+        newAcceptablePrice:
+          type: string
+        newTriggerPrice:
+          type: string
+        newSize:
+          type: string
+        orderIds:
+          items:
+            type: string
+          type: array
+      required:
+      - from
+      - mode
+      - orderIds
+      type: object
+    TransactionMode:
+      enum:
+      - express
+      - classic
+      type: string
+    StatusResponse:
+      properties:
+        traceId:
+          type: string
+        updatedAt:
+          type: string
+        createdAt:
+          type: string
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        gelatoStatusCode:
+          type: number
+          format: double
+        taskId:
+          type: string
+        cancellationReason:
+          type: string
+        orderKeys:
+          items:
+            type: string
+          type: array
+        executionTxnHash:
+          type: string
+        createdTxnHash:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrderTransactionStatus'
+        requestId:
+          type: string
+      required:
+      - updatedAt
+      - createdAt
+      - status
+      - requestId
+      type: object
+    OrderTransactionStatus:
+      enum:
+      - prepared
+      - relay_accepted
+      - relay_pending
+      - relay_submitted
+      - created
+      - executed
+      - cancelled
+      - relay_failed
+      - relay_reverted
+      type: string
+    CollateralOperation:
+      type: string
+      enum:
+      - deposit
+      - withdraw
+    StatusRequest:
+      properties:
+        requestId:
+          type: string
+      required:
+      - requestId
+      type: object
+    SubmitResponse:
+      properties:
+        traceId:
+          type: string
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        taskId:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrderTransactionStatus'
+        requestId:
+          type: string
+      required:
+      - status
+      - requestId
+      type: object
+    OrderKind:
+      enum:
+      - increase
+      - decrease
+      - swap
+      type: string

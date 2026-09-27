@@ -37,6 +37,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Record_string.ApyEntry_:
+      properties: {}
+      additionalProperties:
+        $ref: '#/components/schemas/ApyEntry'
+      type: object
+      description: Construct a type with a set of properties K of type T
     ApyResponse:
       properties:
         glvs:
@@ -57,12 +63,6 @@ components:
       - 1y
       - total
       type: string
-    Record_string.ApyEntry_:
-      properties: {}
-      additionalProperties:
-        $ref: '#/components/schemas/ApyEntry'
-      type: object
-      description: Construct a type with a set of properties K of type T
     ApyEntry:
       properties:
         bonusApr:

@@ -51,16 +51,6 @@ components:
       items:
         $ref: '#/components/schemas/MarketRatesResponse'
       type: array
-    ApiParameterPeriod:
-      enum:
-      - 1d
-      - 7d
-      - 30d
-      - 90d
-      - 180d
-      - 1y
-      - total
-      type: string
     RatesSnapshotResponse:
       properties:
         timestamp:
@@ -87,6 +77,16 @@ components:
       - netRateShort
       - netRateLong
       type: object
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string
     MarketRatesResponse:
       properties:
         ratesSnapshots:

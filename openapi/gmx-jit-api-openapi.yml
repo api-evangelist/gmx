@@ -67,40 +67,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    JitLiquidityHistoryPeriod:
-      type: string
-      enum:
-      - 1h
-      - 1d
-    JitLiquidityInfoResponse:
-      properties:
-        liquidityInfos:
-          items:
-            $ref: '#/components/schemas/JitLiquidityInfoItemResponse'
-          type: array
-      required:
-      - liquidityInfos
-      type: object
-    JitLiquiditySnapshotResponse:
-      properties:
-        shortLiquidityUsd:
-          type: string
-        longLiquidityUsd:
-          type: string
-        timestamp:
-          type: number
-          format: double
-        glvAddress:
-          type: string
-        marketAddress:
-          type: string
-      required:
-      - shortLiquidityUsd
-      - longLiquidityUsd
-      - timestamp
-      - glvAddress
-      - marketAddress
-      type: object
     GlvShiftParamsResponse:
       properties:
         minMarketTokens:
@@ -119,15 +85,6 @@ components:
       - toMarket
       - fromMarket
       - glv
-      type: object
-    JitLiquidityHistoryResponse:
-      properties:
-        snapshots:
-          items:
-            $ref: '#/components/schemas/JitLiquiditySnapshotResponse'
-          type: array
-      required:
-      - snapshots
       type: object
     JitLiquidityInfoItemResponse:
       properties:
@@ -150,3 +107,46 @@ components:
       - market
       - glv
       type: object
+    JitLiquiditySnapshotResponse:
+      properties:
+        shortLiquidityUsd:
+          type: string
+        longLiquidityUsd:
+          type: string
+        timestamp:
+          type: number
+          format: double
+        glvAddress:
+          type: string
+        marketAddress:
+          type: string
+      required:
+      - shortLiquidityUsd
+      - longLiquidityUsd
+      - timestamp
+      - glvAddress
+      - marketAddress
+      type: object
+    JitLiquidityInfoResponse:
+      properties:
+        liquidityInfos:
+          items:
+            $ref: '#/components/schemas/JitLiquidityInfoItemResponse'
+          type: array
+      required:
+      - liquidityInfos
+      type: object
+    JitLiquidityHistoryResponse:
+      properties:
+        snapshots:
+          items:
+            $ref: '#/components/schemas/JitLiquiditySnapshotResponse'
+          type: array
+      required:
+      - snapshots
+      type: object
+    JitLiquidityHistoryPeriod:
+      type: string
+      enum:
+      - 1h
+      - 1d

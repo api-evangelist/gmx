@@ -12,14 +12,19 @@ description: 'GMX is a decentralized perpetual and spot exchange deployed on Arb
   OHLCV, buyback stats, and staking power.'
 deliveryModel:
   model: unknown
-  open_source: false
+  license_evidence:
+    not_product:
+    - gmx-io/gmx-integration-api
+    - gmx-io/gmx-interface
+  open_source: unknown
   commercial: false
   callable_host: false
   label: Delivery model not determined — needs a product licence on record
   confidence: low
   source:
   - openapi
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: free
