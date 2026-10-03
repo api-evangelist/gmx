@@ -51,6 +51,28 @@ components:
       items:
         $ref: '#/components/schemas/MarketRatesResponse'
       type: array
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string
+    MarketRatesResponse:
+      properties:
+        ratesSnapshots:
+          items:
+            $ref: '#/components/schemas/RatesSnapshotResponse'
+          type: array
+        marketAddress:
+          type: string
+      required:
+      - ratesSnapshots
+      - marketAddress
+      type: object
     RatesSnapshotResponse:
       properties:
         timestamp:
@@ -76,26 +98,4 @@ components:
       - fundingRateLong
       - netRateShort
       - netRateLong
-      type: object
-    ApiParameterPeriod:
-      enum:
-      - 1d
-      - 7d
-      - 30d
-      - 90d
-      - 180d
-      - 1y
-      - total
-      type: string
-    MarketRatesResponse:
-      properties:
-        ratesSnapshots:
-          items:
-            $ref: '#/components/schemas/RatesSnapshotResponse'
-          type: array
-        marketAddress:
-          type: string
-      required:
-      - ratesSnapshots
-      - marketAddress
       type: object

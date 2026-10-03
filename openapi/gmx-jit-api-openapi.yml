@@ -67,6 +67,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    JitLiquidityInfoResponse:
+      properties:
+        liquidityInfos:
+          items:
+            $ref: '#/components/schemas/JitLiquidityInfoItemResponse'
+          type: array
+      required:
+      - liquidityInfos
+      type: object
     GlvShiftParamsResponse:
       properties:
         minMarketTokens:
@@ -84,27 +93,6 @@ components:
       - marketTokenAmount
       - toMarket
       - fromMarket
-      - glv
-      type: object
-    JitLiquidityInfoItemResponse:
-      properties:
-        glvShiftParams:
-          items:
-            $ref: '#/components/schemas/GlvShiftParamsResponse'
-          type: array
-        maxReservedUsdWithJitShort:
-          type: string
-        maxReservedUsdWithJitLong:
-          type: string
-        market:
-          type: string
-        glv:
-          type: string
-      required:
-      - glvShiftParams
-      - maxReservedUsdWithJitShort
-      - maxReservedUsdWithJitLong
-      - market
       - glv
       type: object
     JitLiquiditySnapshotResponse:
@@ -127,15 +115,11 @@ components:
       - glvAddress
       - marketAddress
       type: object
-    JitLiquidityInfoResponse:
-      properties:
-        liquidityInfos:
-          items:
-            $ref: '#/components/schemas/JitLiquidityInfoItemResponse'
-          type: array
-      required:
-      - liquidityInfos
-      type: object
+    JitLiquidityHistoryPeriod:
+      type: string
+      enum:
+      - 1h
+      - 1d
     JitLiquidityHistoryResponse:
       properties:
         snapshots:
@@ -145,8 +129,24 @@ components:
       required:
       - snapshots
       type: object
-    JitLiquidityHistoryPeriod:
-      type: string
-      enum:
-      - 1h
-      - 1d
+    JitLiquidityInfoItemResponse:
+      properties:
+        glvShiftParams:
+          items:
+            $ref: '#/components/schemas/GlvShiftParamsResponse'
+          type: array
+        maxReservedUsdWithJitShort:
+          type: string
+        maxReservedUsdWithJitLong:
+          type: string
+        market:
+          type: string
+        glv:
+          type: string
+      required:
+      - glvShiftParams
+      - maxReservedUsdWithJitShort
+      - maxReservedUsdWithJitLong
+      - market
+      - glv
+      type: object

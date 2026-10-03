@@ -53,16 +53,6 @@ components:
       - glvs
       - markets
       type: object
-    ApiParameterPeriod:
-      enum:
-      - 1d
-      - 7d
-      - 30d
-      - 90d
-      - 180d
-      - 1y
-      - total
-      type: string
     ApyEntry:
       properties:
         bonusApr:
@@ -79,3 +69,13 @@ components:
       - baseApy
       - apy
       type: object
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string

@@ -60,6 +60,22 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Record_string._name-string--type-string_-Array_:
+      properties: {}
+      additionalProperties:
+        items:
+          properties:
+            type:
+              type: string
+            name:
+              type: string
+          required:
+          - type
+          - name
+          type: object
+        type: array
+      type: object
+      description: Construct a type with a set of properties K of type T
     Record_string.any_:
       properties: {}
       additionalProperties: {}
@@ -85,6 +101,43 @@ components:
       - shouldAdd
       - subaccountAddress
       - account
+      type: object
+    ApprovalPrepareResponse:
+      properties:
+        nonce:
+          type: string
+        relayRouterAddress:
+          type: string
+        primaryType:
+          type: string
+        message:
+          $ref: '#/components/schemas/Record_string.any_'
+        types:
+          $ref: '#/components/schemas/Record_string._name-string--type-string_-Array_'
+        domain:
+          properties:
+            verifyingContract:
+              type: string
+            chainId:
+              type: number
+              format: double
+            version:
+              type: string
+            name:
+              type: string
+          required:
+          - verifyingContract
+          - chainId
+          - version
+          - name
+          type: object
+      required:
+      - nonce
+      - relayRouterAddress
+      - primaryType
+      - message
+      - types
+      - domain
       type: object
     SubaccountStatusResponse:
       properties:
@@ -125,57 +178,4 @@ components:
       required:
       - subaccountAddress
       - account
-      type: object
-    Record_string._name-string--type-string_-Array_:
-      properties: {}
-      additionalProperties:
-        items:
-          properties:
-            type:
-              type: string
-            name:
-              type: string
-          required:
-          - type
-          - name
-          type: object
-        type: array
-      type: object
-      description: Construct a type with a set of properties K of type T
-    ApprovalPrepareResponse:
-      properties:
-        nonce:
-          type: string
-        relayRouterAddress:
-          type: string
-        primaryType:
-          type: string
-        message:
-          $ref: '#/components/schemas/Record_string.any_'
-        types:
-          $ref: '#/components/schemas/Record_string._name-string--type-string_-Array_'
-        domain:
-          properties:
-            verifyingContract:
-              type: string
-            chainId:
-              type: number
-              format: double
-            version:
-              type: string
-            name:
-              type: string
-          required:
-          - verifyingContract
-          - chainId
-          - version
-          - name
-          type: object
-      required:
-      - nonce
-      - relayRouterAddress
-      - primaryType
-      - message
-      - types
-      - domain
       type: object

@@ -108,30 +108,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MarketDirectionFilter:
-      properties:
-        collateralAddress:
-          type: string
-        direction:
-          $ref: '#/components/schemas/TradeDirection'
-        marketAddress:
-          type: string
-      required:
-      - direction
-      - marketAddress
-      type: object
-    OrderEventCombination:
-      properties:
-        isTwap:
-          type: boolean
-        isDepositOrWithdraw:
-          type: boolean
-        orderType:
-          type: number
-          format: double
-        eventName:
-          type: string
-      type: object
     TradesSearchRequest:
       properties:
         cursor:
@@ -167,6 +143,13 @@ components:
           type: string
           description: Trader address. Required unless `forAllAccounts` is true.
       type: object
+    TradeDirection:
+      type: string
+      enum:
+      - long
+      - short
+      - swap
+      - any
     TradeResponse:
       $ref: '#/components/schemas/TradeActionResponse'
     TradesListResponse:
@@ -186,13 +169,30 @@ components:
       - nextCursor
       - trades
       type: object
-    TradeDirection:
-      type: string
-      enum:
-      - long
-      - short
-      - swap
-      - any
+    MarketDirectionFilter:
+      properties:
+        collateralAddress:
+          type: string
+        direction:
+          $ref: '#/components/schemas/TradeDirection'
+        marketAddress:
+          type: string
+      required:
+      - direction
+      - marketAddress
+      type: object
+    OrderEventCombination:
+      properties:
+        isTwap:
+          type: boolean
+        isDepositOrWithdraw:
+          type: boolean
+        orderType:
+          type: number
+          format: double
+        eventName:
+          type: string
+      type: object
     TradeActionResponse:
       properties:
         reasonBytes:
