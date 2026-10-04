@@ -108,6 +108,35 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OrderEventCombination:
+      properties:
+        isTwap:
+          type: boolean
+        isDepositOrWithdraw:
+          type: boolean
+        orderType:
+          type: number
+          format: double
+        eventName:
+          type: string
+      type: object
+    TradesListResponse:
+      properties:
+        hasMore:
+          type: boolean
+        nextCursor:
+          type:
+          - string
+          - 'null'
+        trades:
+          items:
+            $ref: '#/components/schemas/TradeResponse'
+          type: array
+      required:
+      - hasMore
+      - nextCursor
+      - trades
+      type: object
     TradesSearchRequest:
       properties:
         cursor:
@@ -152,47 +181,6 @@ components:
       - any
     TradeResponse:
       $ref: '#/components/schemas/TradeActionResponse'
-    TradesListResponse:
-      properties:
-        hasMore:
-          type: boolean
-        nextCursor:
-          type:
-          - string
-          - 'null'
-        trades:
-          items:
-            $ref: '#/components/schemas/TradeResponse'
-          type: array
-      required:
-      - hasMore
-      - nextCursor
-      - trades
-      type: object
-    MarketDirectionFilter:
-      properties:
-        collateralAddress:
-          type: string
-        direction:
-          $ref: '#/components/schemas/TradeDirection'
-        marketAddress:
-          type: string
-      required:
-      - direction
-      - marketAddress
-      type: object
-    OrderEventCombination:
-      properties:
-        isTwap:
-          type: boolean
-        isDepositOrWithdraw:
-          type: boolean
-        orderType:
-          type: number
-          format: double
-        eventName:
-          type: string
-      type: object
     TradeActionResponse:
       properties:
         reasonBytes:
@@ -300,4 +288,16 @@ components:
       - account
       - eventName
       - id
+      type: object
+    MarketDirectionFilter:
+      properties:
+        collateralAddress:
+          type: string
+        direction:
+          $ref: '#/components/schemas/TradeDirection'
+        marketAddress:
+          type: string
+      required:
+      - direction
+      - marketAddress
       type: object

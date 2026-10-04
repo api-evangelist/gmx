@@ -37,6 +37,8 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    StakingPowerResponse:
+      $ref: '#/components/schemas/BigIntToString_StakingPowerData_'
     BigIntToString_StakingPowerData_:
       properties:
         loyaltyTrackingStart:
@@ -88,5 +90,3 @@ components:
         Handles primitives, objects, arrays, and nested structures.
 
         Preserves Date type as-is.'
-    StakingPowerResponse:
-      $ref: '#/components/schemas/BigIntToString_StakingPowerData_'

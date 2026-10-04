@@ -43,6 +43,16 @@ components:
         $ref: '#/components/schemas/ApyEntry'
       type: object
       description: Construct a type with a set of properties K of type T
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string
     ApyResponse:
       properties:
         glvs:
@@ -69,13 +79,3 @@ components:
       - baseApy
       - apy
       type: object
-    ApiParameterPeriod:
-      enum:
-      - 1d
-      - 7d
-      - 30d
-      - 90d
-      - 180d
-      - 1y
-      - total
-      type: string

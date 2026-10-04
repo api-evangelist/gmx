@@ -47,6 +47,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    MarketRatesResponse:
+      properties:
+        ratesSnapshots:
+          items:
+            $ref: '#/components/schemas/RatesSnapshotResponse'
+          type: array
+        marketAddress:
+          type: string
+      required:
+      - ratesSnapshots
+      - marketAddress
+      type: object
     RatesResponse:
       items:
         $ref: '#/components/schemas/MarketRatesResponse'
@@ -61,18 +73,6 @@ components:
       - 1y
       - total
       type: string
-    MarketRatesResponse:
-      properties:
-        ratesSnapshots:
-          items:
-            $ref: '#/components/schemas/RatesSnapshotResponse'
-          type: array
-        marketAddress:
-          type: string
-      required:
-      - ratesSnapshots
-      - marketAddress
-      type: object
     RatesSnapshotResponse:
       properties:
         timestamp:

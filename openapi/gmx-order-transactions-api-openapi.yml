@@ -168,45 +168,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    EditPrepareRequest:
+    SubmitRequest:
       properties:
-        subaccountApproval:
-          $ref: '#/components/schemas/Record_string.any_'
-        subaccountAddress:
-          type: string
         from:
+          type: string
+        signature:
+          type: string
+        eip712Data:
+          $ref: '#/components/schemas/Record_string.any_'
+        requestId:
           type: string
         mode:
           $ref: '#/components/schemas/TransactionMode'
-        executionFeeTopUp:
-          type: string
-        newAutoCancel:
-          type: boolean
-        newAcceptablePrice:
-          type: string
-        newTriggerPrice:
-          type: string
-        newSize:
-          type: string
-        orderIds:
-          items:
-            type: string
-          type: array
-      required:
-      - from
-      - mode
-      - orderIds
       type: object
-    Record_string.any_:
-      properties: {}
-      additionalProperties: {}
-      type: object
-      description: Construct a type with a set of properties K of type T
-    TransactionMode:
-      enum:
-      - express
-      - classic
-      type: string
     SimpleOrderType:
       enum:
       - market
@@ -258,6 +232,77 @@ components:
       required:
       - updatedAt
       - createdAt
+      - status
+      - requestId
+      type: object
+    OrderTransactionStatus:
+      enum:
+      - prepared
+      - relay_accepted
+      - relay_pending
+      - relay_submitted
+      - created
+      - executed
+      - cancelled
+      - relay_failed
+      - relay_reverted
+      type: string
+    CollateralPrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        uiFeeReceiver:
+          type: string
+        gasPaymentToken:
+          type: string
+        executionFeeBufferBps:
+          type: number
+          format: double
+        slippage:
+          type: number
+          format: double
+        amount:
+          type: string
+        positionKey:
+          type: string
+        operation:
+          $ref: '#/components/schemas/CollateralOperation'
+      required:
+      - from
+      - mode
+      - amount
+      - positionKey
+      - operation
+      type: object
+    SubmitResponse:
+      properties:
+        traceId:
+          type: string
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        taskId:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrderTransactionStatus'
+        requestId:
+          type: string
+      required:
       - status
       - requestId
       type: object
@@ -317,6 +362,16 @@ components:
       - mode
       - payloadType
       type: object
+    Record_string.any_:
+      properties: {}
+      additionalProperties: {}
+      type: object
+      description: Construct a type with a set of properties K of type T
+    TransactionMode:
+      enum:
+      - express
+      - classic
+      type: string
     StatusRequest:
       properties:
         requestId:
@@ -324,20 +379,18 @@ components:
       required:
       - requestId
       type: object
-    SubmitRequest:
-      properties:
-        from:
-          type: string
-        signature:
-          type: string
-        eip712Data:
-          $ref: '#/components/schemas/Record_string.any_'
-        requestId:
-          type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-      type: object
-    CollateralPrepareRequest:
+    CollateralOperation:
+      type: string
+      enum:
+      - deposit
+      - withdraw
+    OrderKind:
+      enum:
+      - increase
+      - decrease
+      - swap
+      type: string
+    CancelPrepareRequest:
       properties:
         subaccountApproval:
           $ref: '#/components/schemas/Record_string.any_'
@@ -347,28 +400,46 @@ components:
           type: string
         mode:
           $ref: '#/components/schemas/TransactionMode'
-        uiFeeReceiver:
+        all:
+          type: boolean
+        orderIds:
+          items:
+            type: string
+          type: array
+        orderId:
           type: string
-        gasPaymentToken:
-          type: string
-        executionFeeBufferBps:
-          type: number
-          format: double
-        slippage:
-          type: number
-          format: double
-        amount:
-          type: string
-        positionKey:
-          type: string
-        operation:
-          $ref: '#/components/schemas/CollateralOperation'
       required:
       - from
       - mode
-      - amount
-      - positionKey
-      - operation
+      type: object
+    EditPrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        executionFeeTopUp:
+          type: string
+        newAutoCancel:
+          type: boolean
+        newAcceptablePrice:
+          type: string
+        newTriggerPrice:
+          type: string
+        newSize:
+          type: string
+        orderIds:
+          items:
+            type: string
+          type: array
+      required:
+      - from
+      - mode
+      - orderIds
       type: object
     PrepareRequest:
       properties:
@@ -467,75 +538,4 @@ components:
       - mode
       - orderType
       - kind
-      type: object
-    CollateralOperation:
-      type: string
-      enum:
-      - deposit
-      - withdraw
-    OrderKind:
-      enum:
-      - increase
-      - decrease
-      - swap
-      type: string
-    CancelPrepareRequest:
-      properties:
-        subaccountApproval:
-          $ref: '#/components/schemas/Record_string.any_'
-        subaccountAddress:
-          type: string
-        from:
-          type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-        all:
-          type: boolean
-        orderIds:
-          items:
-            type: string
-          type: array
-        orderId:
-          type: string
-      required:
-      - from
-      - mode
-      type: object
-    OrderTransactionStatus:
-      enum:
-      - prepared
-      - relay_accepted
-      - relay_pending
-      - relay_submitted
-      - created
-      - executed
-      - cancelled
-      - relay_failed
-      - relay_reverted
-      type: string
-    SubmitResponse:
-      properties:
-        traceId:
-          type: string
-        error:
-          properties:
-            message:
-              type: string
-            code:
-              type: string
-          required:
-          - message
-          - code
-          type: object
-        taskId:
-          type: string
-        txHash:
-          type: string
-        status:
-          $ref: '#/components/schemas/OrderTransactionStatus'
-        requestId:
-          type: string
-      required:
-      - status
-      - requestId
       type: object
