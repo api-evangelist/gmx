@@ -354,6 +354,12 @@ apis:
   - type: Documentation
     url: https://docs.gmx.io/docs/api/overview/
 common:
+- type: Plans
+  url: plans/gmx-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/gmx-rate-limits.yml
+- type: FinOps
+  url: finops/gmx-finops.yml
 - type: AgenticAccess
   url: agentic-access/gmx-agentic-access.yml
 - type: DomainSecurity
