@@ -60,43 +60,29 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SubaccountStatusResponse:
+    Record_string.any_:
+      properties: {}
+      additionalProperties: {}
+      type: object
+      description: Construct a type with a set of properties K of type T
+    ApprovalPrepareRequest:
       properties:
-        integrationId:
-          type:
-          - string
-          - 'null'
-        multichainApprovalNonce:
-          type: string
-        approvalNonce:
-          type: string
-        expiresAt:
-          type: string
-        remainingActions:
-          type: string
-        currentActionsCount:
+        signingNetwork:
           type: string
         maxAllowedCount:
           type: string
-        active:
+        expiresAt:
+          type: string
+        shouldAdd:
           type: boolean
-      required:
-      - integrationId
-      - multichainApprovalNonce
-      - approvalNonce
-      - expiresAt
-      - remainingActions
-      - currentActionsCount
-      - maxAllowedCount
-      - active
-      type: object
-    SubaccountStatusRequest:
-      properties:
         subaccountAddress:
           type: string
         account:
           type: string
       required:
+      - maxAllowedCount
+      - expiresAt
+      - shouldAdd
       - subaccountAddress
       - account
       type: object
@@ -137,6 +123,16 @@ components:
       - types
       - domain
       type: object
+    SubaccountStatusRequest:
+      properties:
+        subaccountAddress:
+          type: string
+        account:
+          type: string
+      required:
+      - subaccountAddress
+      - account
+      type: object
     Record_string._name-string--type-string_-Array_:
       properties: {}
       additionalProperties:
@@ -153,29 +149,33 @@ components:
         type: array
       type: object
       description: Construct a type with a set of properties K of type T
-    ApprovalPrepareRequest:
+    SubaccountStatusResponse:
       properties:
-        signingNetwork:
+        integrationId:
+          type:
+          - string
+          - 'null'
+        multichainApprovalNonce:
           type: string
-        maxAllowedCount:
+        approvalNonce:
           type: string
         expiresAt:
           type: string
-        shouldAdd:
+        remainingActions:
+          type: string
+        currentActionsCount:
+          type: string
+        maxAllowedCount:
+          type: string
+        active:
           type: boolean
-        subaccountAddress:
-          type: string
-        account:
-          type: string
       required:
-      - maxAllowedCount
+      - integrationId
+      - multichainApprovalNonce
+      - approvalNonce
       - expiresAt
-      - shouldAdd
-      - subaccountAddress
-      - account
+      - remainingActions
+      - currentActionsCount
+      - maxAllowedCount
+      - active
       type: object
-    Record_string.any_:
-      properties: {}
-      additionalProperties: {}
-      type: object
-      description: Construct a type with a set of properties K of type T

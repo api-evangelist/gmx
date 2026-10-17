@@ -108,35 +108,8 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OrderEventCombination:
-      properties:
-        isTwap:
-          type: boolean
-        isDepositOrWithdraw:
-          type: boolean
-        orderType:
-          type: number
-          format: double
-        eventName:
-          type: string
-      type: object
-    TradesListResponse:
-      properties:
-        hasMore:
-          type: boolean
-        nextCursor:
-          type:
-          - string
-          - 'null'
-        trades:
-          items:
-            $ref: '#/components/schemas/TradeResponse'
-          type: array
-      required:
-      - hasMore
-      - nextCursor
-      - trades
-      type: object
+    TradeResponse:
+      $ref: '#/components/schemas/TradeActionResponse'
     TradesSearchRequest:
       properties:
         cursor:
@@ -172,6 +145,18 @@ components:
           type: string
           description: Trader address. Required unless `forAllAccounts` is true.
       type: object
+    MarketDirectionFilter:
+      properties:
+        collateralAddress:
+          type: string
+        direction:
+          $ref: '#/components/schemas/TradeDirection'
+        marketAddress:
+          type: string
+      required:
+      - direction
+      - marketAddress
+      type: object
     TradeDirection:
       type: string
       enum:
@@ -179,8 +164,6 @@ components:
       - short
       - swap
       - any
-    TradeResponse:
-      $ref: '#/components/schemas/TradeActionResponse'
     TradeActionResponse:
       properties:
         reasonBytes:
@@ -289,15 +272,32 @@ components:
       - eventName
       - id
       type: object
-    MarketDirectionFilter:
+    OrderEventCombination:
       properties:
-        collateralAddress:
+        isTwap:
+          type: boolean
+        isDepositOrWithdraw:
+          type: boolean
+        orderType:
+          type: number
+          format: double
+        eventName:
           type: string
-        direction:
-          $ref: '#/components/schemas/TradeDirection'
-        marketAddress:
-          type: string
+      type: object
+    TradesListResponse:
+      properties:
+        hasMore:
+          type: boolean
+        nextCursor:
+          type:
+          - string
+          - 'null'
+        trades:
+          items:
+            $ref: '#/components/schemas/TradeResponse'
+          type: array
       required:
-      - direction
-      - marketAddress
+      - hasMore
+      - nextCursor
+      - trades
       type: object

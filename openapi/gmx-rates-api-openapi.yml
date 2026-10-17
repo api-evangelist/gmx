@@ -47,6 +47,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string
     MarketRatesResponse:
       properties:
         ratesSnapshots:
@@ -63,16 +73,6 @@ components:
       items:
         $ref: '#/components/schemas/MarketRatesResponse'
       type: array
-    ApiParameterPeriod:
-      enum:
-      - 1d
-      - 7d
-      - 30d
-      - 90d
-      - 180d
-      - 1y
-      - total
-      type: string
     RatesSnapshotResponse:
       properties:
         timestamp:

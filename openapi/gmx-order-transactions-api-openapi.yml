@@ -168,85 +168,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SubmitRequest:
-      properties:
-        from:
-          type: string
-        signature:
-          type: string
-        eip712Data:
-          $ref: '#/components/schemas/Record_string.any_'
-        requestId:
-          type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-      type: object
-    SimpleOrderType:
-      enum:
-      - market
-      - limit
-      - stop-market
-      - take-profit
-      - stop-loss
-      - twap
-      type: string
-    StatusResponse:
-      properties:
-        traceId:
-          type: string
-        updatedAt:
-          type: string
-        createdAt:
-          type: string
-        error:
-          properties:
-            message:
-              type: string
-            code:
-              type: string
-          required:
-          - message
-          - code
-          type: object
-        gelatoStatusCode:
-          type: number
-          format: double
-        taskId:
-          type: string
-        cancellationReason:
-          type: string
-        orderKeys:
-          items:
-            type: string
-          type: array
-        executionTxnHash:
-          type: string
-        createdTxnHash:
-          type: string
-        txHash:
-          type: string
-        status:
-          $ref: '#/components/schemas/OrderTransactionStatus'
-        requestId:
-          type: string
-      required:
-      - updatedAt
-      - createdAt
-      - status
-      - requestId
-      type: object
-    OrderTransactionStatus:
-      enum:
-      - prepared
-      - relay_accepted
-      - relay_pending
-      - relay_submitted
-      - created
-      - executed
-      - cancelled
-      - relay_failed
-      - relay_reverted
-      type: string
     CollateralPrepareRequest:
       properties:
         subaccountApproval:
@@ -279,32 +200,6 @@ components:
       - amount
       - positionKey
       - operation
-      type: object
-    SubmitResponse:
-      properties:
-        traceId:
-          type: string
-        error:
-          properties:
-            message:
-              type: string
-            code:
-              type: string
-          required:
-          - message
-          - code
-          type: object
-        taskId:
-          type: string
-        txHash:
-          type: string
-        status:
-          $ref: '#/components/schemas/OrderTransactionStatus'
-        requestId:
-          type: string
-      required:
-      - status
-      - requestId
       type: object
     PrepareResponse:
       properties:
@@ -372,23 +267,17 @@ components:
       - express
       - classic
       type: string
-    StatusRequest:
-      properties:
-        requestId:
-          type: string
-      required:
-      - requestId
-      type: object
-    CollateralOperation:
-      type: string
+    OrderTransactionStatus:
       enum:
-      - deposit
-      - withdraw
-    OrderKind:
-      enum:
-      - increase
-      - decrease
-      - swap
+      - prepared
+      - relay_accepted
+      - relay_pending
+      - relay_submitted
+      - created
+      - executed
+      - cancelled
+      - relay_failed
+      - relay_reverted
       type: string
     CancelPrepareRequest:
       properties:
@@ -411,35 +300,6 @@ components:
       required:
       - from
       - mode
-      type: object
-    EditPrepareRequest:
-      properties:
-        subaccountApproval:
-          $ref: '#/components/schemas/Record_string.any_'
-        subaccountAddress:
-          type: string
-        from:
-          type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-        executionFeeTopUp:
-          type: string
-        newAutoCancel:
-          type: boolean
-        newAcceptablePrice:
-          type: string
-        newTriggerPrice:
-          type: string
-        newSize:
-          type: string
-        orderIds:
-          items:
-            type: string
-          type: array
-      required:
-      - from
-      - mode
-      - orderIds
       type: object
     PrepareRequest:
       properties:
@@ -538,4 +398,144 @@ components:
       - mode
       - orderType
       - kind
+      type: object
+    SimpleOrderType:
+      enum:
+      - market
+      - limit
+      - stop-market
+      - take-profit
+      - stop-loss
+      - twap
+      type: string
+    SubmitResponse:
+      properties:
+        traceId:
+          type: string
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        taskId:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrderTransactionStatus'
+        requestId:
+          type: string
+      required:
+      - status
+      - requestId
+      type: object
+    CollateralOperation:
+      type: string
+      enum:
+      - deposit
+      - withdraw
+    StatusRequest:
+      properties:
+        requestId:
+          type: string
+      required:
+      - requestId
+      type: object
+    OrderKind:
+      enum:
+      - increase
+      - decrease
+      - swap
+      type: string
+    EditPrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        executionFeeTopUp:
+          type: string
+        newAutoCancel:
+          type: boolean
+        newAcceptablePrice:
+          type: string
+        newTriggerPrice:
+          type: string
+        newSize:
+          type: string
+        orderIds:
+          items:
+            type: string
+          type: array
+      required:
+      - from
+      - mode
+      - orderIds
+      type: object
+    StatusResponse:
+      properties:
+        traceId:
+          type: string
+        updatedAt:
+          type: string
+        createdAt:
+          type: string
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        gelatoStatusCode:
+          type: number
+          format: double
+        taskId:
+          type: string
+        cancellationReason:
+          type: string
+        orderKeys:
+          items:
+            type: string
+          type: array
+        executionTxnHash:
+          type: string
+        createdTxnHash:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrderTransactionStatus'
+        requestId:
+          type: string
+      required:
+      - updatedAt
+      - createdAt
+      - status
+      - requestId
+      type: object
+    SubmitRequest:
+      properties:
+        from:
+          type: string
+        signature:
+          type: string
+        eip712Data:
+          $ref: '#/components/schemas/Record_string.any_'
+        requestId:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
       type: object

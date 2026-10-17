@@ -67,43 +67,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    JitLiquidityHistoryResponse:
-      properties:
-        snapshots:
-          items:
-            $ref: '#/components/schemas/JitLiquiditySnapshotResponse'
-          type: array
-      required:
-      - snapshots
-      type: object
-    GlvShiftParamsResponse:
-      properties:
-        minMarketTokens:
-          type: string
-        marketTokenAmount:
-          type: string
-        toMarket:
-          type: string
-        fromMarket:
-          type: string
-        glv:
-          type: string
-      required:
-      - minMarketTokens
-      - marketTokenAmount
-      - toMarket
-      - fromMarket
-      - glv
-      type: object
-    JitLiquidityInfoResponse:
-      properties:
-        liquidityInfos:
-          items:
-            $ref: '#/components/schemas/JitLiquidityInfoItemResponse'
-          type: array
-      required:
-      - liquidityInfos
-      type: object
     JitLiquidityInfoItemResponse:
       properties:
         glvShiftParams:
@@ -123,6 +86,48 @@ components:
       - maxReservedUsdWithJitShort
       - maxReservedUsdWithJitLong
       - market
+      - glv
+      type: object
+    JitLiquidityInfoResponse:
+      properties:
+        liquidityInfos:
+          items:
+            $ref: '#/components/schemas/JitLiquidityInfoItemResponse'
+          type: array
+      required:
+      - liquidityInfos
+      type: object
+    JitLiquidityHistoryResponse:
+      properties:
+        snapshots:
+          items:
+            $ref: '#/components/schemas/JitLiquiditySnapshotResponse'
+          type: array
+      required:
+      - snapshots
+      type: object
+    JitLiquidityHistoryPeriod:
+      type: string
+      enum:
+      - 1h
+      - 1d
+    GlvShiftParamsResponse:
+      properties:
+        minMarketTokens:
+          type: string
+        marketTokenAmount:
+          type: string
+        toMarket:
+          type: string
+        fromMarket:
+          type: string
+        glv:
+          type: string
+      required:
+      - minMarketTokens
+      - marketTokenAmount
+      - toMarket
+      - fromMarket
       - glv
       type: object
     JitLiquiditySnapshotResponse:
@@ -145,8 +150,3 @@ components:
       - glvAddress
       - marketAddress
       type: object
-    JitLiquidityHistoryPeriod:
-      type: string
-      enum:
-      - 1h
-      - 1d
