@@ -1,0 +1,165 @@
+openapi: 3.2.0
+info:
+  title: '@gmx-io/gmx-public-api Relay API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Relay
+paths:
+  /relay/submit:
+    post:
+      operationId: Submit
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RelaySubmitResponse'
+        '400':
+          description: Bad Request
+        '429':
+          description: Too Many Requests
+        '503':
+          description: Relay Unavailable
+      tags:
+      - Relay
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RelaySubmitRequest'
+      summary: Submit
+      x-summary-source: derived
+  /relay/status:
+    post:
+      operationId: Status
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RelayStatusResponse'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '429':
+          description: Too Many Requests
+        '503':
+          description: Relay Unavailable
+      tags:
+      - Relay
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RelayStatusRequest'
+      summary: Status
+      x-summary-source: derived
+components:
+  schemas:
+    RelayDebugResponse:
+      properties:
+        tenderlyUrl:
+          type: string
+        calldata:
+          type: string
+        errorData:
+          type:
+          - string
+          - 'null'
+        errorCode:
+          type:
+          - string
+          - 'null'
+        blockNumber:
+          type:
+          - number
+          - 'null'
+          format: double
+        account:
+          type: string
+        operationType:
+          type: string
+        to:
+          type: string
+        from:
+          type:
+          - string
+          - 'null'
+        chainId:
+          type: number
+          format: double
+      type: object
+    RelaySubmitResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/RelayStatus'
+        taskId:
+          type: string
+      required:
+      - status
+      - taskId
+      type: object
+    RelayStatus:
+      type: string
+      enum:
+      - pending
+      - executed
+      - reverted
+      - failed
+      - unknown
+      description: Lifecycle of a relay operation as reported by GMX Relay.
+    RelayStatusRequest:
+      properties:
+        taskId:
+          type: string
+      required:
+      - taskId
+      type: object
+    RelayStatusResponse:
+      properties:
+        debug:
+          $ref: '#/components/schemas/RelayDebugResponse'
+          description: 'The keeper''s reproduction data, tenderly link included. A taskId is an unguessable capability:
+
+            whoever holds it may read the operation it names.'
+        revertData:
+          type: string
+          description: Raw revert bytes when the chain produced any — public on-chain data the client can decode.
+        reason:
+          type: string
+          description: Failure detail when the relay has one; absent while the operation is in flight.
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/RelayStatus'
+        taskId:
+          type: string
+      required:
+      - status
+      - taskId
+      type: object
+    RelaySubmitRequest:
+      properties:
+        data:
+          type: string
+          description: Bare relay-router calldata, including the user's EIP-712 signature, with nothing appended.
+        to:
+          type: string
+      required:
+      - data
+      - to
+      type: object

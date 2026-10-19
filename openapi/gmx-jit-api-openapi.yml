@@ -67,6 +67,44 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    JitLiquidityHistoryPeriod:
+      type: string
+      enum:
+      - 1h
+      - 1d
+    JitLiquidityHistoryResponse:
+      properties:
+        snapshots:
+          items:
+            $ref: '#/components/schemas/JitLiquiditySnapshotResponse'
+          type: array
+      required:
+      - snapshots
+      type: object
+    JitLiquiditySnapshotResponse:
+      properties:
+        shortLiquidityUsd:
+          type:
+          - string
+          - 'null'
+        longLiquidityUsd:
+          type:
+          - string
+          - 'null'
+        timestamp:
+          type: number
+          format: double
+        glvAddress:
+          type: string
+        marketAddress:
+          type: string
+      required:
+      - shortLiquidityUsd
+      - longLiquidityUsd
+      - timestamp
+      - glvAddress
+      - marketAddress
+      type: object
     JitLiquidityInfoItemResponse:
       properties:
         glvShiftParams:
@@ -88,29 +126,6 @@ components:
       - market
       - glv
       type: object
-    JitLiquidityInfoResponse:
-      properties:
-        liquidityInfos:
-          items:
-            $ref: '#/components/schemas/JitLiquidityInfoItemResponse'
-          type: array
-      required:
-      - liquidityInfos
-      type: object
-    JitLiquidityHistoryResponse:
-      properties:
-        snapshots:
-          items:
-            $ref: '#/components/schemas/JitLiquiditySnapshotResponse'
-          type: array
-      required:
-      - snapshots
-      type: object
-    JitLiquidityHistoryPeriod:
-      type: string
-      enum:
-      - 1h
-      - 1d
     GlvShiftParamsResponse:
       properties:
         minMarketTokens:
@@ -130,23 +145,12 @@ components:
       - fromMarket
       - glv
       type: object
-    JitLiquiditySnapshotResponse:
+    JitLiquidityInfoResponse:
       properties:
-        shortLiquidityUsd:
-          type: string
-        longLiquidityUsd:
-          type: string
-        timestamp:
-          type: number
-          format: double
-        glvAddress:
-          type: string
-        marketAddress:
-          type: string
+        liquidityInfos:
+          items:
+            $ref: '#/components/schemas/JitLiquidityInfoItemResponse'
+          type: array
       required:
-      - shortLiquidityUsd
-      - longLiquidityUsd
-      - timestamp
-      - glvAddress
-      - marketAddress
+      - liquidityInfos
       type: object

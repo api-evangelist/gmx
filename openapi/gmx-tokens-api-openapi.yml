@@ -58,8 +58,6 @@ components:
           items:
             type: string
           type: array
-        isStaking:
-          type: boolean
         isPlatformTradingToken:
           type: boolean
         isPlatformToken:
@@ -159,8 +157,6 @@ components:
           items:
             type: string
           type: array
-        isStaking:
-          type: boolean
         isPlatformTradingToken:
           type: boolean
         isPlatformToken:

@@ -32,6 +32,26 @@ components:
   schemas:
     BigIntToString_BuybackWeeklyStatsData_:
       properties:
+        months:
+          items:
+            properties:
+              cumulativeAccrued:
+                type: string
+              monthlyAccrued:
+                type: string
+              monthEnd:
+                type: number
+                format: double
+              monthStart:
+                type: number
+                format: double
+            required:
+            - cumulativeAccrued
+            - monthlyAccrued
+            - monthEnd
+            - monthStart
+            type: object
+          type: array
         weeks:
           items:
             properties:
@@ -67,6 +87,7 @@ components:
           - totalAccrued
           type: object
       required:
+      - months
       - weeks
       - summary
       type: object

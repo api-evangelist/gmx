@@ -1,0 +1,12 @@
+{
+ "url": "https://arbitrum.gmxapi.io/swagger.json",
+ "final": "https://arbitrum.gmxapi.io/swagger.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 100171,
+ "sha256": "66c2091e884d6389dee0f8e33c694bb59d38ff21e51dca9fdbb509106ea8d5d8",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}

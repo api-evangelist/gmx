@@ -90,6 +90,10 @@ components:
           type: string
         updatedAtTime:
           type: string
+        uiFeeFactor:
+          type:
+          - string
+          - 'null'
         minOutputAmount:
           type: string
         callbackGasLimit:
@@ -140,6 +144,7 @@ components:
       - srcChainId
       - validFromTime
       - updatedAtTime
+      - uiFeeFactor
       - minOutputAmount
       - callbackGasLimit
       - executionFee

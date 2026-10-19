@@ -1,0 +1,67 @@
+openapi: 3.2.0
+info:
+  title: '@gmx-io/gmx-public-api Whitelists API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Whitelists
+paths:
+  /whitelists:
+    get:
+      operationId: GetWhitelists
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountWhitelistsResponse'
+        '400':
+          description: Bad Request - Invalid address
+        '429':
+          description: Too Many Requests
+        '500':
+          description: Internal Server Error
+      description: 'Whitelists of an address, read from the keeper and refreshed every minute.
+
+        deposit.markets has only the markets whose direct deposits are whitelist-only: true when the address may deposit.
+
+        deposit.glvs has only the GLVs whose deposits are whitelist-only: true when the address may deposit.'
+      tags:
+      - Whitelists
+      security: []
+      parameters:
+      - in: query
+        name: address
+        required: true
+        schema:
+          type: string
+      summary: Get whitelists
+      x-summary-source: derived
+components:
+  schemas:
+    AccountWhitelistsResponse:
+      properties:
+        deposit:
+          properties:
+            glvs:
+              $ref: '#/components/schemas/Record_string.boolean_'
+            markets:
+              $ref: '#/components/schemas/Record_string.boolean_'
+          required:
+          - glvs
+          - markets
+          type: object
+      required:
+      - deposit
+      type: object
+    Record_string.boolean_:
+      properties: {}
+      additionalProperties:
+        type: boolean
+      type: object
+      description: Construct a type with a set of properties K of type T

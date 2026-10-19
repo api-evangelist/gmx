@@ -30,6 +30,31 @@ paths:
       parameters: []
       summary: Get pairs
       x-summary-source: derived
+  /pairs/solana:
+    get:
+      operationId: GetSolanaPairs
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PairResponse'
+                type: array
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Solana pairs are not available on this deployment or not ready
+      description: 'Perpetual pairs of GMX on Solana, in the same format as /pairs. Funding is the paying side''s rate in percent per
+
+        hour, positive when longs pay. Served by the deployment that computes the protocol stats.'
+      tags:
+      - Pairs
+      security: []
+      parameters: []
+      summary: Get solana pairs
+      x-summary-source: derived
 components:
   schemas:
     PairResponse:
@@ -40,6 +65,9 @@ components:
         pool_id:
           type: string
         volume_usd:
+          type: number
+          format: double
+        funding_interval_minutes:
           type: number
           format: double
         next_funding_rate_timestamp:

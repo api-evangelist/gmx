@@ -22,6 +22,12 @@ paths:
                 $ref: '#/components/schemas/PrepareResponse'
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrepareErrorResponse'
+        '429':
+          description: Too Many Requests
         '500':
           description: Internal Server Error
       tags:
@@ -48,8 +54,12 @@ paths:
                 $ref: '#/components/schemas/SubmitResponse'
         '400':
           description: Bad Request
+        '429':
+          description: Too Many Requests
         '500':
           description: Internal Server Error
+        '503':
+          description: Relay Unavailable
       tags:
       - Order Transactions
       security: []
@@ -168,117 +178,32 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CollateralPrepareRequest:
-      properties:
-        subaccountApproval:
-          $ref: '#/components/schemas/Record_string.any_'
-        subaccountAddress:
-          type: string
-        from:
-          type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-        uiFeeReceiver:
-          type: string
-        gasPaymentToken:
-          type: string
-        executionFeeBufferBps:
-          type: number
-          format: double
-        slippage:
-          type: number
-          format: double
-        amount:
-          type: string
-        positionKey:
-          type: string
-        operation:
-          $ref: '#/components/schemas/CollateralOperation'
-      required:
-      - from
-      - mode
-      - amount
-      - positionKey
-      - operation
-      type: object
-    PrepareResponse:
+    SubmitResponse:
       properties:
         traceId:
           type: string
-        warnings:
-          items:
-            type: string
-          type: array
-        expiresAt:
-          type: number
-          format: double
-        estimates:
+        error:
           properties:
-            fundingFeeUsd:
+            message:
               type: string
-            borrowingFeeUsd:
-              type: string
-            positionFeeUsd:
-              type: string
-            sizeDeltaUsd:
-              type: string
-            acceptablePrice:
-              type: string
-            executionFeeAmount:
-              type: string
-            swapPriceImpactDeltaUsd:
-              type: string
-            positionPriceImpactDeltaUsd:
+            code:
               type: string
           required:
-          - fundingFeeUsd
-          - borrowingFeeUsd
-          - positionFeeUsd
-          - sizeDeltaUsd
-          - acceptablePrice
-          - executionFeeAmount
-          - swapPriceImpactDeltaUsd
-          - positionPriceImpactDeltaUsd
+          - message
+          - code
           type: object
-        payload:
-          $ref: '#/components/schemas/Record_string.any_'
+        taskId:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrderTransactionStatus'
         requestId:
           type: string
-        mode:
-          $ref: '#/components/schemas/TransactionMode'
-        payloadType:
-          type: string
-          enum:
-          - transaction
-          - typed-data
       required:
-      - payload
+      - status
       - requestId
-      - mode
-      - payloadType
       type: object
-    Record_string.any_:
-      properties: {}
-      additionalProperties: {}
-      type: object
-      description: Construct a type with a set of properties K of type T
-    TransactionMode:
-      enum:
-      - express
-      - classic
-      type: string
-    OrderTransactionStatus:
-      enum:
-      - prepared
-      - relay_accepted
-      - relay_pending
-      - relay_submitted
-      - created
-      - executed
-      - cancelled
-      - relay_failed
-      - relay_reverted
-      type: string
     CancelPrepareRequest:
       properties:
         subaccountApproval:
@@ -300,6 +225,223 @@ components:
       required:
       - from
       - mode
+      type: object
+    JitDataStatus:
+      type: string
+      enum:
+      - available
+      - stale
+      - unavailable
+    OrderKind:
+      enum:
+      - increase
+      - decrease
+      - swap
+      type: string
+    TradingCapacityLimitingFactor:
+      type: string
+      enum:
+      - reserve
+      - openInterest
+      - both
+      - notApplicable
+    PrepareErrorCode:
+      type: string
+      enum:
+      - INVALID_PARAMS
+      - MARKET_NOT_FOUND
+      - TOKEN_NOT_FOUND
+      - NO_SWAP_PATH
+      - POSITION_NOT_FOUND
+    Record_string._message-string--value_63_-any__:
+      properties: {}
+      additionalProperties:
+        properties:
+          value: {}
+          message:
+            type: string
+        required:
+        - message
+        type: object
+      type: object
+      description: Construct a type with a set of properties K of type T
+    OrderValidationWarningResponse:
+      anyOf:
+      - properties:
+          details:
+            allOf:
+            - $ref: '#/components/schemas/TradingCapacityResponse'
+            - properties:
+                requestedSizeUsd:
+                  type: string
+              required:
+              - requestedSizeUsd
+              type: object
+          message:
+            type: string
+          code:
+            type: string
+            enum:
+            - INSUFFICIENT_LIQUIDITY
+        required:
+        - details
+        - message
+        - code
+        type: object
+      - properties:
+          details:
+            properties:
+              reason:
+                type: string
+                enum:
+                - STALE_MARKET_DATA
+                - JIT_DATA_UNAVAILABLE
+                - JIT_ACCOUNT_ELIGIBILITY_UNKNOWN
+                - COLLATERAL_SWAP
+            required:
+            - reason
+            type: object
+          message:
+            type: string
+          code:
+            type: string
+            enum:
+            - TRADING_CAPACITY_UNAVAILABLE
+        required:
+        - details
+        - message
+        - code
+        type: object
+    StatusResponse:
+      properties:
+        traceId:
+          type: string
+        updatedAt:
+          type: string
+        createdAt:
+          type: string
+        error:
+          properties:
+            message:
+              type: string
+            code:
+              type: string
+          required:
+          - message
+          - code
+          type: object
+        taskId:
+          type: string
+        cancellationReason:
+          type: string
+        orderKeys:
+          items:
+            type: string
+          type: array
+        executionTxnHash:
+          type: string
+        createdTxnHash:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/OrderTransactionStatus'
+        requestId:
+          type: string
+      required:
+      - updatedAt
+      - createdAt
+      - status
+      - requestId
+      type: object
+    CollateralOperation:
+      type: string
+      enum:
+      - deposit
+      - withdraw
+    StatusRequest:
+      properties:
+        requestId:
+          type: string
+      required:
+      - requestId
+      type: object
+    Record_string.any_:
+      properties: {}
+      additionalProperties: {}
+      type: object
+      description: Construct a type with a set of properties K of type T
+    OrderTransactionStatus:
+      enum:
+      - prepared
+      - relay_accepted
+      - relay_pending
+      - relay_submitted
+      - relay_unknown
+      - created
+      - executed
+      - cancelled
+      - relay_failed
+      - relay_reverted
+      type: string
+    PrepareErrorResponse:
+      anyOf:
+      - properties:
+          details:
+            allOf:
+            - $ref: '#/components/schemas/TradingCapacityResponse'
+            - properties:
+                requestedSizeUsd:
+                  type: string
+              required:
+              - requestedSizeUsd
+              type: object
+          code:
+            type: string
+            enum:
+            - INSUFFICIENT_LIQUIDITY
+          message:
+            type: string
+        required:
+        - details
+        - code
+        - message
+        type: object
+      - properties:
+          code:
+            $ref: '#/components/schemas/PrepareErrorCode'
+          message:
+            type: string
+        required:
+        - message
+        type: object
+      - properties:
+          message:
+            $ref: '#/components/schemas/Record_string._message-string--value_63_-any__'
+        required:
+        - message
+        type: object
+    TradingCapacityResponse:
+      properties:
+        marketDataStatus:
+          $ref: '#/components/schemas/MarketDataStatus'
+        jitDataStatus:
+          $ref: '#/components/schemas/JitDataStatus'
+        limitingFactor:
+          $ref: '#/components/schemas/TradingCapacityLimitingFactor'
+        jitAvailableLiquidity:
+          type: string
+        baseAvailableLiquidity:
+          type: string
+        availableLiquidity:
+          type: string
+      required:
+      - marketDataStatus
+      - jitDataStatus
+      - limitingFactor
+      - jitAvailableLiquidity
+      - baseAvailableLiquidity
+      - availableLiquidity
       type: object
     PrepareRequest:
       properties:
@@ -399,59 +541,11 @@ components:
       - orderType
       - kind
       type: object
-    SimpleOrderType:
-      enum:
-      - market
-      - limit
-      - stop-market
-      - take-profit
-      - stop-loss
-      - twap
-      type: string
-    SubmitResponse:
-      properties:
-        traceId:
-          type: string
-        error:
-          properties:
-            message:
-              type: string
-            code:
-              type: string
-          required:
-          - message
-          - code
-          type: object
-        taskId:
-          type: string
-        txHash:
-          type: string
-        status:
-          $ref: '#/components/schemas/OrderTransactionStatus'
-        requestId:
-          type: string
-      required:
-      - status
-      - requestId
-      type: object
-    CollateralOperation:
+    MarketDataStatus:
       type: string
       enum:
-      - deposit
-      - withdraw
-    StatusRequest:
-      properties:
-        requestId:
-          type: string
-      required:
-      - requestId
-      type: object
-    OrderKind:
-      enum:
-      - increase
-      - decrease
-      - swap
-      type: string
+      - fresh
+      - stale
     EditPrepareRequest:
       properties:
         subaccountApproval:
@@ -481,51 +575,6 @@ components:
       - mode
       - orderIds
       type: object
-    StatusResponse:
-      properties:
-        traceId:
-          type: string
-        updatedAt:
-          type: string
-        createdAt:
-          type: string
-        error:
-          properties:
-            message:
-              type: string
-            code:
-              type: string
-          required:
-          - message
-          - code
-          type: object
-        gelatoStatusCode:
-          type: number
-          format: double
-        taskId:
-          type: string
-        cancellationReason:
-          type: string
-        orderKeys:
-          items:
-            type: string
-          type: array
-        executionTxnHash:
-          type: string
-        createdTxnHash:
-          type: string
-        txHash:
-          type: string
-        status:
-          $ref: '#/components/schemas/OrderTransactionStatus'
-        requestId:
-          type: string
-      required:
-      - updatedAt
-      - createdAt
-      - status
-      - requestId
-      type: object
     SubmitRequest:
       properties:
         from:
@@ -539,3 +588,112 @@ components:
         mode:
           $ref: '#/components/schemas/TransactionMode'
       type: object
+    SimpleOrderType:
+      enum:
+      - market
+      - limit
+      - stop-market
+      - take-profit
+      - stop-loss
+      - twap
+      type: string
+    CollateralPrepareRequest:
+      properties:
+        subaccountApproval:
+          $ref: '#/components/schemas/Record_string.any_'
+        subaccountAddress:
+          type: string
+        from:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        uiFeeReceiver:
+          type: string
+        gasPaymentToken:
+          type: string
+        executionFeeBufferBps:
+          type: number
+          format: double
+        slippage:
+          type: number
+          format: double
+        amount:
+          type: string
+        positionKey:
+          type: string
+        operation:
+          $ref: '#/components/schemas/CollateralOperation'
+      required:
+      - from
+      - mode
+      - amount
+      - positionKey
+      - operation
+      type: object
+    PrepareResponse:
+      properties:
+        traceId:
+          type: string
+        validationWarnings:
+          items:
+            $ref: '#/components/schemas/OrderValidationWarningResponse'
+          type: array
+        warnings:
+          items:
+            type: string
+          type: array
+        expiresAt:
+          type: number
+          format: double
+        estimates:
+          properties:
+            tradingCapacity:
+              $ref: '#/components/schemas/TradingCapacityResponse'
+            fundingFeeUsd:
+              type: string
+            borrowingFeeUsd:
+              type: string
+            positionFeeUsd:
+              type: string
+            sizeDeltaUsd:
+              type: string
+            acceptablePrice:
+              type: string
+            executionFeeAmount:
+              type: string
+            swapPriceImpactDeltaUsd:
+              type: string
+            positionPriceImpactDeltaUsd:
+              type: string
+          required:
+          - fundingFeeUsd
+          - borrowingFeeUsd
+          - positionFeeUsd
+          - sizeDeltaUsd
+          - acceptablePrice
+          - executionFeeAmount
+          - swapPriceImpactDeltaUsd
+          - positionPriceImpactDeltaUsd
+          type: object
+        payload:
+          $ref: '#/components/schemas/Record_string.any_'
+        requestId:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TransactionMode'
+        payloadType:
+          type: string
+          enum:
+          - transaction
+          - typed-data
+      required:
+      - payload
+      - requestId
+      - mode
+      - payloadType
+      type: object
+    TransactionMode:
+      enum:
+      - express
+      - classic
+      type: string

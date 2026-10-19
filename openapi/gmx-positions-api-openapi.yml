@@ -76,99 +76,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OrderResponse:
-      properties:
-        requestId:
-          type:
-          - string
-          - 'null'
-        dataList:
-          items:
-            type: string
-          type: array
-        autoCancel:
-          type: boolean
-        isFrozen:
-          type: boolean
-        shouldUnwrapNativeToken:
-          type: boolean
-        isLong:
-          type: boolean
-        srcChainId:
-          type: string
-        validFromTime:
-          type: string
-        updatedAtTime:
-          type: string
-        minOutputAmount:
-          type: string
-        callbackGasLimit:
-          type: string
-        executionFee:
-          type: string
-        acceptablePrice:
-          type: string
-        triggerPrice:
-          type: string
-        initialCollateralDeltaAmount:
-          type: string
-        sizeDeltaUsd:
-          type: string
-        decreasePositionSwapType:
-          type: number
-          format: double
-        orderType:
-          type: number
-          format: double
-        swapPath:
-          items:
-            type: string
-          type: array
-        initialCollateralTokenAddress:
-          type: string
-        marketAddress:
-          type: string
-        uiFeeReceiver:
-          type: string
-        callbackContract:
-          type: string
-        cancellationReceiver:
-          type: string
-        receiver:
-          type: string
-        account:
-          type: string
-        key:
-          type: string
-      required:
-      - requestId
-      - dataList
-      - autoCancel
-      - isFrozen
-      - shouldUnwrapNativeToken
-      - isLong
-      - srcChainId
-      - validFromTime
-      - updatedAtTime
-      - minOutputAmount
-      - callbackGasLimit
-      - executionFee
-      - acceptablePrice
-      - triggerPrice
-      - initialCollateralDeltaAmount
-      - sizeDeltaUsd
-      - decreasePositionSwapType
-      - orderType
-      - swapPath
-      - initialCollateralTokenAddress
-      - marketAddress
-      - uiFeeReceiver
-      - callbackContract
-      - cancellationReceiver
-      - receiver
-      - account
-      - key
-      type: object
     PositionResponse:
       properties:
         relatedOrders:
@@ -232,6 +139,8 @@ components:
         data:
           type: string
         pendingImpactAmount:
+          type: string
+        positionValueInUsd:
           type: string
         uiFeeAmount:
           type: string
@@ -298,6 +207,7 @@ components:
       - indexName
       - data
       - pendingImpactAmount
+      - positionValueInUsd
       - uiFeeAmount
       - traderDiscountAmount
       - positionFeeAmount
@@ -316,5 +226,103 @@ components:
       - marketAddress
       - account
       - contractKey
+      - key
+      type: object
+    OrderResponse:
+      properties:
+        requestId:
+          type:
+          - string
+          - 'null'
+        dataList:
+          items:
+            type: string
+          type: array
+        autoCancel:
+          type: boolean
+        isFrozen:
+          type: boolean
+        shouldUnwrapNativeToken:
+          type: boolean
+        isLong:
+          type: boolean
+        srcChainId:
+          type: string
+        validFromTime:
+          type: string
+        updatedAtTime:
+          type: string
+        uiFeeFactor:
+          type:
+          - string
+          - 'null'
+        minOutputAmount:
+          type: string
+        callbackGasLimit:
+          type: string
+        executionFee:
+          type: string
+        acceptablePrice:
+          type: string
+        triggerPrice:
+          type: string
+        initialCollateralDeltaAmount:
+          type: string
+        sizeDeltaUsd:
+          type: string
+        decreasePositionSwapType:
+          type: number
+          format: double
+        orderType:
+          type: number
+          format: double
+        swapPath:
+          items:
+            type: string
+          type: array
+        initialCollateralTokenAddress:
+          type: string
+        marketAddress:
+          type: string
+        uiFeeReceiver:
+          type: string
+        callbackContract:
+          type: string
+        cancellationReceiver:
+          type: string
+        receiver:
+          type: string
+        account:
+          type: string
+        key:
+          type: string
+      required:
+      - requestId
+      - dataList
+      - autoCancel
+      - isFrozen
+      - shouldUnwrapNativeToken
+      - isLong
+      - srcChainId
+      - validFromTime
+      - updatedAtTime
+      - uiFeeFactor
+      - minOutputAmount
+      - callbackGasLimit
+      - executionFee
+      - acceptablePrice
+      - triggerPrice
+      - initialCollateralDeltaAmount
+      - sizeDeltaUsd
+      - decreasePositionSwapType
+      - orderType
+      - swapPath
+      - initialCollateralTokenAddress
+      - marketAddress
+      - uiFeeReceiver
+      - callbackContract
+      - cancellationReceiver
+      - receiver
+      - account
       - key
       type: object

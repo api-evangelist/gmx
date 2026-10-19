@@ -354,6 +354,90 @@ apis:
     url: openapi/gmx-trades-api-openapi.yml
   - type: Documentation
     url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-incentives-api
+  name: GMX Incentives API
+  description: The Incentives API from GMX — 2 operation(s) for incentives.
+  humanURL: https://docs.gmx.io/docs/api/rest/
+  baseURL: https://arbitrum-api.gmxinfra.io
+  tags:
+  - Incentives
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-incentives-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-paxos-transit-api
+  name: GMX Paxos Transit API
+  description: The Paxos Transit API from GMX — 6 operation(s) for paxos transit.
+  humanURL: https://docs.gmx.io/docs/api/rest/
+  baseURL: https://arbitrum-api.gmxinfra.io
+  tags:
+  - Paxos Transit
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-paxos-transit-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-relay-api
+  name: GMX Relay API
+  description: The Relay API from GMX — 2 operation(s) for relay.
+  humanURL: https://docs.gmx.io/docs/api/rest/
+  baseURL: https://arbitrum-api.gmxinfra.io
+  tags:
+  - Relay
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-relay-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-risk-oracle-api
+  name: GMX Risk Oracle API
+  description: The Risk Oracle API from GMX — 1 operation(s) for risk oracle.
+  humanURL: https://docs.gmx.io/docs/api/rest/
+  baseURL: https://arbitrum-api.gmxinfra.io
+  tags:
+  - Risk Oracle
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-risk-oracle-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-stats-api
+  name: GMX Stats API
+  description: The Stats API from GMX — 3 operation(s) for stats.
+  humanURL: https://docs.gmx.io/docs/api/rest/
+  baseURL: https://arbitrum-api.gmxinfra.io
+  tags:
+  - Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-stats-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-whitelists-api
+  name: GMX Whitelists API
+  description: The Whitelists API from GMX — 1 operation(s) for whitelists.
+  humanURL: https://docs.gmx.io/docs/api/rest/
+  baseURL: https://arbitrum-api.gmxinfra.io
+  tags:
+  - Whitelists
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-whitelists-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
+- aid: gmx:gmx-yield-api
+  name: GMX Yield API
+  description: The Yield API from GMX — 2 operation(s) for yield.
+  humanURL: https://docs.gmx.io/docs/api/rest/
+  baseURL: https://arbitrum-api.gmxinfra.io
+  tags:
+  - Yield
+  properties:
+  - type: OpenAPI
+    url: openapi/gmx-yield-api-openapi.yml
+  - type: Documentation
+    url: https://docs.gmx.io/docs/api/overview/
 - aid: gmx:gmx-buy-back-api
   name: GMX Buy Back API
   description: The Buy Back API from GMX — 1 operation(s) for buy back.

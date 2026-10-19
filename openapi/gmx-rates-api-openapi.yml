@@ -47,32 +47,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ApiParameterPeriod:
-      enum:
-      - 1d
-      - 7d
-      - 30d
-      - 90d
-      - 180d
-      - 1y
-      - total
-      type: string
-    MarketRatesResponse:
-      properties:
-        ratesSnapshots:
-          items:
-            $ref: '#/components/schemas/RatesSnapshotResponse'
-          type: array
-        marketAddress:
-          type: string
-      required:
-      - ratesSnapshots
-      - marketAddress
-      type: object
-    RatesResponse:
-      items:
-        $ref: '#/components/schemas/MarketRatesResponse'
-      type: array
     RatesSnapshotResponse:
       properties:
         timestamp:
@@ -99,3 +73,29 @@ components:
       - netRateShort
       - netRateLong
       type: object
+    MarketRatesResponse:
+      properties:
+        ratesSnapshots:
+          items:
+            $ref: '#/components/schemas/RatesSnapshotResponse'
+          type: array
+        marketAddress:
+          type: string
+      required:
+      - ratesSnapshots
+      - marketAddress
+      type: object
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string
+    RatesResponse:
+      items:
+        $ref: '#/components/schemas/MarketRatesResponse'
+      type: array

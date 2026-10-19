@@ -1,0 +1,529 @@
+openapi: 3.2.0
+info:
+  title: '@gmx-io/gmx-public-api Stats API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Stats
+paths:
+  /stats/summary:
+    get:
+      operationId: GetSummary
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+        '400':
+          description: Unknown network or version
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Protocol stats are not available on this deployment
+      tags:
+      - Stats
+      security: []
+      parameters:
+      - in: query
+        name: networks
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Network'
+      - in: query
+        name: versions
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Version'
+      summary: Get summary
+      x-summary-source: derived
+  /stats/timeseries:
+    get:
+      operationId: GetTimeseries
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimeseriesResponse'
+        '400':
+          description: Unknown metric, network, version or timestamp
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Protocol stats are not available on this deployment
+      tags:
+      - Stats
+      security: []
+      parameters:
+      - in: query
+        name: metric
+        required: true
+        schema:
+          $ref: '#/components/schemas/TimeseriesMetric'
+      - in: query
+        name: groupBy
+        required: false
+        schema:
+          $ref: '#/components/schemas/TimeseriesGroupBy'
+      - in: query
+        name: networks
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Network'
+      - in: query
+        name: versions
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/Version'
+      - in: query
+        name: from
+        required: false
+        schema:
+          format: double
+          type: number
+      - in: query
+        name: to
+        required: false
+        schema:
+          format: double
+          type: number
+      summary: Get timeseries
+      x-summary-source: derived
+  /stats/sources:
+    get:
+      operationId: GetSources
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SourceStatusResponse'
+                type: array
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Protocol stats are not available on this deployment
+      tags:
+      - Stats
+      security: []
+      parameters: []
+      summary: Get sources
+      x-summary-source: derived
+components:
+  schemas:
+    OpenInterestResponse:
+      properties:
+        total:
+          $ref: '#/components/schemas/Usd'
+        short:
+          $ref: '#/components/schemas/Usd'
+        long:
+          $ref: '#/components/schemas/Usd'
+      required:
+      - total
+      - short
+      - long
+      type: object
+    Completeness:
+      type: string
+      enum:
+      - complete
+      - partial
+    SourceStatusResponse:
+      $ref: '#/components/schemas/SourceStatus'
+    TimeseriesMetric:
+      type: string
+      enum:
+      - volume.perps
+      - volume.swaps
+      - volume.total
+      - fees.trading
+      - fees.swap
+      - fees.total
+      - revenue.protocol
+      - revenue.lp
+      - trades.perps
+      - trades.swaps
+      - users.active
+    MetricSetResponse:
+      properties:
+        trades:
+          $ref: '#/components/schemas/TradesResponse'
+        users:
+          $ref: '#/components/schemas/UsersResponse'
+        tvl:
+          allOf:
+          - $ref: '#/components/schemas/TvlResponse'
+        revenue:
+          allOf:
+          - $ref: '#/components/schemas/RevenueResponse'
+        fees24h:
+          allOf:
+          - $ref: '#/components/schemas/FeesResponse'
+        fees:
+          $ref: '#/components/schemas/FeesResponse'
+        openInterest:
+          allOf:
+          - $ref: '#/components/schemas/OpenInterestResponse'
+        volume24h:
+          allOf:
+          - $ref: '#/components/schemas/VolumeResponse'
+        volume:
+          $ref: '#/components/schemas/VolumeResponse'
+      required:
+      - trades
+      - users
+      - tvl
+      - revenue
+      - fees24h
+      - fees
+      - openInterest
+      - volume24h
+      - volume
+      type: object
+    SummaryResponse:
+      properties:
+        byVersion:
+          $ref: '#/components/schemas/Partial_Record_Version.MetricSetResponse__'
+        byNetwork:
+          $ref: '#/components/schemas/Partial_Record_Network.MetricSetResponse__'
+        totals:
+          $ref: '#/components/schemas/MetricSetResponse'
+        meta:
+          $ref: '#/components/schemas/SummaryMetaResponse'
+      required:
+      - byVersion
+      - byNetwork
+      - totals
+      - meta
+      type: object
+    Usd:
+      type: string
+    SourceStatus:
+      properties:
+        lastError:
+          type:
+          - string
+          - 'null'
+        lagSeconds:
+          type:
+          - number
+          - 'null'
+          format: double
+        health:
+          $ref: '#/components/schemas/SourceHealth'
+        fetchedAt:
+          type:
+          - number
+          - 'null'
+          format: double
+        asOf:
+          type:
+          - number
+          - 'null'
+          format: double
+        metrics:
+          items:
+            $ref: '#/components/schemas/MetricGroup'
+          type: array
+        version:
+          $ref: '#/components/schemas/Version'
+        network:
+          $ref: '#/components/schemas/Network'
+        id:
+          type: string
+      required:
+      - lastError
+      - lagSeconds
+      - health
+      - fetchedAt
+      - asOf
+      - metrics
+      - version
+      - network
+      - id
+      type: object
+    TimeseriesPointResponse:
+      properties:
+        provisional:
+          type: boolean
+        value:
+          anyOf:
+          - type: string
+          - type: number
+            format: double
+        day:
+          type: number
+          format: double
+      required:
+      - provisional
+      - value
+      - day
+      type: object
+    VolumeResponse:
+      properties:
+        lpFlows:
+          allOf:
+          - $ref: '#/components/schemas/Usd'
+        total:
+          $ref: '#/components/schemas/Usd'
+        swaps:
+          allOf:
+          - $ref: '#/components/schemas/Usd'
+        perps:
+          allOf:
+          - $ref: '#/components/schemas/Usd'
+      required:
+      - lpFlows
+      - total
+      - swaps
+      - perps
+      type: object
+    BuybackToken:
+      type: string
+      enum:
+      - GMX
+      - GT
+    Version:
+      type: string
+      enum:
+      - v1
+      - v2
+    TimeseriesGroupResponse:
+      properties:
+        points:
+          items:
+            $ref: '#/components/schemas/TimeseriesPointResponse'
+          type: array
+        key:
+          type: string
+      required:
+      - points
+      - key
+      type: object
+    Partial_Record_Network.MetricSetResponse__:
+      properties:
+        arbitrum:
+          $ref: '#/components/schemas/MetricSetResponse'
+        avalanche:
+          $ref: '#/components/schemas/MetricSetResponse'
+        megaeth:
+          $ref: '#/components/schemas/MetricSetResponse'
+        solana:
+          $ref: '#/components/schemas/MetricSetResponse'
+      type: object
+      description: Make all properties in T optional
+    RevenueResponse:
+      properties:
+        treasury:
+          allOf:
+          - $ref: '#/components/schemas/Usd'
+        protocol:
+          $ref: '#/components/schemas/Usd'
+        buybackToken:
+          allOf:
+          - $ref: '#/components/schemas/BuybackToken'
+        buyback:
+          allOf:
+          - $ref: '#/components/schemas/Usd'
+        lp:
+          $ref: '#/components/schemas/Usd'
+      required:
+      - treasury
+      - protocol
+      - buybackToken
+      - buyback
+      - lp
+      type: object
+    SummaryMetaResponse:
+      properties:
+        schemaVersion:
+          type: string
+        sources:
+          items:
+            $ref: '#/components/schemas/SourceStatusResponse'
+          type: array
+        completeness:
+          $ref: '#/components/schemas/Completeness'
+        asOf:
+          type: number
+          format: double
+      required:
+      - schemaVersion
+      - sources
+      - completeness
+      - asOf
+      type: object
+    UsersResponse:
+      properties:
+        distinctness:
+          type: string
+          enum:
+          - source
+          description: 'Sum of per-source counts: a wallet counts once per source it is active on, so once per version and network.'
+        all:
+          type:
+          - number
+          - 'null'
+          format: double
+        lps:
+          type:
+          - number
+          - 'null'
+          format: double
+        traders:
+          type:
+          - number
+          - 'null'
+          format: double
+      required:
+      - distinctness
+      - all
+      - lps
+      - traders
+      type: object
+    TimeseriesResponse:
+      properties:
+        groups:
+          items:
+            $ref: '#/components/schemas/TimeseriesGroupResponse'
+          type: array
+        groupBy:
+          $ref: '#/components/schemas/TimeseriesGroupBy'
+        interval:
+          type: string
+          enum:
+          - 1d
+        metric:
+          $ref: '#/components/schemas/TimeseriesMetric'
+        meta:
+          $ref: '#/components/schemas/SummaryMetaResponse'
+      required:
+      - groups
+      - groupBy
+      - interval
+      - metric
+      - meta
+      type: object
+    TimeseriesGroupBy:
+      type: string
+      enum:
+      - network
+      - version
+      - none
+    TvlResponse:
+      properties:
+        valuedAt:
+          type:
+          - number
+          - 'null'
+          format: double
+        poolsValuedAt:
+          type:
+          - number
+          - 'null'
+          format: double
+        total:
+          $ref: '#/components/schemas/Usd'
+        store:
+          allOf:
+          - $ref: '#/components/schemas/Usd'
+        glv:
+          $ref: '#/components/schemas/Usd'
+        pools:
+          $ref: '#/components/schemas/Usd'
+      required:
+      - valuedAt
+      - poolsValuedAt
+      - total
+      - store
+      - glv
+      - pools
+      type: object
+    SourceHealth:
+      type: string
+      enum:
+      - fresh
+      - stale
+      - missing
+    TradesResponse:
+      properties:
+        total:
+          type:
+          - number
+          - 'null'
+          format: double
+        swaps:
+          type:
+          - number
+          - 'null'
+          format: double
+        perps:
+          type:
+          - number
+          - 'null'
+          format: double
+      required:
+      - total
+      - swaps
+      - perps
+      type: object
+    MetricGroup:
+      type: string
+      enum:
+      - volume
+      - volume24h
+      - openInterest
+      - fees
+      - fees24h
+      - revenue
+      - tvl
+      - users
+      - trades
+    FeesResponse:
+      properties:
+        total:
+          $ref: '#/components/schemas/Usd'
+        swap:
+          allOf:
+          - $ref: '#/components/schemas/Usd'
+        trading:
+          allOf:
+          - $ref: '#/components/schemas/Usd'
+      required:
+      - total
+      - swap
+      - trading
+      type: object
+    Partial_Record_Version.MetricSetResponse__:
+      properties:
+        v1:
+          $ref: '#/components/schemas/MetricSetResponse'
+        v2:
+          $ref: '#/components/schemas/MetricSetResponse'
+      type: object
+      description: Make all properties in T optional
+    Network:
+      type: string
+      enum:
+      - arbitrum
+      - avalanche
+      - megaeth
+      - solana

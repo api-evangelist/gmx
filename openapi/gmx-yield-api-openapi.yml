@@ -1,0 +1,229 @@
+openapi: 3.2.0
+info:
+  title: '@gmx-io/gmx-public-api Yield API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Yield
+paths:
+  /yield/gm-pools:
+    get:
+      operationId: GetGmPoolsYieldPnl
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GmPoolsYieldPnlResponse'
+        '400':
+          description: Invalid pool address
+        '500':
+          description: Internal Server Error
+      description: 'Fee-only APY plus trader PnL for GM pools, one row per GM market token.
+
+        Metrics are null when the pool has no indexed data for the window; young pools are annualized over their listed window; unknown pool addresses in the pools filter are ignored.
+
+        Window timestamps are hour-aligned to the indexer''s snapshots; responses are served from a cached snapshot — window.endTimestamp reports its freshness.'
+      tags:
+      - Yield
+      security: []
+      parameters:
+      - in: query
+        name: period
+        required: false
+        schema:
+          $ref: '#/components/schemas/ApiParameterPeriod'
+      - in: query
+        name: pools
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - in: query
+        name: includeComponents
+        required: false
+        schema:
+          default: false
+          type: boolean
+      summary: Get gm pools yield pnl
+      x-summary-source: derived
+  /yield/gm-user-earnings:
+    get:
+      operationId: GetGmUserEarnings
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GmUserEarningsResponse'
+        '400':
+          description: Invalid account address
+        '503':
+          description: Earnings data is not available or still warming up
+      description: 'Lifetime and last-7-day LP fee earnings of one wallet, one row per GM market token it has ever held; pools that were delisted since are included.
+
+        USD values are 30-decimal fixed-point integers encoded as strings. Fees are attributed to GM held in the wallet on this chain; GM in a GMX Account or bridged to another chain is not attributed.'
+      tags:
+      - Yield
+      security: []
+      parameters:
+      - in: query
+        name: account
+        required: true
+        schema:
+          type: string
+      summary: Get gm user earnings
+      x-summary-source: derived
+components:
+  schemas:
+    ApiParameterPeriod:
+      enum:
+      - 1d
+      - 7d
+      - 30d
+      - 90d
+      - 180d
+      - 1y
+      - total
+      type: string
+    GmPoolYieldPnlEntry:
+      properties:
+        components:
+          $ref: '#/components/schemas/GmPoolYieldPnlComponents'
+          description: Trader PnL breakdown; present only when includeComponents=true and the pool has indexed data.
+        window:
+          $ref: '#/components/schemas/GmPoolYieldPnlWindow'
+        timeWeightedPoolValue:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: USD.
+        tradersPnlApr:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Annualized trader PnL over time-weighted pool value; same sign as `tradersPnlUsd`. Negate for the pool's yield impact.
+        tradersPnlUsd:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: 'Trader PnL in USD over the window, trader-perspective: positive means traders gained against the pool, negative means traders lost to the pool.'
+        feeApy:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: 'Fee-only APY over the window; fee composition matches `baseApy` of `/apy`: trading, swap, liquidation, and borrowing fees, compounded; excludes incentives, trader PnL, and backing-token price changes.'
+        marketToken:
+          type: string
+      required:
+      - window
+      - timeWeightedPoolValue
+      - tradersPnlApr
+      - tradersPnlUsd
+      - feeApy
+      - marketToken
+      type: object
+    BigIntToString_GmUserEarningsData_:
+      properties:
+        pools:
+          items:
+            properties:
+              marketToken:
+                type: string
+              recent7dFeeUsd:
+                type: string
+              lifetimeFeeUsd:
+                type: string
+            required:
+            - marketToken
+            - recent7dFeeUsd
+            - lifetimeFeeUsd
+            type: object
+          type: array
+        window:
+          properties:
+            endTimestamp:
+              type: number
+              format: double
+            startTimestamp:
+              type: number
+              format: double
+            days:
+              type: number
+              format: double
+          required:
+          - endTimestamp
+          - startTimestamp
+          - days
+          type: object
+        account:
+          type: string
+      required:
+      - pools
+      - window
+      - account
+      type: object
+      description: 'Recursively converts bigint types to string types in a type definition.
+
+        Handles primitives, objects, arrays, and nested structures.
+
+        Preserves Date type as-is.'
+    GmUserEarningsResponse:
+      $ref: '#/components/schemas/BigIntToString_GmUserEarningsData_'
+    GmPoolYieldPnlWindow:
+      properties:
+        endTimestamp:
+          type: number
+          format: double
+          description: Unix seconds.
+        startTimestamp:
+          type: number
+          format: double
+          description: Unix seconds; clamped to the pool's configured listing date when the pool is younger than the period.
+        period:
+          $ref: '#/components/schemas/ApiParameterPeriod'
+      required:
+      - endTimestamp
+      - startTimestamp
+      - period
+      type: object
+    GmPoolsYieldPnlResponse:
+      properties:
+        pools:
+          items:
+            $ref: '#/components/schemas/GmPoolYieldPnlEntry'
+          type: array
+      required:
+      - pools
+      type: object
+    GmPoolYieldPnlComponents:
+      properties:
+        unrealizedPnlShortUsd:
+          type: number
+          format: double
+        unrealizedPnlLongUsd:
+          type: number
+          format: double
+        realizedPnlShortUsd:
+          type: number
+          format: double
+        realizedPnlLongUsd:
+          type: number
+          format: double
+      required:
+      - unrealizedPnlShortUsd
+      - unrealizedPnlLongUsd
+      - realizedPnlShortUsd
+      - realizedPnlLongUsd
+      type: object

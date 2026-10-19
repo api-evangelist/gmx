@@ -1,0 +1,144 @@
+openapi: 3.2.0
+info:
+  title: '@gmx-io/gmx-public-api Incentives API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Incentives
+paths:
+  /incentives/usdg/boost-apr:
+    get:
+      operationId: GetUsdgBoostApr
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoostAprResponse'
+        '502':
+          description: Bad Gateway
+      tags:
+      - Incentives
+      security: []
+      parameters: []
+      summary: Get usdg boost apr
+      x-summary-source: derived
+  /incentives/usdg/merkl-apr:
+    get:
+      operationId: GetUsdgMerklApr
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MerklNativeAprEntry'
+                type: array
+      tags:
+      - Incentives
+      security: []
+      parameters: []
+      summary: Get usdg merkl apr
+      x-summary-source: derived
+components:
+  schemas:
+    BoostAprResponse:
+      anyOf:
+      - $ref: '#/components/schemas/BoostAprNotStarted'
+      - $ref: '#/components/schemas/BoostAprActive'
+    PoolBoostApr:
+      properties:
+        marketAddress:
+          type: string
+        boostApr:
+          type: number
+          format: double
+        lastRoundTimestamp:
+          type: number
+          format: double
+      required:
+      - marketAddress
+      - boostApr
+      - lastRoundTimestamp
+      type: object
+      additionalProperties: false
+    GlvBoostApr:
+      properties:
+        glvAddress:
+          type: string
+        boostApr:
+          type: number
+          format: double
+        gmRate:
+          type: number
+          format: double
+        premium:
+          type:
+          - number
+          - 'null'
+          format: double
+        lastRoundTimestamp:
+          type: number
+          format: double
+      required:
+      - glvAddress
+      - boostApr
+      - gmRate
+      - premium
+      - lastRoundTimestamp
+      type: object
+      additionalProperties: false
+    BoostAprActive:
+      properties:
+        status:
+          type: string
+          enum:
+          - active
+        pools:
+          items:
+            $ref: '#/components/schemas/PoolBoostApr'
+          type: array
+        glv:
+          allOf:
+          - $ref: '#/components/schemas/GlvBoostApr'
+      required:
+      - status
+      - pools
+      - glv
+      type: object
+      additionalProperties: false
+    BoostAprNotStarted:
+      properties:
+        status:
+          type: string
+          enum:
+          - not_started
+      required:
+      - status
+      type: object
+      additionalProperties: false
+    MerklNativeAprEntry:
+      properties:
+        title:
+          type: string
+        opportunityId:
+          type: string
+        timestamp:
+          type: number
+          format: double
+        value:
+          type: number
+          format: double
+      required:
+      - title
+      - opportunityId
+      - timestamp
+      - value
+      type: object
+      additionalProperties: false

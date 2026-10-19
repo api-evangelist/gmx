@@ -1,0 +1,49 @@
+openapi: 3.2.0
+info:
+  title: '@gmx-io/gmx-public-api Risk Oracle API'
+  version: 1.0.0
+  license:
+    name: Copyright
+  contact: {}
+servers:
+- url: /v1
+tags:
+- name: Risk Oracle
+paths:
+  /risk-oracle/markets:
+    get:
+      operationId: GetMarkets
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RiskOracleMarketResponse'
+                type: array
+        '502':
+          description: Bad Gateway - risk oracle request failed
+        '503':
+          description: Service Unavailable - risk oracle not configured for this chain
+      description: 'Active GMX markets for this deployment''s chain, proxied from the risk-oracle.
+
+        Each entry is the config display name and the onchain market token it resolved to.'
+      tags:
+      - Risk Oracle
+      security: []
+      parameters: []
+      summary: Get markets
+      x-summary-source: derived
+components:
+  schemas:
+    RiskOracleMarketResponse:
+      properties:
+        market_token:
+          type: string
+        name:
+          type: string
+      required:
+      - market_token
+      - name
+      type: object
