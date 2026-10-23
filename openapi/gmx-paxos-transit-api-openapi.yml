@@ -294,3 +294,9 @@ components:
       additionalProperties: {}
       type: object
       description: Construct a type with a set of properties K of type T
+x-provenance:
+  method: harvested
+  publisher: GMX
+  source: https://arbitrum.gmxapi.io/swagger.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
