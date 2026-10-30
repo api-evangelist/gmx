@@ -1,4 +1,4 @@
-# GMX (gmx)
+# GMX
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,138 +66,233 @@
 
 GMX is a decentralized perpetual and spot exchange deployed on Arbitrum, Avalanche, Botanix, and MegaETH, supporting trades with up to 100x leverage and low-price-impact token swaps powered by oracle-based pricing. The platform exposes four integration surfaces: a GMX REST API (primary, OpenAPI-documented) for account data, orders, analytics, and relayed workflows; an Oracle API (stable) for oracle prices, markets, liquidity snapshots, and APY; a GraphQL API via Subsquid for historical on-chain data; and an MCP server plus TypeScript SDK for AI-agent and programmatic access. Data coverage includes markets, tickers, tokens, positions, orders, rates, APY, performance, wallet balances, GLP/GM/GLV token analytics, OHLCV, buyback stats, and staking power.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/gmx/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/gmx/refs/heads/main/apis.yml)
+**Areas:** DeFi · Perpetual Exchange · Decentralized Exchange · Trading · Leverage · Liquidity Pools · GLP · GM Tokens · GLV · Arbitrum · Avalanche · Web3
 
-## Tags
+## GMX on APIs.io
 
-- DeFi
-- Perpetual Exchange
-- DEX
-- Trading
-- Leverage
-- Liquidity Pools
-- GLP
-- GM Tokens
-- GLV
-- Arbitrum
-- Avalanche
-- Web3
+Everything profiled for GMX is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/gmx/](https://apis.io/providers/gmx/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (22)
 
-- **Created:** 2026-06-14
-- **Modified:** 2026-06-14
+- [GMX Oracle API](https://apis.io/apis/gmx/oracle-api/) — Stable, read-only REST API providing oracle prices, market information, liquidity snapshots, APY data, and GM/GLV token info for Arbitrum, Avalanche,…
+- [GMX GraphQL API](https://apis.io/apis/gmx/graphql-api/) — Historical on-chain data for GMX via Subsquid-powered GraphQL endpoints. Enables deep queries over trades, liquidity events, positions, and protocol metrics…
+- [GMX Integration API](https://apis.io/apis/gmx/integration-api/) — CoinGecko-compatible trading pairs API for GMX markets on Arbitrum and Avalanche, returning ticker IDs, base and target currencies, product type (Spot or…
+- [GMX TypeScript SDK](https://apis.io/apis/gmx/typescript-sdk/) — Official @gmx-io/sdk package shipping two clients: GmxSdk (SDK v1) for full read/write access via RPC, and GmxApiSdk (SDK v2) for lightweight read-only HTTP…
+- [GMX Allowances API](https://apis.io/apis/gmx/gmx-allowances-api/) — The Allowances API from GMX — 1 operation(s) for allowances.
+- [GMX APY API](https://apis.io/apis/gmx/gmx-apy-api/) — The APY API from GMX — 1 operation(s) for apy.
+- [GMX Balances API](https://apis.io/apis/gmx/gmx-balances-api/) — The Balances API from GMX — 1 operation(s) for balances.
+- [GMX Account API](https://apis.io/apis/gmx/gmx-gmx-account-api/) — The GMX Account API from GMX — 4 operation(s) for gmx account.
+- [GMX JIT API](https://apis.io/apis/gmx/gmx-jit-api/) — The JIT API from GMX — 2 operation(s) for jit.
+- [GMX Markets API](https://apis.io/apis/gmx/gmx-markets-api/) — The Markets API from GMX — 5 operation(s) for markets.
+- [GMX Order Transactions API](https://apis.io/apis/gmx/gmx-order-transactions-api/) — The Order Transactions API from GMX — 6 operation(s) for order transactions.
+- [GMX Orders API](https://apis.io/apis/gmx/gmx-orders-api/) — The Orders API from GMX — 2 operation(s) for orders.
+- [GMX Pairs API](https://apis.io/apis/gmx/gmx-pairs-api/) — The Pairs API from GMX — 1 operation(s) for pairs.
+- [GMX Performance API](https://apis.io/apis/gmx/gmx-performance-api/) — The Performance API from GMX — 2 operation(s) for performance.
+- [GMX Positions API](https://apis.io/apis/gmx/gmx-positions-api/) — The Positions API from GMX — 2 operation(s) for positions.
+- [GMX Prices API](https://apis.io/apis/gmx/gmx-prices-api/) — The Prices API from GMX — 1 operation(s) for prices.
+- [GMX Rates API](https://apis.io/apis/gmx/gmx-rates-api/) — The Rates API from GMX — 1 operation(s) for rates.
+- [GMX Staking API](https://apis.io/apis/gmx/gmx-staking-api/) — The Staking API from GMX — 1 operation(s) for staking.
+- [GMX Subaccounts API](https://apis.io/apis/gmx/gmx-subaccounts-api/) — The Subaccounts API from GMX — 2 operation(s) for subaccounts.
+- [GMX Tokens API](https://apis.io/apis/gmx/gmx-tokens-api/) — The Tokens API from GMX — 2 operation(s) for tokens.
+- [GMX Trades API](https://apis.io/apis/gmx/gmx-trades-api/) — The Trades API from GMX — 2 operation(s) for trades.
+- [GMX Buy Back API](https://apis.io/apis/gmx/gmx-buy-back-api/) — The Buy Back API from GMX — 1 operation(s) for buy back.
 
-## APIs
+### Published properties
 
-### GMX API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Primary HTTP integration surface for GMX, actively developed and OpenAPI-documented. Covers account data, order information, trading analytics, wallet balances, allowances, staking power, buyback stats, JIT liquidity, subaccounts, and API-relayed order workflows across all supported networks.
+#### GraphQL (1)
 
-- **Human URL:** [https://docs.gmx.io/docs/api/overview/](https://docs.gmx.io/docs/api/overview/)
-- **Base URL:** `https://arbitrum.gmxapi.io/v1`
+GraphQL schemas.
 
-#### Tags
+- [GMX GraphQL API](https://apis.io/graphqls/gmx/gmx-graphql/)
 
-- Trading
-- Orders
-- Positions
-- Analytics
-- Accounts
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://docs.gmx.io/docs/api/overview/)
-- [OpenAPI](https://docs.gmx.io/docs/api/overview/) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Gmx Agentic Access](https://apis.io/agentic-access/gmx/gmx-agentic-access/)
 
-### GMX Oracle API
+#### JSON Schema (72)
 
-Stable, read-only REST API providing oracle prices, market information, liquidity snapshots, APY data, and GM/GLV token info for Arbitrum, Avalanche, Botanix, and MegaETH. Primary endpoints live at {chain}-api.gmxinfra.io with documented fallback hosts for high availability.
+The data models the API reads and writes.
 
-- **Human URL:** [https://docs.gmx.io/docs/api/rest/](https://docs.gmx.io/docs/api/rest/)
-- **Base URL:** `https://arbitrum-api.gmxinfra.io`
+- [ApiParameterPeriod](https://apis.io/schemas/gmx/ApiParameterPeriod/)
+- [ApprovalPrepareRequest](https://apis.io/schemas/gmx/ApprovalPrepareRequest/)
+- [ApprovalPrepareResponse](https://apis.io/schemas/gmx/ApprovalPrepareResponse/)
+- [ApyEntry](https://apis.io/schemas/gmx/ApyEntry/)
+- [ApyResponse](https://apis.io/schemas/gmx/ApyResponse/)
+- [BigIntToString_BuybackWeeklyStatsData_](https://apis.io/schemas/gmx/BigIntToString_BuybackWeeklyStatsData_/)
+- [BigIntToString_StakingPowerData_](https://apis.io/schemas/gmx/BigIntToString_StakingPowerData_/)
+- [BridgeOutParamsDto](https://apis.io/schemas/gmx/BridgeOutParamsDto/)
+- [BuybackWeeklyStatsResponse](https://apis.io/schemas/gmx/BuybackWeeklyStatsResponse/)
+- [CancelPrepareRequest](https://apis.io/schemas/gmx/CancelPrepareRequest/)
+- [CollateralOperation](https://apis.io/schemas/gmx/CollateralOperation/)
+- [CollateralPrepareRequest](https://apis.io/schemas/gmx/CollateralPrepareRequest/)
+- [CrossChainDepositPrepareRequest](https://apis.io/schemas/gmx/CrossChainDepositPrepareRequest/)
+- [CrossChainDepositPrepareResponse](https://apis.io/schemas/gmx/CrossChainDepositPrepareResponse/)
+- [CrossChainWithdrawPrepareRequest](https://apis.io/schemas/gmx/CrossChainWithdrawPrepareRequest/)
+- [CrossChainWithdrawPrepareResponse](https://apis.io/schemas/gmx/CrossChainWithdrawPrepareResponse/)
+- [CrossChainWithdrawSubmitRequest](https://apis.io/schemas/gmx/CrossChainWithdrawSubmitRequest/)
+- [CrossChainWithdrawSubmitResponse](https://apis.io/schemas/gmx/CrossChainWithdrawSubmitResponse/)
+- [EditPrepareRequest](https://apis.io/schemas/gmx/EditPrepareRequest/)
+- [GasPaymentParamsDto](https://apis.io/schemas/gmx/GasPaymentParamsDto/)
+- [GlvShiftParamsResponse](https://apis.io/schemas/gmx/GlvShiftParamsResponse/)
+- [GmxAccountStatusRequest](https://apis.io/schemas/gmx/GmxAccountStatusRequest/)
+- [GmxAccountStatusResponse](https://apis.io/schemas/gmx/GmxAccountStatusResponse/)
+- [JitLiquidityHistoryPeriod](https://apis.io/schemas/gmx/JitLiquidityHistoryPeriod/)
+- [JitLiquidityHistoryResponse](https://apis.io/schemas/gmx/JitLiquidityHistoryResponse/)
+- …and 47 more published on APIs.io
 
-#### Tags
+#### JSON-LD (2)
 
-- Oracle
-- Prices
-- Markets
-- Liquidity
-- APY
+Linked-data contexts for the provider's vocabulary.
 
-#### Properties
+- [Api Context](https://apis.io/jsonld/gmx/api/)
+- [context Context](https://apis.io/jsonld/gmx/context/)
 
-- [Documentation](https://docs.gmx.io/docs/api/rest/)
+#### Examples (37)
 
-### GMX GraphQL API
+Example requests and responses.
 
-Historical on-chain data for GMX via Subsquid-powered GraphQL endpoints. Enables deep queries over trades, liquidity events, positions, and protocol metrics indexed from Arbitrum and Avalanche chains.
+- [Cancelprepare](https://apis.io/examples/gmx/CancelPrepare/)
+- [Collateralprepare](https://apis.io/examples/gmx/CollateralPrepare/)
+- [Editprepare](https://apis.io/examples/gmx/EditPrepare/)
+- [Fetchstatus](https://apis.io/examples/gmx/FetchStatus/)
+- [Getallowances](https://apis.io/examples/gmx/GetAllowances/)
+- [Getannualized](https://apis.io/examples/gmx/GetAnnualized/)
+- [Getapy](https://apis.io/examples/gmx/GetApy/)
+- [Getliquidityhistory](https://apis.io/examples/gmx/GetLiquidityHistory/)
+- [Getliquidityinfo](https://apis.io/examples/gmx/GetLiquidityInfo/)
+- [Getmarkets](https://apis.io/examples/gmx/GetMarkets/)
+- [Getmarketsconfig](https://apis.io/examples/gmx/GetMarketsConfig/)
+- [Getmarketsinfo](https://apis.io/examples/gmx/GetMarketsInfo/)
+- [Getmarketstickers](https://apis.io/examples/gmx/GetMarketsTickers/)
+- [Getmarketsvalues](https://apis.io/examples/gmx/GetMarketsValues/)
+- [Getohlcv](https://apis.io/examples/gmx/GetOhlcv/)
+- [Getorderbykey](https://apis.io/examples/gmx/GetOrderByKey/)
+- [Getordersbyaddress](https://apis.io/examples/gmx/GetOrdersByAddress/)
+- [Getpairs](https://apis.io/examples/gmx/GetPairs/)
+- [Getpositionbykey](https://apis.io/examples/gmx/GetPositionByKey/)
+- [Getpositionsinfo](https://apis.io/examples/gmx/GetPositionsInfo/)
+- [Getrates](https://apis.io/examples/gmx/GetRates/)
+- [Getsnapshots](https://apis.io/examples/gmx/GetSnapshots/)
+- [Getstakingpower](https://apis.io/examples/gmx/GetStakingPower/)
+- [Gettokens](https://apis.io/examples/gmx/GetTokens/)
+- [Gettokensinfo](https://apis.io/examples/gmx/GetTokensInfo/)
+- …and 12 more published on APIs.io
 
-- **Human URL:** [https://docs.gmx.io/docs/api/subsquid/](https://docs.gmx.io/docs/api/subsquid/)
-- **Base URL:** `https://gmx.squids.live/gmx-synthetics-arbitrum:prod/api/graphql`
+#### Collections (18)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- GraphQL
-- Historical Data
-- On-Chain
-- Subsquid
+- [@gmx-io/gmx-public-api Allowances API](https://apis.io/collections/gmx/open-gmx-allowances-api/)
+- [@gmx-io/gmx-public-api Allowances APY API](https://apis.io/collections/gmx/open-gmx-apy-api/)
+- [@gmx-io/gmx-public-api Allowances Balances API](https://apis.io/collections/gmx/open-gmx-balances-api/)
+- [@gmx-io/gmx-public-api Allowances Buyback API](https://apis.io/collections/gmx/open-gmx-buyback-api/)
+- [@gmx-io/gmx-public-api Allowances GMX Account API](https://apis.io/collections/gmx/open-gmx-gmx-account-api/)
+- [@gmx-io/gmx-public-api Allowances JIT API](https://apis.io/collections/gmx/open-gmx-jit-api/)
+- [@gmx-io/gmx-public-api Allowances Markets API](https://apis.io/collections/gmx/open-gmx-markets-api/)
+- [@gmx-io/gmx-public-api Allowances Order Transactions API](https://apis.io/collections/gmx/open-gmx-order-transactions-api/)
+- [@gmx-io/gmx-public-api Allowances Orders API](https://apis.io/collections/gmx/open-gmx-orders-api/)
+- [@gmx-io/gmx-public-api Allowances Pairs API](https://apis.io/collections/gmx/open-gmx-pairs-api/)
+- [@gmx-io/gmx-public-api Allowances Performance API](https://apis.io/collections/gmx/open-gmx-performance-api/)
+- [@gmx-io/gmx-public-api Allowances Positions API](https://apis.io/collections/gmx/open-gmx-positions-api/)
+- [@gmx-io/gmx-public-api Allowances Prices API](https://apis.io/collections/gmx/open-gmx-prices-api/)
+- [@gmx-io/gmx-public-api Allowances Rates API](https://apis.io/collections/gmx/open-gmx-rates-api/)
+- [@gmx-io/gmx-public-api Allowances Staking API](https://apis.io/collections/gmx/open-gmx-staking-api/)
+- [@gmx-io/gmx-public-api Allowances Subaccounts API](https://apis.io/collections/gmx/open-gmx-subaccounts-api/)
+- [@gmx-io/gmx-public-api Allowances Tokens API](https://apis.io/collections/gmx/open-gmx-tokens-api/)
+- [@gmx-io/gmx-public-api Allowances Trades API](https://apis.io/collections/gmx/open-gmx-trades-api/)
 
-#### Properties
+#### Governance rules (1)
 
-- [Documentation](https://docs.gmx.io/docs/api/subsquid/)
-- [Graph Q L](graphql/gmx-graphql.md)
-- [Graph Q L Schema](graphql/gmx-schema.graphql)
+Spectral rulesets for the provider's contracts.
 
-### GMX Integration API
+- [GMX — jsonschema rules](https://apis.io/rules/gmx/gmx-jsonschema-spectral-rules/)
 
-CoinGecko-compatible trading pairs API for GMX markets on Arbitrum and Avalanche, returning ticker IDs, base and target currencies, product type (Spot or Perpetual), last price, 24-hour high/low, base and target volumes, and open interest for each market.
+#### Security (1)
 
-- **Human URL:** [https://github.com/gmx-io/gmx-integration-api](https://github.com/gmx-io/gmx-integration-api)
-- **Base URL:** `https://gmx-integration-cg.vercel.app/api`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Gmx Domain Security](https://apis.io/security/gmx/gmx-domain-security/)
 
-- Trading Pairs
-- Tickers
-- Market Data
-- CoinGecko
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://github.com/gmx-io/gmx-integration-api)
-- [Git Hub](https://github.com/gmx-io/gmx-integration-api)
+- [Gmx Plans Pricing](https://apis.io/plans/gmx/gmx-plans-pricing/)
 
-### GMX TypeScript SDK
+#### Rate limits (1)
 
-Official @gmx-io/sdk package shipping two clients: GmxSdk (SDK v1) for full read/write access via RPC, and GmxApiSdk (SDK v2) for lightweight read-only HTTP access covering markets, tickers, tokens, pairs, rates, APY, performance, positions, orders, OHLCV, buyback stats, and staking power.
+Published request limits.
 
-- **Human URL:** [https://docs.gmx.io/docs/sdk/](https://docs.gmx.io/docs/sdk/)
-- **Base URL:** `https://www.npmjs.com/package/@gmx-io/sdk`
+- [Gmx Rate Limits](https://apis.io/rate-limits/gmx/gmx-rate-limits/)
 
-#### Tags
+#### FinOps (1)
 
-- SDK
-- TypeScript
-- JavaScript
-- RPC
+What the API costs to run, by operation.
 
-#### Properties
+- [Gmx Finops](https://apis.io/finops/gmx/gmx-finops/)
 
-- [Documentation](https://docs.gmx.io/docs/sdk/)
-- [Git Hub](https://github.com/gmx-io/gmx-interface)
+## Where to find this API
 
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://gmx.io)
 - [Documentation](https://docs.gmx.io/docs/api/overview/)
-- [Git Hub](https://github.com/gmx-io)
-- [Twitter](https://x.com/GMX_IO)
-- [Discord](https://discord.gg/ymN38YefH9)
-- [Blog](https://medium.com/@gmx.io)
 - [Changelog](https://docs.gmx.io/docs/ai-agents/overview/)
+- [Blog](https://medium.com/@gmx.io)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.4 |
+| Contract governance | 9.8 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 16.7 |
+| Access clarity | 5.3 |
+
+**Agent readiness 17.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.7** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/gmx/](https://apis.io/providers/gmx/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for GMX: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/gmx/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
